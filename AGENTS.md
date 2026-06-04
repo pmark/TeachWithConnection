@@ -85,3 +85,8 @@ npx astro add <integration>
 ```
 
 Document any additions in `docs/ARCHITECTURE.md` under the integrations section.
+
+## Repository scope
+
+Ignore files and folders listed in `.agentignore`.
+Focus work on source code, documentation, configuration, and content files.

@@ -1,30 +1,168 @@
 ---
-status: draft
-updated: <!-- TODO: date -->
+status: complete
+updated: 2026-06-04
 ---
 
 # Content
 
 ## Content model
 
-<!-- TODO -->
+Launch content should be built around one clear business path: a visitor learns what Katie offers, sees credible proof, understands her approach, and submits an inquiry form.
+
+Primary launch content types:
+
+- Core marketing pages.
+- Service/offer pages.
+- Free resources.
+- Thought leadership posts.
+- Testimonials.
+- Proof items such as publications, awards, credentials, client/partner logos, and speaking/training appearances.
+- Contact and inquiry content.
+- Legal and utility pages as needed.
+
+Existing With Connection content is the launch source of truth. Educator-facing content from the current site should be prioritized over therapy-service content, though therapy content may inform the about page, tone, and credibility.
+
+## Launch pages
+
+Required launch pages:
+
+- Home: concise positioning, primary offers, differentiators, proof, resources preview, and inquiry CTA.
+- Professional Development: primary service page for workshops and trainings for early childhood educators and organizations.
+- Workshops: specific workshop topics and training formats.
+- Keynotes: keynote positioning, audience fit, sample topics, testimonials, and inquiry CTA.
+- Consultation: school/center/team consultation offer for challenging classroom behavior and complex student needs.
+- About Katie: biography, credentials, philosophy, publications, educator/clinician background, and With Connection story.
+- Resources: ungated downloads and practical tools.
+- Articles: selected thought leadership from the existing With Connection blog where relevant to early childhood education, trauma, behavior, regulation, parenting, and relationships.
+- Publications: book, NAEYC article, article award, and related links.
+- Contact / Inquiry: form-first inquiry path.
+- Privacy, disclaimer, and terms pages if needed for launch or carried over from the existing site.
+
+Nice-to-have later:
+
+- Events or appearances archive.
+- Case studies or impact stories.
+- Dedicated topic landing pages for trauma-responsive classrooms, neuroaffirming classrooms, classroom regulation, behavior support, and early childhood professional development.
+- Speaking media page if video or audio becomes available.
+
+## Service content
+
+Professional development is the lead offer. Copy should emphasize practical, relationship-centered trainings for educators who want support with child development, behavior, trauma, neurodivergence, emotional regulation, and play-based strategies.
+
+Workshop topics available from existing content include:
+
+- Working with children who have experienced trauma.
+- Understanding and responding to behavior.
+- Understanding neurodivergence and creating neuroaffirming classrooms.
+- Understanding Pervasive Drive for Autonomy (PDA) in the classroom.
+- The classroom environment as a regulator.
+- Supporting children who have been adopted or experienced foster care.
+
+Keynotes should emphasize Katie's ability to speak to early childhood educators' lived classroom experience, use stories from the field, help audiences feel seen, and leave them with practical ideas.
+
+Consultation should focus on schools, centers, teachers, and administrators facing escalating behavior, educator exhaustion, strained relationships, classroom dysregulation, and the need for sustainable relational strategies.
 
 ## Content collections
 
-<!-- TODO -->
+Use Astro Content Collections where repeated content will benefit from typed frontmatter and predictable rendering.
+
+Recommended collections:
+
+- `resources`: free downloadable resources.
+- `articles`: thought leadership posts migrated or adapted from the With Connection blog.
+- `testimonials`: participant and client quotes.
+- `proof`: publications, awards, logos, credentials, and appearances.
+- `services`: service metadata if service pages share reusable fields.
+
+Static pages may remain plain `.astro` files when they are unique, stable, and layout-specific.
 
 ## Voice and tone
 
-<!-- TODO -->
+Voice should be warm, clear, grounded, and direct. It should respect the emotional labor of educators while still giving leaders confidence that Katie can help.
+
+Use language patterns like:
+
+- "real children in real classrooms"
+- "connection, safety, and regulation"
+- "behavior as communication"
+- "moving beyond crisis management"
+- "relational, trauma-responsive, and neuroaffirming"
+- "teachers feel heard, children feel supported, and relationships can thrive"
+
+Avoid:
+
+- Blaming educators, children, families, or systems.
+- Overpromising outcomes.
+- Framing behavior support around compliance or control.
+- Dense clinical language without practical explanation.
+- Generic speaker-marketing language.
 
 ## SEO
 
-<!-- TODO -->
+Primary SEO themes:
+
+- Early childhood professional development.
+- Early childhood educator workshops.
+- Early childhood keynote speaker.
+- Trauma-responsive classrooms.
+- Trauma-informed early childhood education.
+- Neuroaffirming classrooms.
+- Preschool behavior consultation.
+- Classroom regulation strategies.
+- Attachment-informed teaching.
+- Early childhood behavior support.
+
+Each core page should have:
+
+- One focused page title.
+- A plain-language meta description.
+- One clear H1.
+- Internal links to inquiry.
+- Internal links between services, resources, articles, and proof.
+
+The site should use Katie's name, With Connection, EdD, LCSW, book title, and publication credentials consistently for branded search.
 
 ## Assets
 
-<!-- TODO -->
+Reusable assets should come from the existing With Connection site or owner-supplied files.
+
+Known asset categories:
+
+- With Connection logo.
+- Existing favicon.
+- Katie/With Connection photography.
+- Professional development slide or presentation imagery from the existing site.
+- Book cover and book photography for *Trauma Responsive Strategies for Early Childhood*.
+- Article imagery for NAEYC publication references.
+- Partner/client logo imagery currently visible on the existing site, including University of Michigan.
+- Social icons/links for Facebook and Instagram.
+- PDFs or downloadable resource files supplied by the owner.
+
+All image reuse should preserve accessibility with descriptive alt text. Decorative images should use empty alt text only when they add no content.
+
+## Testimonials
+
+Known testimonial language from the existing site includes quotes from workshop, course, keynote, and consultation participants. Use only attributed labels available from source content, such as "Workshop participant," "Participant," "Course participant," and "Teacher," unless the owner supplies fuller names or organizations.
+
+Testimonials should be placed near relevant offers and on the homepage. They should not be edited in a way that changes meaning.
+
+## Free resources
+
+Resources are ungated and should be easy to download or view. They should support educators directly and help leaders see the value of bringing Katie to their organization.
+
+Each resource should have:
+
+- Title.
+- Short description.
+- Topic tags.
+- Audience.
+- File path or URL.
+- Optional related service CTA.
+
+Resource pages should include a direct inquiry CTA but no email signup requirement.
 
 ## Ownership and editing
 
-<!-- TODO -->
+The owner/developer will maintain content after launch. Updates are expected to be frequent during launch refinement, then less frequent over time.
+
+Content should therefore be simple to edit in Markdown or MDX-style content files where possible. Avoid complicated content abstractions unless they reduce repeated manual work or protect important fields.

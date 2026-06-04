@@ -1,0 +1,46 @@
+# .agentignore
+
+# Generated files
+node_modules/
+dist/
+.astro/
+coverage/
+.cache/
+
+# Git internals
+.git/
+
+# Package artifacts
+.zip
+.tgz
+
+# Environment and secrets
+.env
+.env.
+
+# Logs
+.log
+
+# Local tooling
+.vscode/
+.idea/
+.wrangler/
+
+# Ignore generated test projects
+test-site/
+sandbox-site/
+playground/
+
+# Ignore build outputs and generated assets
+public/generated/
+
+# Always include
+!AGENTS.md
+!README.md
+!docs/
+!src/**
+!public/**
+!package.json
+!astro.config.*
+!tsconfig.json
+!tailwind.config.*
