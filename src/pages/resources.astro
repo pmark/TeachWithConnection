@@ -1,0 +1,25 @@
+---
+import ButtonLink from "../components/common/ButtonLink.astro";
+import Section from "../components/common/Section.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Resources"
+  description="Ungated early childhood resources from With Connection for educators and leaders."
+>
+  <Section
+    eyebrow="Resources"
+    title="Ungated tools for educators"
+    description="Resource downloads will be added when owner-supplied or source-backed files are available."
+  >
+    <div class="rounded-md border border-[#e8e2dc] bg-white p-6">
+      <p class="leading-7 text-[#4f4a45]">
+        No resource files are published yet. Free resources should remain directly accessible without email signup.
+      </p>
+      <div class="mt-6">
+        <ButtonLink href="/contact/" variant="secondary">Ask about professional development</ButtonLink>
+      </div>
+    </div>
+  </Section>
+</BaseLayout>

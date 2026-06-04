@@ -1,0 +1,26 @@
+---
+import InquiryCta from "../components/common/InquiryCta.astro";
+import Section from "../components/common/Section.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Publications"
+  description="Publication proof for Katie Statman-Weil, including Trauma Responsive Strategies for Early Childhood and NAEYC writing."
+>
+  <Section
+    eyebrow="Publications"
+    title="Books, articles, and publication proof"
+    description="This page should highlight Katie's Redleaf Press book, NAEYC Young Children article, Gold Excel Award, and related publication links."
+  >
+    <ul class="grid gap-4 md:grid-cols-2">
+      <li class="rounded-md border border-[#e8e2dc] bg-white p-5">
+        <cite>Trauma Responsive Strategies for Early Childhood</cite>
+      </li>
+      <li class="rounded-md border border-[#e8e2dc] bg-white p-5">
+        <cite>Creating Trauma Sensitive Classrooms</cite> for NAEYC <cite>Young Children</cite>
+      </li>
+    </ul>
+  </Section>
+  <InquiryCta />
+</BaseLayout>

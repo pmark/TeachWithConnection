@@ -1,0 +1,29 @@
+---
+import ButtonLink from "../common/ButtonLink.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  href: string;
+  tags?: string[];
+}
+
+const { title, description, href, tags = [] } = Astro.props;
+---
+
+<article class="rounded-md border border-[#e8e2dc] bg-white p-6">
+  <h3 class="font-serif text-2xl text-[#272727]">{title}</h3>
+  <p class="mt-3 leading-7 text-[#4f4a45]">{description}</p>
+  {tags.length > 0 && (
+    <ul class="mt-5 flex flex-wrap gap-2" aria-label="Resource topics">
+      {tags.map((tag) => (
+        <li class="rounded-md bg-[#f7f7f7] px-3 py-1 text-sm text-[#5d5751]">
+          {tag}
+        </li>
+      ))}
+    </ul>
+  )}
+  <div class="mt-6">
+    <ButtonLink href={href} variant="secondary">View resource</ButtonLink>
+  </div>
+</article>

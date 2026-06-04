@@ -1,0 +1,26 @@
+---
+import InquiryCta from "../components/common/InquiryCta.astro";
+import Section from "../components/common/Section.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Professional Development"
+  description="Relationship-centered professional development for early childhood educators, schools, districts, and organizations."
+>
+  <Section
+    eyebrow="Professional Development"
+    title="Workshops and staff trainings for early childhood teams"
+    description="Katie supports educators working with complex behavior, trauma histories, neurodivergence, classroom dysregulation, and educator stress."
+  >
+    <ul class="grid gap-4 md:grid-cols-2">
+      {[
+        "Trauma-responsive early childhood practice",
+        "Behavior as communication",
+        "Neuroaffirming classroom support",
+        "Regulation-focused environments",
+      ].map((item) => <li class="border-l-4 border-[#157c93] bg-[#f7f7f7] px-5 py-4">{item}</li>)}
+    </ul>
+  </Section>
+  <InquiryCta title="Inquire about professional development" />
+</BaseLayout>

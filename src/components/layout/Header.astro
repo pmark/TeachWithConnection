@@ -1,0 +1,37 @@
+---
+import ButtonLink from "../common/ButtonLink.astro";
+import { primaryNavigation, site } from "../../data/site";
+---
+
+<header class="border-b border-[#e8e2dc] bg-white">
+  <div class="mx-auto flex max-w-6xl flex-col gap-5 px-6 py-5 lg:flex-row lg:items-center lg:justify-between">
+    <a
+      href="/"
+      class="max-w-max text-[#272727] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#157c93]"
+      aria-label={`${site.name} home`}
+    >
+      <span class="block font-serif text-3xl leading-none">{site.name}</span>
+      <span class="mt-1 block text-sm text-[#5d5751]">
+        {site.person}, {site.credentials}
+      </span>
+    </a>
+
+    <div class="flex flex-col gap-5 lg:flex-row lg:items-center">
+      <nav aria-label="Primary navigation">
+        <ul class="flex flex-wrap gap-x-5 gap-y-3 text-sm font-semibold text-[#3c3834]">
+          {primaryNavigation.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                class="underline-offset-4 hover:text-[#157c93] hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#157c93]"
+              >
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+      <ButtonLink href="/contact/">Inquire</ButtonLink>
+    </div>
+  </div>
+</header>

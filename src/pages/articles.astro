@@ -1,0 +1,25 @@
+---
+import ButtonLink from "../components/common/ButtonLink.astro";
+import Section from "../components/common/Section.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Articles"
+  description="Selected With Connection writing on early childhood, trauma-responsive classrooms, behavior, relationships, and regulation."
+>
+  <Section
+    eyebrow="Articles"
+    title="Selected thought leadership"
+    description="Relevant articles from the existing With Connection blog can be migrated here when source content is approved."
+  >
+    <div class="rounded-md border border-[#e8e2dc] bg-white p-6">
+      <p class="leading-7 text-[#4f4a45]">
+        No articles are published in this static build yet.
+      </p>
+      <div class="mt-6">
+        <ButtonLink href="/resources/" variant="secondary">Visit resources</ButtonLink>
+      </div>
+    </div>
+  </Section>
+</BaseLayout>

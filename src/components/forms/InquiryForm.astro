@@ -1,0 +1,50 @@
+---
+const inquiryTypes = [
+  "Professional development",
+  "Workshop",
+  "Keynote",
+  "Consultation",
+  "Other",
+];
+---
+
+<form class="grid gap-5 rounded-md border border-[#e8e2dc] bg-white p-6" aria-describedby="form-note">
+  <p id="form-note" class="text-sm leading-6 text-[#5d5751]">
+    Inquiry delivery is not connected yet because the static form provider has not been selected.
+  </p>
+
+  <label class="grid gap-2 text-sm font-semibold text-[#272727]">
+    Name
+    <input class="min-h-11 rounded-md border border-[#cfc7bf] px-3 py-2 font-normal" name="name" autocomplete="name" />
+  </label>
+
+  <label class="grid gap-2 text-sm font-semibold text-[#272727]">
+    Email
+    <input class="min-h-11 rounded-md border border-[#cfc7bf] px-3 py-2 font-normal" name="email" type="email" autocomplete="email" />
+  </label>
+
+  <label class="grid gap-2 text-sm font-semibold text-[#272727]">
+    Organization
+    <input class="min-h-11 rounded-md border border-[#cfc7bf] px-3 py-2 font-normal" name="organization" autocomplete="organization" />
+  </label>
+
+  <label class="grid gap-2 text-sm font-semibold text-[#272727]">
+    Inquiry type
+    <select class="min-h-11 rounded-md border border-[#cfc7bf] px-3 py-2 font-normal" name="inquiry-type">
+      {inquiryTypes.map((type) => <option value={type}>{type}</option>)}
+    </select>
+  </label>
+
+  <label class="grid gap-2 text-sm font-semibold text-[#272727]">
+    Message
+    <textarea class="min-h-36 rounded-md border border-[#cfc7bf] px-3 py-2 font-normal" name="message"></textarea>
+  </label>
+
+  <button
+    class="min-h-11 rounded-md border border-[#b9b0a8] bg-[#f7f7f7] px-5 py-2.5 text-sm font-semibold text-[#5d5751]"
+    type="button"
+    disabled
+  >
+    Form provider pending
+  </button>
+</form>

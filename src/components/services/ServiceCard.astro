@@ -1,0 +1,20 @@
+---
+import ButtonLink from "../common/ButtonLink.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  href: string;
+  cta: string;
+}
+
+const { title, description, href, cta } = Astro.props;
+---
+
+<article class="flex h-full flex-col rounded-md border border-[#e8e2dc] bg-white p-6">
+  <h3 class="font-serif text-2xl leading-tight text-[#272727]">{title}</h3>
+  <p class="mt-4 flex-1 leading-7 text-[#4f4a45]">{description}</p>
+  <div class="mt-6">
+    <ButtonLink href={href} variant="text">{cta}</ButtonLink>
+  </div>
+</article>

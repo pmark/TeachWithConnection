@@ -1,17 +1,118 @@
 ---
-
+import ButtonLink from "../components/common/ButtonLink.astro";
+import InquiryCta from "../components/common/InquiryCta.astro";
+import Section from "../components/common/Section.astro";
+import ProofList from "../components/proof/ProofList.astro";
+import ServiceCard from "../components/services/ServiceCard.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { proofItems, servicePreviews, site } from "../data/site";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout
+  title={site.name}
+  description="Relationship-centered professional development, keynotes, and consultation for early childhood organizations with Katie Statman-Weil, EdD, LCSW."
+>
+  <section class="bg-[#f7f7f7] py-16 sm:py-20">
+    <div class="mx-auto grid max-w-6xl gap-12 px-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+      <div>
+        <p class="mb-4 text-sm font-semibold uppercase tracking-wide text-[#157c93]">
+          Early childhood professional development
+        </p>
+        <h1 class="font-serif text-4xl leading-tight text-[#272727] sm:text-5xl lg:text-6xl">
+          Practical, relationship-centered support for real children in real classrooms.
+        </h1>
+        <p class="mt-6 max-w-2xl text-lg leading-8 text-[#4f4a45]">
+          Katie Statman-Weil, EdD, LCSW helps early childhood organizations, schools, districts, and conferences support educators with trauma-responsive, neuroaffirming, attachment-informed practice.
+        </p>
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+          <ButtonLink href="/contact/">Inquire about professional development</ButtonLink>
+          <ButtonLink href="/workshops/" variant="secondary">View workshop topics</ButtonLink>
+        </div>
+      </div>
+
+      <aside class="rounded-md border border-[#e8e2dc] bg-white p-6" aria-label="Katie Statman-Weil credibility summary">
+        <p class="font-serif text-3xl leading-tight text-[#272727]">
+          Educator, clinician, author, consultant, and speaker.
+        </p>
+        <dl class="mt-8 grid gap-5">
+          <div>
+            <dt class="text-sm font-semibold uppercase tracking-wide text-[#157c93]">Credentials</dt>
+            <dd class="mt-1 text-[#4f4a45]">EdD and Licensed Clinical Social Worker</dd>
+          </div>
+          <div>
+            <dt class="text-sm font-semibold uppercase tracking-wide text-[#157c93]">Publication</dt>
+            <dd class="mt-1 text-[#4f4a45]">
+              Author of <cite>Trauma Responsive Strategies for Early Childhood</cite>
+            </dd>
+          </div>
+          <div>
+            <dt class="text-sm font-semibold uppercase tracking-wide text-[#157c93]">Approach</dt>
+            <dd class="mt-1 text-[#4f4a45]">
+              Connection, safety, regulation, and behavior as communication
+            </dd>
+          </div>
+        </dl>
+      </aside>
+    </div>
+  </section>
+
+  <Section
+    eyebrow="Services"
+    title="Support for teams, conferences, and classroom challenges"
+    description="Professional development is the lead offer, with keynotes and consultation available for organizations that need a focused, practical, deeply human way into behavior, trauma, neurodivergence, and regulation."
+  >
+    <div class="grid gap-5 md:grid-cols-2">
+      {servicePreviews.map((service) => <ServiceCard {...service} />)}
+    </div>
+  </Section>
+
+  <Section
+    background="surface"
+    eyebrow="Proof"
+    title="Credibility grounded in classrooms, clinical practice, and early childhood leadership"
+  >
+    <ProofList items={proofItems} />
+  </Section>
+
+  <Section
+    eyebrow="Approach"
+    title="Teachers feel heard, children feel supported, and relationships can thrive."
+  >
+    <div class="grid gap-10 lg:grid-cols-[0.8fr_1fr] lg:items-start">
+      <aside class="rounded-md border border-[#e8e2dc] bg-white p-6">
+        <h3 class="font-serif text-2xl leading-tight text-[#272727]">
+          Source-backed testimonials belong here.
+        </h3>
+        <p class="mt-4 leading-7 text-[#4f4a45]">
+          The existing With Connection site includes workshop, course, keynote, and consultation participant quotes. Those should be migrated without changing their meaning once reuse is confirmed.
+        </p>
+      </aside>
+      <div>
+        <p class="leading-8 text-[#4f4a45]">
+          This work helps educators move beyond crisis management and generic behavior strategies. It gives teams a shared frame for understanding what children may be communicating, what adults need in order to stay regulated, and how classroom environments can support connection and safety.
+        </p>
+        <p class="mt-5 leading-8 text-[#4f4a45]">
+          Final launch copy should continue to use source-backed With Connection language and owner-approved testimonials.
+        </p>
+      </div>
+    </div>
+  </Section>
+
+  <Section
+    background="surface"
+    eyebrow="Resources"
+    title="Ungated tools and writing for educators"
+    description="Free resources will stay open-access. They should help educators use Katie's approach directly and give leaders a low-friction way to understand the work before inquiring."
+  >
+    <div class="rounded-md border border-[#e8e2dc] bg-white p-6">
+      <p class="leading-7 text-[#4f4a45]">
+        Resource files have not been supplied yet. Once they are available, this section should preview the strongest launch resources and link to the resource library.
+      </p>
+      <div class="mt-6">
+        <ButtonLink href="/resources/" variant="secondary">Visit resources</ButtonLink>
+      </div>
+    </div>
+  </Section>
+
+  <InquiryCta />
+</BaseLayout>

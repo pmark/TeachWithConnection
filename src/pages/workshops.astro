@@ -1,0 +1,28 @@
+---
+import InquiryCta from "../components/common/InquiryCta.astro";
+import Section from "../components/common/Section.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Workshops"
+  description="Workshop topics for early childhood teams, including trauma, neurodivergence, behavior, regulation, PDA, and foster care or adoption."
+>
+  <Section
+    eyebrow="Workshops"
+    title="Practical topics for educators and leaders"
+    description="Workshop copy should be migrated from source-backed With Connection material. These documented launch topics are ready for detailed implementation."
+  >
+    <ul class="grid gap-4 md:grid-cols-2">
+      {[
+        "Working with children who have experienced trauma",
+        "Understanding and responding to behavior",
+        "Creating neuroaffirming classrooms",
+        "Understanding PDA in the classroom",
+        "The classroom environment as a regulator",
+        "Supporting children who have been adopted or experienced foster care",
+      ].map((item) => <li class="rounded-md border border-[#e8e2dc] bg-white p-5">{item}</li>)}
+    </ul>
+  </Section>
+  <InquiryCta title="Bring a workshop to your team" />
+</BaseLayout>

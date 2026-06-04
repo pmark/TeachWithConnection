@@ -1,0 +1,20 @@
+---
+import InquiryForm from "../components/forms/InquiryForm.astro";
+import Section from "../components/common/Section.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Contact"
+  description="Inquiry form for professional development, workshops, keynotes, and consultation with Katie Statman-Weil and With Connection."
+>
+  <Section
+    eyebrow="Inquiry"
+    title="Tell Katie what your team is facing"
+    description="This form is scaffolded for a future static form provider. Final submission behavior depends on the provider decision."
+  >
+    <div class="max-w-3xl">
+      <InquiryForm />
+    </div>
+  </Section>
+</BaseLayout>
