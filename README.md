@@ -1,4 +1,6 @@
-# Astro Starter Kit: Minimal
+# TeachWithConnection.com
+
+From Astro Starter Kit: Minimal
 
 ```sh
 npm create astro@latest -- --template minimal
