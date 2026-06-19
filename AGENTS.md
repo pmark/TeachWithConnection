@@ -51,7 +51,7 @@ doing anything else.
 - Never introduce a new dependency without noting it in your response
 - Never use client-side JavaScript unless an Astro island is explicitly required
 - Never modify `AGENTS.md` or any file in `docs/` without being asked to
-- Always run `npm run lint` mentally before declaring work complete — flag type errors
+- Always run `pnpm lint` mentally before declaring work complete — flag type errors
 - When in doubt about a pattern, check `docs/CONVENTIONS.md` before inventing one
 
 ---

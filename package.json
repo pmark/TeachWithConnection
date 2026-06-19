@@ -2,6 +2,7 @@
   "name": "teachwithconnection",
   "type": "module",
   "version": "0.0.1",
+  "packageManager": "pnpm@11.5.1",
   "engines": {
     "node": ">=22.12.0"
   },
@@ -13,7 +14,8 @@
     "lint": "astro check",
     "format": "prettier --write .",
     "new:component": "node scripts/new-component.mjs",
-    "new:content": "node scripts/new-content.mjs"
+    "new:content": "node scripts/new-content.mjs",
+    "deploy:setup": "bash scripts/deploy-setup.sh"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",

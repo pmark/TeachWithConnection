@@ -21,8 +21,11 @@ Launch hardening for mobile-first UX, technical SEO, canonical authority, and pr
 - `POST /api/inquiry` validates submissions, applies spam controls, verifies Turnstile, uses the configured rate limiter, and calls Resend with escaped HTML/plain text.
 - Placeholder legal, article, and resource pages are `noindex` and excluded from the sitemap.
 - The footer contextually links visitors to the separate With Connection PDX family therapy site.
-- `npm run build` succeeds and generates 13 static pages plus the sitemap.
-- `npm run lint` succeeds with 0 errors, 0 warnings, and 0 hints; the Pages Function passes standalone TypeScript checking.
+- `pnpm build` succeeds and generates 13 static pages plus the sitemap.
+- `pnpm lint` succeeds with 0 errors, 0 warnings, and 0 hints; the Pages Function passes standalone TypeScript checking.
+- Cloudflare Pages deployment is fully documented in `docs/DEPLOY.md`: Git-integration deploys from `main` (production) and `staging` (pinned to a stable `staging.teachwithconnection.com` preview domain), with no GitHub Actions deploy workflow needed.
+- `scripts/deploy-setup.sh` (`pnpm deploy:setup`) idempotently bootstraps the Cloudflare Pages project and the one secret shared across environments via Wrangler CLI.
+- The lockfile conflict (stale `package-lock.json` alongside `pnpm-lock.yaml`) is resolved — pnpm is the only package manager referenced anywhere in the repo. Node version is pinned via `.node-version` and `package.json` `engines`.
 - Generated-route checks confirm one H1, canonical, indexability, social metadata, and JSON-LD on every core page; the sitemap excludes the redirect and incomplete routes.
 - Mocked Function checks pass success, validation, honeypot, Turnstile failure, Resend failure, rate-limit, and unsupported-method paths.
 - Browser checks pass all seven core routes at 320px, 390px, 768px, and 1280px with no overflow, undersized targets, heading failures, or incorrect navigation mode.
@@ -35,10 +38,12 @@ Launch hardening for mobile-first UX, technical SEO, canonical authority, and pr
 - Articles, resources, and testimonials collections remain empty and emit expected build warnings.
 - Source assets, third-party logos, and testimonials still need reuse confirmation.
 - The new rate-limit binding and Pages Function require deployment verification in the target Cloudflare account.
-- `npm audit --omit=dev` still reports newly disclosed Astro/esbuild build-tool advisories despite Astro 6.4.8 being the latest available release. The deployed marketing output is static and does not run the Astro server, but the advisories should be rechecked when patched versions publish.
+- `pnpm audit --omit=dev` still reports newly disclosed Astro/esbuild build-tool advisories despite Astro 6.4.8 being the latest available release. The deployed marketing output is static and does not run the Astro server, but the advisories should be rechecked when patched versions publish.
+- The Cloudflare Pages project has not been created or connected to GitHub yet — `docs/DEPLOY.md` is a runbook, not a record of completed dashboard work.
 
 ## Blockers
 
+- Run the one-time Cloudflare dashboard setup in `docs/DEPLOY.md` (Git connection, Turnstile widgets, Resend domain verification, per-environment env vars, custom domains for production and `staging`). None of this can be scripted further — it's UI-only by Cloudflare's own constraints.
 - Configure and verify the Resend sender domain, API key, sender address, and Katie's recipient address.
 - Configure Turnstile keys and verify the Cloudflare rate-limit binding.
 - Update WithConnectionPDX.com with reciprocal `sameAs`, contextual links, and educator-bookstore canonicals.

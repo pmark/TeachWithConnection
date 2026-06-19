@@ -127,8 +127,8 @@ Preferred phrasing themes:
 
 Before declaring implementation complete:
 
-- Run `npm run lint`.
-- Run `npm run build`.
+- Run `pnpm lint`.
+- Run `pnpm build`.
 - Check primary pages on mobile and desktop.
 - Check every shared template at 320px, 390px, 768px, and desktop widths.
 - Inspect sitemap, robots directives, canonicals, social metadata, and JSON-LD before launch.
