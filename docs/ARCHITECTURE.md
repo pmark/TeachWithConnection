@@ -1,6 +1,6 @@
 ---
 status: complete
-updated: 2026-06-04
+updated: 2026-06-19
 ---
 
 # Architecture
@@ -12,6 +12,7 @@ updated: 2026-06-04
 - Tailwind CSS 4 through `@tailwindcss/vite`
 - Static output
 - Cloudflare Pages unless otherwise documented
+- Cloudflare Pages Functions for the same-origin inquiry endpoint
 
 The current project uses `astro.config.mjs`, not `astro.config.ts`.
 
@@ -27,6 +28,9 @@ Use this structure for launch development:
 │   ├── images/
 │   ├── resources/
 │   └── social/
+├── functions/
+│   └── api/
+│       └── inquiry.ts
 ├── src/
 │   ├── components/
 │   │   ├── common/
@@ -49,6 +53,7 @@ Use this structure for launch development:
 │   └── content.config.ts
 ├── docs/
 ├── astro.config.mjs
+├── wrangler.jsonc
 ├── package.json
 └── tsconfig.json
 ```
@@ -61,10 +66,10 @@ Recommended launch routes:
 
 ```text
 /
-/professional-development/
 /workshops/
 /keynotes/
 /consultation/
+/bookstore/
 /about/
 /resources/
 /resources/[slug]/
@@ -77,7 +82,7 @@ Recommended launch routes:
 /terms/
 ```
 
-Use redirects later if the final launch plan needs to preserve existing With Connection paths.
+`/professional-development/` is a redirect-only legacy path and permanently redirects to `/`. It must not generate HTML or appear in the sitemap. Additional source-site redirects remain subject to the migration map.
 
 ## Major modules
 
@@ -87,8 +92,9 @@ Use redirects later if the final launch plan needs to preserve existing With Con
 - Proof: testimonials, credentials, publications, awards, logo rows, and source-backed credibility callouts.
 - Resources: resource listings, resource detail pages, file links, and service CTAs.
 - Articles: article listing and article detail rendering.
-- Forms: inquiry form markup and provider integration once selected.
+- Forms: accessible inquiry states and the Pages Function/Resend integration.
 - SEO: metadata helpers, canonical URLs, social images, and structured data where useful.
+- Functions: same-origin inquiry validation, spam controls, rate limiting, and Resend delivery.
 
 ## Content flow
 
@@ -140,21 +146,20 @@ Current dependencies:
 - `astro`
 - `tailwindcss`
 - `@tailwindcss/vite`
+- `@astrojs/sitemap`
 
-No additional dependencies are approved yet.
+Current development dependencies also include `wrangler` for Cloudflare configuration and local/deployment tooling.
 
 Potential future integrations that require explicit approval and documentation:
 
-- Form service integration for inquiry submissions.
 - Analytics.
-- Sitemap or SEO integration if Astro built-ins are insufficient.
 - Image optimization integration.
 
 Prefer first-party Astro integrations where possible.
 
 ## Form architecture
 
-The inquiry form is the reliability-sensitive conversion surface. Until a provider is chosen, implement the form component in a provider-ready way:
+The inquiry form is the reliability-sensitive conversion surface. It posts to `POST /api/inquiry`, implemented as a same-project Cloudflare Pages Function:
 
 - Name.
 - Email.
@@ -167,7 +172,11 @@ The inquiry form is the reliability-sensitive conversion surface. Until a provid
 - Message.
 - Consent or privacy acknowledgement if required.
 
-Final form handling must work on Cloudflare Pages static hosting. Options should be evaluated before implementation.
+The function validates and bounds inputs, rejects honeypot and too-fast submissions, verifies Cloudflare Turnstile server-side, applies the configured rate-limit binding, and sends through the Resend HTTPS API. Secrets are supplied through Cloudflare and never exposed to the browser. A successful API response means Resend accepted the email request; production mailbox receipt remains a launch test.
+
+## Phase 2 inquiry CRM
+
+After launch, add D1 persistence and a password-protected admin surface for managing inquiries. This phase requires a separate architecture decision and the Cloudflare Astro adapter for server-side rendering. Public marketing pages must remain prerendered. Phase 2 is not part of launch.
 
 ## Reliability-sensitive surfaces
 

@@ -1,4 +1,6 @@
 ---
+import { site } from "../../data/site";
+
 const inquiryTypes = [
   "Professional development",
   "Workshop",
@@ -6,45 +8,192 @@ const inquiryTypes = [
   "Consultation",
   "Other",
 ];
+
+const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
+const fieldClass =
+  "min-h-11 w-full rounded-md border border-[#9b928a] bg-white px-3 py-2 font-normal text-[#272727] focus:border-[#157c93] focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-[#157c93]";
 ---
 
-<form class="grid gap-5 rounded-md border border-[#e8e2dc] bg-white p-6" aria-describedby="form-note">
+<form
+  id="inquiry-form"
+  class="grid gap-5 rounded-md border border-[#e8e2dc] bg-white p-4 sm:p-6"
+  action="/api/inquiry"
+  method="post"
+  aria-describedby="form-note form-status"
+  data-inquiry-form
+>
   <p id="form-note" class="text-sm leading-6 text-[#5d5751]">
-    Inquiry delivery is not connected yet because the static form provider has not been selected.
+    Required fields are marked “required.” Your information is used only to respond to this inquiry.
   </p>
 
-  <label class="grid gap-2 text-sm font-semibold text-[#272727]">
-    Name
-    <input class="min-h-11 rounded-md border border-[#cfc7bf] px-3 py-2 font-normal" name="name" autocomplete="name" />
-  </label>
+  <div class="hidden" aria-hidden="true">
+    <label>
+      Website
+      <input name="website" tabindex="-1" autocomplete="off" />
+    </label>
+  </div>
+  <input type="hidden" name="startedAt" value={Date.now()} />
+
+  <div class="grid gap-5 sm:grid-cols-2">
+    <label class="grid gap-2 text-sm font-semibold text-[#272727]">
+      Name <span class="font-normal text-[#5d5751]">(required)</span>
+      <input class={fieldClass} name="name" autocomplete="name" required maxlength="100" aria-describedby="name-error" />
+      <span id="name-error" class="hidden text-sm font-normal text-[#9f1d1d]" data-error-for="name"></span>
+    </label>
+
+    <label class="grid gap-2 text-sm font-semibold text-[#272727]">
+      Email <span class="font-normal text-[#5d5751]">(required)</span>
+      <input class={fieldClass} name="email" type="email" autocomplete="email" required maxlength="254" aria-describedby="email-error" />
+      <span id="email-error" class="hidden text-sm font-normal text-[#9f1d1d]" data-error-for="email"></span>
+    </label>
+  </div>
+
+  <div class="grid gap-5 sm:grid-cols-2">
+    <label class="grid gap-2 text-sm font-semibold text-[#272727]">
+      Organization <span class="font-normal text-[#5d5751]">(required)</span>
+      <input class={fieldClass} name="organization" autocomplete="organization" required maxlength="150" aria-describedby="organization-error" />
+      <span id="organization-error" class="hidden text-sm font-normal text-[#9f1d1d]" data-error-for="organization"></span>
+    </label>
+
+    <label class="grid gap-2 text-sm font-semibold text-[#272727]">
+      Role or title
+      <input class={fieldClass} name="role" autocomplete="organization-title" maxlength="100" />
+    </label>
+  </div>
+
+  <div class="grid gap-5 sm:grid-cols-2">
+    <label class="grid gap-2 text-sm font-semibold text-[#272727]">
+      Location
+      <input class={fieldClass} name="location" autocomplete="address-level2" maxlength="120" />
+    </label>
+
+    <label class="grid gap-2 text-sm font-semibold text-[#272727]">
+      Inquiry type <span class="font-normal text-[#5d5751]">(required)</span>
+      <select class={fieldClass} name="inquiryType" required aria-describedby="inquiryType-error">
+        <option value="">Choose one</option>
+        {inquiryTypes.map((type) => <option value={type}>{type}</option>)}
+      </select>
+      <span id="inquiryType-error" class="hidden text-sm font-normal text-[#9f1d1d]" data-error-for="inquiryType"></span>
+    </label>
+  </div>
+
+  <div class="grid gap-5 sm:grid-cols-2">
+    <label class="grid gap-2 text-sm font-semibold text-[#272727]">
+      Estimated date or timeline
+      <input class={fieldClass} name="timeline" maxlength="120" />
+    </label>
+
+    <label class="grid gap-2 text-sm font-semibold text-[#272727]">
+      Estimated audience size
+      <input class={fieldClass} name="audienceSize" inputmode="numeric" maxlength="60" />
+    </label>
+  </div>
 
   <label class="grid gap-2 text-sm font-semibold text-[#272727]">
-    Email
-    <input class="min-h-11 rounded-md border border-[#cfc7bf] px-3 py-2 font-normal" name="email" type="email" autocomplete="email" />
+    What would you like Katie to know? <span class="font-normal text-[#5d5751]">(required)</span>
+    <textarea class={`${fieldClass} min-h-40`} name="message" required maxlength="5000" aria-describedby="message-error"></textarea>
+    <span id="message-error" class="hidden text-sm font-normal text-[#9f1d1d]" data-error-for="message"></span>
   </label>
 
-  <label class="grid gap-2 text-sm font-semibold text-[#272727]">
-    Organization
-    <input class="min-h-11 rounded-md border border-[#cfc7bf] px-3 py-2 font-normal" name="organization" autocomplete="organization" />
-  </label>
+  {turnstileSiteKey ? (
+    <div class="cf-turnstile" data-sitekey={turnstileSiteKey} data-theme="light"></div>
+  ) : (
+    <p class="rounded-md border border-[#d7a700] bg-[#fff9df] p-4 text-sm leading-6 text-[#5f4c00]" role="status">
+      Inquiry sending is unavailable until the production Turnstile key is configured.
+    </p>
+  )}
 
-  <label class="grid gap-2 text-sm font-semibold text-[#272727]">
-    Inquiry type
-    <select class="min-h-11 rounded-md border border-[#cfc7bf] px-3 py-2 font-normal" name="inquiry-type">
-      {inquiryTypes.map((type) => <option value={type}>{type}</option>)}
-    </select>
-  </label>
-
-  <label class="grid gap-2 text-sm font-semibold text-[#272727]">
-    Message
-    <textarea class="min-h-36 rounded-md border border-[#cfc7bf] px-3 py-2 font-normal" name="message"></textarea>
-  </label>
+  <p id="form-status" class="hidden rounded-md p-4 text-sm leading-6" role="status" tabindex="-1" data-form-status></p>
 
   <button
-    class="min-h-11 rounded-md border border-[#b9b0a8] bg-[#f7f7f7] px-5 py-2.5 text-sm font-semibold text-[#5d5751]"
-    type="button"
-    disabled
+    class="min-h-11 rounded-md border border-[#157c93] bg-[#157c93] px-5 py-2.5 text-sm font-semibold text-white hover:border-[#0f6174] hover:bg-[#0f6174] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#157c93] disabled:cursor-not-allowed disabled:border-[#b9b0a8] disabled:bg-[#f7f7f7] disabled:text-[#5d5751]"
+    type="submit"
+    disabled={!turnstileSiteKey}
+    data-submit-button
   >
-    Form provider pending
+    Send inquiry
   </button>
+
+  <p class="text-sm leading-6 text-[#5d5751]">
+    If this form is unavailable, use the
+    <a class="inline-flex min-h-11 items-center font-semibold text-[#157c93] underline underline-offset-4" href={`${site.relatedPracticeUrl}/contact-us`}>
+      existing With Connection contact page
+    </a>.
+  </p>
 </form>
+
+{turnstileSiteKey && (
+  <script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+)}
+
+<script>
+  const form = document.querySelector<HTMLFormElement>("[data-inquiry-form]");
+  const status = form?.querySelector<HTMLElement>("[data-form-status]");
+  const submitButton = form?.querySelector<HTMLButtonElement>("[data-submit-button]");
+  const startedAtInput = form?.querySelector<HTMLInputElement>('input[name="startedAt"]');
+  if (startedAtInput) startedAtInput.value = String(Date.now());
+
+  const resetTurnstile = () => {
+    const turnstile = (window as Window & { turnstile?: { reset: () => void } }).turnstile;
+    turnstile?.reset();
+  };
+
+  const clearErrors = () => {
+    form?.querySelectorAll<HTMLElement>("[data-error-for]").forEach((element) => {
+      element.textContent = "";
+      element.classList.add("hidden");
+    });
+  };
+
+  const showStatus = (message: string, success: boolean) => {
+    if (!status) return;
+    status.textContent = message;
+    status.className = success
+      ? "rounded-md border border-[#3c7a57] bg-[#edf8f1] p-4 text-sm leading-6 text-[#245137]"
+      : "rounded-md border border-[#b73a3a] bg-[#fff1f1] p-4 text-sm leading-6 text-[#7d1818]";
+    status.focus();
+  };
+
+  form?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    clearErrors();
+    if (!form.reportValidity() || !submitButton) return;
+
+    submitButton.disabled = true;
+    submitButton.textContent = "Sending…";
+
+    try {
+      const response = await fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { Accept: "application/json" },
+      });
+      const result = await response.json();
+
+      if (!response.ok) {
+        const fieldErrors = result.fieldErrors ?? {};
+        Object.entries<string>(fieldErrors).forEach(([field, message]) => {
+          const error = form.querySelector<HTMLElement>(`[data-error-for="${field}"]`);
+          if (error) {
+            error.textContent = message;
+            error.classList.remove("hidden");
+          }
+        });
+        showStatus(result.message ?? "Your inquiry could not be sent. Please review the form and try again.", false);
+        resetTurnstile();
+        return;
+      }
+
+      form.reset();
+      if (startedAtInput) startedAtInput.value = String(Date.now());
+      resetTurnstile();
+      showStatus("Thank you. Your inquiry was sent to Katie.", true);
+    } catch {
+      showStatus("The form could not reach the inquiry service. Please try again or use the fallback contact link.", false);
+      resetTurnstile();
+    } finally {
+      submitButton.disabled = false;
+      submitButton.textContent = "Send inquiry";
+    }
+  });
+</script>

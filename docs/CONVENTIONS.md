@@ -1,6 +1,6 @@
 ---
 status: complete
-updated: 2026-06-04
+updated: 2026-06-19
 ---
 
 # Conventions
@@ -50,6 +50,9 @@ src/pages/professional-development.astro
 - Keep responsive classes readable.
 - Favor quiet, spacious, professional layouts over decorative marketing patterns.
 - Maintain the existing With Connection feel: warm neutrals, teal accent, serif headings, readable sans-serif body text.
+- Write the unprefixed utility set for 320–430px screens. Use `sm:`, `md:`, and `lg:` only to progressively enhance wider layouts.
+- Do not build desktop layouts and then repair them with mobile overrides.
+- Maintain at least 44px interactive targets and verify no horizontal overflow at 320px.
 
 Avoid:
 
@@ -102,11 +105,15 @@ Preferred phrasing themes:
 
 ## SEO
 
+- SEO is a permanent business requirement and release gate, not a launch-only task.
 - Each page needs a unique title and meta description.
+- Each indexable page needs a canonical URL, index/follow directive, social metadata, and accurate structured data where applicable.
 - Use canonical URLs once the production domain is known.
 - Use Katie Statman-Weil, With Connection, EdD, LCSW, and key service terms consistently.
 - Link service pages, resources, articles, and inquiry CTAs together.
 - Do not keyword-stuff; maintain natural, professional language.
+- `/` alone owns the “early childhood professional development” hub intent. Never recreate `/professional-development/` as a page or add another doorway route.
+- TeachWithConnection.com owns canonical educator bookstore content; duplicated WithConnectionPDX pages must canonicalize here.
 
 ## Forms
 
@@ -123,6 +130,8 @@ Before declaring implementation complete:
 - Run `npm run lint`.
 - Run `npm run build`.
 - Check primary pages on mobile and desktop.
+- Check every shared template at 320px, 390px, 768px, and desktop widths.
+- Inspect sitemap, robots directives, canonicals, social metadata, and JSON-LD before launch.
 - Test inquiry form submission once a provider exists.
 - Check all resource download links.
 - Check all external book, publication, and social links.

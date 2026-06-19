@@ -5,11 +5,15 @@ import PageHero from "../components/common/PageHero.astro";
 import Section from "../components/common/Section.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { educatorApproach, workshopTopics } from "../data/service-pages";
+import { createServiceStructuredData } from "../data/site";
+
+const description = "Workshop topics for early childhood teams, including trauma, neurodivergence, behavior, regulation, PDA, and foster care or adoption.";
 ---
 
 <BaseLayout
   title="Workshops"
-  description="Workshop topics for early childhood teams, including trauma, neurodivergence, behavior, regulation, PDA, and foster care or adoption."
+  description={description}
+  structuredData={createServiceStructuredData("Early Childhood Educator Workshops", description, "/workshops/")}
 >
   <PageHero
     eyebrow="Workshops"
@@ -18,8 +22,8 @@ import { educatorApproach, workshopTopics } from "../data/service-pages";
   >
     <div class="mt-8 flex flex-col gap-3 sm:flex-row">
       <ButtonLink href="/contact/">Bring a workshop to your team</ButtonLink>
-      <ButtonLink href="/professional-development/" variant="secondary">
-        Explore professional development
+      <ButtonLink href="/#professional-development" variant="secondary">
+        Professional development overview
       </ButtonLink>
     </div>
   </PageHero>

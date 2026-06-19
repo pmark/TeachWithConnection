@@ -1,11 +1,13 @@
 ---
 status: complete
-updated: 2026-06-04
+updated: 2026-06-19
 ---
 
 # Project
 
 A static professional website for Katie Statman-Weil and With Connection that helps early childhood organizations inquire about professional development workshops, keynotes, and consultation.
+
+The production property is `https://teachwithconnection.com`. It is the dedicated educator-facing site that succeeds the educator content on `withconnectionpdx.com`; the family therapy site remains live and the two properties cross-link contextually.
 
 ---
 
@@ -45,6 +47,7 @@ A qualified visitor submits an inquiry form about bringing Katie to their organi
 3. Present Katie's philosophy: relational, trauma-responsive, neuroaffirming, attachment-informed, regulation-focused, practical, and rooted in real classrooms.
 4. Offer ungated free resources that demonstrate expertise, create goodwill, and route visitors gently toward inquiry.
 5. Preserve With Connection brand continuity so the new site feels like part of the same trusted body of work.
+6. Treat organic discoverability and mobile usability as permanent, release-blocking business requirements. The homepage is the sole hub for national “early childhood professional development” search intent, with Portland and Oregon used as truthful secondary signals.
 
 ---
 
@@ -156,15 +159,21 @@ The new site does not need to replicate Squarespace mechanics, but it should pre
 - Primary conversion is an inquiry form; form handling provider is not yet chosen.
 - No email gate for free resources.
 - Owner/developer will maintain content after launch; updates will be frequent at first and taper off.
+- Production domain: `teachwithconnection.com` on Cloudflare Pages.
+- `withconnectionpdx.com` remains the family therapy property; both sites must cross-link and identify Katie consistently through `Person.sameAs` structured data.
+- `/professional-development/` must not exist as a standalone content page. It permanently redirects to `/`, which owns that search intent.
+- TeachWithConnection.com is canonical for duplicated educator bookstore content.
+- Mobile UX, technical SEO, canonical correctness, and inquiry email delivery block launch.
+- Inquiry delivery uses a same-project Cloudflare Pages Function, Cloudflare Turnstile, and Resend.
 
 ---
 
 ## Open questions
 
-- What form handling service should power the inquiry form on Cloudflare Pages?
-- What final domain should the new site use, and should any existing With Connection paths redirect to it?
 - Which off-site free resource files, if any, already exist and should be imported at launch?
 - Are all third-party logos, testimonials, and images on the existing site approved for reuse on the new static site?
+- Which owner-approved sender and recipient email addresses should be configured for Resend?
+- When will the reciprocal `sameAs`, contextual links, and bookstore canonical changes be made on WithConnectionPDX.com?
 
 ---
 

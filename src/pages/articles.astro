@@ -16,6 +16,7 @@ const articles = (await getCollection("articles")).sort((first, second) => {
 <BaseLayout
   title="Articles"
   description="Selected With Connection writing on early childhood, trauma-responsive classrooms, behavior, relationships, and regulation."
+  noindex={articles.length === 0}
 >
   <PageHero
     eyebrow="Articles"

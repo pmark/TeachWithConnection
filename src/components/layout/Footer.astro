@@ -3,11 +3,15 @@ import { footerNavigation, site } from "../../data/site";
 ---
 
 <footer class="border-t border-[#e8e2dc] bg-[#272727] text-white">
-  <div class="mx-auto grid max-w-6xl gap-10 px-6 py-12 md:grid-cols-[1.2fr_2fr]">
+  <div class="mx-auto grid max-w-6xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-[1.2fr_2fr]">
     <div>
       <p class="font-serif text-3xl">{site.name}</p>
       <p class="mt-3 max-w-md text-sm leading-6 text-[#ddd6cf]">
         Relationship-centered professional development, keynotes, and consultation for early childhood organizations.
+      </p>
+      <p class="mt-4 max-w-md text-sm leading-6 text-[#ddd6cf]">
+        Looking for family therapy services? Visit
+        <a class="inline-flex min-h-11 items-center underline underline-offset-4 hover:text-white" href={site.relatedPracticeUrl}>With Connection PDX</a>.
       </p>
     </div>
 
@@ -17,7 +21,7 @@ import { footerNavigation, site } from "../../data/site";
           <li>
             <a
               href={item.href}
-              class="inline-flex min-h-11 items-center text-[#f7f7f7] underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+              class="inline-flex min-h-11 items-center px-1 text-[#f7f7f7] underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
             >
               {item.label}
             </a>
@@ -27,7 +31,7 @@ import { footerNavigation, site } from "../../data/site";
     </nav>
   </div>
   <div class="border-t border-white/10">
-    <div class="mx-auto flex max-w-6xl flex-col gap-2 px-6 py-5 text-sm text-[#ddd6cf] sm:flex-row sm:items-center sm:justify-between">
+    <div class="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-5 text-sm text-[#ddd6cf] sm:px-6 sm:flex-row sm:items-center sm:justify-between">
       <p>&copy; {new Date().getFullYear()} {site.legalName}</p>
       <p>Built for static deployment on Cloudflare Pages.</p>
     </div>

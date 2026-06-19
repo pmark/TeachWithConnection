@@ -1,74 +1,64 @@
 ---
 status: active
-updated: 2026-06-04
+updated: 2026-06-19
 ---
 
 # Status
 
 ## Current milestone
 
-First Astro implementation pass: shared static structure, source-backed service/proof content, launch pages, and provider-ready inquiry scaffolding are in place.
+Launch hardening for mobile-first UX, technical SEO, canonical authority, and production inquiry delivery.
 
 ## What works
 
-- Discovery synthesis was confirmed by the owner.
-- `docs/PROJECT.md`, `docs/UX.md`, `docs/DESIGN.md`, `docs/ARCHITECTURE.md`, `docs/CONVENTIONS.md`, `docs/CONTENT.md`, and `docs/DEPLOY.md` are populated and marked complete.
-- The project is an Astro 6 static site with Tailwind CSS 4 configured through `@tailwindcss/vite`.
-- Shared layout, header, footer, page hero, section, CTA, service, proof, content card, and form components are scaffolded.
-- Four service collection entries exist for professional development, workshops, keynotes, and consultation.
-- Six proof collection entries exist for credentials, field experience, book/article publication proof, award recognition, and NAEYC inclusion.
-- Homepage service previews and proof summary now read from content collections instead of duplicated local arrays.
-- Professional development, workshops, keynotes, consultation, about, publications, resources, articles, contact, and utility pages have page-level heroes with one clear `h1`.
-- Service pages now include scan-friendly audience fit, topic, outcome, format, and inquiry sections based on documented source themes.
-- Resource and article listings are wired to content collections, with static detail-route templates ready for future Markdown entries.
-- Header and footer navigation links have stable touch-target sizing.
-- The contact form remains provider-ready and intentionally disabled until a static form provider is selected.
-- `@astrojs/check` and `typescript` are installed as development dependencies so `npm run lint` can run.
-- `npm run lint` succeeds with 0 errors, 0 warnings, and 0 hints.
-- `npm run build` succeeds and generates 13 static pages.
-- Browser checks passed at the default 1280px viewport for 10 core pages: one `h1` each, no horizontal overflow, and correct provider-pending contact copy.
-- Targeted mobile browser checks passed at 390px for home, workshops, publications, and contact: one `h1` each, no horizontal overflow, and no undersized visible link/button targets.
-- `npm audit --omit=dev` reports 0 production vulnerabilities.
-- The persisted progress tracker is this file, `docs/STATUS.md`.
+- TeachWithConnection.com is configured as the canonical Astro site and `@astrojs/sitemap` generates a sitemap.
+- The homepage is the sole early childhood professional-development hub with targeted H1, metadata, opening copy, audience fit, formats, outcomes, proof, service links, and inquiry CTA.
+- `/professional-development/` no longer generates a page or content entry and permanently redirects to `/`.
+- `/bookstore/` is a first-class, educator-facing canonical route with source-backed Book/Product structured data.
+- `BaseLayout` outputs canonicals, robots directives, Open Graph, Twitter metadata, global entity data, breadcrumbs, and route-specific JSON-LD.
+- Header navigation is mobile-first, semantic, and JavaScript-free; inquiry remains prominent.
+- The contact form has complete qualification fields and accessible pending, field-error, success, and failure behavior.
+- `POST /api/inquiry` validates submissions, applies spam controls, verifies Turnstile, uses the configured rate limiter, and calls Resend with escaped HTML/plain text.
+- Placeholder legal, article, and resource pages are `noindex` and excluded from the sitemap.
+- The footer contextually links visitors to the separate With Connection PDX family therapy site.
+- `npm run build` succeeds and generates 13 static pages plus the sitemap.
+- `npm run lint` succeeds with 0 errors, 0 warnings, and 0 hints; the Pages Function passes standalone TypeScript checking.
+- Generated-route checks confirm one H1, canonical, indexability, social metadata, and JSON-LD on every core page; the sitemap excludes the redirect and incomplete routes.
+- Mocked Function checks pass success, validation, honeypot, Turnstile failure, Resend failure, rate-limit, and unsupported-method paths.
+- Browser checks pass all seven core routes at 320px, 390px, 768px, and 1280px with no overflow, undersized targets, heading failures, or incorrect navigation mode.
+- Production-preview Lighthouse scores are 100 for Performance, Accessibility, Best Practices, and SEO on both the homepage and contact page.
+- Astro was updated to the latest available 6.4.8 release after a dependency audit.
 
 ## What is flaky
 
-- The inquiry form cannot submit until a static-form provider is selected.
-- Articles, resources, and testimonials collections are still empty, so lint/build logs warn that no Markdown files exist in those directories.
-- Build route generation logs note empty article/resource collections because their future detail routes are already scaffolded.
-- Source-site assets, third-party logos, and testimonials still need reuse confirmation before final launch use.
-- The decision log still has its initial empty template and no recorded ADR-style entries.
-- Full `npm audit` reports 5 moderate vulnerabilities in the dev-only `@astrojs/check` language-server dependency chain; `npm audit --omit=dev` reports 0 production vulnerabilities.
+- The inquiry form is disabled without `PUBLIC_TURNSTILE_SITE_KEY`; production delivery has not been tested because Cloudflare/Resend credentials are not present locally.
+- Articles, resources, and testimonials collections remain empty and emit expected build warnings.
+- Source assets, third-party logos, and testimonials still need reuse confirmation.
+- The new rate-limit binding and Pages Function require deployment verification in the target Cloudflare account.
+- `npm audit --omit=dev` still reports newly disclosed Astro/esbuild build-tool advisories despite Astro 6.4.8 being the latest available release. The deployed marketing output is static and does not run the Astro server, but the advisories should be rechecked when patched versions publish.
 
 ## Blockers
 
-- Final production domain is unknown.
-- Inquiry form provider is unknown.
-- Redirect strategy from existing With Connection educator pages is unknown.
-- Off-site or owner-supplied downloadable resource files have not been provided.
-- Final privacy, disclaimer, and terms copy has not been supplied or approved.
-- Reuse approval is still needed for existing logo, photography, testimonials, third-party logos, and organization/client proof.
+- Configure and verify the Resend sender domain, API key, sender address, and Katie's recipient address.
+- Configure Turnstile keys and verify the Cloudflare rate-limit binding.
+- Update WithConnectionPDX.com with reciprocal `sameAs`, contextual links, and educator-bookstore canonicals.
+- Supply or approve legal copy, reusable assets, testimonials, and resource files.
 
 ## Last user-testing or owner insight
 
-Owner reminded the agent to use `docs/INPUT.md` for owner input/action requests. The confirmed direction remains: early childhood organizations and schools first, professional development workshops first, keynotes second, inquiry form submission as the main conversion, full alignment with the existing With Connection brand, and ungated free resources.
+TeachWithConnection.com is the dedicated educator-facing property. The homepage alone owns national “early childhood professional development” search intent; Portland/Oregon remain secondary signals. Mobile UX, SEO, canonical correctness, and immediate inquiry email delivery are launch gates.
 
 ## Next 3 highest-value tasks
 
-1. Select the static inquiry form provider and update the contact form, privacy language, and deployment notes.
-2. Import owner-approved assets, resource files, testimonials, and legal copy, then replace remaining placeholders.
-3. Migrate selected source-backed articles/resources/testimonials into content collections and verify detail routes.
+1. Configure Cloudflare, Turnstile, and Resend production values; verify end-to-end delivery and failure behavior.
+2. Complete reciprocal WithConnectionPDX schema/link/canonical changes and validate both domains together.
+3. Run production-style Lighthouse and 320px/390px/768px/desktop QA, then address any launch-gate regressions.
 
 ## Active plan
 
-- Completed: Seeded service and proof content collections with source-traceable entries.
-- Completed: Added reusable page hero component and applied one-`h1` page structure to launch routes.
-- Completed: Expanded service, about, publications, resources, articles, contact, and utility pages from placeholders into reviewable static sections.
-- Completed: Added static resource/article detail-route templates for future Markdown entries.
-- Completed: Improved header and footer navigation touch-target sizing.
-- Completed: Added concrete owner requests to `docs/INPUT.md`.
-- Verified: `npm run lint` succeeds with 0 errors, 0 warnings, and 0 hints.
-- Verified: `npm run build` succeeds and generates 13 static pages.
-- Verified: Browser desktop checks passed for 10 core pages.
-- Verified: Browser mobile checks passed for representative home, workshops, publications, and contact pages.
-- Noted: Build/lint still report expected empty-collection messages for articles, resources, and testimonials until owner-approved content is added.
+- Completed: Route consolidation, homepage SEO hub, bookstore, sitemap, robots, redirects, metadata, and structured data.
+- Completed: Mobile semantic navigation and responsive homepage/form layouts.
+- Completed: Pages Function/Resend/Turnstile inquiry implementation and accessible client states.
+- Completed: Durable project documentation and decision records.
+- Verified: Static production build, zero-diagnostic lint, Worker type check, generated SEO, internal links, mocked Function behavior, cross-viewport browser QA, and Lighthouse targets.
+- Pending verification: reciprocal domain changes, Cloudflare binding/secrets, and production email receipt.

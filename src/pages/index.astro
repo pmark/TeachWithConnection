@@ -7,6 +7,10 @@ import ServiceCard from "../components/services/ServiceCard.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 import { site } from "../data/site";
+import {
+  professionalDevelopmentFocus,
+  professionalDevelopmentOutcomes,
+} from "../data/service-pages";
 
 const services = (await getCollection("services")).sort(
   (first, second) => first.data.priority - second.data.priority,
@@ -33,23 +37,44 @@ const proofItems = (await getCollection("proof"))
       first.data.title.localeCompare(second.data.title),
   )
   .map(({ data }) => data.description);
+
+const homepageStructuredData = {
+  "@type": "Service",
+  "@id": `${site.url}/#professional-development-service`,
+  name: "Early Childhood Professional Development",
+  description:
+    "Relationship-centered professional development, workshops, and staff training for early childhood organizations across the United States.",
+  provider: { "@id": `${site.url}/#organization` },
+  areaServed: { "@type": "Country", name: "United States" },
+  audience: {
+    "@type": "Audience",
+    audienceType: "Early childhood organizations, schools, districts, educators, and conference planners",
+  },
+  url: site.url,
+};
 ---
 
 <BaseLayout
-  title={site.name}
-  description="Relationship-centered professional development, keynotes, and consultation for early childhood organizations with Katie Statman-Weil, EdD, LCSW."
+  title="Early Childhood Professional Development | Katie Statman-Weil"
+  titleSuffix={false}
+  canonicalPath="/"
+  description="Bring relationship-centered early childhood professional development, workshops, keynotes, and consultation with Katie Statman-Weil to your team."
+  structuredData={homepageStructuredData}
 >
-  <section class="bg-[#f7f7f7] py-16 sm:py-20">
-    <div class="mx-auto grid max-w-6xl gap-12 px-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+  <section class="bg-[#f7f7f7] py-12 sm:py-16 lg:py-20">
+    <div class="mx-auto grid max-w-6xl gap-8 px-4 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-12">
       <div>
         <p class="mb-4 text-sm font-semibold uppercase tracking-wide text-[#157c93]">
           Early childhood professional development
         </p>
         <h1 class="font-serif text-4xl leading-tight text-[#272727] sm:text-5xl lg:text-6xl">
-          Practical, relationship-centered support for real children in real classrooms.
+          Early Childhood Professional Development Rooted in Connection.
         </h1>
         <p class="mt-6 max-w-2xl text-lg leading-8 text-[#4f4a45]">
-          Katie Statman-Weil, EdD, LCSW helps early childhood organizations, schools, districts, and conferences support educators with trauma-responsive, neuroaffirming, attachment-informed practice.
+          Katie Statman-Weil, EdD, LCSW helps early childhood organizations, schools, districts, and conferences support educators with practical, trauma-responsive, neuroaffirming, and attachment-informed learning.
+        </p>
+        <p class="mt-4 max-w-2xl leading-7 text-[#4f4a45]">
+          Based in Portland, Oregon and available to teams nationwide, Katie brings classroom, clinical, leadership, and consulting experience to the questions educators face every day.
         </p>
         <div class="mt-8 flex flex-col gap-3 sm:flex-row">
           <ButtonLink href="/contact/">Inquire about professional development</ButtonLink>
@@ -83,10 +108,56 @@ const proofItems = (await getCollection("proof"))
     </div>
   </section>
 
+  <div id="professional-development" class="scroll-mt-6">
+    <Section
+      eyebrow="Professional Development"
+      title="Learning designed for real early childhood teams"
+      description="Katie's professional development gives educators and leaders a shared, practical way to understand behavior, stress, trauma, neurodivergence, regulation, and relationships without blaming children or adults."
+    >
+      <div class="grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
+        <div>
+          <h3 class="font-serif text-2xl leading-tight text-[#272727]">A fit for organizations navigating</h3>
+          <ul class="mt-5 grid gap-3">
+            {professionalDevelopmentFocus.map((item) => (
+              <li class="border-l-4 border-[#157c93] bg-[#f7f7f7] px-4 py-3 leading-7 text-[#3c3834]">
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="rounded-md border border-[#e8e2dc] bg-white p-5 sm:p-6">
+          <h3 class="font-serif text-2xl leading-tight text-[#272727]">What teams can carry forward</h3>
+          <ul class="mt-5 grid gap-4">
+            {professionalDevelopmentOutcomes.map((item) => (
+              <li class="leading-7 text-[#4f4a45]">{item}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+      <div class="mt-10">
+        <h3 class="font-serif text-2xl leading-tight text-[#272727]">Formats shaped around your audience</h3>
+        <ul class="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {[
+            "Staff professional development days",
+            "Focused workshops and training series",
+            "Conference keynotes and breakout sessions",
+          ].map((item) => (
+            <li class="rounded-md border border-[#e8e2dc] bg-white p-5 leading-7 text-[#3c3834]">{item}</li>
+          ))}
+        </ul>
+      </div>
+      <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+        <ButtonLink href="/workshops/">Explore workshop topics</ButtonLink>
+        <ButtonLink href="/contact/" variant="secondary">Inquire about training</ButtonLink>
+      </div>
+    </Section>
+  </div>
+
   <Section
-    eyebrow="Services"
-    title="Support for teams, conferences, and classroom challenges"
-    description="Professional development is the lead offer, with keynotes and consultation available for organizations that need a focused, practical, deeply human way into behavior, trauma, neurodivergence, and regulation."
+    background="surface"
+    eyebrow="Ways to Work Together"
+    title="Workshops, keynotes, and consultation"
+    description="Choose the format that fits your educators, event, or ongoing classroom challenge."
   >
     <div class="grid gap-5 md:grid-cols-2">
       {servicePreviews.map((service) => <ServiceCard {...service} />)}

@@ -1,6 +1,6 @@
 ---
 status: complete
-updated: 2026-06-04
+updated: 2026-06-19
 ---
 
 # Design
@@ -98,6 +98,8 @@ Use calm, generous spacing without turning the site into a decorative landing pa
 
 Layout patterns:
 
+- Begin with the 320–430px layout. Add columns, larger type, and expanded navigation only through `sm:`, `md:`, and `lg:` enhancements.
+- Use 16px mobile page gutters, increasing to 24px where space allows.
 - Constrain core content to readable max widths.
 - Use full-width section bands for major page rhythm.
 - Avoid cards nested inside cards.
@@ -105,6 +107,7 @@ Layout patterns:
 - Keep hero sections focused on positioning, primary CTA, secondary CTA, and one or two proof signals.
 - Let the next section be visible below first-viewport hero content.
 - Use predictable vertical rhythm between sections.
+- Never rely on wrapping desktop navigation as the mobile navigation pattern.
 
 Service pages should use scan-friendly sections: audience fit, topics, format, proof, related resources, and inquiry CTA.
 
@@ -182,6 +185,8 @@ Design must support:
 - Labeled form fields.
 - Clear link text for resources and external publications.
 - No motion-dependent content.
+- Minimum 44px touch targets for navigation, buttons, and form controls.
+- No clipped text, overlapping sections, or horizontal page overflow at 320px.
 
 Do not rely on color alone to communicate form errors, active navigation, or resource state.
 

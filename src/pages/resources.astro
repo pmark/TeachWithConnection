@@ -12,6 +12,7 @@ const resources = await getCollection("resources");
 <BaseLayout
   title="Resources"
   description="Ungated early childhood resources from With Connection for educators and leaders."
+  noindex={resources.length === 0}
 >
   <PageHero
     eyebrow="Resources"

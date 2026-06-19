@@ -1,0 +1,72 @@
+---
+import ButtonLink from "../components/common/ButtonLink.astro";
+import InquiryCta from "../components/common/InquiryCta.astro";
+import PageHero from "../components/common/PageHero.astro";
+import Section from "../components/common/Section.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { site } from "../data/site";
+
+const bookUrl = "https://www.redleafpress.org/Trauma-Responsive-Strategies-for-Early-Childhood-P2503.aspx";
+const bookDescription =
+  "A practical, relationship-centered book by Katie Statman-Weil for early childhood educators supporting young children affected by trauma.";
+
+const bookStructuredData = {
+  "@type": ["Book", "Product"],
+  "@id": `${site.url}/bookstore/#trauma-responsive-strategies`,
+  name: "Trauma Responsive Strategies for Early Childhood",
+  description: bookDescription,
+  datePublished: "2020",
+  author: { "@id": `${site.url}/#katie-statman-weil` },
+  brand: { "@id": `${site.url}/#organization` },
+  url: `${site.url}/bookstore/`,
+  sameAs: bookUrl,
+};
+---
+
+<BaseLayout
+  title="Books for Early Childhood Educators"
+  description="Explore Trauma Responsive Strategies for Early Childhood by Katie Statman-Weil, EdD, LCSW, and connect its ideas with educator training."
+  structuredData={bookStructuredData}
+>
+  <PageHero
+    eyebrow="Bookstore"
+    title="Books for early childhood educators"
+    description="Katie's writing helps educators translate relationship-centered, trauma-responsive thinking into practical support for young children and teaching teams."
+  />
+
+  <Section eyebrow="Featured Book" title="Trauma Responsive Strategies for Early Childhood">
+    <article class="grid gap-8 rounded-md border border-[#e8e2dc] bg-white p-5 sm:p-7 lg:grid-cols-[1fr_0.75fr] lg:items-start">
+      <div>
+        <p class="text-sm font-semibold uppercase tracking-wide text-[#157c93]">Redleaf Press · 2020</p>
+        <p class="mt-4 leading-8 text-[#4f4a45]">{bookDescription}</p>
+        <p class="mt-4 leading-8 text-[#4f4a45]">
+          The book supports early childhood professionals in understanding how trauma may shape behavior, relationships, regulation, and participation in classroom life.
+        </p>
+        <div class="mt-6 flex flex-col gap-3 sm:flex-row">
+          <ButtonLink href={bookUrl}>View at Redleaf Press</ButtonLink>
+          <ButtonLink href="/#professional-development" variant="secondary">Connect the book to team learning</ButtonLink>
+        </div>
+      </div>
+      <aside class="rounded-md bg-[#f7f7f7] p-5" aria-label="Book topics">
+        <h2 class="font-serif text-2xl leading-tight text-[#272727]">Themes for educators</h2>
+        <ul class="mt-5 grid gap-3 leading-7 text-[#4f4a45]">
+          <li>Trauma-responsive early childhood practice</li>
+          <li>Behavior as communication</li>
+          <li>Connection, safety, and regulation</li>
+          <li>Practical classroom reflection</li>
+        </ul>
+      </aside>
+    </article>
+  </Section>
+
+  <Section
+    background="surface"
+    eyebrow="Related Writing"
+    title="Articles and publication recognition"
+    description="Katie's NAEYC writing and award recognition provide additional context for her educator-facing work."
+  >
+    <ButtonLink href="/publications/" variant="secondary">View publications</ButtonLink>
+  </Section>
+
+  <InquiryCta title="Bring this work to your team" />
+</BaseLayout>

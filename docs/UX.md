@@ -1,6 +1,6 @@
 ---
 status: complete
-updated: 2026-06-04
+updated: 2026-06-19
 ---
 
 # UX
@@ -32,8 +32,7 @@ Service pages should prioritize clarity over volume. Visitors should understand 
 
 Launch pages:
 
-- `/`: Positioning, primary offers, proof, resources preview, and inquiry CTA.
-- `/professional-development/`: Lead offer page for schools, districts, centers, and organizations.
+- `/`: Positioning, primary professional-development offer, audience fit, formats, proof, service links, resources preview, and inquiry CTA. This is the only professional-development hub.
 - `/workshops/`: Workshop topics, format options, and training themes.
 - `/keynotes/`: Speaking fit, keynote themes, audience experience, proof, and inquiry CTA.
 - `/consultation/`: Consultation for centers, schools, teams, directors, and classroom challenges.
@@ -43,6 +42,7 @@ Launch pages:
 - `/articles/`: Selected thought leadership listing.
 - `/articles/[slug]/`: Article detail page.
 - `/publications/`: Book, NAEYC article, award, and related publication proof.
+- `/bookstore/`: Katie's educator-facing books, publisher links, and related training CTA. This site owns the canonical bookstore URLs.
 - `/contact/`: Form-first inquiry path.
 - `/privacy/`: Privacy information once form provider and analytics choices are known.
 - `/disclaimer/`: Professional and educational disclaimer if carried over or required.
@@ -54,15 +54,15 @@ Future pages may include events, topic landing pages, case studies, and a speaki
 
 Primary navigation should be simple and service-led:
 
-- Professional Development.
 - Workshops.
 - Keynotes.
 - Consultation.
+- Bookstore.
 - About.
 - Resources.
 - Contact.
 
-The header should include a clear inquiry CTA. On small screens, navigation should collapse into a simple accessible menu only if needed; avoid adding client-side JavaScript unless the mobile navigation genuinely requires an Astro island and that decision is documented.
+The header includes a clear inquiry CTA. On small screens, navigation uses a semantic `details`/`summary` menu with no application JavaScript. Desktop navigation appears only at the large breakpoint.
 
 Footer navigation should include the same core routes plus legal pages, publications, articles, social links, and source attribution where needed.
 
@@ -137,6 +137,9 @@ Returning visitors should be able to find contact, service details, and download
 - Keep external links to book, publication, and social pages clearly labeled.
 - Make downloadable resources accessible by direct link.
 - Ensure contact information and inquiry path are reachable from every core page.
+- Start layouts at 320px and progressively enhance them at wider breakpoints.
+- Maintain touch targets of at least 44px, readable text, visible focus, and zero horizontal overflow.
+- Mobile, SEO, canonical, or inquiry-delivery regressions block launch.
 
 ## Empty, error, and loading states
 
@@ -170,5 +173,8 @@ Every core page should have:
 - A primary CTA to inquiry where appropriate.
 - Secondary internal links to related services, resources, articles, or proof.
 - Shareable URLs with stable lowercase kebab-case routes.
+- A canonical URL, crawl directive, social metadata, and source-backed structured data where applicable.
+
+The homepage naturally uses “early childhood professional development” in its H1, description, opening copy, and substantive offer section. It must remain useful to first-time visitors and must not become a keyword-stuffed doorway page.
 
 Conversion behavior should be measured only after an analytics provider is approved. If analytics are added later, track inquiry submissions, resource downloads, contact page visits, and outbound book/publication links in a privacy-conscious way.

@@ -1,6 +1,6 @@
 ---
 status: complete
-updated: 2026-06-04
+updated: 2026-06-19
 ---
 
 # Content
@@ -26,8 +26,7 @@ Existing With Connection content is the launch source of truth. Educator-facing 
 
 Required launch pages:
 
-- Home: concise positioning, primary offers, differentiators, proof, resources preview, and inquiry CTA.
-- Professional Development: primary service page for workshops and trainings for early childhood educators and organizations.
+- Home: the sole professional-development hub, with educator-facing positioning, audience fit, formats, differentiators, proof, service links, resources preview, and inquiry CTA.
 - Workshops: specific workshop topics and training formats.
 - Keynotes: keynote positioning, audience fit, sample topics, testimonials, and inquiry CTA.
 - Consultation: school/center/team consultation offer for challenging classroom behavior and complex student needs.
@@ -35,6 +34,7 @@ Required launch pages:
 - Resources: ungated downloads and practical tools.
 - Articles: selected thought leadership from the existing With Connection blog where relevant to early childhood education, trauma, behavior, regulation, parenting, and relationships.
 - Publications: book, NAEYC article, article award, and related links.
+- Bookstore: Katie's source-backed books for educators, publisher links, and a related professional-development CTA. TeachWithConnection.com is canonical for duplicated educator bookstore pages.
 - Contact / Inquiry: form-first inquiry path.
 - Privacy, disclaimer, and terms pages if needed for launch or carried over from the existing site.
 
@@ -119,6 +119,8 @@ Each core page should have:
 - One clear H1.
 - Internal links to inquiry.
 - Internal links between services, resources, articles, and proof.
+
+The homepage H1 is “Early Childhood Professional Development Rooted in Connection.” Its title, description, opening copy, and substantive offer section should use the target phrase naturally while orienting visitors who do not already know Katie. There is no separate professional-development route or doorway page.
 
 The site should use Katie's name, With Connection, EdD, LCSW, book title, and publication credentials consistently for branded search.
 

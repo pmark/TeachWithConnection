@@ -2,16 +2,16 @@
 
 ## Current tasks
 
-1. Choose the static inquiry form provider for Cloudflare Pages, or provide the short list you want evaluated.
-2. Provide or approve launch resource files for `/resources/`, including final file names and whether each resource should have its own detail page.
+1. Configure Cloudflare Pages values for `PUBLIC_TURNSTILE_SITE_KEY`, `TURNSTILE_SECRET_KEY`, `RESEND_API_KEY`, `INQUIRY_FROM_EMAIL`, and `INQUIRY_TO_EMAIL`; verify the Resend sender domain in DNS.
+2. Update WithConnectionPDX.com to link contextually to TeachWithConnection.com, include TeachWithConnection.com in Katie's `Person.sameAs`, and canonicalize duplicated educator bookstore pages to their TeachWithConnection equivalents.
 3. Provide or approve final legal copy for `/privacy/`, `/disclaimer/`, and `/terms/`.
 
 ## Current information requests
 
-1. Confirm whether the existing With Connection logo, photography, testimonials, third-party logos, and organization/client proof may be reused on this static site.
-2. Confirm the final production domain and whether the current Squarespace educator-facing paths should redirect to the new site.
-3. Confirm which existing With Connection blog articles should be migrated into `/articles/` for launch.
+1. Confirm the production sender and Katie recipient email addresses for inquiry delivery.
+2. Confirm whether the existing With Connection logo, photography, testimonials, third-party logos, and organization/client proof may be reused on this static site.
+3. Provide or approve launch resource files and identify the existing With Connection articles to migrate.
 
 ## Other requests
 
-None
+After production configuration, send one real inquiry through the mobile form and confirm receipt and reply-to behavior in Katie's mailbox.
