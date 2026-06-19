@@ -42,6 +42,10 @@ pnpm-debug.log*
 .env.local
 .env.*.local
 
+# Wrangler/Pages Functions local secrets (see .dev.vars.example)
+.dev.vars
+.dev.vars.*.local
+
 # OS files
 .DS_Store
 Thumbs.db

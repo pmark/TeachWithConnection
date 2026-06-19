@@ -33,6 +33,7 @@ All commands are run from the root of the project, from a terminal:
 | :----------------------- | :----------------------------------------------- |
 | `pnpm install`           | Installs dependencies                            |
 | `pnpm dev`                | Starts local dev server at `localhost:4321`      |
+| `pnpm dev:functions`      | Builds and serves `dist/` through Wrangler so `/api/inquiry` actually runs locally (needs `.dev.vars`, see `docs/DEPLOY.md`) |
 | `pnpm build`              | Build your production site to `./dist/`          |
 | `pnpm preview`            | Preview your build locally, before deploying     |
 | `pnpm astro ...`          | Run CLI commands like `astro add`, `astro check` |

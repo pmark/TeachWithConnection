@@ -1,0 +1,16 @@
+# Copy to .dev.vars and fill in real values. .dev.vars is gitignored.
+# Loaded automatically by `wrangler pages dev` as Pages Function env bindings
+# for functions/api/inquiry.ts. Astro's own dev server (`astro dev`/`pnpm dev`)
+# does not read this file or execute Pages Functions at all — `pnpm dev`
+# only gets you the frontend. Run `pnpm dev:functions` instead to build and
+# serve dist/ through Wrangler, which does execute the Function.
+
+RESEND_API_KEY=
+INQUIRY_TO_EMAIL=
+INQUIRY_FROM_EMAIL=
+# Cloudflare's always-pass testing secret, paired with the testing site key
+# in .env.example: 1x0000000000000000000000000000AA
+TURNSTILE_SECRET_KEY=
+# Add the local dev origin so the Function's origin check accepts requests
+# from `wrangler pages dev` (defaults to port 8788; check its startup output).
+ALLOWED_ORIGINS=http://localhost:8788

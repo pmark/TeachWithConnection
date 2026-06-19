@@ -45,6 +45,23 @@ ALLOWED_ORIGINS
 
 `ALLOWED_ORIGINS` is a comma-separated list. Production origins are already restricted to the root and `www` TeachWithConnection domains.
 
+## Local development secrets
+
+Two gitignored files hold local-only values; both have a committed `.example` counterpart with placeholder keys and no real secrets:
+
+- `.env` (copy from `.env.example`) — `PUBLIC_TURNSTILE_SITE_KEY`, read by Astro/Vite at dev and build time. Use Cloudflare's always-pass testing key (`1x00000000000000000000AA`) so the widget renders without a real Turnstile account.
+- `.dev.vars` (copy from `.dev.vars.example`) — the Function-only secrets (`RESEND_API_KEY`, `INQUIRY_TO_EMAIL`, `INQUIRY_FROM_EMAIL`, `TURNSTILE_SECRET_KEY`, `ALLOWED_ORIGINS`), auto-loaded by `wrangler pages dev`.
+
+Plain `pnpm dev` (Astro's dev server) never executes Pages Functions and never reads `.dev.vars` — it's frontend-only. To exercise `/api/inquiry` locally:
+
+```sh
+pnpm dev:functions
+```
+
+This builds the site and serves `dist/` through Wrangler (`wrangler pages dev ./dist`), which does run the Function with `.dev.vars` bound. It does not hot-reload — rerun it after frontend changes, or use `pnpm dev` for everyday UI work and only switch to `pnpm dev:functions` when testing the inquiry flow itself.
+
+None of this touches the dashboard env vars from the table above — local secrets and the Production/Preview dashboard values are entirely separate stores.
+
 ## Branches and environments
 
 | Branch | Cloudflare environment | URL |
