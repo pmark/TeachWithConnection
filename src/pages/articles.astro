@@ -1,25 +1,56 @@
 ---
 import ButtonLink from "../components/common/ButtonLink.astro";
+import PageHero from "../components/common/PageHero.astro";
 import Section from "../components/common/Section.astro";
+import ArticleCard from "../components/content/ArticleCard.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+const articles = (await getCollection("articles")).sort((first, second) => {
+  const firstTime = first.data.publishDate?.getTime() ?? 0;
+  const secondTime = second.data.publishDate?.getTime() ?? 0;
+  return secondTime - firstTime;
+});
 ---
 
 <BaseLayout
   title="Articles"
   description="Selected With Connection writing on early childhood, trauma-responsive classrooms, behavior, relationships, and regulation."
 >
-  <Section
+  <PageHero
     eyebrow="Articles"
     title="Selected thought leadership"
-    description="Relevant articles from the existing With Connection blog can be migrated here when source content is approved."
+    description="Articles should surface relevant With Connection writing on early childhood, trauma, behavior, relationships, regulation, and educator support."
   >
-    <div class="rounded-md border border-[#e8e2dc] bg-white p-6">
-      <p class="leading-7 text-[#4f4a45]">
-        No articles are published in this static build yet.
-      </p>
-      <div class="mt-6">
-        <ButtonLink href="/resources/" variant="secondary">Visit resources</ButtonLink>
-      </div>
+    <div class="mt-8">
+      <ButtonLink href="/resources/" variant="secondary">Visit resources</ButtonLink>
     </div>
+  </PageHero>
+
+  <Section
+    eyebrow="Writing"
+    title={articles.length > 0 ? "Published articles" : "Articles are being selected"}
+    description="Relevant source-backed writing can be migrated here when article selections are approved."
+  >
+    {articles.length > 0 ? (
+      <div class="rounded-md border border-[#e8e2dc] bg-white p-6">
+        {articles.map(({ data, id }) => (
+          <ArticleCard
+            title={data.title}
+            description={data.description}
+            href={`/articles/${id.replace(/\.md$/, "")}/`}
+          />
+        ))}
+      </div>
+    ) : (
+      <div class="rounded-md border border-[#e8e2dc] bg-white p-6">
+        <p class="leading-7 text-[#4f4a45]">
+          No articles are published in this static build yet.
+        </p>
+        <div class="mt-6">
+          <ButtonLink href="/publications/" variant="secondary">Review publications</ButtonLink>
+        </div>
+      </div>
+    )}
   </Section>
 </BaseLayout>

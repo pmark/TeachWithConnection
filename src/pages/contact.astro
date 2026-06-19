@@ -1,5 +1,6 @@
 ---
 import InquiryForm from "../components/forms/InquiryForm.astro";
+import PageHero from "../components/common/PageHero.astro";
 import Section from "../components/common/Section.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
@@ -8,9 +9,15 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   title="Contact"
   description="Inquiry form for professional development, workshops, keynotes, and consultation with Katie Statman-Weil and With Connection."
 >
-  <Section
+  <PageHero
     eyebrow="Inquiry"
     title="Tell Katie what your team is facing"
+    description="Share your organization, audience, timeline, and the classroom or event needs you want to explore."
+  />
+
+  <Section
+    eyebrow="Form"
+    title="Inquiry form"
     description="This form is scaffolded for a future static form provider. Final submission behavior depends on the provider decision."
   >
     <div class="max-w-3xl">

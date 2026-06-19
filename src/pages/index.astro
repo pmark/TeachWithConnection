@@ -5,7 +5,34 @@ import Section from "../components/common/Section.astro";
 import ProofList from "../components/proof/ProofList.astro";
 import ServiceCard from "../components/services/ServiceCard.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { proofItems, servicePreviews, site } from "../data/site";
+import { getCollection } from "astro:content";
+import { site } from "../data/site";
+
+const services = (await getCollection("services")).sort(
+  (first, second) => first.data.priority - second.data.priority,
+);
+const servicePreviews = services.map(({ data }) => ({
+  title: data.title,
+  description: data.description,
+  href: data.href,
+  cta: data.cta.label,
+}));
+
+const proofTypeOrder = {
+  credential: 1,
+  publication: 2,
+  award: 3,
+  appearance: 4,
+  logo: 5,
+};
+
+const proofItems = (await getCollection("proof"))
+  .sort(
+    (first, second) =>
+      proofTypeOrder[first.data.type] - proofTypeOrder[second.data.type] ||
+      first.data.title.localeCompare(second.data.title),
+  )
+  .map(({ data }) => data.description);
 ---
 
 <BaseLayout

@@ -1,10 +1,16 @@
 ---
+import PageHero from "../components/common/PageHero.astro";
 import Section from "../components/common/Section.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout title="Disclaimer" description="Professional and educational disclaimer for With Connection.">
-  <Section eyebrow="Disclaimer" title="Disclaimer details are pending">
+  <PageHero
+    eyebrow="Disclaimer"
+    title="Disclaimer details are pending"
+    description="Final disclaimer content should be supplied or approved before launch."
+  />
+  <Section eyebrow="Status" title="Owner-approved legal copy needed">
     <p class="max-w-3xl leading-8 text-[#4f4a45]">
       Final disclaimer content should be supplied or approved before launch.
     </p>

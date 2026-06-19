@@ -1,0 +1,62 @@
+---
+import ButtonLink from "../../components/common/ButtonLink.astro";
+import PageHero from "../../components/common/PageHero.astro";
+import Section from "../../components/common/Section.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCollection, render, type CollectionEntry } from "astro:content";
+
+export async function getStaticPaths() {
+  const resources = await getCollection("resources");
+
+  return resources.map((resource) => ({
+    params: { slug: resource.id.replace(/\.md$/, "") },
+    props: { resource },
+  }));
+}
+
+interface Props {
+  resource: CollectionEntry<"resources">;
+}
+
+const { resource } = Astro.props;
+const { Content } = await render(resource);
+const fileHref = resource.data.file;
+---
+
+<BaseLayout title={resource.data.title} description={resource.data.description}>
+  <PageHero
+    eyebrow="Resource"
+    title={resource.data.title}
+    description={resource.data.description}
+  >
+    {fileHref && (
+      <div class="mt-8">
+        <ButtonLink href={fileHref}>Open resource</ButtonLink>
+      </div>
+    )}
+  </PageHero>
+
+  <Section narrow>
+    {resource.data.tags.length > 0 && (
+      <ul class="mb-8 flex flex-wrap gap-2" aria-label="Resource topics">
+        {resource.data.tags.map((tag) => (
+          <li class="rounded-md bg-[#f7f7f7] px-3 py-1 text-sm text-[#5d5751]">
+            {tag}
+          </li>
+        ))}
+      </ul>
+    )}
+
+    <div class="space-y-5 leading-8 text-[#4f4a45]">
+      <Content />
+    </div>
+
+    {!fileHref && (
+      <div class="mt-8 rounded-md border border-[#e8e2dc] bg-[#f7f7f7] p-5">
+        <p class="leading-7 text-[#4f4a45]">
+          This resource does not have an approved file attached yet.
+        </p>
+      </div>
+    )}
+  </Section>
+</BaseLayout>

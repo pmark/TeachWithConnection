@@ -1,10 +1,16 @@
 ---
+import PageHero from "../components/common/PageHero.astro";
 import Section from "../components/common/Section.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout title="Privacy" description="Privacy information for With Connection.">
-  <Section eyebrow="Privacy" title="Privacy details are pending">
+  <PageHero
+    eyebrow="Privacy"
+    title="Privacy details are pending"
+    description="Final privacy language depends on the inquiry form provider and analytics decisions."
+  />
+  <Section eyebrow="Status" title="Provider and analytics decisions needed">
     <p class="max-w-3xl leading-8 text-[#4f4a45]">
       Final privacy content should be completed after the inquiry form provider and analytics decisions are made.
     </p>

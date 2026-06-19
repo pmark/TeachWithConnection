@@ -1,25 +1,53 @@
 ---
 import ButtonLink from "../components/common/ButtonLink.astro";
+import PageHero from "../components/common/PageHero.astro";
 import Section from "../components/common/Section.astro";
+import ResourceCard from "../components/content/ResourceCard.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+const resources = await getCollection("resources");
 ---
 
 <BaseLayout
   title="Resources"
   description="Ungated early childhood resources from With Connection for educators and leaders."
 >
-  <Section
+  <PageHero
     eyebrow="Resources"
     title="Ungated tools for educators"
-    description="Resource downloads will be added when owner-supplied or source-backed files are available."
+    description="Resources should be directly accessible without an email signup and should give teams a practical way into Katie's relationship-centered approach."
   >
-    <div class="rounded-md border border-[#e8e2dc] bg-white p-6">
-      <p class="leading-7 text-[#4f4a45]">
-        No resource files are published yet. Free resources should remain directly accessible without email signup.
-      </p>
-      <div class="mt-6">
-        <ButtonLink href="/contact/" variant="secondary">Ask about professional development</ButtonLink>
-      </div>
+    <div class="mt-8">
+      <ButtonLink href="/contact/" variant="secondary">Ask about professional development</ButtonLink>
     </div>
+  </PageHero>
+
+  <Section
+    eyebrow="Library"
+    title={resources.length > 0 ? "Available resources" : "Resources are being prepared"}
+    description="Free resources will remain open-access. Direct file links will appear only when approved files are available."
+  >
+    {resources.length > 0 ? (
+      <div class="grid gap-5 md:grid-cols-2">
+        {resources.map(({ data, id }) => (
+          <ResourceCard
+            title={data.title}
+            description={data.description}
+            href={`/resources/${id.replace(/\.md$/, "")}/`}
+            tags={data.tags}
+          />
+        ))}
+      </div>
+    ) : (
+      <div class="rounded-md border border-[#e8e2dc] bg-white p-6">
+        <p class="leading-7 text-[#4f4a45]">
+          No resource files are published yet. Free resources should remain directly accessible without email signup.
+        </p>
+        <div class="mt-6">
+          <ButtonLink href="/articles/" variant="secondary">Visit articles</ButtonLink>
+        </div>
+      </div>
+    )}
   </Section>
 </BaseLayout>

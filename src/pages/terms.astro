@@ -1,10 +1,16 @@
 ---
+import PageHero from "../components/common/PageHero.astro";
 import Section from "../components/common/Section.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout title="Terms" description="Terms for With Connection.">
-  <Section eyebrow="Terms" title="Terms details are pending">
+  <PageHero
+    eyebrow="Terms"
+    title="Terms details are pending"
+    description="Final terms content should be supplied or approved before launch."
+  />
+  <Section eyebrow="Status" title="Owner-approved terms needed">
     <p class="max-w-3xl leading-8 text-[#4f4a45]">
       Final terms content should be supplied or approved before launch.
     </p>

@@ -1,9 +1,10 @@
 import { glob } from "astro/loaders";
-import { defineCollection, z } from "astro:content";
+import { defineCollection } from "astro:content";
+import { z } from "astro/zod";
 
 const sourceSchema = z.object({
   label: z.string(),
-  url: z.string().url().optional(),
+  url: z.url().optional(),
 });
 
 const ctaSchema = z.object({

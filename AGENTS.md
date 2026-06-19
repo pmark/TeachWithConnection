@@ -31,6 +31,7 @@ planning or writing any code:
 | `docs/STATUS.md` | Current project truth, active plan, blockers, next tasks |
 | `docs/DECISIONS.md` | ADR-lite decision log |
 | `docs/DEPLOY.md` | Build process, Cloudflare Pages, environment config |
+| `docs/INPUT.md` | Agent-to-owner request queue for information or actions the owner can provide in text |
 
 ### Is documentation populated?
 
@@ -52,6 +53,29 @@ doing anything else.
 - Never modify `AGENTS.md` or any file in `docs/` without being asked to
 - Always run `npm run lint` mentally before declaring work complete — flag type errors
 - When in doubt about a pattern, check `docs/CONVENTIONS.md` before inventing one
+
+---
+
+## Requesting owner input
+
+Use `docs/INPUT.md` when you need information or action from the web developer
+that can be provided asynchronously in a text file, such as source copy, asset
+paths, approvals, credentials, provider decisions, redirect decisions, or answers
+to launch blockers.
+
+When using `docs/INPUT.md`:
+
+- Add requests under the most relevant existing section.
+- Keep each request concrete, answerable, and tied to the current work.
+- Include enough context for the owner to respond without rereading the whole
+  thread.
+- Prefer short numbered or bulleted requests over long prose.
+- Do not use `docs/INPUT.md` for status tracking; keep durable project state in
+  `docs/STATUS.md`.
+- Do not use `docs/INPUT.md` instead of asking a quick clarifying question in
+  chat when the answer is needed immediately to continue safely.
+- When the owner has answered a request, read the answer, apply it, and remove
+  or mark the completed request so the file remains current.
 
 ---
 
