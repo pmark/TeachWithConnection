@@ -3,6 +3,7 @@ import Header from "../components/layout/Header.astro";
 import Footer from "../components/layout/Footer.astro";
 import "../styles/global.css";
 import { site } from "../data/site";
+import { getSettingsCopy, list, text } from "../data/content";
 
 interface Props {
   title: string;
@@ -23,7 +24,8 @@ const {
   titleSuffix = true,
   structuredData = [],
 } = Astro.props;
-const pageTitle = titleSuffix ? `${title} | ${site.name}` : title;
+const copy = await getSettingsCopy("site");
+const pageTitle = titleSuffix ? `${title} | ${text(copy, "brand.name")}` : title;
 const canonicalUrl = new URL(canonicalPath, site.url).toString();
 const socialImageUrl = socialImage ? new URL(socialImage, site.url).toString() : undefined;
 const additionalStructuredData = Array.isArray(structuredData) ? structuredData : [structuredData];
@@ -35,7 +37,7 @@ const breadcrumbData = canonicalPath === "/" ? [] : [
       {
         "@type": "ListItem",
         position: 1,
-        name: "Home",
+        name: text(copy, "breadcrumb.home"),
         item: site.url,
       },
       {
@@ -53,27 +55,27 @@ const jsonLd = {
     {
       "@type": "Organization",
       "@id": `${site.url}/#organization`,
-      name: site.name,
-      legalName: site.legalName,
+      name: text(copy, "brand.name"),
+      legalName: text(copy, "brand.legalName"),
       url: site.url,
       founder: { "@id": `${site.url}/#katie-statman-weil` },
     },
     {
       "@type": "Person",
       "@id": `${site.url}/#katie-statman-weil`,
-      name: site.person,
-      honorificSuffix: site.credentials,
+      name: text(copy, "brand.person"),
+      honorificSuffix: text(copy, "brand.credentials"),
       url: `${site.url}/about/`,
       sameAs: [site.relatedPracticeUrl],
       worksFor: { "@id": `${site.url}/#organization` },
-      jobTitle: ["Early childhood educator", "Trainer", "Consultant", "Speaker", "Author"],
+      jobTitle: list(copy, "schema.jobTitles"),
     },
     {
       "@type": "WebSite",
       "@id": `${site.url}/#website`,
-      name: "Teach With Connection",
+      name: text(copy, "schema.websiteName"),
       url: site.url,
-      description: site.description,
+      description: text(copy, "brand.description"),
       publisher: { "@id": `${site.url}/#organization` },
     },
     ...breadcrumbData,
@@ -94,7 +96,7 @@ const jsonLd = {
     <meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow"} />
     <link rel="canonical" href={canonicalUrl} />
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Teach With Connection" />
+    <meta property="og:site_name" content={text(copy, "schema.websiteName")} />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />

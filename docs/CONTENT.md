@@ -68,13 +68,15 @@ Use Astro Content Collections where repeated content will benefit from typed fro
 
 Recommended collections:
 
+- `pages`: one YAML entry per fixed route/template, including SEO and named section copy.
+- `settings`: shared brand, navigation, footer, CTA, form, validation, and template-state copy.
 - `resources`: free downloadable resources.
 - `articles`: thought leadership posts migrated or adapted from the With Connection blog.
 - `testimonials`: participant and client quotes.
 - `proof`: publications, awards, logos, credentials, and appearances.
 - `services`: service metadata if service pages share reusable fields.
 
-Static pages may remain plain `.astro` files when they are unique, stable, and layout-specific.
+Static pages remain fixed `.astro` templates, but editable copy does not live in their markup. Use semantic YAML keys such as `home.professionalDevelopment.outcomes` and retrieve them through `src/data/content.ts`.
 
 ## Voice and tone
 
@@ -164,6 +166,18 @@ Each resource should have:
 Resource pages should include a direct inquiry CTA but no email signup requirement.
 
 ## Ownership and editing
+
+The developer or repository-aware editor changes English copy in `src/content/pages/*.yaml` and `src/content/settings/*.yaml`. Articles, resources, testimonials, services, and proof remain separate Markdown collection entries. Do not rename semantic keys without updating their template references.
+
+Before publishing content changes, run:
+
+```sh
+pnpm content:audit
+pnpm lint
+pnpm build
+```
+
+The complete placeholder audit and owner dependencies are tracked in `docs/CONTENT-INVENTORY.md`. English is the only locale; the separation exists for maintainability rather than runtime localization.
 
 The owner/developer will maintain content after launch. Updates are expected to be frequent during launch refinement, then less frequent over time.
 

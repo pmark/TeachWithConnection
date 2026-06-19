@@ -1,0 +1,19 @@
+route: "/articles/"
+status: blocked-owner
+copy:
+  strings:
+    seo.title: "Articles"
+    seo.description: "Selected With Connection writing on early childhood, trauma-responsive classrooms, behavior, relationships, and regulation."
+    hero.eyebrow: "Articles"
+    hero.title: "Selected thought leadership"
+    hero.description: "Explore writing on early childhood, trauma, behavior, relationships, regulation, and educator support."
+    hero.cta: "Visit resources"
+    library.eyebrow: "Writing"
+    library.availableTitle: "Published articles"
+    library.emptyTitle: "Articles are coming soon"
+    library.description: "This collection will feature selected writing for early childhood educators and leaders."
+    library.empty: "No articles are available yet. In the meantime, explore Katie's publications and professional work."
+    library.emptyCta: "Review publications"
+    card.cta: "Read article"
+  lists: {}
+  cards: {}

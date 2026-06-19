@@ -1,0 +1,14 @@
+route: "/disclaimer/"
+status: blocked-owner
+copy:
+  strings:
+    seo.title: "Disclaimer"
+    seo.description: "Professional and educational disclaimer for With Connection."
+    hero.eyebrow: "Disclaimer"
+    hero.title: "Professional disclaimer is being finalized"
+    hero.description: "Owner-approved professional and educational disclaimer language will be published before launch."
+    status.eyebrow: "Status"
+    status.title: "Owner-approved disclaimer copy needed"
+    status.description: "This page remains unpublished while the final disclaimer is reviewed."
+  lists: {}
+  cards: {}

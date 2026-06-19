@@ -3,22 +3,25 @@ import InquiryForm from "../components/forms/InquiryForm.astro";
 import PageHero from "../components/common/PageHero.astro";
 import Section from "../components/common/Section.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { getPageCopy, text } from "../data/content";
+
+const copy = await getPageCopy("contact");
 ---
 
 <BaseLayout
-  title="Contact"
-  description="Inquiry form for professional development, workshops, keynotes, and consultation with Katie Statman-Weil and With Connection."
+  title={text(copy, "seo.title")}
+  description={text(copy, "seo.description")}
 >
   <PageHero
-    eyebrow="Inquiry"
-    title="Tell Katie what your team is facing"
-    description="Share your organization, audience, timeline, and the classroom or event needs you want to explore."
+    eyebrow={text(copy, "hero.eyebrow")}
+    title={text(copy, "hero.title")}
+    description={text(copy, "hero.description")}
   />
 
   <Section
-    eyebrow="Form"
-    title="Inquiry form"
-    description="Share the essentials below. The secure inquiry service validates your submission and sends it directly to Katie."
+    eyebrow={text(copy, "form.eyebrow")}
+    title={text(copy, "form.title")}
+    description={text(copy, "form.description")}
   >
     <div class="max-w-3xl">
       <InquiryForm />

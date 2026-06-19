@@ -5,33 +5,35 @@ import Section from "../components/common/Section.astro";
 import ArticleCard from "../components/content/ArticleCard.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
+import { getPageCopy, text } from "../data/content";
 
 const articles = (await getCollection("articles")).sort((first, second) => {
   const firstTime = first.data.publishDate?.getTime() ?? 0;
   const secondTime = second.data.publishDate?.getTime() ?? 0;
   return secondTime - firstTime;
 });
+const copy = await getPageCopy("articles");
 ---
 
 <BaseLayout
-  title="Articles"
-  description="Selected With Connection writing on early childhood, trauma-responsive classrooms, behavior, relationships, and regulation."
+  title={text(copy, "seo.title")}
+  description={text(copy, "seo.description")}
   noindex={articles.length === 0}
 >
   <PageHero
-    eyebrow="Articles"
-    title="Selected thought leadership"
-    description="Articles should surface relevant With Connection writing on early childhood, trauma, behavior, relationships, regulation, and educator support."
+    eyebrow={text(copy, "hero.eyebrow")}
+    title={text(copy, "hero.title")}
+    description={text(copy, "hero.description")}
   >
     <div class="mt-8">
-      <ButtonLink href="/resources/" variant="secondary">Visit resources</ButtonLink>
+      <ButtonLink href="/resources/" variant="secondary">{text(copy, "hero.cta")}</ButtonLink>
     </div>
   </PageHero>
 
   <Section
-    eyebrow="Writing"
-    title={articles.length > 0 ? "Published articles" : "Articles are being selected"}
-    description="Relevant source-backed writing can be migrated here when article selections are approved."
+    eyebrow={text(copy, "library.eyebrow")}
+    title={articles.length > 0 ? text(copy, "library.availableTitle") : text(copy, "library.emptyTitle")}
+    description={text(copy, "library.description")}
   >
     {articles.length > 0 ? (
       <div class="rounded-md border border-[#e8e2dc] bg-white p-6">
@@ -40,16 +42,17 @@ const articles = (await getCollection("articles")).sort((first, second) => {
             title={data.title}
             description={data.description}
             href={`/articles/${id.replace(/\.md$/, "")}/`}
+            cta={text(copy, "card.cta")}
           />
         ))}
       </div>
     ) : (
       <div class="rounded-md border border-[#e8e2dc] bg-white p-6">
         <p class="leading-7 text-[#4f4a45]">
-          No articles are published in this static build yet.
+          {text(copy, "library.empty")}
         </p>
         <div class="mt-6">
-          <ButtonLink href="/publications/" variant="secondary">Review publications</ButtonLink>
+          <ButtonLink href="/publications/" variant="secondary">{text(copy, "library.emptyCta")}</ButtonLink>
         </div>
       </div>
     )}

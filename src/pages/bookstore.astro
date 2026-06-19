@@ -5,15 +5,16 @@ import PageHero from "../components/common/PageHero.astro";
 import Section from "../components/common/Section.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { site } from "../data/site";
+import { getPageCopy, list, text } from "../data/content";
 
 const bookUrl = "https://www.redleafpress.org/Trauma-Responsive-Strategies-for-Early-Childhood-P2503.aspx";
-const bookDescription =
-  "A practical, relationship-centered book by Katie Statman-Weil for early childhood educators supporting young children affected by trauma.";
+const copy = await getPageCopy("bookstore");
+const bookDescription = text(copy, "book.description");
 
 const bookStructuredData = {
   "@type": ["Book", "Product"],
   "@id": `${site.url}/bookstore/#trauma-responsive-strategies`,
-  name: "Trauma Responsive Strategies for Early Childhood",
+  name: text(copy, "book.title"),
   description: bookDescription,
   datePublished: "2020",
   author: { "@id": `${site.url}/#katie-statman-weil` },
@@ -24,36 +25,33 @@ const bookStructuredData = {
 ---
 
 <BaseLayout
-  title="Books for Early Childhood Educators"
-  description="Explore Trauma Responsive Strategies for Early Childhood by Katie Statman-Weil, EdD, LCSW, and connect its ideas with educator training."
+  title={text(copy, "seo.title")}
+  description={text(copy, "seo.description")}
   structuredData={bookStructuredData}
 >
   <PageHero
-    eyebrow="Bookstore"
-    title="Books for early childhood educators"
-    description="Katie's writing helps educators translate relationship-centered, trauma-responsive thinking into practical support for young children and teaching teams."
+    eyebrow={text(copy, "hero.eyebrow")}
+    title={text(copy, "hero.title")}
+    description={text(copy, "hero.description")}
   />
 
-  <Section eyebrow="Featured Book" title="Trauma Responsive Strategies for Early Childhood">
+  <Section eyebrow={text(copy, "book.eyebrow")} title={text(copy, "book.title")}>
     <article class="grid gap-8 rounded-md border border-[#e8e2dc] bg-white p-5 sm:p-7 lg:grid-cols-[1fr_0.75fr] lg:items-start">
       <div>
-        <p class="text-sm font-semibold uppercase tracking-wide text-[#157c93]">Redleaf Press · 2020</p>
+        <p class="text-sm font-semibold uppercase tracking-wide text-[#157c93]">{text(copy, "book.meta")}</p>
         <p class="mt-4 leading-8 text-[#4f4a45]">{bookDescription}</p>
         <p class="mt-4 leading-8 text-[#4f4a45]">
-          The book supports early childhood professionals in understanding how trauma may shape behavior, relationships, regulation, and participation in classroom life.
+          {text(copy, "book.secondaryDescription")}
         </p>
         <div class="mt-6 flex flex-col gap-3 sm:flex-row">
-          <ButtonLink href={bookUrl}>View at Redleaf Press</ButtonLink>
-          <ButtonLink href="/#professional-development" variant="secondary">Connect the book to team learning</ButtonLink>
+          <ButtonLink href={bookUrl}>{text(copy, "book.primaryCta")}</ButtonLink>
+          <ButtonLink href="/#professional-development" variant="secondary">{text(copy, "book.secondaryCta")}</ButtonLink>
         </div>
       </div>
-      <aside class="rounded-md bg-[#f7f7f7] p-5" aria-label="Book topics">
-        <h2 class="font-serif text-2xl leading-tight text-[#272727]">Themes for educators</h2>
+      <aside class="rounded-md bg-[#f7f7f7] p-5" aria-label={text(copy, "book.topicsAriaLabel")}>
+        <h2 class="font-serif text-2xl leading-tight text-[#272727]">{text(copy, "book.topicsTitle")}</h2>
         <ul class="mt-5 grid gap-3 leading-7 text-[#4f4a45]">
-          <li>Trauma-responsive early childhood practice</li>
-          <li>Behavior as communication</li>
-          <li>Connection, safety, and regulation</li>
-          <li>Practical classroom reflection</li>
+          {list(copy, "book.topics").map((topic) => <li>{topic}</li>)}
         </ul>
       </aside>
     </article>
@@ -61,12 +59,12 @@ const bookStructuredData = {
 
   <Section
     background="surface"
-    eyebrow="Related Writing"
-    title="Articles and publication recognition"
-    description="Katie's NAEYC writing and award recognition provide additional context for her educator-facing work."
+    eyebrow={text(copy, "related.eyebrow")}
+    title={text(copy, "related.title")}
+    description={text(copy, "related.description")}
   >
-    <ButtonLink href="/publications/" variant="secondary">View publications</ButtonLink>
+    <ButtonLink href="/publications/" variant="secondary">{text(copy, "related.cta")}</ButtonLink>
   </Section>
 
-  <InquiryCta title="Bring this work to your team" />
+  <InquiryCta title={text(copy, "inquiry.title")} />
 </BaseLayout>

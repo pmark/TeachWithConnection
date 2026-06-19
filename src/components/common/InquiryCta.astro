@@ -1,5 +1,6 @@
 ---
 import ButtonLink from "./ButtonLink.astro";
+import { getSettingsCopy, text } from "../../data/content";
 
 interface Props {
   title?: string;
@@ -7,11 +8,11 @@ interface Props {
   cta?: string;
 }
 
+const copy = await getSettingsCopy("site");
 const {
-  title = "Bring this work to your team",
-  description =
-    "Share a little about your organization, audience, timeline, and what your educators are facing. Katie can follow up about professional development, keynotes, or consultation.",
-  cta = "Start an inquiry",
+  title = text(copy, "inquiry.title"),
+  description = text(copy, "inquiry.description"),
+  cta = text(copy, "inquiry.cta"),
 } = Astro.props;
 ---
 

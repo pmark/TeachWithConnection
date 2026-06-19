@@ -4,6 +4,7 @@ import PageHero from "../../components/common/PageHero.astro";
 import Section from "../../components/common/Section.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { getCollection, render, type CollectionEntry } from "astro:content";
+import { getPageCopy, text } from "../../data/content";
 
 export async function getStaticPaths() {
   const resources = await getCollection("resources");
@@ -21,24 +22,25 @@ interface Props {
 const { resource } = Astro.props;
 const { Content } = await render(resource);
 const fileHref = resource.data.file;
+const copy = await getPageCopy("resource-detail");
 ---
 
 <BaseLayout title={resource.data.title} description={resource.data.description}>
   <PageHero
-    eyebrow="Resource"
+    eyebrow={text(copy, "hero.eyebrow")}
     title={resource.data.title}
     description={resource.data.description}
   >
     {fileHref && (
       <div class="mt-8">
-        <ButtonLink href={fileHref}>Open resource</ButtonLink>
+        <ButtonLink href={fileHref}>{text(copy, "hero.openCta")}</ButtonLink>
       </div>
     )}
   </PageHero>
 
   <Section narrow>
     {resource.data.tags.length > 0 && (
-      <ul class="mb-8 flex flex-wrap gap-2" aria-label="Resource topics">
+      <ul class="mb-8 flex flex-wrap gap-2" aria-label={text(copy, "topics.ariaLabel")}>
         {resource.data.tags.map((tag) => (
           <li class="rounded-md bg-[#f7f7f7] px-3 py-1 text-sm text-[#5d5751]">
             {tag}
@@ -54,7 +56,7 @@ const fileHref = resource.data.file;
     {!fileHref && (
       <div class="mt-8 rounded-md border border-[#e8e2dc] bg-[#f7f7f7] p-5">
         <p class="leading-7 text-[#4f4a45]">
-          This resource does not have an approved file attached yet.
+          {text(copy, "missingFile")}
         </p>
       </div>
     )}

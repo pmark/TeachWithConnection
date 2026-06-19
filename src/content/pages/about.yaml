@@ -1,0 +1,29 @@
+route: "/about/"
+status: approved
+copy:
+  strings:
+    seo.title: "About Katie"
+    seo.description: "About Katie Statman-Weil, EdD, LCSW, early childhood educator, clinician, author, consultant, trainer, and speaker."
+    hero.eyebrow: "About"
+    hero.title: "Katie Statman-Weil, EdD, LCSW"
+    hero.description: "Katie is an educator, clinician, author, consultant, trainer, and speaker whose work helps adults understand children's behavior through connection, safety, regulation, and development."
+    hero.primaryCta: "Bring Katie to your organization"
+    hero.secondaryCta: "View publications"
+    background.eyebrow: "Background"
+    background.title: "A career spanning classrooms, clinical practice, higher education, and consultation"
+    philosophy.title: "Core philosophy"
+    credibility.eyebrow: "Credibility"
+    credibility.title: "Author, NAEYC writer, and early childhood professional development leader"
+    credibility.description: "The publications page highlights Katie's Redleaf Press book, NAEYC article, award recognition, and related publication proof."
+    credibility.cta: "Review publications"
+  lists:
+    background.paragraphs:
+      - "Katie brings experience as a preschool teacher, center director, early childhood college professor, early childhood mental health consultant, clinician, trainer, and consultant."
+      - "She is the founder of With Connection and co-founded Wild Lilac Child Development Community, a Portland nonprofit early childhood education and parent support organization."
+      - "Her professional development work stays educator-facing while drawing from attachment, trauma-responsive care, neurodivergence, regulation, child development, and relationship-centered behavior support."
+    philosophy.items:
+      - "Connection and safety before compliance."
+      - "Behavior as communication, not defiance in isolation."
+      - "Regulation as shared adult-child work shaped by relationships and environments."
+      - "Neuroaffirming support that honors different nervous systems and communication needs."
+  cards: {}

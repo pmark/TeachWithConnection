@@ -1,0 +1,10 @@
+route: "/resources/[slug]/"
+status: approved
+copy:
+  strings:
+    hero.eyebrow: "Resource"
+    hero.openCta: "Open resource"
+    topics.ariaLabel: "Resource topics"
+    missingFile: "This resource is being prepared for download. Please check back soon."
+  lists: {}
+  cards: {}

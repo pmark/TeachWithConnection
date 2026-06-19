@@ -1,0 +1,30 @@
+route: "/bookstore/"
+status: approved
+copy:
+  strings:
+    seo.title: "Books for Early Childhood Educators"
+    seo.description: "Explore Trauma Responsive Strategies for Early Childhood by Katie Statman-Weil, EdD, LCSW, and connect its ideas with educator training."
+    hero.eyebrow: "Bookstore"
+    hero.title: "Books for early childhood educators"
+    hero.description: "Katie's writing helps educators translate relationship-centered, trauma-responsive thinking into practical support for young children and teaching teams."
+    book.eyebrow: "Featured Book"
+    book.title: "Trauma Responsive Strategies for Early Childhood"
+    book.meta: "Redleaf Press · 2020"
+    book.description: "A practical, relationship-centered book by Katie Statman-Weil for early childhood educators supporting young children affected by trauma."
+    book.secondaryDescription: "The book supports early childhood professionals in understanding how trauma may shape behavior, relationships, regulation, and participation in classroom life."
+    book.primaryCta: "View at Redleaf Press"
+    book.secondaryCta: "Connect the book to team learning"
+    book.topicsAriaLabel: "Book topics"
+    book.topicsTitle: "Themes for educators"
+    related.eyebrow: "Related Writing"
+    related.title: "Articles and publication recognition"
+    related.description: "Katie's NAEYC writing and award recognition provide additional context for her educator-facing work."
+    related.cta: "View publications"
+    inquiry.title: "Bring this work to your team"
+  lists:
+    book.topics:
+      - "Trauma-responsive early childhood practice"
+      - "Behavior as communication"
+      - "Connection, safety, and regulation"
+      - "Practical classroom reflection"
+  cards: {}

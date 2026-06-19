@@ -7,10 +7,9 @@ import ServiceCard from "../components/services/ServiceCard.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 import { site } from "../data/site";
-import {
-  professionalDevelopmentFocus,
-  professionalDevelopmentOutcomes,
-} from "../data/service-pages";
+import { getPageCopy, getSettingsCopy, list, text } from "../data/content";
+
+const copy = await getPageCopy("home");
 
 const services = (await getCollection("services")).sort(
   (first, second) => first.data.priority - second.data.priority,
@@ -41,66 +40,65 @@ const proofItems = (await getCollection("proof"))
 const homepageStructuredData = {
   "@type": "Service",
   "@id": `${site.url}/#professional-development-service`,
-  name: "Early Childhood Professional Development",
-  description:
-    "Relationship-centered professional development, workshops, and staff training for early childhood organizations across the United States.",
+  name: text(copy, "structuredData.name"),
+  description: text(copy, "structuredData.description"),
   provider: { "@id": `${site.url}/#organization` },
   areaServed: { "@type": "Country", name: "United States" },
   audience: {
     "@type": "Audience",
-    audienceType: "Early childhood organizations, schools, districts, educators, and conference planners",
+    audienceType: text(await getSettingsCopy("site"), "schema.serviceAudience"),
   },
   url: site.url,
 };
 ---
 
 <BaseLayout
-  title="Early Childhood Professional Development | Katie Statman-Weil"
+  title={text(copy, "seo.title")}
   titleSuffix={false}
   canonicalPath="/"
-  description="Bring relationship-centered early childhood professional development, workshops, keynotes, and consultation with Katie Statman-Weil to your team."
+  description={text(copy, "seo.description")}
   structuredData={homepageStructuredData}
 >
   <section class="bg-[#f7f7f7] py-12 sm:py-16 lg:py-20">
     <div class="mx-auto grid max-w-6xl gap-8 px-4 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-12">
       <div>
         <p class="mb-4 text-sm font-semibold uppercase tracking-wide text-[#157c93]">
-          Early childhood professional development
+          {text(copy, "hero.eyebrow")}
         </p>
         <h1 class="font-serif text-4xl leading-tight text-[#272727] sm:text-5xl lg:text-6xl">
-          Early Childhood Professional Development Rooted in Connection.
+          {text(copy, "hero.title")}
         </h1>
         <p class="mt-6 max-w-2xl text-lg leading-8 text-[#4f4a45]">
-          Katie Statman-Weil, EdD, LCSW helps early childhood organizations, schools, districts, and conferences support educators with practical, trauma-responsive, neuroaffirming, and attachment-informed learning.
+          {text(copy, "hero.description")}
         </p>
         <p class="mt-4 max-w-2xl leading-7 text-[#4f4a45]">
-          Based in Portland, Oregon and available to teams nationwide, Katie brings classroom, clinical, leadership, and consulting experience to the questions educators face every day.
+          {text(copy, "hero.secondaryDescription")}
         </p>
         <div class="mt-8 flex flex-col gap-3 sm:flex-row">
-          <ButtonLink href="/contact/">Inquire about professional development</ButtonLink>
-          <ButtonLink href="/workshops/" variant="secondary">View workshop topics</ButtonLink>
+          <ButtonLink href="/contact/">{text(copy, "hero.primaryCta")}</ButtonLink>
+          <ButtonLink href="/workshops/" variant="secondary">{text(copy, "hero.secondaryCta")}</ButtonLink>
         </div>
       </div>
 
-      <aside class="rounded-md border border-[#e8e2dc] bg-white p-6" aria-label="Katie Statman-Weil credibility summary">
+      <aside class="rounded-md border border-[#e8e2dc] bg-white p-6" aria-label={text(copy, "credibility.ariaLabel")}>
         <p class="font-serif text-3xl leading-tight text-[#272727]">
-          Educator, clinician, author, consultant, and speaker.
+          {text(copy, "credibility.title")}
         </p>
         <dl class="mt-8 grid gap-5">
           <div>
-            <dt class="text-sm font-semibold uppercase tracking-wide text-[#157c93]">Credentials</dt>
-            <dd class="mt-1 text-[#4f4a45]">EdD and Licensed Clinical Social Worker</dd>
+            <dt class="text-sm font-semibold uppercase tracking-wide text-[#157c93]">{text(copy, "credibility.credentialsLabel")}</dt>
+            <dd class="mt-1 text-[#4f4a45]">{text(copy, "credibility.credentials")}</dd>
           </div>
           <div>
-            <dt class="text-sm font-semibold uppercase tracking-wide text-[#157c93]">Publication</dt>
+            <dt class="text-sm font-semibold uppercase tracking-wide text-[#157c93]">{text(copy, "credibility.publicationLabel")}</dt>
             <dd class="mt-1 text-[#4f4a45]">
-              Author of <cite>Trauma Responsive Strategies for Early Childhood</cite>
+              {text(copy, "credibility.publicationPrefix")} <cite>{text(copy, "credibility.publication")}</cite>
             </dd>
           </div>
           <div>
-            <dt class="text-sm font-semibold uppercase tracking-wide text-[#157c93]">Approach</dt>
+            <dt class="text-sm font-semibold uppercase tracking-wide text-[#157c93]">{text(copy, "credibility.approachLabel")}</dt>
             <dd class="mt-1 text-[#4f4a45]">
-              Connection, safety, regulation, and behavior as communication
+              {text(copy, "credibility.approach")}
             </dd>
           </div>
         </dl>
@@ -110,15 +108,15 @@ const homepageStructuredData = {
 
   <div id="professional-development" class="scroll-mt-6">
     <Section
-      eyebrow="Professional Development"
-      title="Learning designed for real early childhood teams"
-      description="Katie's professional development gives educators and leaders a shared, practical way to understand behavior, stress, trauma, neurodivergence, regulation, and relationships without blaming children or adults."
+      eyebrow={text(copy, "professionalDevelopment.eyebrow")}
+      title={text(copy, "professionalDevelopment.title")}
+      description={text(copy, "professionalDevelopment.description")}
     >
       <div class="grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
         <div>
-          <h3 class="font-serif text-2xl leading-tight text-[#272727]">A fit for organizations navigating</h3>
+          <h3 class="font-serif text-2xl leading-tight text-[#272727]">{text(copy, "professionalDevelopment.fitTitle")}</h3>
           <ul class="mt-5 grid gap-3">
-            {professionalDevelopmentFocus.map((item) => (
+            {list(copy, "professionalDevelopment.focus").map((item) => (
               <li class="border-l-4 border-[#157c93] bg-[#f7f7f7] px-4 py-3 leading-7 text-[#3c3834]">
                 {item}
               </li>
@@ -126,38 +124,34 @@ const homepageStructuredData = {
           </ul>
         </div>
         <div class="rounded-md border border-[#e8e2dc] bg-white p-5 sm:p-6">
-          <h3 class="font-serif text-2xl leading-tight text-[#272727]">What teams can carry forward</h3>
+          <h3 class="font-serif text-2xl leading-tight text-[#272727]">{text(copy, "professionalDevelopment.outcomesTitle")}</h3>
           <ul class="mt-5 grid gap-4">
-            {professionalDevelopmentOutcomes.map((item) => (
+            {list(copy, "professionalDevelopment.outcomes").map((item) => (
               <li class="leading-7 text-[#4f4a45]">{item}</li>
             ))}
           </ul>
         </div>
       </div>
       <div class="mt-10">
-        <h3 class="font-serif text-2xl leading-tight text-[#272727]">Formats shaped around your audience</h3>
+        <h3 class="font-serif text-2xl leading-tight text-[#272727]">{text(copy, "professionalDevelopment.formatsTitle")}</h3>
         <ul class="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {[
-            "Staff professional development days",
-            "Focused workshops and training series",
-            "Conference keynotes and breakout sessions",
-          ].map((item) => (
+          {list(copy, "professionalDevelopment.formats").map((item) => (
             <li class="rounded-md border border-[#e8e2dc] bg-white p-5 leading-7 text-[#3c3834]">{item}</li>
           ))}
         </ul>
       </div>
       <div class="mt-8 flex flex-col gap-3 sm:flex-row">
-        <ButtonLink href="/workshops/">Explore workshop topics</ButtonLink>
-        <ButtonLink href="/contact/" variant="secondary">Inquire about training</ButtonLink>
+        <ButtonLink href="/workshops/">{text(copy, "professionalDevelopment.primaryCta")}</ButtonLink>
+        <ButtonLink href="/contact/" variant="secondary">{text(copy, "professionalDevelopment.secondaryCta")}</ButtonLink>
       </div>
     </Section>
   </div>
 
   <Section
     background="surface"
-    eyebrow="Ways to Work Together"
-    title="Workshops, keynotes, and consultation"
-    description="Choose the format that fits your educators, event, or ongoing classroom challenge."
+    eyebrow={text(copy, "services.eyebrow")}
+    title={text(copy, "services.title")}
+    description={text(copy, "services.description")}
   >
     <div class="grid gap-5 md:grid-cols-2">
       {servicePreviews.map((service) => <ServiceCard {...service} />)}
@@ -166,31 +160,31 @@ const homepageStructuredData = {
 
   <Section
     background="surface"
-    eyebrow="Proof"
-    title="Credibility grounded in classrooms, clinical practice, and early childhood leadership"
+    eyebrow={text(copy, "proof.eyebrow")}
+    title={text(copy, "proof.title")}
   >
     <ProofList items={proofItems} />
   </Section>
 
   <Section
-    eyebrow="Approach"
-    title="Teachers feel heard, children feel supported, and relationships can thrive."
+    eyebrow={text(copy, "approach.eyebrow")}
+    title={text(copy, "approach.title")}
   >
     <div class="grid gap-10 lg:grid-cols-[0.8fr_1fr] lg:items-start">
       <aside class="rounded-md border border-[#e8e2dc] bg-white p-6">
         <h3 class="font-serif text-2xl leading-tight text-[#272727]">
-          Source-backed testimonials belong here.
+          {text(copy, "approach.testimonialTitle")}
         </h3>
         <p class="mt-4 leading-7 text-[#4f4a45]">
-          The existing With Connection site includes workshop, course, keynote, and consultation participant quotes. Those should be migrated without changing their meaning once reuse is confirmed.
+          {text(copy, "approach.testimonialEmpty")}
         </p>
       </aside>
       <div>
         <p class="leading-8 text-[#4f4a45]">
-          This work helps educators move beyond crisis management and generic behavior strategies. It gives teams a shared frame for understanding what children may be communicating, what adults need in order to stay regulated, and how classroom environments can support connection and safety.
+          {text(copy, "approach.description")}
         </p>
         <p class="mt-5 leading-8 text-[#4f4a45]">
-          Final launch copy should continue to use source-backed With Connection language and owner-approved testimonials.
+          {text(copy, "approach.secondaryDescription")}
         </p>
       </div>
     </div>
@@ -198,16 +192,16 @@ const homepageStructuredData = {
 
   <Section
     background="surface"
-    eyebrow="Resources"
-    title="Ungated tools and writing for educators"
-    description="Free resources will stay open-access. They should help educators use Katie's approach directly and give leaders a low-friction way to understand the work before inquiring."
+    eyebrow={text(copy, "resources.eyebrow")}
+    title={text(copy, "resources.title")}
+    description={text(copy, "resources.description")}
   >
     <div class="rounded-md border border-[#e8e2dc] bg-white p-6">
       <p class="leading-7 text-[#4f4a45]">
-        Resource files have not been supplied yet. Once they are available, this section should preview the strongest launch resources and link to the resource library.
+        {text(copy, "resources.empty")}
       </p>
       <div class="mt-6">
-        <ButtonLink href="/resources/" variant="secondary">Visit resources</ButtonLink>
+        <ButtonLink href="/resources/" variant="secondary">{text(copy, "resources.cta")}</ButtonLink>
       </div>
     </div>
   </Section>

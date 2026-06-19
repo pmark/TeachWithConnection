@@ -4,6 +4,7 @@ import PageHero from "../../components/common/PageHero.astro";
 import Section from "../../components/common/Section.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { getCollection, render, type CollectionEntry } from "astro:content";
+import { getPageCopy, text } from "../../data/content";
 
 export async function getStaticPaths() {
   const articles = await getCollection("articles");
@@ -20,24 +21,25 @@ interface Props {
 
 const { article } = Astro.props;
 const { Content } = await render(article);
+const copy = await getPageCopy("article-detail");
 ---
 
 <BaseLayout title={article.data.title} description={article.data.description}>
   <PageHero
-    eyebrow="Article"
+    eyebrow={text(copy, "hero.eyebrow")}
     title={article.data.title}
     description={article.data.description}
   >
     <div class="mt-8">
       <ButtonLink href="/contact/" variant="secondary">
-        Bring this work to your team
+        {text(copy, "hero.cta")}
       </ButtonLink>
     </div>
   </PageHero>
 
   <Section narrow>
     {article.data.tags.length > 0 && (
-      <ul class="mb-8 flex flex-wrap gap-2" aria-label="Article topics">
+      <ul class="mb-8 flex flex-wrap gap-2" aria-label={text(copy, "topics.ariaLabel")}>
         {article.data.tags.map((tag) => (
           <li class="rounded-md bg-[#f7f7f7] px-3 py-1 text-sm text-[#5d5751]">
             {tag}

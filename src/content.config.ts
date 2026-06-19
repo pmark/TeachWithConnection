@@ -12,6 +12,35 @@ const ctaSchema = z.object({
   href: z.string(),
 });
 
+const copyCardSchema = z.object({
+  title: z.string(),
+  description: z.string(),
+  label: z.string().optional(),
+  href: z.string().optional(),
+});
+
+const copySchema = z.object({
+  strings: z.record(z.string(), z.string()),
+  lists: z.record(z.string(), z.array(z.string())).default({}),
+  cards: z.record(z.string(), z.array(copyCardSchema)).default({}),
+});
+
+const pages = defineCollection({
+  loader: glob({ pattern: "**/*.yaml", base: "./src/content/pages" }),
+  schema: z.object({
+    route: z.string(),
+    status: z.enum(["approved", "review-needed", "blocked-owner"]),
+    copy: copySchema,
+  }),
+});
+
+const settings = defineCollection({
+  loader: glob({ pattern: "**/*.yaml", base: "./src/content/settings" }),
+  schema: z.object({
+    copy: copySchema,
+  }),
+});
+
 const resources = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/resources" }),
   schema: z.object({
@@ -82,8 +111,10 @@ const services = defineCollection({
 
 export const collections = {
   articles,
+  pages,
   proof,
   resources,
   services,
+  settings,
   testimonials,
 };

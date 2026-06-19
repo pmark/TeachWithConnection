@@ -1,0 +1,14 @@
+route: "/terms/"
+status: blocked-owner
+copy:
+  strings:
+    seo.title: "Terms"
+    seo.description: "Terms for With Connection."
+    hero.eyebrow: "Terms"
+    hero.title: "Terms are being finalized"
+    hero.description: "Owner-approved terms will be published before launch."
+    status.eyebrow: "Status"
+    status.title: "Owner-approved terms needed"
+    status.description: "This page remains unpublished while the final terms are reviewed."
+  lists: {}
+  cards: {}

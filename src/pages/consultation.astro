@@ -4,37 +4,38 @@ import InquiryCta from "../components/common/InquiryCta.astro";
 import PageHero from "../components/common/PageHero.astro";
 import Section from "../components/common/Section.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { consultationFit, educatorApproach } from "../data/service-pages";
 import { createServiceStructuredData } from "../data/site";
+import { getPageCopy, getSettingsCopy, list, text } from "../data/content";
 
-const description = "Consultation for early childhood schools, centers, directors, and teaching teams nationwide facing complex classroom behavior or dysregulation.";
+const copy = await getPageCopy("consultation");
+const description = text(copy, "seo.description");
 ---
 
 <BaseLayout
-  title="Consultation"
+  title={text(copy, "seo.title")}
   description={description}
-  structuredData={createServiceStructuredData("Early Childhood Team Consultation", description, "/consultation/")}
+  structuredData={createServiceStructuredData(text(copy, "structuredData.name"), description, "/consultation/", text(await getSettingsCopy("site"), "schema.serviceAudience"))}
 >
   <PageHero
-    eyebrow="Consultation"
-    title="Support for complex classroom and team challenges"
-    description="Consultation helps schools, centers, directors, and teaching teams make sense of escalating behavior, educator exhaustion, strained relationships, and classroom dysregulation."
+    eyebrow={text(copy, "hero.eyebrow")}
+    title={text(copy, "hero.title")}
+    description={text(copy, "hero.description")}
   >
     <div class="mt-8 flex flex-col gap-3 sm:flex-row">
-      <ButtonLink href="/contact/">Inquire about consultation</ButtonLink>
+      <ButtonLink href="/contact/">{text(copy, "hero.primaryCta")}</ButtonLink>
       <ButtonLink href="/#professional-development" variant="secondary">
-        Professional development overview
+        {text(copy, "hero.secondaryCta")}
       </ButtonLink>
     </div>
   </PageHero>
 
   <Section
-    eyebrow="When Consultation Helps"
-    title="For teams that are trying hard and still feeling stuck"
-    description="Consultation is a fit when current strategies are not creating enough calm, safety, or clarity for the child, the adults, or the larger classroom community."
+    eyebrow={text(copy, "fit.eyebrow")}
+    title={text(copy, "fit.title")}
+    description={text(copy, "fit.description")}
   >
     <ul class="grid gap-4 md:grid-cols-2">
-      {consultationFit.map((item) => (
+      {list(copy, "fit.items").map((item) => (
         <li class="rounded-md border border-[#e8e2dc] bg-white p-5 leading-7 text-[#3c3834]">
           {item}
         </li>
@@ -44,20 +45,20 @@ const description = "Consultation for early childhood schools, centers, director
 
   <Section
     background="surface"
-    eyebrow="Consultation Lens"
-    title="Practical strategy without losing the emotional reality of the work"
+    eyebrow={text(copy, "lens.eyebrow")}
+    title={text(copy, "lens.title")}
   >
     <div class="grid gap-8 lg:grid-cols-[1fr_1fr]">
       <div>
         <p class="leading-8 text-[#4f4a45]">
-          The work looks at both the child's experience and the educator's experience, then helps the team identify supports that are relational, trauma-responsive, neuroaffirming, and sustainable.
+          {text(copy, "lens.description")}
         </p>
         <p class="mt-5 leading-8 text-[#4f4a45]">
-          The inquiry form should include enough context for Katie to understand the classroom situation, team needs, timeline, and whether consultation or broader professional development is the better fit.
+          {text(copy, "lens.secondaryDescription")}
         </p>
       </div>
       <ul class="grid gap-4">
-        {educatorApproach.map((item) => (
+        {list(copy, "lens.items").map((item) => (
           <li class="border-l-4 border-[#157c93] bg-white px-5 py-4 leading-7 text-[#3c3834]">
             {item}
           </li>
@@ -66,5 +67,5 @@ const description = "Consultation for early childhood schools, centers, director
     </div>
   </Section>
 
-  <InquiryCta title="Inquire about consultation" />
+  <InquiryCta title={text(copy, "inquiry.title")} />
 </BaseLayout>

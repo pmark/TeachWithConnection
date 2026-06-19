@@ -6,16 +6,18 @@ interface Props {
   description: string;
   href: string;
   tags?: string[];
+  cta: string;
+  topicsAriaLabel: string;
 }
 
-const { title, description, href, tags = [] } = Astro.props;
+const { title, description, href, tags = [], cta, topicsAriaLabel } = Astro.props;
 ---
 
 <article class="rounded-md border border-[#e8e2dc] bg-white p-6">
   <h3 class="font-serif text-2xl text-[#272727]">{title}</h3>
   <p class="mt-3 leading-7 text-[#4f4a45]">{description}</p>
   {tags.length > 0 && (
-    <ul class="mt-5 flex flex-wrap gap-2" aria-label="Resource topics">
+    <ul class="mt-5 flex flex-wrap gap-2" aria-label={topicsAriaLabel}>
       {tags.map((tag) => (
         <li class="rounded-md bg-[#f7f7f7] px-3 py-1 text-sm text-[#5d5751]">
           {tag}
@@ -24,6 +26,6 @@ const { title, description, href, tags = [] } = Astro.props;
     </ul>
   )}
   <div class="mt-6">
-    <ButtonLink href={href} variant="secondary">View resource</ButtonLink>
+    <ButtonLink href={href} variant="secondary">{cta}</ButtonLink>
   </div>
 </article>

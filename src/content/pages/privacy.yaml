@@ -1,0 +1,14 @@
+route: "/privacy/"
+status: blocked-owner
+copy:
+  strings:
+    seo.title: "Privacy"
+    seo.description: "Privacy information for With Connection."
+    hero.eyebrow: "Privacy"
+    hero.title: "Privacy policy is being finalized"
+    hero.description: "Owner-approved privacy language will be published before the inquiry form launches."
+    status.eyebrow: "Status"
+    status.title: "Owner-approved privacy copy needed"
+    status.description: "This page remains unpublished while the final policy is reviewed."
+  lists: {}
+  cards: {}

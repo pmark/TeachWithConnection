@@ -1,0 +1,34 @@
+route: "/consultation/"
+status: approved
+copy:
+  strings:
+    seo.title: "Consultation"
+    seo.description: "Consultation for early childhood schools, centers, directors, and teaching teams nationwide facing complex classroom behavior or dysregulation."
+    structuredData.name: "Early Childhood Team Consultation"
+    hero.eyebrow: "Consultation"
+    hero.title: "Support for complex classroom and team challenges"
+    hero.description: "Consultation helps schools, centers, directors, and teaching teams make sense of escalating behavior, educator exhaustion, strained relationships, and classroom dysregulation."
+    hero.primaryCta: "Inquire about consultation"
+    hero.secondaryCta: "Professional development overview"
+    fit.eyebrow: "When Consultation Helps"
+    fit.title: "For teams that are trying hard and still feeling stuck"
+    fit.description: "Consultation is a fit when current strategies are not creating enough calm, safety, or clarity for the child, the adults, or the larger classroom community."
+    lens.eyebrow: "Consultation Lens"
+    lens.title: "Practical strategy without losing the emotional reality of the work"
+    lens.description: "The work looks at both the child's experience and the educator's experience, then helps the team identify supports that are relational, trauma-responsive, neuroaffirming, and sustainable."
+    lens.secondaryDescription: "Share the classroom situation, team needs, and timeline in your inquiry so Katie can help determine whether consultation or broader professional development is the better fit."
+    inquiry.title: "Inquire about consultation"
+  lists:
+    fit.items:
+      - "A student's behaviors continue to escalate despite many tried strategies and supports."
+      - "Staff feel emotionally exhausted, overwhelmed, or constantly braced for classroom intensity."
+      - "Educator-child relationships feel strained, stuck, or caught in cycles of conflict and dysregulation."
+      - "One child's needs are affecting classroom culture, staff morale, team cohesion, or other students."
+      - "The team wants a relational, trauma-responsive, and neuroaffirming frame for what to do next."
+      - "Leaders need practical, sustainable strategies that support both the child and the adults caring for them."
+    lens.items:
+      - "Connection and safety before compliance."
+      - "Behavior as communication, not defiance in isolation."
+      - "Regulation as shared adult-child work shaped by relationships and environments."
+      - "Neuroaffirming support that honors different nervous systems and communication needs."
+  cards: {}

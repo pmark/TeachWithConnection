@@ -2,17 +2,19 @@
 import PageHero from "../components/common/PageHero.astro";
 import Section from "../components/common/Section.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { getPageCopy, text } from "../data/content";
+const copy = await getPageCopy("disclaimer");
 ---
 
-<BaseLayout title="Disclaimer" description="Professional and educational disclaimer for With Connection." noindex>
+<BaseLayout title={text(copy, "seo.title")} description={text(copy, "seo.description")} noindex>
   <PageHero
-    eyebrow="Disclaimer"
-    title="Disclaimer details are pending"
-    description="Final disclaimer content should be supplied or approved before launch."
+    eyebrow={text(copy, "hero.eyebrow")}
+    title={text(copy, "hero.title")}
+    description={text(copy, "hero.description")}
   />
-  <Section eyebrow="Status" title="Owner-approved legal copy needed">
+  <Section eyebrow={text(copy, "status.eyebrow")} title={text(copy, "status.title")}>
     <p class="max-w-3xl leading-8 text-[#4f4a45]">
-      Final disclaimer content should be supplied or approved before launch.
+      {text(copy, "status.description")}
     </p>
   </Section>
 </BaseLayout>

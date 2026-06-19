@@ -41,9 +41,11 @@ Use this structure for launch development:
 │   │   └── services/
 │   ├── content/
 │   │   ├── articles/
+│   │   ├── pages/
 │   │   ├── proof/
 │   │   ├── resources/
 │   │   ├── services/
+│   │   ├── settings/
 │   │   └── testimonials/
 │   ├── data/
 │   ├── layouts/
@@ -100,8 +102,10 @@ Recommended launch routes:
 
 Content should flow from source-controlled files into static pages at build time.
 
-- Repeated content lives in `src/content/` collections.
-- Single-use page copy may live in `.astro` pages or nearby data files if it does not need collection behavior.
+- All editable route copy lives in schema-validated `src/content/pages/*.yaml` entries.
+- Shared navigation, footer, inquiry CTA, form, and interface copy lives in `src/content/settings/*.yaml`.
+- Astro pages own fixed markup and section order; they retrieve named copy through `src/data/content.ts`.
+- Repeated editorial records remain in Markdown collections under `src/content/`.
 - Downloadable static files live in `public/resources/`.
 - Static images live in `public/images/`.
 - Source URLs from the existing With Connection site may be recorded in frontmatter or content notes for traceability.
@@ -112,6 +116,8 @@ Define content collections in `src/content.config.ts`.
 
 Expected collections:
 
+- `pages`
+- `settings`
 - `resources`
 - `articles`
 - `testimonials`
@@ -119,6 +125,8 @@ Expected collections:
 - `services`
 
 Use Zod schemas to require important fields such as title, description, slug, audience, tags, source, and CTA fields.
+
+Page and settings entries use stable semantic keys grouped into `strings`, `lists`, and `cards`. Missing entries or keys fail during the build. `pnpm content:audit` also rejects embedded editable props, literal template prose, and known placeholder language without requiring another dependency.
 
 ## Component boundaries
 

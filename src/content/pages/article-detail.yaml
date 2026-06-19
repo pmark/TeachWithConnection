@@ -1,0 +1,9 @@
+route: "/articles/[slug]/"
+status: approved
+copy:
+  strings:
+    hero.eyebrow: "Article"
+    hero.cta: "Bring this work to your team"
+    topics.ariaLabel: "Article topics"
+  lists: {}
+  cards: {}

@@ -12,6 +12,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "lint": "astro check",
+    "content:audit": "node scripts/audit-content.mjs",
     "format": "prettier --write .",
     "new:component": "node scripts/new-component.mjs",
     "new:content": "node scripts/new-content.mjs",

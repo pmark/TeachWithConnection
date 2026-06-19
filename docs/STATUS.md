@@ -7,7 +7,7 @@ updated: 2026-06-19
 
 ## Current milestone
 
-Launch hardening for mobile-first UX, technical SEO, canonical authority, and production inquiry delivery.
+Content-management consolidation and launch hardening for production inquiry delivery.
 
 ## What works
 
@@ -31,11 +31,15 @@ Launch hardening for mobile-first UX, technical SEO, canonical authority, and pr
 - Browser checks pass all seven core routes at 320px, 390px, 768px, and 1280px with no overflow, undersized targets, heading failures, or incorrect navigation mode.
 - Production-preview Lighthouse scores are 100 for Performance, Accessibility, Best Practices, and SEO on both the homepage and contact page.
 - Astro was updated to the latest available 6.4.8 release after a dependency audit.
+- All editable route, shared-interface, navigation, footer, CTA, and form copy now lives in schema-validated YAML content entries; Astro templates retain fixed layout and section order.
+- `pnpm content:audit` verifies required entries, rejects known placeholder language, and guards against new literal editable copy in Astro templates.
+- The 32-item placeholder/editorial-copy inventory is documented in `docs/CONTENT-INVENTORY.md`; safe cases are visitor-ready and owner-dependent gaps remain explicitly blocked.
 
 ## What is flaky
 
 - The inquiry form is disabled without `PUBLIC_TURNSTILE_SITE_KEY`; production delivery has not been tested because Cloudflare/Resend credentials are not present locally.
 - Articles, resources, and testimonials collections remain empty and emit expected build warnings.
+- Legal copy, testimonials, article selections, and resource files remain owner-blocked; visitor-safe noindex/empty states are centralized in YAML meanwhile.
 - Source assets, third-party logos, and testimonials still need reuse confirmation.
 - The new rate-limit binding and Pages Function require deployment verification in the target Cloudflare account.
 - `pnpm audit --omit=dev` still reports newly disclosed Astro/esbuild build-tool advisories despite Astro 6.4.8 being the latest available release. The deployed marketing output is static and does not run the Astro server, but the advisories should be rechecked when patched versions publish.
@@ -51,13 +55,13 @@ Launch hardening for mobile-first UX, technical SEO, canonical authority, and pr
 
 ## Last user-testing or owner insight
 
-TeachWithConnection.com is the dedicated educator-facing property. The homepage alone owns national “early childhood professional development” search intent; Portland/Oregon remain secondary signals. Mobile UX, SEO, canonical correctness, and immediate inquiry email delivery are launch gates.
+The owner wants all English content editable independently of Astro markup through clearly named, source-controlled content files. Fixed templates are preferred over editor-controlled section composition.
 
 ## Next 3 highest-value tasks
 
 1. Configure Cloudflare, Turnstile, and Resend production values; verify end-to-end delivery and failure behavior.
 2. Complete reciprocal WithConnectionPDX schema/link/canonical changes and validate both domains together.
-3. Run production-style Lighthouse and 320px/390px/768px/desktop QA, then address any launch-gate regressions.
+3. Supply or approve legal copy, testimonials, article selections, and resource files, then replace the centralized blocked-owner states.
 
 ## Active plan
 
@@ -65,5 +69,6 @@ TeachWithConnection.com is the dedicated educator-facing property. The homepage 
 - Completed: Mobile semantic navigation and responsive homepage/form layouts.
 - Completed: Pages Function/Resend/Turnstile inquiry implementation and accessible client states.
 - Completed: Durable project documentation and decision records.
-- Verified: Static production build, zero-diagnostic lint, Worker type check, generated SEO, internal links, mocked Function behavior, cross-viewport browser QA, and Lighthouse targets.
+- Completed: Schema-validated YAML content layer, content audit, placeholder inventory, safe placeholder rewrites, and centralized form response copy.
+- Verified: Content audit, static production build, zero-diagnostic lint, Worker type check, generated noindex/sitemap behavior, and 320px/390px/768px/1280px core-route browser checks.
 - Pending verification: reciprocal domain changes, Cloudflare binding/secrets, and production email receipt.

@@ -5,6 +5,7 @@ import PageHero from "../components/common/PageHero.astro";
 import Section from "../components/common/Section.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
+import { getPageCopy, text } from "../data/content";
 
 const proofTypeOrder = {
   publication: 1,
@@ -21,27 +22,28 @@ const publicationProof = (await getCollection("proof"))
       proofTypeOrder[first.data.type] - proofTypeOrder[second.data.type] ||
       first.data.title.localeCompare(second.data.title),
   );
+const copy = await getPageCopy("publications");
 ---
 
 <BaseLayout
-  title="Publications"
-  description="Publication proof for Katie Statman-Weil, including Trauma Responsive Strategies for Early Childhood and NAEYC writing."
+  title={text(copy, "seo.title")}
+  description={text(copy, "seo.description")}
 >
   <PageHero
-    eyebrow="Publications"
-    title="Books, articles, and publication proof"
-    description="Katie's publication record supports the professional development work with early childhood educators, organizations, and conference audiences."
+    eyebrow={text(copy, "hero.eyebrow")}
+    title={text(copy, "hero.title")}
+    description={text(copy, "hero.description")}
   >
     <div class="mt-8 flex flex-col gap-3 sm:flex-row">
-      <ButtonLink href="/contact/">Ask about professional development</ButtonLink>
-      <ButtonLink href="/about/" variant="secondary">About Katie</ButtonLink>
+      <ButtonLink href="/contact/">{text(copy, "hero.primaryCta")}</ButtonLink>
+      <ButtonLink href="/about/" variant="secondary">{text(copy, "hero.secondaryCta")}</ButtonLink>
     </div>
   </PageHero>
 
   <Section
-    eyebrow="Proof"
-    title="Source-backed publications and recognition"
-    description="These entries are seeded from the existing With Connection bookstore and linked to publisher or publication pages when available."
+    eyebrow={text(copy, "proof.eyebrow")}
+    title={text(copy, "proof.title")}
+    description={text(copy, "proof.description")}
   >
     <ul class="grid gap-4 md:grid-cols-2">
       {publicationProof.map(({ data }) => (
@@ -55,7 +57,7 @@ const publicationProof = (await getCollection("proof"))
           <p class="mt-3 leading-7 text-[#4f4a45]">{data.description}</p>
           {data.href && (
             <div class="mt-5">
-              <ButtonLink href={data.href} variant="text">Open publication link</ButtonLink>
+              <ButtonLink href={data.href} variant="text">{text(copy, "proof.linkCta")}</ButtonLink>
             </div>
           )}
         </li>

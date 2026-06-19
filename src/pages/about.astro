@@ -4,46 +4,39 @@ import InquiryCta from "../components/common/InquiryCta.astro";
 import PageHero from "../components/common/PageHero.astro";
 import Section from "../components/common/Section.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { educatorApproach } from "../data/service-pages";
+import { getPageCopy, list, text } from "../data/content";
+const copy = await getPageCopy("about");
 ---
 
 <BaseLayout
-  title="About Katie"
-  description="About Katie Statman-Weil, EdD, LCSW, early childhood educator, clinician, author, consultant, trainer, and speaker."
+  title={text(copy, "seo.title")}
+  description={text(copy, "seo.description")}
 >
   <PageHero
-    eyebrow="About"
-    title="Katie Statman-Weil, EdD, LCSW"
-    description="Katie is an educator, clinician, author, consultant, trainer, and speaker whose work helps adults understand children's behavior through connection, safety, regulation, and development."
+    eyebrow={text(copy, "hero.eyebrow")}
+    title={text(copy, "hero.title")}
+    description={text(copy, "hero.description")}
   >
     <div class="mt-8 flex flex-col gap-3 sm:flex-row">
-      <ButtonLink href="/contact/">Bring Katie to your organization</ButtonLink>
-      <ButtonLink href="/publications/" variant="secondary">View publications</ButtonLink>
+      <ButtonLink href="/contact/">{text(copy, "hero.primaryCta")}</ButtonLink>
+      <ButtonLink href="/publications/" variant="secondary">{text(copy, "hero.secondaryCta")}</ButtonLink>
     </div>
   </PageHero>
 
   <Section
-    eyebrow="Background"
-    title="A career spanning classrooms, clinical practice, higher education, and consultation"
+    eyebrow={text(copy, "background.eyebrow")}
+    title={text(copy, "background.title")}
   >
     <div class="grid gap-8 lg:grid-cols-[1fr_1fr]">
       <div class="space-y-5 leading-8 text-[#4f4a45]">
-        <p>
-          Katie brings experience as a preschool teacher, center director, early childhood college professor, early childhood mental health consultant, clinician, trainer, and consultant.
-        </p>
-        <p>
-          She is the founder of With Connection and co-founded Wild Lilac Child Development Community, a Portland nonprofit early childhood education and parent support organization.
-        </p>
-        <p>
-          Her professional development work stays educator-facing while drawing from attachment, trauma-responsive care, neurodivergence, regulation, child development, and relationship-centered behavior support.
-        </p>
+        {list(copy, "background.paragraphs").map((paragraph) => <p>{paragraph}</p>)}
       </div>
       <div class="rounded-md border border-[#e8e2dc] bg-white p-6">
         <h3 class="font-serif text-2xl leading-tight text-[#272727]">
-          Core philosophy
+          {text(copy, "philosophy.title")}
         </h3>
         <ul class="mt-6 grid gap-4">
-          {educatorApproach.map((item) => (
+          {list(copy, "philosophy.items").map((item) => (
             <li class="border-l-4 border-[#157c93] pl-4 leading-7 text-[#4f4a45]">
               {item}
             </li>
@@ -55,11 +48,11 @@ import { educatorApproach } from "../data/service-pages";
 
   <Section
     background="surface"
-    eyebrow="Credibility"
-    title="Author, NAEYC writer, and early childhood professional development leader"
-    description="The publications page highlights Katie's Redleaf Press book, NAEYC article, award recognition, and related publication proof."
+    eyebrow={text(copy, "credibility.eyebrow")}
+    title={text(copy, "credibility.title")}
+    description={text(copy, "credibility.description")}
   >
-    <ButtonLink href="/publications/" variant="secondary">Review publications</ButtonLink>
+    <ButtonLink href="/publications/" variant="secondary">{text(copy, "credibility.cta")}</ButtonLink>
   </Section>
 
   <InquiryCta />

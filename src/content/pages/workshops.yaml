@@ -1,0 +1,41 @@
+route: "/workshops/"
+status: approved
+copy:
+  strings:
+    seo.title: "Workshops"
+    seo.description: "Workshop topics for early childhood teams, including trauma, neurodivergence, behavior, regulation, PDA, and foster care or adoption."
+    structuredData.name: "Early Childhood Educator Workshops"
+    hero.eyebrow: "Workshops"
+    hero.title: "Practical training topics for educators and leaders"
+    hero.description: "Workshops help teaching teams understand what may be driving behavior, stress, resistance, and dysregulation so they can respond with more clarity and care."
+    hero.primaryCta: "Bring a workshop to your team"
+    hero.secondaryCta: "Professional development overview"
+    topics.eyebrow: "Workshop Topics"
+    topics.title: "Training themes grounded in real classroom complexity"
+    topics.description: "Topics can be shaped for early childhood organizations, schools, districts, and conference audiences."
+    lens.eyebrow: "Shared Lens"
+    lens.title: "The goal is not another rigid system"
+    lens.description: "Across topics, the work stays focused on understanding children and educators with equal care."
+    inquiry.title: "Bring a workshop to your team"
+  lists:
+    lens.items:
+      - "Connection and safety before compliance."
+      - "Behavior as communication, not defiance in isolation."
+      - "Regulation as shared adult-child work shaped by relationships and environments."
+      - "Neuroaffirming support that honors different nervous systems and communication needs."
+  cards:
+    topics.items:
+      - title: "Working with children who have experienced trauma"
+        description: "A training grounded in Katie's book that helps educators understand trauma's classroom impact and respond with safety, connection, and resilience in mind."
+      - title: "Understanding and responding to behavior"
+        description: "A relationship-based frame for looking beneath surface behaviors and responding with clarity, care, and practical classroom support."
+      - title: "Understanding neurodivergence and creating neuroaffirming classrooms"
+        description: "Support for recognizing diverse nervous systems, learning profiles, and communication patterns so children feel understood and included."
+      - title: "Understanding Pervasive Drive for Autonomy (PDA) in the classroom"
+        description: "A compassionate look at PDA-related needs and strategies that protect connection while reducing unnecessary power struggles."
+      - title: "The classroom environment as a regulator"
+        description: "A practical exploration of classroom environments as part of a child's regulation system, with attention to safety, belonging, and predictability."
+      - title: "Working with children who have experienced foster care and adoption"
+        description: "Insight into adoption and foster care experiences, with relationship-centered tools for trust, safety, and connection in the classroom."
+      - title: "Understanding the impact of neonatal drug exposure on development"
+        description: "A compassionate training on NOWS/NAS and classroom supports for children whose early development was shaped by neonatal drug exposure."

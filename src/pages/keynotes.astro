@@ -4,34 +4,35 @@ import InquiryCta from "../components/common/InquiryCta.astro";
 import PageHero from "../components/common/PageHero.astro";
 import Section from "../components/common/Section.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { keynoteFit, keynoteTakeaways } from "../data/service-pages";
 import { createServiceStructuredData } from "../data/site";
+import { getPageCopy, getSettingsCopy, list, text } from "../data/content";
 
-const description = "Early childhood keynote speaking rooted in classroom stories, relational practice, trauma-responsive care, and practical ideas.";
+const copy = await getPageCopy("keynotes");
+const description = text(copy, "seo.description");
 ---
 
 <BaseLayout
-  title="Keynotes"
+  title={text(copy, "seo.title")}
   description={description}
-  structuredData={createServiceStructuredData("Early Childhood Keynote Speaking", description, "/keynotes/")}
+  structuredData={createServiceStructuredData(text(copy, "structuredData.name"), description, "/keynotes/", text(await getSettingsCopy("site"), "schema.serviceAudience"))}
 >
   <PageHero
-    eyebrow="Keynotes"
-    title="Grounded speaking for early childhood audiences"
-    description="Katie's keynotes speak to educators' lived classroom experience while opening up new possibilities for connection, regulation, and relationship-centered practice."
+    eyebrow={text(copy, "hero.eyebrow")}
+    title={text(copy, "hero.title")}
+    description={text(copy, "hero.description")}
   >
     <div class="mt-8 flex flex-col gap-3 sm:flex-row">
-      <ButtonLink href="/contact/">Ask about a keynote</ButtonLink>
-      <ButtonLink href="/publications/" variant="secondary">Review publication proof</ButtonLink>
+      <ButtonLink href="/contact/">{text(copy, "hero.primaryCta")}</ButtonLink>
+      <ButtonLink href="/publications/" variant="secondary">{text(copy, "hero.secondaryCta")}</ButtonLink>
     </div>
   </PageHero>
 
   <Section
-    eyebrow="Audience Fit"
-    title="For conferences and organizations that want warmth, rigor, and classroom relevance"
+    eyebrow={text(copy, "audienceFit.eyebrow")}
+    title={text(copy, "audienceFit.title")}
   >
     <ul class="grid gap-4 md:grid-cols-3">
-      {keynoteFit.map((item) => (
+      {list(copy, "audienceFit.items").map((item) => (
         <li class="rounded-md border border-[#e8e2dc] bg-white p-5 leading-7 text-[#3c3834]">
           {item}
         </li>
@@ -41,12 +42,12 @@ const description = "Early childhood keynote speaking rooted in classroom storie
 
   <Section
     background="surface"
-    eyebrow="Audience Experience"
-    title="Stories from the field, practical ideas, and a more compassionate lens"
-    description="The keynote path should help planners understand Katie's voice and subject matter without turning the page into a generic speaker pitch."
+    eyebrow={text(copy, "audienceExperience.eyebrow")}
+    title={text(copy, "audienceExperience.title")}
+    description={text(copy, "audienceExperience.description")}
   >
     <ul class="grid gap-4 md:grid-cols-3">
-      {keynoteTakeaways.map((item) => (
+      {list(copy, "audienceExperience.items").map((item) => (
         <li class="border-l-4 border-[#157c93] bg-white px-5 py-4 leading-7 text-[#3c3834]">
           {item}
         </li>
@@ -54,5 +55,5 @@ const description = "Early childhood keynote speaking rooted in classroom storie
     </ul>
   </Section>
 
-  <InquiryCta title="Ask about a keynote" />
+  <InquiryCta title={text(copy, "inquiry.title")} />
 </BaseLayout>

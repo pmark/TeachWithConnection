@@ -1,0 +1,17 @@
+route: "/publications/"
+status: approved
+copy:
+  strings:
+    seo.title: "Publications"
+    seo.description: "Publication proof for Katie Statman-Weil, including Trauma Responsive Strategies for Early Childhood and NAEYC writing."
+    hero.eyebrow: "Publications"
+    hero.title: "Books, articles, and publication proof"
+    hero.description: "Katie's publication record supports the professional development work with early childhood educators, organizations, and conference audiences."
+    hero.primaryCta: "Ask about professional development"
+    hero.secondaryCta: "About Katie"
+    proof.eyebrow: "Proof"
+    proof.title: "Publications and recognition"
+    proof.description: "Explore Katie's book, NAEYC writing, and award recognition, with links to publisher and publication pages when available."
+    proof.linkCta: "Open publication link"
+  lists: {}
+  cards: {}

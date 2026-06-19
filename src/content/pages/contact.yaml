@@ -1,0 +1,14 @@
+route: "/contact/"
+status: approved
+copy:
+  strings:
+    seo.title: "Contact"
+    seo.description: "Inquiry form for professional development, workshops, keynotes, and consultation with Katie Statman-Weil and With Connection."
+    hero.eyebrow: "Inquiry"
+    hero.title: "Tell Katie what your team is facing"
+    hero.description: "Share your organization, audience, timeline, and the classroom or event needs you want to explore."
+    form.eyebrow: "Form"
+    form.title: "Inquiry form"
+    form.description: "Share the essentials below. The secure inquiry service validates your submission and sends it directly to Katie."
+  lists: {}
+  cards: {}

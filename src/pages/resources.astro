@@ -5,29 +5,31 @@ import Section from "../components/common/Section.astro";
 import ResourceCard from "../components/content/ResourceCard.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
+import { getPageCopy, text } from "../data/content";
 
 const resources = await getCollection("resources");
+const copy = await getPageCopy("resources");
 ---
 
 <BaseLayout
-  title="Resources"
-  description="Ungated early childhood resources from With Connection for educators and leaders."
+  title={text(copy, "seo.title")}
+  description={text(copy, "seo.description")}
   noindex={resources.length === 0}
 >
   <PageHero
-    eyebrow="Resources"
-    title="Ungated tools for educators"
-    description="Resources should be directly accessible without an email signup and should give teams a practical way into Katie's relationship-centered approach."
+    eyebrow={text(copy, "hero.eyebrow")}
+    title={text(copy, "hero.title")}
+    description={text(copy, "hero.description")}
   >
     <div class="mt-8">
-      <ButtonLink href="/contact/" variant="secondary">Ask about professional development</ButtonLink>
+      <ButtonLink href="/contact/" variant="secondary">{text(copy, "hero.cta")}</ButtonLink>
     </div>
   </PageHero>
 
   <Section
-    eyebrow="Library"
-    title={resources.length > 0 ? "Available resources" : "Resources are being prepared"}
-    description="Free resources will remain open-access. Direct file links will appear only when approved files are available."
+    eyebrow={text(copy, "library.eyebrow")}
+    title={resources.length > 0 ? text(copy, "library.availableTitle") : text(copy, "library.emptyTitle")}
+    description={text(copy, "library.description")}
   >
     {resources.length > 0 ? (
       <div class="grid gap-5 md:grid-cols-2">
@@ -37,16 +39,18 @@ const resources = await getCollection("resources");
             description={data.description}
             href={`/resources/${id.replace(/\.md$/, "")}/`}
             tags={data.tags}
+            cta={text(copy, "card.cta")}
+            topicsAriaLabel={text(copy, "card.topicsAriaLabel")}
           />
         ))}
       </div>
     ) : (
       <div class="rounded-md border border-[#e8e2dc] bg-white p-6">
         <p class="leading-7 text-[#4f4a45]">
-          No resource files are published yet. Free resources should remain directly accessible without email signup.
+          {text(copy, "library.empty")}
         </p>
         <div class="mt-6">
-          <ButtonLink href="/articles/" variant="secondary">Visit articles</ButtonLink>
+          <ButtonLink href="/articles/" variant="secondary">{text(copy, "library.emptyCta")}</ButtonLink>
         </div>
       </div>
     )}

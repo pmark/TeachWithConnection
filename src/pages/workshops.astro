@@ -4,37 +4,38 @@ import InquiryCta from "../components/common/InquiryCta.astro";
 import PageHero from "../components/common/PageHero.astro";
 import Section from "../components/common/Section.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { educatorApproach, workshopTopics } from "../data/service-pages";
 import { createServiceStructuredData } from "../data/site";
+import { cards, getPageCopy, getSettingsCopy, list, text } from "../data/content";
 
-const description = "Workshop topics for early childhood teams, including trauma, neurodivergence, behavior, regulation, PDA, and foster care or adoption.";
+const copy = await getPageCopy("workshops");
+const description = text(copy, "seo.description");
 ---
 
 <BaseLayout
-  title="Workshops"
+  title={text(copy, "seo.title")}
   description={description}
-  structuredData={createServiceStructuredData("Early Childhood Educator Workshops", description, "/workshops/")}
+  structuredData={createServiceStructuredData(text(copy, "structuredData.name"), description, "/workshops/", text(await getSettingsCopy("site"), "schema.serviceAudience"))}
 >
   <PageHero
-    eyebrow="Workshops"
-    title="Practical training topics for educators and leaders"
-    description="Workshops help teaching teams understand what may be driving behavior, stress, resistance, and dysregulation so they can respond with more clarity and care."
+    eyebrow={text(copy, "hero.eyebrow")}
+    title={text(copy, "hero.title")}
+    description={text(copy, "hero.description")}
   >
     <div class="mt-8 flex flex-col gap-3 sm:flex-row">
-      <ButtonLink href="/contact/">Bring a workshop to your team</ButtonLink>
+      <ButtonLink href="/contact/">{text(copy, "hero.primaryCta")}</ButtonLink>
       <ButtonLink href="/#professional-development" variant="secondary">
-        Professional development overview
+        {text(copy, "hero.secondaryCta")}
       </ButtonLink>
     </div>
   </PageHero>
 
   <Section
-    eyebrow="Workshop Topics"
-    title="Training themes grounded in real classroom complexity"
-    description="These source-backed topics can be shaped for early childhood organizations, schools, districts, and conference audiences."
+    eyebrow={text(copy, "topics.eyebrow")}
+    title={text(copy, "topics.title")}
+    description={text(copy, "topics.description")}
   >
     <ul class="grid gap-4 md:grid-cols-2">
-      {workshopTopics.map((topic) => (
+      {cards(copy, "topics.items").map((topic) => (
         <li class="rounded-md border border-[#e8e2dc] bg-white p-5">
           <h3 class="font-serif text-2xl leading-tight text-[#272727]">
             {topic.title}
@@ -47,12 +48,12 @@ const description = "Workshop topics for early childhood teams, including trauma
 
   <Section
     background="surface"
-    eyebrow="Shared Lens"
-    title="The goal is not another rigid system"
-    description="Across topics, the work stays focused on understanding children and educators with equal care."
+    eyebrow={text(copy, "lens.eyebrow")}
+    title={text(copy, "lens.title")}
+    description={text(copy, "lens.description")}
   >
     <ul class="grid gap-4 md:grid-cols-2">
-      {educatorApproach.map((item) => (
+      {list(copy, "lens.items").map((item) => (
         <li class="border-l-4 border-[#157c93] bg-white px-5 py-4 leading-7 text-[#3c3834]">
           {item}
         </li>
@@ -60,5 +61,5 @@ const description = "Workshop topics for early childhood teams, including trauma
     </ul>
   </Section>
 
-  <InquiryCta title="Bring a workshop to your team" />
+  <InquiryCta title={text(copy, "inquiry.title")} />
 </BaseLayout>
