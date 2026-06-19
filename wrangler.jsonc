@@ -2,15 +2,5 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "teachwithconnection",
   "compatibility_date": "2026-06-19",
-  "pages_build_output_dir": "./dist",
-  "ratelimits": [
-    {
-      "name": "INQUIRY_RATE_LIMITER",
-      "namespace_id": "1001",
-      "simple": {
-        "limit": 10,
-        "period": 60
-      }
-    }
-  ]
+  "pages_build_output_dir": "./dist"
 }
