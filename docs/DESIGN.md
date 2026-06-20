@@ -219,10 +219,10 @@ No new dependencies, no layout restructuring. Pure token and styling refinement.
 
 ### Phase 2 — layout and component refinements
 
-1. Introduce the asymmetric two-column section pattern for "Approach" (and optionally "About").
-2. Differentiate the credibility/stat block from generic content cards (left-accent rule instead of full border).
-3. Standardize spacing/radius/shadow rules across all card types per the documented scale.
-4. Evaluate and, if approved, add a single refined serif display font (new dependency — must be documented per `AGENTS.md` and `ARCHITECTURE.md` before adding).
+1. ✅ Introduce the asymmetric two-column section pattern for "Approach" — eyebrow/title now sit beside the body copy and testimonial placeholder instead of stacked above full-width. (Not applied to About — left for a future pass if desired.)
+2. ✅ Differentiate the credibility/stat block from generic content cards — swapped the full `border-line` box for a `border-l-4 border-brand` left-accent rule, matching `ProofList`'s established device.
+3. ✅ Standardize spacing/radius/shadow rules across card types — added `shadow-sm` to the inquiry form shell (the one deliberately "elevated" element) and moved its background to the warm `paper` token so it doesn't read as a plain white content card.
+4. **Not started — open decision.** Evaluate and, if approved, add a single refined serif display font (new dependency — must be documented per `AGENTS.md` and `ARCHITECTURE.md` before adding). Currently still on the Georgia/Times New Roman fallback stack from Phase 1.
 
 ### Phase 3 — optional hand-crafted accents (smallest scope, most discretionary)
 
