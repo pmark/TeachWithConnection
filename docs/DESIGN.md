@@ -74,23 +74,26 @@ the same three or four moves with no variation, which is the strongest
 
 ### Color palette with semantic roles
 
-**Corrected 2026-06-20.** The palette below was originally sampled from `public/images/logo-small-785x240.jpg` / `logo-large-1570x480.jpg` (a navy/steel-blue wordmark). The owner later identified that as the wrong logo — `public/images/wc-logo.jpg` (a teal mandala icon) is the correct mark, and the header now displays it alongside a "Teach With Connection" text wordmark. The palette has been resampled from the correct file. Exact pixel sampling (via Pillow) of `wc-logo.jpg`:
+**Corrected 2026-06-20, then finalized with owner-supplied exact values.** The palette was originally sampled from `public/images/logo-small-785x240.jpg` / `logo-large-1570x480.jpg` (a navy/steel-blue wordmark) — the owner identified that as the wrong logo. `public/images/wc-logo.jpg` (a teal mandala icon) is correct; the header now shows it alongside a "Teach With Connection" text wordmark. The owner then supplied exact hex values picked from the logo (superseding the agent's own pixel sampling, which landed within 1–2 hex steps of the same colors):
 
-- Dominant teal (background, ~47% of pixels): `#196b93`.
-- Mid steel-blue (petals): `#479bc0`.
-- Pale ice tint (center star): `#eaf8fe`.
-- Complementary clay: not present in the logo — computed as the true HSL complement of the dominant teal (hue 199.7° → complement ~19.7°), then tuned to a muted, non-neon terracotta (`#a85d39`) per the owner's request for "complementary colors that go nicely with the primary dominant color."
+- Dominant teal: `#196c94` (owner-specified; agent's independent sampling: `#196b93`).
+- Mid steel-blue (petals): `#489cc2` (owner-specified; agent's sampling: `#479bc0`).
+- Pale ice tint (center star): `#ebf8ff` (owner-specified; agent's sampling: `#eaf8fe`).
+- Footer deep teal-green: not in the logo — computed by shifting the dominant teal's hue ~12° toward green and dropping lightness to ~16%, giving a distinct, richer-than-charcoal dark band purpose-built for the global footer.
+- Complementary clay/rust: not in the logo — computed as the true HSL complement of the dominant teal (hue 199.5° → complement 19.5°), then tuned for "pops while staying earthy" (higher saturation/lightness than the first muted pass) rather than a muted terracotta or a neon orange.
 
-This gives the requested small 4-hue palette anchored on the teal Katie favors, plus the supporting neutrals:
+The small palette anchored on the teal Katie favors, plus the supporting neutrals:
 
 | Token | Hex | Role |
 |---|---|---|
-| `--color-brand` | `#196b93` — sampled dominant logo teal | Primary action, links, focus rings, identity accent. Contrast vs. white: 5.89:1 (passes AA normal text). |
-| `--color-brand-dark` | `#135372` — darkened for hover/active | Hover/active state for accent elements. Contrast vs. white: 8.37:1. |
-| `--color-brand-light` | `#479bc0` — sampled logo petal blue | Secondary/decorative accent — large text, non-text UI, or background tints only. Contrast vs. white: 3.13:1 (fails AA normal text; fine for large text/UI per WCAG 1.4.11). |
-| `--color-brand-pale` | `#eaf8fe` — sampled logo center ice tint | Decorative surface tint only (very low contrast, ~1.08:1) — never text. |
-| `--color-clay` | `#a85d39` — computed true complement of the dominant teal, tuned | Complementary warm accent for hand-crafted details (quote mark, divider). Contrast vs. white: 4.90:1 (passes AA normal text, so usable for small accent text too, not just decoration). |
-| `--color-charcoal` | `#272727` (existing) | Primary text, footer background |
+| `--color-brand` | `#196c94` — owner-specified dominant logo teal | Primary action, links, focus rings, identity accent. Contrast vs. white: ~5.9:1 (passes AA normal text). |
+| `--color-brand-dark` | `#135473` — darkened for hover/active | Hover/active state for accent elements; gradient end-stop on primary buttons/CTA band. |
+| `--color-brand-light` | `#489cc2` — owner-specified petal blue | Secondary/decorative accent — large text, non-text UI, or background tints only (fails AA normal text; fine for large text/UI per WCAG 1.4.11). |
+| `--color-brand-pale` | `#ebf8ff` — owner-specified center ice tint | Decorative surface tint only (very low contrast) — never text. |
+| `--color-footer` | `#103b41` — computed, hue-shifted darker/greener than `brand` | Global footer gradient start (top). Contrast vs. white: ~12:1. |
+| `--color-footer-dark` | `#0b292d` — darkened from `--color-footer` | Global footer gradient end (bottom). |
+| `--color-clay` | `#b8501e` — computed true complement of the dominant teal, tuned to pop | Complementary warm accent for hand-crafted details (quote mark, divider). Contrast vs. white: ~5:1 (passes AA, usable for small accent text, not just decoration). |
+| `--color-charcoal` | `#272727` (existing) | Primary text |
 | `--color-graphite` | `#3c3834` (existing) | Secondary text on light surfaces |
 | `--color-slate` | `#4f4a45` (existing) | Body copy on light surfaces |
 | `--color-stone` | `#5d5751` (existing) | Tertiary text, captions, helper text |
@@ -102,11 +105,21 @@ This gives the requested small 4-hue palette anchored on the teal Katie favors, 
 
 All tokens live in `src/styles/global.css`'s `@theme` block; every component consumes them by name (`bg-brand`, `text-clay`, etc.) rather than raw hex, so future palette corrections are a one-file change.
 
+### Gradients
+
+Added by request, scoped deliberately rather than applied everywhere:
+
+- **Footer: yes.** `bg-gradient-to-b from-footer to-footer-dark`. A full-bleed dark band is the lowest-risk, highest-payoff place for a subtle gradient — it replaces the previous flat `charcoal` and gives the footer a distinct, branded teal-green identity instead of generic dark gray.
+- **Inquiry CTA band: yes.** `bg-gradient-to-br from-brand to-brand-dark`. Same logic — a full-bleed solid color block gets noticeably richer with a diagonal gradient, low risk since there's no text-contrast concern (both stops are dark enough for white text).
+- **Primary buttons (`ButtonLink` primary variant and the inquiry form submit button): yes, subtly.** `bg-gradient-to-b from-brand to-brand-dark`, collapsing to flat `brand-dark` on hover (`hover:from-brand-dark hover:to-brand-dark`) — reads as a tactile "press" state rather than just a color swap.
+- **Header: no.** Recommended against. It's a thin, content-dense bar (logo, nav, CTA) where legibility matters most — a gradient there tends to read as busy/cheap rather than rich, and the header already has no background color to begin with (plain white), which is the right amount of restraint for a nav bar.
+- **Hero / section backgrounds: no.** The homepage hero already carries one deliberate texture (the Phase 3 paper-grain). Stacking a gradient on top would compete with that texture and the photo, and risks drifting toward the "gradient-heavy" look the brand doc's forbidden list explicitly warns against. One depth effect per section is the rule of thumb — don't layer texture + gradient + photo in the same space.
+
 Rules carried forward and reaffirmed:
 
 - Teal stays reserved for action, identity, and small proof markers — it should not also be the only decorative device on every list item.
-- All foreground/background pairs used for text must pass WCAG AA (verified above for `brand`, `brand-dark`, and `clay`; `brand-light`/`brand-pale` are decorative-only by design).
-- No purple/blue-gradient styling, no glossy SaaS treatments (forbidden list below, carried from prior doc).
+- All foreground/background pairs used for text must pass WCAG AA (verified above for `brand`, `brand-dark`, `footer`, and `clay`; `brand-light`/`brand-pale` are decorative-only by design).
+- Gradients stay subtle (two adjacent shades of the same hue, not multi-color) and are reserved for full-bleed bands and buttons — never applied to body text surfaces, cards, or content-bearing areas where they'd hurt readability.
 - The warm `paper`/`sand` neutrals are deliberately kept warm (not shifted toward the logo's cool blue) — mixing a warm neutral base with a cool teal accent is the intended contrast, consistent with "warm professional educator" brand direction. If this reads wrong in practice, revisit.
 
 ### Typography
@@ -236,7 +249,7 @@ No new dependencies, no layout restructuring. Pure token and styling refinement.
 - ✅ Added an optional `image` named slot to `PageHero` (backward-compatible — pages without it render unchanged).
 - ✅ About page hero now uses Katie's real existing photo (`katie-statman-weil-photo-2.webp`) instead of text-only.
 - ✅ New `ImagePlaceholder` component (`src/components/common/ImagePlaceholder.astro`): an honest, clearly-labeled dashed-border placeholder (not a fake photo) for pages where real photography doesn't exist yet. Wired into Workshops, Keynotes, Consultation, and the Bookstore book-cover slot.
-- ✅ New `PartnerLogoBar` component (`src/components/proof/PartnerLogoBar.astro`) and `public/images/partners/` directory, rendering the "Past Presentations and Partnerships" logo wall on the homepage Proof section — all 12 entries added by the owner directly (the agent is blocked from writing named third-party organizations into content; see `docs/STATUS.md`/`docs/INPUT.md` history). The agent found and fixed a copy-paste bug where all 12 files' title/description/image fields were stuck on "Discover" despite correct, distinct filenames and already-uploaded image assets per organization — corrected to match each file's own slug and asset.
+- ✅ New `PartnerLogoBar` component (`src/components/proof/PartnerLogoBar.astro`) and `public/images/partners/` directory, rendering the "Past Presentations and Partnerships" logo wall on the homepage Proof section — all 12 entries added by the owner directly (the agent is blocked from writing named third-party organizations into content; see `docs/STATUS.md`/`docs/INPUT.md` history). The agent found and fixed a copy-paste bug where all 12 files' title/description/image fields were stuck on "Discover" despite correct, distinct filenames and already-uploaded image assets per organization — corrected to match each file's own slug and asset. The owner subsequently refined `PartnerLogoBar`'s presentation: a borderless grid (vs. the agent's original hairline-bordered grid) with logos shown desaturated/dimmed at rest and full-color on hover — a nice restrained "as seen at" treatment.
 - ✅ **Header logo corrected.** `public/images/logo-small-785x240.jpg`/`logo-large-1570x480.jpg` (navy wordmark) were the wrong logo, supplied in error — the real mark is `public/images/wc-logo.jpg` (teal mandala icon). The header now shows the icon (circular crop) beside a "Teach With Connection" text wordmark (new `brand.wordmark` copy key in `src/content/settings/site.yaml`; "Teach With Connection" already existed as `schema.websiteName` in structured data, confirming it's the correct site-specific name distinct from the parent "With Connection" brand). The old navy logo files are still present in `public/images/` but unreferenced anywhere in the codebase — left in place pending the owner's explicit call on deleting them (flagged as out-of-scope to remove unilaterally).
 - The full color palette was corrected accordingly — see Color palette above.
 

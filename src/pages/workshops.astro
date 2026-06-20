@@ -1,6 +1,5 @@
 ---
 import ButtonLink from "../components/common/ButtonLink.astro";
-import ImagePlaceholder from "../components/common/ImagePlaceholder.astro";
 import InquiryCta from "../components/common/InquiryCta.astro";
 import PageHero from "../components/common/PageHero.astro";
 import Section from "../components/common/Section.astro";
@@ -28,7 +27,14 @@ const description = text(copy, "seo.description");
         {text(copy, "hero.secondaryCta")}
       </ButtonLink>
     </div>
-    <ImagePlaceholder slot="image" caption="Photo: a workshop session in progress" aspect="portrait" />
+    <img
+      slot="image"
+      src="/images/photos/kid-playing.jpg"
+      alt={text(copy, "hero.photoAlt")}
+      width="595"
+      height="492"
+      class="aspect-[3/4] w-full max-w-sm rounded-md object-cover"
+    />
   </PageHero>
 
   <Section

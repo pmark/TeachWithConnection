@@ -4,7 +4,7 @@ import { getSettingsCopy, text } from "../../data/content";
 const copy = await getSettingsCopy("site");
 ---
 
-<footer class="border-t border-line bg-charcoal text-white">
+<footer class="border-t border-line bg-gradient-to-b from-footer to-footer-dark text-white">
   <div class="mx-auto grid max-w-6xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-[1.2fr_2fr]">
     <div>
       <p class="font-serif text-3xl">{text(copy, "brand.name")}</p>
