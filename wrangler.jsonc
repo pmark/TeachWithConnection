@@ -4,15 +4,14 @@
   "compatibility_date": "2026-06-19",
   "pages_build_output_dir": "./dist",
 
-  "env": {
-    "production": {
-      "vars": {
-        "PUBLIC_TURNSTILE_SITE_KEY": "0x4AAAAAADn27kblj5x09AH8",
-        "INQUIRY_FROM_EMAIL": "hello@teachwithconnection.com",
-        "INQUIRY_TO_EMAIL": "katie@withconnectionpdx.com"
-      }
-    },
+  "vars": {
+    "PUBLIC_TURNSTILE_SITE_KEY": "0x4AAAAAADn27kblj5x09AH8",
+    "INQUIRY_FROM_EMAIL": "hello@teachwithconnection.com",
+    "INQUIRY_TO_EMAIL": "katie@withconnectionpdx.com",
+    "ALLOWED_ORIGINS": "https://teachwithconnection.com,https://www.teachwithconnection.com,https://teachwithconnection.pages.dev"
+  },
 
+  "env": {
     "preview": {
       "vars": {
         "PUBLIC_TURNSTILE_SITE_KEY": "1x00000000000000000000AA",
