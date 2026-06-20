@@ -3,7 +3,6 @@ import ButtonLink from "../components/common/ButtonLink.astro";
 import InquiryCta from "../components/common/InquiryCta.astro";
 import PageHero from "../components/common/PageHero.astro";
 import Section from "../components/common/Section.astro";
-import KeynoteHeroVisual from "../components/services/KeynoteHeroVisual.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { createServiceStructuredData } from "../data/site";
 import { getPageCopy, getSettingsCopy, list, text } from "../data/content";
@@ -26,10 +25,13 @@ const description = text(copy, "seo.description");
       <ButtonLink href="/contact/">{text(copy, "hero.primaryCta")}</ButtonLink>
       <ButtonLink href="/publications/" variant="secondary">{text(copy, "hero.secondaryCta")}</ButtonLink>
     </div>
-    <KeynoteHeroVisual
+    <img
       slot="image"
-      label={text(copy, "hero.visualLabel")}
-      items={list(copy, "hero.visualItems")}
+      src="/images/photos/katie-speaking.png"
+      alt={text(copy, "hero.photoAlt")}
+      width="1086"
+      height="1448"
+      class="aspect-[3/4] w-full max-w-sm rounded-md object-cover"
     />
   </PageHero>
 
