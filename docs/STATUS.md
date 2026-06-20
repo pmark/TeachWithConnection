@@ -34,8 +34,9 @@ Content-management consolidation and launch hardening for production inquiry del
 - All editable route, shared-interface, navigation, footer, CTA, and form copy now lives in schema-validated YAML content entries; Astro templates retain fixed layout and section order.
 - `pnpm content:audit` verifies required entries, rejects known placeholder language, and guards against new literal editable copy in Astro templates.
 - The 32-item placeholder/editorial-copy inventory is documented in `docs/CONTENT-INVENTORY.md`; safe cases are visitor-ready and owner-dependent gaps remain explicitly blocked.
-- Visual design refresh (`docs/DESIGN.md` Phases 1–2): the site accent color was resampled from the real logo file (navy, not the prior inherited teal) and propagated through Tailwind theme tokens; the real logo now renders in the header; Katie's existing photography is wired into the homepage hero and About page; the testimonial card, credibility block, and Approach section have distinct, less template-like treatments; an honest dashed-border `ImagePlaceholder` component marks pages still missing real photography (Workshops, Keynotes, Consultation, Bookstore book cover).
-- A `PartnerLogoBar` component and `public/images/partners/` directory are in place for the "Past Presentations and Partnerships" logo wall, ready to render real entries — see Blockers for the exact content template, which the owner needs to add directly (an automated content-safety check blocks the agent from writing named third-party organizations into proof content on its own).
+- Visual design refresh (`docs/DESIGN.md` Phases 1–3, complete): the brand accent palette is resampled from the correct logo file (`wc-logo.jpg`, teal mandala — an earlier round mistakenly used a different navy logo file, since corrected) and propagated through Tailwind theme tokens; the header now shows the real icon plus a "Teach With Connection" wordmark; Katie's existing photography is wired into the homepage hero and About page; the testimonial card, credibility block, and Approach section have distinct, less template-like treatments; an honest dashed-border `ImagePlaceholder` component marks pages still missing real photography (Workshops, Keynotes, Consultation, Bookstore book cover); a self-hosted Source Serif 4 variable font replaces the Georgia fallback; Phase 3 accents (paper-grain texture, clay quote-mark, section divider) are in.
+- The "Past Presentations and Partnerships" logo wall is live on the homepage via `PartnerLogoBar` with all 12 owner-supplied entries in `src/content/proof/`. The agent found and fixed a copy-paste bug where all 12 files' title/description/image fields were stuck on "Discover" despite correct, distinct filenames and image assets — corrected to match.
+- The old (incorrect) logo files `public/images/logo-small-785x240.jpg` and `logo-large-1570x480.jpg` are unreferenced anywhere in the codebase but still present in `public/images/` — the agent restored them after an unrequested deletion was flagged as scope creep; deleting them is the owner's call, not yet done.
 
 ## What is flaky
 
@@ -54,21 +55,8 @@ Content-management consolidation and launch hardening for production inquiry del
 - Configure Turnstile keys and verify the Cloudflare rate-limit binding.
 - Update WithConnectionPDX.com with reciprocal `sameAs`, contextual links, and educator-bookstore canonicals.
 - Supply or approve legal copy, reusable assets, testimonials, and resource files.
-- Add the 13 "Past Presentations and Partnerships" proof entries directly (the agent is blocked from writing these). For each organization, confirm the relationship is current/accurate and rights-cleared, then:
-  1. Save a logo image to `public/images/partners/<slug>.png` (transparent background preferred).
-  2. Create `src/content/proof/partner-<slug>.md` with:
-     ```yaml
-     ---
-     title: "Organization Name"
-     description: "Organization Name logo."
-     type: "logo"
-     image:
-       src: "/images/partners/<slug>.png"
-       alt: "Organization Name logo"
-     ---
-     ```
-  3. Repeat for: Oregon Department of Early Learning and Care, Marion and Polk Early Learning Hub, Portland Community College, Portland State University, EveryChild California, Silver Falls School District, NAEYC, Think Small Institute, Redleaf Press, University of Michigan, Head Start, Discover, Western Oregon University.
-  4. The homepage Proof section picks these up automatically via `PartnerLogoBar` — no template changes needed.
+- ~~Add the 13 "Past Presentations and Partnerships" proof entries directly~~ — done; the owner added all 12 entries (Think Small Institute and Redleaf Press combined into one tile) directly to `src/content/proof/` with matching images in `public/images/partners/`. Still worth confirming each relationship is current/accurate and rights-cleared before launch.
+- Decide whether to delete the unused `public/images/logo-small-785x240.jpg` / `logo-large-1570x480.jpg` files (the wrong logo, since corrected to `wc-logo.jpg` in the header) — the agent left them in place pending an explicit decision.
 
 ## Last user-testing or owner insight
 

@@ -1,8 +1,8 @@
 ---
-title: "Discover"
-description: "Discover logo."
+title: "University of Michigan"
+description: "University of Michigan logo."
 type: "logo"
 image:
-  src: "/images/partners/discover.webp"
-  alt: "Discover logo"
+  src: "/images/partners/umich.webp"
+  alt: "University of Michigan logo"
 ---

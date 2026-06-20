@@ -5,11 +5,12 @@
   --font-serif: "Source Serif 4 Variable", Georgia, "Times New Roman", serif;
   --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
-  /* Brand accent, sampled from the With Connection logo (public/images/logo-large-1570x480.jpg). */
-  --color-brand: #134069;
-  --color-brand-dark: #0e3151;
-  --color-brand-light: #5690b9;
-  --color-brand-pale: #b2cfe5;
+  /* Brand palette, sampled from the corrected With Connection mark (public/images/wc-logo.jpg). */
+  --color-brand: #196b93; /* dominant logo teal */
+  --color-brand-dark: #135372; /* hover/active */
+  --color-brand-light: #479bc0; /* logo petal blue — decorative/large text only, not body text */
+  --color-brand-pale: #eaf8fe; /* logo center ice tint — decorative surface tint only */
+  --color-clay: #a85d39; /* complementary warm accent (true HSL complement of the dominant teal, tuned) */
 
   /* Neutrals, carried forward from the existing site. */
   --color-charcoal: #272727;
@@ -36,4 +37,10 @@ body {
 ::selection {
   background: var(--color-brand);
   color: #ffffff;
+}
+
+/* Used sparingly: a single hand-crafted texture, not a decorative shape. Reserve for one section only. */
+.bg-grain {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch' result='t'/%3E%3CfeColorMatrix in='t' type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
 }

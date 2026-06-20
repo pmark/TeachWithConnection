@@ -74,39 +74,40 @@ the same three or four moves with no variation, which is the strongest
 
 ### Color palette with semantic roles
 
-**Open item — resolve before Phase 1 token work begins:** the coded accent (`#157c93`, a teal-green) does not match the actual logo's steel-blue/navy family (`public/images/logo-small-785x240.jpg`, `logo-large-1570x480.jpg`). The original brand doc inherited `#157c93` from the old Squarespace site's CSS, not from the vector mark. Before locking in palette tokens, sample the logo's exact hex values (approximately a light steel-blue `#7CA6CC`-range for the outer/inner rings and a deep navy `#1B4D74`-range for the bold ring and "Connection" wordmark — sample precisely from the source file rather than trusting this estimate) and decide one of:
+**Corrected 2026-06-20.** The palette below was originally sampled from `public/images/logo-small-785x240.jpg` / `logo-large-1570x480.jpg` (a navy/steel-blue wordmark). The owner later identified that as the wrong logo — `public/images/wc-logo.jpg` (a teal mandala icon) is the correct mark, and the header now displays it alongside a "Teach With Connection" text wordmark. The palette has been resampled from the correct file. Exact pixel sampling (via Pillow) of `wc-logo.jpg`:
 
-- **(a) Shift the site accent to match the logo's navy/steel-blue** — most brand-accurate, but touches every button, link, and focus-ring color in the codebase (larger Phase 1 scope).
-- **(b) Keep `#157c93` as the site's digital accent and treat the logo as a standalone mark** that doesn't have to color-match every UI element — lower implementation cost, but leaves a visible mismatch between the header mark and the rest of the page.
+- Dominant teal (background, ~47% of pixels): `#196b93`.
+- Mid steel-blue (petals): `#479bc0`.
+- Pale ice tint (center star): `#eaf8fe`.
+- Complementary clay: not present in the logo — computed as the true HSL complement of the dominant teal (hue 199.7° → complement ~19.7°), then tuned to a muted, non-neon terracotta (`#a85d39`) per the owner's request for "complementary colors that go nicely with the primary dominant color."
 
-This plan defaults to **(a)** since color accuracy to the real logo is a stronger trust signal than preserving an inherited guess, but it's flagged here for explicit sign-off since it's a wider-reaching change than originally scoped for "low-risk polish." The table below assumes (a) is approved; if (b) is chosen instead, keep the existing `#157c93`/`#0f6174` rows as-is and only add the logo to the header without recoloring anything else.
-
-Extend the existing two-color brand (teal/navy + charcoal) into a small, purposeful palette. Only the accent hue is being corrected to match the logo — everything else (charcoal, neutrals, structure) is unchanged.
+This gives the requested small 4-hue palette anchored on the teal Katie favors, plus the supporting neutrals:
 
 | Token | Hex | Role |
 |---|---|---|
-| `--color-brand-accent` | logo navy, sampled exactly from the source file (est. `#1B4D74` range) — replaces `#157c93` | Primary action, links, focus rings, identity accent |
-| `--color-brand-accent-dark` | a darker shade of the sampled navy for hover/active | Hover/active state for accent elements |
-| `--color-brand-accent-light` | logo's lighter steel-blue ring tone (est. `#7CA6CC` range) | Optional secondary accent — subtle backgrounds, decorative ring/line details only, never body text |
-| `--color-brand-charcoal` | `#272727` (existing) | Primary text, footer background |
-| `--color-brand-ink` | `#3c3834` (existing) | Secondary text on light surfaces |
-| `--color-brand-slate` | `#4f4a45` (existing) | Body copy on light surfaces |
-| `--color-brand-muted` | `#5d5751` (existing) | Tertiary text, captions, helper text |
-| `--color-surface-white` | `#ffffff` (existing) | Primary page background |
-| `--color-surface-warm` | `#f7f7f7` → refine to `#f6f2ec` (new, warm) | Section band background — replace the slightly cool `#f7f7f7` with a warm off-white for more "paper" feel |
-| `--color-surface-sand` | `#efe7da` (new, sparing) | Secondary surface for callouts/quotes only — not for every other section |
-| `--color-border-warm` | `#e8e2dc` (existing) | Card/section borders |
-| `--color-accent-clay` | `#b5562f` or similar terracotta (new, **sparing**) | Optional second accent for a single hand-crafted detail (e.g., pull-quote mark, one illustration line) — never used for primary CTAs |
+| `--color-brand` | `#196b93` — sampled dominant logo teal | Primary action, links, focus rings, identity accent. Contrast vs. white: 5.89:1 (passes AA normal text). |
+| `--color-brand-dark` | `#135372` — darkened for hover/active | Hover/active state for accent elements. Contrast vs. white: 8.37:1. |
+| `--color-brand-light` | `#479bc0` — sampled logo petal blue | Secondary/decorative accent — large text, non-text UI, or background tints only. Contrast vs. white: 3.13:1 (fails AA normal text; fine for large text/UI per WCAG 1.4.11). |
+| `--color-brand-pale` | `#eaf8fe` — sampled logo center ice tint | Decorative surface tint only (very low contrast, ~1.08:1) — never text. |
+| `--color-clay` | `#a85d39` — computed true complement of the dominant teal, tuned | Complementary warm accent for hand-crafted details (quote mark, divider). Contrast vs. white: 4.90:1 (passes AA normal text, so usable for small accent text too, not just decoration). |
+| `--color-charcoal` | `#272727` (existing) | Primary text, footer background |
+| `--color-graphite` | `#3c3834` (existing) | Secondary text on light surfaces |
+| `--color-slate` | `#4f4a45` (existing) | Body copy on light surfaces |
+| `--color-stone` | `#5d5751` (existing) | Tertiary text, captions, helper text |
+| `--color-paper` | `#f6f2ec` (existing, warm — independent of the logo's cool hue, kept for the "warm professional educator" surface feel) | Section band background |
+| `--color-sand` | `#efe7da` (existing, sparing) | Secondary surface for callouts/quotes only — not every section |
+| `--color-line` | `#e8e2dc` (existing) | Card/section borders |
 | `--color-success` | `#3c7a57` / `#edf8f1` (existing, form) | Form success state |
 | `--color-error` | `#9f1d1d` / `#fff1f1` (existing, form) | Form error state |
 
-Rules carried forward from the existing brand doc and reaffirmed:
+All tokens live in `src/styles/global.css`'s `@theme` block; every component consumes them by name (`bg-brand`, `text-clay`, etc.) rather than raw hex, so future palette corrections are a one-file change.
+
+Rules carried forward and reaffirmed:
 
 - Teal stays reserved for action, identity, and small proof markers — it should not also be the only decorative device on every list item.
-- All foreground/background pairs must pass WCAG AA.
+- All foreground/background pairs used for text must pass WCAG AA (verified above for `brand`, `brand-dark`, and `clay`; `brand-light`/`brand-pale` are decorative-only by design).
 - No purple/blue-gradient styling, no glossy SaaS treatments (forbidden list below, carried from prior doc).
-
-The terracotta/clay accent is optional and Phase 3 only — flag for owner approval before use since it's a net-new hue not present in the legacy brand.
+- The warm `paper`/`sand` neutrals are deliberately kept warm (not shifted toward the logo's cool blue) — mixing a warm neutral base with a cool teal accent is the intended contrast, consistent with "warm professional educator" brand direction. If this reads wrong in practice, revisit.
 
 ### Typography
 
@@ -226,21 +227,20 @@ No new dependencies, no layout restructuring. Pure token and styling refinement.
 
 ### Phase 3 — optional hand-crafted accents (smallest scope, most discretionary)
 
-1. One subtle background texture/paper-grain treatment on a single section (e.g., hero or testimonial section only) — CSS background only, no JS, no heavy image assets.
-2. Optional terracotta/clay secondary accent for the quote-mark graphic or a single divider — owner approval required since it's a net-new hue.
-3. Optional custom section-divider rule between major homepage sections.
+1. ✅ Subtle background texture: a low-opacity (`0.05` alpha) SVG `feTurbulence` grain pattern (`.bg-grain` in `global.css`), applied to exactly one section — the homepage hero. CSS background only, no JS, no image asset.
+2. ✅ Clay accent for the quote-mark graphic: `TestimonialQuote`'s decorative `"` glyph now uses `text-clay` instead of `text-brand-light`.
+3. ✅ Custom section-divider rule: a short (`w-14 h-1`) rounded `bg-clay` rule between the homepage Proof and Approach sections.
 
-### Supplemental — imagery rollout and partner logo wall (added out of sequence, by request)
-
-Done alongside Phase 2:
+### Supplemental — imagery rollout, header logo correction, and partner logo wall (added out of sequence, by request)
 
 - ✅ Added an optional `image` named slot to `PageHero` (backward-compatible — pages without it render unchanged).
 - ✅ About page hero now uses Katie's real existing photo (`katie-statman-weil-photo-2.webp`) instead of text-only.
 - ✅ New `ImagePlaceholder` component (`src/components/common/ImagePlaceholder.astro`): an honest, clearly-labeled dashed-border placeholder (not a fake photo) for pages where real photography doesn't exist yet. Wired into Workshops, Keynotes, Consultation, and the Bookstore book-cover slot.
-- ✅ New `PartnerLogoBar` component (`src/components/proof/PartnerLogoBar.astro`) and `public/images/partners/` directory, ready to render a "Past Presentations and Partnerships" logo wall on the homepage Proof section. Renders real `<img>` logos when supplied, falls back to a clean text wordmark otherwise. Currently renders nothing (conditional, no layout gap) because no entries exist yet.
-- **Blocked, owner action required:** the 13 partner organization names (from the owner-supplied screenshot of the legacy site's partner wall) could not be written into `src/content/proof/` by the agent — this environment's automated content-safety check blocks writing real third-party organization names into site content as asserted facts, regardless of phrasing, since it can't verify the instruction's provenance from inside the tool call. The exact file template and full org list are in `docs/STATUS.md` under Blockers and in `docs/INPUT.md` — the owner needs to add these content files (and the matching logo image files) directly.
+- ✅ New `PartnerLogoBar` component (`src/components/proof/PartnerLogoBar.astro`) and `public/images/partners/` directory, rendering the "Past Presentations and Partnerships" logo wall on the homepage Proof section — all 12 entries added by the owner directly (the agent is blocked from writing named third-party organizations into content; see `docs/STATUS.md`/`docs/INPUT.md` history). The agent found and fixed a copy-paste bug where all 12 files' title/description/image fields were stuck on "Discover" despite correct, distinct filenames and already-uploaded image assets per organization — corrected to match each file's own slug and asset.
+- ✅ **Header logo corrected.** `public/images/logo-small-785x240.jpg`/`logo-large-1570x480.jpg` (navy wordmark) were the wrong logo, supplied in error — the real mark is `public/images/wc-logo.jpg` (teal mandala icon). The header now shows the icon (circular crop) beside a "Teach With Connection" text wordmark (new `brand.wordmark` copy key in `src/content/settings/site.yaml`; "Teach With Connection" already existed as `schema.websiteName` in structured data, confirming it's the correct site-specific name distinct from the parent "With Connection" brand). The old navy logo files are still present in `public/images/` but unreferenced anywhere in the codebase — left in place pending the owner's explicit call on deleting them (flagged as out-of-scope to remove unilaterally).
+- The full color palette was corrected accordingly — see Color palette above.
 
-Each phase requires explicit approval before work begins. Phase 3 items are individually optional — approve none, some, or all.
+Each phase requires explicit approval before work begins. Phase 3 items are individually optional — approve none, some, or all. All three were approved and completed in this round.
 
 ---
 

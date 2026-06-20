@@ -1,6 +1,7 @@
 copy:
   strings:
     brand.name: "With Connection"
+    brand.wordmark: "Teach With Connection"
     brand.legalName: "With Connection, LLC"
     brand.person: "Katie Statman-Weil"
     brand.credentials: "EdD, LCSW"

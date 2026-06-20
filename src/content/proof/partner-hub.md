@@ -1,8 +1,8 @@
 ---
-title: "Discover"
-description: "Discover logo."
+title: "Marion and Polk Early Learning Hub"
+description: "Marion and Polk Early Learning Hub logo."
 type: "logo"
 image:
-  src: "/images/partners/discover.webp"
-  alt: "Discover logo"
+  src: "/images/partners/hub.webp"
+  alt: "Marion and Polk Early Learning Hub logo"
 ---

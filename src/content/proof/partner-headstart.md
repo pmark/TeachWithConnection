@@ -1,8 +1,8 @@
 ---
-title: "Discover"
-description: "Discover logo."
+title: "Head Start"
+description: "Head Start logo."
 type: "logo"
 image:
-  src: "/images/partners/discover.webp"
-  alt: "Discover logo"
+  src: "/images/partners/headstart.webp"
+  alt: "Head Start logo"
 ---

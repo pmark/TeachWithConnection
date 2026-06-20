@@ -12,13 +12,16 @@ const copy = await getSettingsCopy("site");
         href="/"
         class="flex min-w-0 flex-col items-start gap-1 text-charcoal focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand"
       >
-        <img
-          src="/images/logo-small-785x240.jpg"
-          alt={text(copy, "brand.name")}
-          width="785"
-          height="240"
-          class="h-9 w-auto sm:h-11"
-        />
+        <span class="flex items-center gap-2">
+          <img
+            src="/images/wc-logo.jpg"
+            alt=""
+            width="400"
+            height="400"
+            class="h-9 w-9 rounded-full object-cover sm:h-11 sm:w-11"
+          />
+          <span class="font-serif text-2xl leading-none sm:text-3xl">{text(copy, "brand.wordmark")}</span>
+        </span>
         <span class="block truncate text-xs text-stone sm:text-sm">
           {text(copy, "brand.person")}, {text(copy, "brand.credentials")}
         </span>

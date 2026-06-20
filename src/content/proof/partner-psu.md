@@ -1,8 +1,8 @@
 ---
-title: "Discover"
-description: "Discover logo."
+title: "Portland State University"
+description: "Portland State University logo."
 type: "logo"
 image:
-  src: "/images/partners/discover.webp"
-  alt: "Discover logo"
+  src: "/images/partners/psu.webp"
+  alt: "Portland State University logo"
 ---

@@ -1,8 +1,8 @@
 ---
-title: "Discover"
-description: "Discover logo."
+title: "Western Oregon University"
+description: "Western Oregon University logo."
 type: "logo"
 image:
-  src: "/images/partners/discover.webp"
-  alt: "Discover logo"
+  src: "/images/partners/wou.webp"
+  alt: "Western Oregon University logo"
 ---

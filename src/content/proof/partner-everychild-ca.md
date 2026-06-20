@@ -1,8 +1,8 @@
 ---
-title: "Discover"
-description: "Discover logo."
+title: "EveryChild California"
+description: "EveryChild California logo."
 type: "logo"
 image:
-  src: "/images/partners/discover.webp"
-  alt: "Discover logo"
+  src: "/images/partners/everychild-ca.webp"
+  alt: "EveryChild California logo"
 ---
