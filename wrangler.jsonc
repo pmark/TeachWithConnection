@@ -6,7 +6,7 @@
 
   "vars": {
     "PUBLIC_TURNSTILE_SITE_KEY": "0x4AAAAAADn27kblj5x09AH8",
-    "INQUIRY_FROM_EMAIL": "hello@teachwithconnection.com",
+    "INQUIRY_FROM_EMAIL": "hello@updates.teachwithconnection.com",
     "INQUIRY_TO_EMAIL": "katie@withconnectionpdx.com",
     "ALLOWED_ORIGINS": "https://teachwithconnection.com,https://www.teachwithconnection.com,https://teachwithconnection.pages.dev"
   },
@@ -15,7 +15,7 @@
     "preview": {
       "vars": {
         "PUBLIC_TURNSTILE_SITE_KEY": "1x00000000000000000000AA",
-        "INQUIRY_FROM_EMAIL": "staging@teachwithconnection.com",
+        "INQUIRY_FROM_EMAIL": "staging@updates.teachwithconnection.com",
         "INQUIRY_TO_EMAIL": "wayoutwest@gmail.com",
         "ALLOWED_ORIGINS": "https://staging.teachwithconnection.com,https://staging.teachwithconnection.pages.dev"
       }
