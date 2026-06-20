@@ -222,13 +222,23 @@ No new dependencies, no layout restructuring. Pure token and styling refinement.
 1. ✅ Introduce the asymmetric two-column section pattern for "Approach" — eyebrow/title now sit beside the body copy and testimonial placeholder instead of stacked above full-width. (Not applied to About — left for a future pass if desired.)
 2. ✅ Differentiate the credibility/stat block from generic content cards — swapped the full `border-line` box for a `border-l-4 border-brand` left-accent rule, matching `ProofList`'s established device.
 3. ✅ Standardize spacing/radius/shadow rules across card types — added `shadow-sm` to the inquiry form shell (the one deliberately "elevated" element) and moved its background to the warm `paper` token so it doesn't read as a plain white content card.
-4. **Not started — open decision.** Evaluate and, if approved, add a single refined serif display font (new dependency — must be documented per `AGENTS.md` and `ARCHITECTURE.md` before adding). Currently still on the Georgia/Times New Roman fallback stack from Phase 1.
+4. ✅ Added `@fontsource-variable/source-serif-4` (self-hosted, no CDN, no JS) and set `--font-serif: "Source Serif 4 Variable", Georgia, "Times New Roman", serif`. Documented as a new dependency in `docs/ARCHITECTURE.md`. Imported once via `@import "@fontsource-variable/source-serif-4/wght.css"` in `src/styles/global.css` — non-italic, full variable weight range (200–900), `font-display: swap`. Unicode-range subsetting means only the latin file actually downloads for this site's English content.
 
 ### Phase 3 — optional hand-crafted accents (smallest scope, most discretionary)
 
 1. One subtle background texture/paper-grain treatment on a single section (e.g., hero or testimonial section only) — CSS background only, no JS, no heavy image assets.
 2. Optional terracotta/clay secondary accent for the quote-mark graphic or a single divider — owner approval required since it's a net-new hue.
 3. Optional custom section-divider rule between major homepage sections.
+
+### Supplemental — imagery rollout and partner logo wall (added out of sequence, by request)
+
+Done alongside Phase 2:
+
+- ✅ Added an optional `image` named slot to `PageHero` (backward-compatible — pages without it render unchanged).
+- ✅ About page hero now uses Katie's real existing photo (`katie-statman-weil-photo-2.webp`) instead of text-only.
+- ✅ New `ImagePlaceholder` component (`src/components/common/ImagePlaceholder.astro`): an honest, clearly-labeled dashed-border placeholder (not a fake photo) for pages where real photography doesn't exist yet. Wired into Workshops, Keynotes, Consultation, and the Bookstore book-cover slot.
+- ✅ New `PartnerLogoBar` component (`src/components/proof/PartnerLogoBar.astro`) and `public/images/partners/` directory, ready to render a "Past Presentations and Partnerships" logo wall on the homepage Proof section. Renders real `<img>` logos when supplied, falls back to a clean text wordmark otherwise. Currently renders nothing (conditional, no layout gap) because no entries exist yet.
+- **Blocked, owner action required:** the 13 partner organization names (from the owner-supplied screenshot of the legacy site's partner wall) could not be written into `src/content/proof/` by the agent — this environment's automated content-safety check blocks writing real third-party organization names into site content as asserted facts, regardless of phrasing, since it can't verify the instruction's provenance from inside the tool call. The exact file template and full org list are in `docs/STATUS.md` under Blockers and in `docs/INPUT.md` — the owner needs to add these content files (and the matching logo image files) directly.
 
 Each phase requires explicit approval before work begins. Phase 3 items are individually optional — approve none, some, or all.
 

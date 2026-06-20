@@ -2,6 +2,7 @@
 import ButtonLink from "../components/common/ButtonLink.astro";
 import InquiryCta from "../components/common/InquiryCta.astro";
 import Section from "../components/common/Section.astro";
+import PartnerLogoBar from "../components/proof/PartnerLogoBar.astro";
 import ProofList from "../components/proof/ProofList.astro";
 import ServiceCard from "../components/services/ServiceCard.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
@@ -29,13 +30,21 @@ const proofTypeOrder = {
   logo: 5,
 };
 
-const proofItems = (await getCollection("proof"))
+const allProof = await getCollection("proof");
+
+const proofItems = allProof
+  .filter((entry) => entry.data.type !== "logo")
   .sort(
     (first, second) =>
       proofTypeOrder[first.data.type] - proofTypeOrder[second.data.type] ||
       first.data.title.localeCompare(second.data.title),
   )
   .map(({ data }) => data.description);
+
+const partnerLogos = allProof
+  .filter((entry) => entry.data.type === "logo")
+  .sort((first, second) => first.data.title.localeCompare(second.data.title))
+  .map(({ data }) => ({ title: data.title, image: data.image }));
 
 const homepageStructuredData = {
   "@type": "Service",
@@ -173,6 +182,16 @@ const homepageStructuredData = {
     title={text(copy, "proof.title")}
   >
     <ProofList items={proofItems} />
+    {partnerLogos.length > 0 && (
+      <div class="mt-10">
+        <h3 class="font-serif text-2xl leading-tight text-charcoal">
+          {text(copy, "proof.partnersTitle")}
+        </h3>
+        <div class="mt-5">
+          <PartnerLogoBar items={partnerLogos} />
+        </div>
+      </div>
+    )}
   </Section>
 
   <section class="py-16 sm:py-20">

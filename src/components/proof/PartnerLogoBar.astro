@@ -1,0 +1,27 @@
+---
+interface PartnerLogo {
+  title: string;
+  image?: {
+    src: string;
+    alt: string;
+  };
+}
+
+interface Props {
+  items: PartnerLogo[];
+}
+
+const { items } = Astro.props;
+---
+
+<ul class="grid grid-cols-2 gap-px overflow-hidden border border-line bg-line sm:grid-cols-3 lg:grid-cols-4">
+  {items.map((item) => (
+    <li class="flex min-h-20 items-center justify-center bg-white p-4 text-center">
+      {item.image ? (
+        <img src={item.image.src} alt={item.image.alt} class="max-h-9 w-auto" />
+      ) : (
+        <span class="text-sm font-semibold text-graphite">{item.title}</span>
+      )}
+    </li>
+  ))}
+</ul>

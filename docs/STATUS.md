@@ -34,6 +34,8 @@ Content-management consolidation and launch hardening for production inquiry del
 - All editable route, shared-interface, navigation, footer, CTA, and form copy now lives in schema-validated YAML content entries; Astro templates retain fixed layout and section order.
 - `pnpm content:audit` verifies required entries, rejects known placeholder language, and guards against new literal editable copy in Astro templates.
 - The 32-item placeholder/editorial-copy inventory is documented in `docs/CONTENT-INVENTORY.md`; safe cases are visitor-ready and owner-dependent gaps remain explicitly blocked.
+- Visual design refresh (`docs/DESIGN.md` Phases 1–2): the site accent color was resampled from the real logo file (navy, not the prior inherited teal) and propagated through Tailwind theme tokens; the real logo now renders in the header; Katie's existing photography is wired into the homepage hero and About page; the testimonial card, credibility block, and Approach section have distinct, less template-like treatments; an honest dashed-border `ImagePlaceholder` component marks pages still missing real photography (Workshops, Keynotes, Consultation, Bookstore book cover).
+- A `PartnerLogoBar` component and `public/images/partners/` directory are in place for the "Past Presentations and Partnerships" logo wall, ready to render real entries — see Blockers for the exact content template, which the owner needs to add directly (an automated content-safety check blocks the agent from writing named third-party organizations into proof content on its own).
 
 ## What is flaky
 
@@ -52,6 +54,21 @@ Content-management consolidation and launch hardening for production inquiry del
 - Configure Turnstile keys and verify the Cloudflare rate-limit binding.
 - Update WithConnectionPDX.com with reciprocal `sameAs`, contextual links, and educator-bookstore canonicals.
 - Supply or approve legal copy, reusable assets, testimonials, and resource files.
+- Add the 13 "Past Presentations and Partnerships" proof entries directly (the agent is blocked from writing these). For each organization, confirm the relationship is current/accurate and rights-cleared, then:
+  1. Save a logo image to `public/images/partners/<slug>.png` (transparent background preferred).
+  2. Create `src/content/proof/partner-<slug>.md` with:
+     ```yaml
+     ---
+     title: "Organization Name"
+     description: "Organization Name logo."
+     type: "logo"
+     image:
+       src: "/images/partners/<slug>.png"
+       alt: "Organization Name logo"
+     ---
+     ```
+  3. Repeat for: Oregon Department of Early Learning and Care, Marion and Polk Early Learning Hub, Portland Community College, Portland State University, EveryChild California, Silver Falls School District, NAEYC, Think Small Institute, Redleaf Press, University of Michigan, Head Start, Discover, Western Oregon University.
+  4. The homepage Proof section picks these up automatically via `PartnerLogoBar` — no template changes needed.
 
 ## Last user-testing or owner insight
 

@@ -1,5 +1,6 @@
 ---
 import ButtonLink from "../components/common/ButtonLink.astro";
+import ImagePlaceholder from "../components/common/ImagePlaceholder.astro";
 import InquiryCta from "../components/common/InquiryCta.astro";
 import PageHero from "../components/common/PageHero.astro";
 import Section from "../components/common/Section.astro";
@@ -38,7 +39,8 @@ const bookStructuredData = {
   <Section eyebrow={text(copy, "book.eyebrow")} title={text(copy, "book.title")}>
     <article class="grid gap-8 rounded-md border border-line bg-white p-5 sm:p-7 lg:grid-cols-[1fr_0.75fr] lg:items-start">
       <div>
-        <p class="text-sm font-semibold uppercase tracking-wide text-brand">{text(copy, "book.meta")}</p>
+        <ImagePlaceholder caption="Book cover: Trauma Responsive Strategies for Early Childhood" aspect="portrait" class="max-w-40 sm:max-w-48" />
+        <p class="mt-5 text-sm font-semibold uppercase tracking-wide text-brand">{text(copy, "book.meta")}</p>
         <p class="mt-4 leading-8 text-slate">{bookDescription}</p>
         <p class="mt-4 leading-8 text-slate">
           {text(copy, "book.secondaryDescription")}

@@ -9,6 +9,7 @@ copy:
     hero.description: "Katie is an educator, clinician, author, consultant, trainer, and speaker whose work helps adults understand children's behavior through connection, safety, regulation, and development."
     hero.primaryCta: "Bring Katie to your organization"
     hero.secondaryCta: "View publications"
+    hero.photoAlt: "Katie Statman-Weil, EdD, LCSW"
     background.eyebrow: "Background"
     background.title: "A career spanning classrooms, clinical practice, higher education, and consultation"
     philosophy.title: "Core philosophy"

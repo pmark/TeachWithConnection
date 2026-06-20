@@ -155,6 +155,7 @@ Current dependencies:
 - `tailwindcss`
 - `@tailwindcss/vite`
 - `@astrojs/sitemap`
+- `@fontsource-variable/source-serif-4` — self-hosted variable serif font for headings (`docs/DESIGN.md` Phase 2), replacing the Georgia system-font fallback. Imported once in `src/styles/global.css`; no JavaScript, no third-party font CDN request.
 
 Current development dependencies also include `wrangler` for Cloudflare configuration and local/deployment tooling.
 

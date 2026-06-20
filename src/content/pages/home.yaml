@@ -35,6 +35,7 @@ copy:
     services.description: "Choose the format that fits your educators, event, or ongoing classroom challenge."
     proof.eyebrow: "Proof"
     proof.title: "Credibility grounded in classrooms, clinical practice, and early childhood leadership"
+    proof.partnersTitle: "Past presentations and partnerships"
     approach.eyebrow: "Approach"
     approach.title: "Teachers feel heard, children feel supported, and relationships can thrive."
     approach.testimonialTitle: "What participants say"

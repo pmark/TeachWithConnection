@@ -1,5 +1,6 @@
 ---
 import ButtonLink from "../components/common/ButtonLink.astro";
+import ImagePlaceholder from "../components/common/ImagePlaceholder.astro";
 import InquiryCta from "../components/common/InquiryCta.astro";
 import PageHero from "../components/common/PageHero.astro";
 import Section from "../components/common/Section.astro";
@@ -25,6 +26,7 @@ const description = text(copy, "seo.description");
       <ButtonLink href="/contact/">{text(copy, "hero.primaryCta")}</ButtonLink>
       <ButtonLink href="/publications/" variant="secondary">{text(copy, "hero.secondaryCta")}</ButtonLink>
     </div>
+    <ImagePlaceholder slot="image" caption="Photo: Katie speaking at a conference keynote" aspect="portrait" />
   </PageHero>
 
   <Section

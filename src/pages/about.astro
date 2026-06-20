@@ -21,6 +21,14 @@ const copy = await getPageCopy("about");
       <ButtonLink href="/contact/">{text(copy, "hero.primaryCta")}</ButtonLink>
       <ButtonLink href="/publications/" variant="secondary">{text(copy, "hero.secondaryCta")}</ButtonLink>
     </div>
+    <img
+      slot="image"
+      src="/images/katie-statman-weil-photo-2.webp"
+      alt={text(copy, "hero.photoAlt")}
+      width="2500"
+      height="4022"
+      class="aspect-[3/4] w-full max-w-sm rounded-md object-cover"
+    />
   </PageHero>
 
   <Section
