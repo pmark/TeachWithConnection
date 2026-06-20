@@ -59,19 +59,19 @@ const homepageStructuredData = {
   description={text(copy, "seo.description")}
   structuredData={homepageStructuredData}
 >
-  <section class="bg-[#f7f7f7] py-12 sm:py-16 lg:py-20">
+  <section class="bg-paper py-12 sm:py-16 lg:py-20">
     <div class="mx-auto grid max-w-6xl gap-8 px-4 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-12">
       <div>
-        <p class="mb-4 text-sm font-semibold uppercase tracking-wide text-[#157c93]">
+        <p class="mb-4 text-sm font-semibold uppercase tracking-wide text-brand">
           {text(copy, "hero.eyebrow")}
         </p>
-        <h1 class="font-serif text-4xl leading-tight text-[#272727] sm:text-5xl lg:text-6xl">
+        <h1 class="font-serif text-4xl leading-tight text-charcoal sm:text-5xl lg:text-6xl">
           {text(copy, "hero.title")}
         </h1>
-        <p class="mt-6 max-w-2xl text-lg leading-8 text-[#4f4a45]">
+        <p class="mt-6 max-w-2xl text-lg leading-8 text-slate">
           {text(copy, "hero.description")}
         </p>
-        <p class="mt-4 max-w-2xl leading-7 text-[#4f4a45]">
+        <p class="mt-4 max-w-2xl leading-7 text-slate">
           {text(copy, "hero.secondaryDescription")}
         </p>
         <div class="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -80,29 +80,38 @@ const homepageStructuredData = {
         </div>
       </div>
 
-      <aside class="rounded-md border border-[#e8e2dc] bg-white p-6" aria-label={text(copy, "credibility.ariaLabel")}>
-        <p class="font-serif text-3xl leading-tight text-[#272727]">
-          {text(copy, "credibility.title")}
-        </p>
-        <dl class="mt-8 grid gap-5">
-          <div>
-            <dt class="text-sm font-semibold uppercase tracking-wide text-[#157c93]">{text(copy, "credibility.credentialsLabel")}</dt>
-            <dd class="mt-1 text-[#4f4a45]">{text(copy, "credibility.credentials")}</dd>
-          </div>
-          <div>
-            <dt class="text-sm font-semibold uppercase tracking-wide text-[#157c93]">{text(copy, "credibility.publicationLabel")}</dt>
-            <dd class="mt-1 text-[#4f4a45]">
-              {text(copy, "credibility.publicationPrefix")} <cite>{text(copy, "credibility.publication")}</cite>
-            </dd>
-          </div>
-          <div>
-            <dt class="text-sm font-semibold uppercase tracking-wide text-[#157c93]">{text(copy, "credibility.approachLabel")}</dt>
-            <dd class="mt-1 text-[#4f4a45]">
-              {text(copy, "credibility.approach")}
-            </dd>
-          </div>
-        </dl>
-      </aside>
+      <div>
+        <img
+          src="/images/katie-statman-weil-photo-1.jpg"
+          alt={text(copy, "credibility.photoAlt")}
+          width="1067"
+          height="1067"
+          class="aspect-square w-full max-w-xs rounded-md object-cover sm:max-w-sm"
+        />
+        <aside class="mt-6 rounded-md border border-line bg-white p-6" aria-label={text(copy, "credibility.ariaLabel")}>
+          <p class="font-serif text-3xl leading-tight text-charcoal">
+            {text(copy, "credibility.title")}
+          </p>
+          <dl class="mt-8 grid gap-5">
+            <div>
+              <dt class="text-xs font-semibold uppercase tracking-wide text-stone">{text(copy, "credibility.credentialsLabel")}</dt>
+              <dd class="mt-1 text-slate">{text(copy, "credibility.credentials")}</dd>
+            </div>
+            <div>
+              <dt class="text-xs font-semibold uppercase tracking-wide text-stone">{text(copy, "credibility.publicationLabel")}</dt>
+              <dd class="mt-1 text-slate">
+                {text(copy, "credibility.publicationPrefix")} <cite>{text(copy, "credibility.publication")}</cite>
+              </dd>
+            </div>
+            <div>
+              <dt class="text-xs font-semibold uppercase tracking-wide text-stone">{text(copy, "credibility.approachLabel")}</dt>
+              <dd class="mt-1 text-slate">
+                {text(copy, "credibility.approach")}
+              </dd>
+            </div>
+          </dl>
+        </aside>
+      </div>
     </div>
   </section>
 
@@ -114,29 +123,29 @@ const homepageStructuredData = {
     >
       <div class="grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
         <div>
-          <h3 class="font-serif text-2xl leading-tight text-[#272727]">{text(copy, "professionalDevelopment.fitTitle")}</h3>
+          <h3 class="font-serif text-2xl leading-tight text-charcoal">{text(copy, "professionalDevelopment.fitTitle")}</h3>
           <ul class="mt-5 grid gap-3">
             {list(copy, "professionalDevelopment.focus").map((item) => (
-              <li class="border-l-4 border-[#157c93] bg-[#f7f7f7] px-4 py-3 leading-7 text-[#3c3834]">
+              <li class="border-l-4 border-brand bg-paper px-4 py-3 leading-7 text-graphite">
                 {item}
               </li>
             ))}
           </ul>
         </div>
-        <div class="rounded-md border border-[#e8e2dc] bg-white p-5 sm:p-6">
-          <h3 class="font-serif text-2xl leading-tight text-[#272727]">{text(copy, "professionalDevelopment.outcomesTitle")}</h3>
+        <div class="rounded-md border border-line bg-white p-5 sm:p-6">
+          <h3 class="font-serif text-2xl leading-tight text-charcoal">{text(copy, "professionalDevelopment.outcomesTitle")}</h3>
           <ul class="mt-5 grid gap-4">
             {list(copy, "professionalDevelopment.outcomes").map((item) => (
-              <li class="leading-7 text-[#4f4a45]">{item}</li>
+              <li class="leading-7 text-slate">{item}</li>
             ))}
           </ul>
         </div>
       </div>
       <div class="mt-10">
-        <h3 class="font-serif text-2xl leading-tight text-[#272727]">{text(copy, "professionalDevelopment.formatsTitle")}</h3>
+        <h3 class="font-serif text-2xl leading-tight text-charcoal">{text(copy, "professionalDevelopment.formatsTitle")}</h3>
         <ul class="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {list(copy, "professionalDevelopment.formats").map((item) => (
-            <li class="rounded-md border border-[#e8e2dc] bg-white p-5 leading-7 text-[#3c3834]">{item}</li>
+            <li class="rounded-md border border-line bg-white p-5 leading-7 text-graphite">{item}</li>
           ))}
         </ul>
       </div>
@@ -171,19 +180,19 @@ const homepageStructuredData = {
     title={text(copy, "approach.title")}
   >
     <div class="grid gap-10 lg:grid-cols-[0.8fr_1fr] lg:items-start">
-      <aside class="rounded-md border border-[#e8e2dc] bg-white p-6">
-        <h3 class="font-serif text-2xl leading-tight text-[#272727]">
+      <aside class="rounded-md border border-line bg-white p-6">
+        <h3 class="font-serif text-2xl leading-tight text-charcoal">
           {text(copy, "approach.testimonialTitle")}
         </h3>
-        <p class="mt-4 leading-7 text-[#4f4a45]">
+        <p class="mt-4 leading-7 text-slate">
           {text(copy, "approach.testimonialEmpty")}
         </p>
       </aside>
       <div>
-        <p class="leading-8 text-[#4f4a45]">
+        <p class="leading-8 text-slate">
           {text(copy, "approach.description")}
         </p>
-        <p class="mt-5 leading-8 text-[#4f4a45]">
+        <p class="mt-5 leading-8 text-slate">
           {text(copy, "approach.secondaryDescription")}
         </p>
       </div>
@@ -196,8 +205,8 @@ const homepageStructuredData = {
     title={text(copy, "resources.title")}
     description={text(copy, "resources.description")}
   >
-    <div class="rounded-md border border-[#e8e2dc] bg-white p-6">
-      <p class="leading-7 text-[#4f4a45]">
+    <div class="rounded-md border border-line bg-white p-6">
+      <p class="leading-7 text-slate">
         {text(copy, "resources.empty")}
       </p>
       <div class="mt-6">

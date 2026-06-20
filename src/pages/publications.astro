@@ -47,14 +47,14 @@ const copy = await getPageCopy("publications");
   >
     <ul class="grid gap-4 md:grid-cols-2">
       {publicationProof.map(({ data }) => (
-        <li class="rounded-md border border-[#e8e2dc] bg-white p-5">
-          <p class="text-sm font-semibold uppercase tracking-wide text-[#157c93]">
+        <li class="rounded-md border border-line bg-white p-5">
+          <p class="text-sm font-semibold uppercase tracking-wide text-brand">
             {data.type}
           </p>
-          <h3 class="mt-3 font-serif text-2xl leading-tight text-[#272727]">
+          <h3 class="mt-3 font-serif text-2xl leading-tight text-charcoal">
             {data.title}
           </h3>
-          <p class="mt-3 leading-7 text-[#4f4a45]">{data.description}</p>
+          <p class="mt-3 leading-7 text-slate">{data.description}</p>
           {data.href && (
             <div class="mt-5">
               <ButtonLink href={data.href} variant="text">{text(copy, "proof.linkCta")}</ButtonLink>

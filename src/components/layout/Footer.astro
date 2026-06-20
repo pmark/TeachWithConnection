@@ -4,7 +4,7 @@ import { getSettingsCopy, text } from "../../data/content";
 const copy = await getSettingsCopy("site");
 ---
 
-<footer class="border-t border-[#e8e2dc] bg-[#272727] text-white">
+<footer class="border-t border-line bg-charcoal text-white">
   <div class="mx-auto grid max-w-6xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-[1.2fr_2fr]">
     <div>
       <p class="font-serif text-3xl">{text(copy, "brand.name")}</p>
@@ -23,7 +23,7 @@ const copy = await getSettingsCopy("site");
           <li>
             <a
               href={item.href}
-              class="inline-flex min-h-11 items-center px-1 text-[#f7f7f7] underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+              class="inline-flex min-h-11 items-center px-1 text-paper underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
             >
               {text(copy, item.labelKey)}
             </a>

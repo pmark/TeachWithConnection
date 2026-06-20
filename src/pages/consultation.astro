@@ -36,7 +36,7 @@ const description = text(copy, "seo.description");
   >
     <ul class="grid gap-4 md:grid-cols-2">
       {list(copy, "fit.items").map((item) => (
-        <li class="rounded-md border border-[#e8e2dc] bg-white p-5 leading-7 text-[#3c3834]">
+        <li class="rounded-md border border-line bg-white p-5 leading-7 text-graphite">
           {item}
         </li>
       ))}
@@ -50,16 +50,16 @@ const description = text(copy, "seo.description");
   >
     <div class="grid gap-8 lg:grid-cols-[1fr_1fr]">
       <div>
-        <p class="leading-8 text-[#4f4a45]">
+        <p class="leading-8 text-slate">
           {text(copy, "lens.description")}
         </p>
-        <p class="mt-5 leading-8 text-[#4f4a45]">
+        <p class="mt-5 leading-8 text-slate">
           {text(copy, "lens.secondaryDescription")}
         </p>
       </div>
       <ul class="grid gap-4">
         {list(copy, "lens.items").map((item) => (
-          <li class="border-l-4 border-[#157c93] bg-white px-5 py-4 leading-7 text-[#3c3834]">
+          <li class="border-l-4 border-brand bg-white px-5 py-4 leading-7 text-graphite">
             {item}
           </li>
         ))}

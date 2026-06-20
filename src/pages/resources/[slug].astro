@@ -42,20 +42,20 @@ const copy = await getPageCopy("resource-detail");
     {resource.data.tags.length > 0 && (
       <ul class="mb-8 flex flex-wrap gap-2" aria-label={text(copy, "topics.ariaLabel")}>
         {resource.data.tags.map((tag) => (
-          <li class="rounded-md bg-[#f7f7f7] px-3 py-1 text-sm text-[#5d5751]">
+          <li class="rounded-md bg-paper px-3 py-1 text-sm text-stone">
             {tag}
           </li>
         ))}
       </ul>
     )}
 
-    <div class="space-y-5 leading-8 text-[#4f4a45]">
+    <div class="space-y-5 leading-8 text-slate">
       <Content />
     </div>
 
     {!fileHref && (
-      <div class="mt-8 rounded-md border border-[#e8e2dc] bg-[#f7f7f7] p-5">
-        <p class="leading-7 text-[#4f4a45]">
+      <div class="mt-8 rounded-md border border-line bg-paper p-5">
+        <p class="leading-7 text-slate">
           {text(copy, "missingFile")}
         </p>
       </div>

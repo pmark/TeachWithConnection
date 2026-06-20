@@ -3,11 +3,28 @@
 @theme {
   --font-serif: Georgia, "Times New Roman", serif;
   --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  /* Brand accent, sampled from the With Connection logo (public/images/logo-large-1570x480.jpg). */
+  --color-brand: #134069;
+  --color-brand-dark: #0e3151;
+  --color-brand-light: #5690b9;
+  --color-brand-pale: #b2cfe5;
+
+  /* Neutrals, carried forward from the existing site. */
+  --color-charcoal: #272727;
+  --color-graphite: #3c3834;
+  --color-slate: #4f4a45;
+  --color-stone: #5d5751;
+
+  /* Warm surfaces. */
+  --color-paper: #f6f2ec;
+  --color-sand: #efe7da;
+  --color-line: #e8e2dc;
 }
 
 html {
   font-family: var(--font-sans);
-  color: #272727;
+  color: var(--color-charcoal);
   background: #ffffff;
 }
 
@@ -16,6 +33,6 @@ body {
 }
 
 ::selection {
-  background: #157c93;
+  background: var(--color-brand);
   color: #ffffff;
 }
