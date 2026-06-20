@@ -16,7 +16,7 @@ const { items } = Astro.props;
 
 <ul class="grid grid-cols-2 gap-x-4 gap-y-3 sm:grid-cols-3 lg:grid-cols-4">
   {items.map((item) => (
-    <li class="flex min-h-14 items-center justify-center px-2 py-1 text-center">
+    <li class="flex min-h-14 items-center justify-center px-2 py-1 text-center dark:rounded-md dark:bg-white/90 dark:p-2">
       {item.image ? (
         <img
           src={item.image.src}
@@ -24,7 +24,7 @@ const { items } = Astro.props;
           class="partner-logo max-h-16 max-w-full object-contain"
         />
       ) : (
-        <span class="text-sm font-semibold text-graphite">{item.title}</span>
+        <span class="text-sm font-semibold text-graphite dark:text-[#3c3834]">{item.title}</span>
       )}
     </li>
   ))}

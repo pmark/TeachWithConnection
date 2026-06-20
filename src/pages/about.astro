@@ -39,13 +39,13 @@ const copy = await getPageCopy("about");
       <div class="space-y-5 leading-8 text-slate">
         {list(copy, "background.paragraphs").map((paragraph) => <p>{paragraph}</p>)}
       </div>
-      <div class="rounded-md border border-line bg-white p-6">
+      <div class="rounded-md border border-line bg-surface p-6">
         <h3 class="font-serif text-2xl leading-tight text-charcoal">
           {text(copy, "philosophy.title")}
         </h3>
         <ul class="mt-6 grid gap-4">
           {list(copy, "philosophy.items").map((item) => (
-            <li class="border-l-4 border-brand pl-4 leading-7 text-slate">
+            <li class="border-l-4 border-brand-text pl-4 leading-7 text-slate">
               {item}
             </li>
           ))}

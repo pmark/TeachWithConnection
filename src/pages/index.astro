@@ -71,7 +71,7 @@ const homepageStructuredData = {
   <section class="bg-grain bg-paper py-12 sm:py-16 lg:py-20">
     <div class="mx-auto grid max-w-6xl gap-8 px-4 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-12">
       <div>
-        <p class="mb-4 text-sm font-semibold uppercase tracking-wide text-brand">
+        <p class="mb-4 text-sm font-semibold uppercase tracking-wide text-brand-text">
           {text(copy, "hero.eyebrow")}
         </p>
         <h1 class="font-serif text-4xl leading-tight text-charcoal sm:text-5xl lg:text-6xl">
@@ -97,7 +97,7 @@ const homepageStructuredData = {
           height="1067"
           class="aspect-square w-full max-w-xs rounded-md object-cover sm:max-w-sm"
         />
-        <aside class="mt-6 border-l-4 border-brand bg-white p-6" aria-label={text(copy, "credibility.ariaLabel")}>
+        <aside class="mt-6 border-l-4 border-brand-text bg-surface p-6" aria-label={text(copy, "credibility.ariaLabel")}>
           <p class="font-serif text-3xl leading-tight text-charcoal">
             {text(copy, "credibility.title")}
           </p>
@@ -135,13 +135,13 @@ const homepageStructuredData = {
           <h3 class="font-serif text-2xl leading-tight text-charcoal">{text(copy, "professionalDevelopment.fitTitle")}</h3>
           <ul class="mt-5 grid gap-3">
             {list(copy, "professionalDevelopment.focus").map((item) => (
-              <li class="border-l-4 border-brand bg-paper px-4 py-3 leading-7 text-graphite">
+              <li class="border-l-4 border-brand-text bg-paper px-4 py-3 leading-7 text-graphite">
                 {item}
               </li>
             ))}
           </ul>
         </div>
-        <div class="rounded-md border border-line bg-white p-5 sm:p-6">
+        <div class="rounded-md border border-line bg-surface p-5 sm:p-6">
           <h3 class="font-serif text-2xl leading-tight text-charcoal">{text(copy, "professionalDevelopment.outcomesTitle")}</h3>
           <ul class="mt-5 grid gap-4">
             {list(copy, "professionalDevelopment.outcomes").map((item) => (
@@ -154,7 +154,7 @@ const homepageStructuredData = {
         <h3 class="font-serif text-2xl leading-tight text-charcoal">{text(copy, "professionalDevelopment.formatsTitle")}</h3>
         <ul class="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {list(copy, "professionalDevelopment.formats").map((item) => (
-            <li class="rounded-md border border-line bg-white p-5 leading-7 text-graphite">{item}</li>
+            <li class="rounded-md border border-line bg-surface p-5 leading-7 text-graphite">{item}</li>
           ))}
         </ul>
       </div>
@@ -202,7 +202,7 @@ const homepageStructuredData = {
     <div class="mx-auto max-w-6xl px-4 sm:px-6">
       <div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
         <div>
-          <p class="mb-3 text-sm font-semibold uppercase tracking-wide text-brand">
+          <p class="mb-3 text-sm font-semibold uppercase tracking-wide text-brand-text">
             {text(copy, "approach.eyebrow")}
           </p>
           <h2 class="font-serif text-3xl leading-tight text-charcoal sm:text-4xl">
@@ -235,7 +235,7 @@ const homepageStructuredData = {
     title={text(copy, "resources.title")}
     description={text(copy, "resources.description")}
   >
-    <div class="rounded-md border border-line bg-white p-6">
+    <div class="rounded-md border border-line bg-surface p-6">
       <p class="leading-7 text-slate">
         {text(copy, "resources.empty")}
       </p>

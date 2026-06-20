@@ -1,5 +1,5 @@
 ---
-import { footerNavigation, site } from "../../data/site";
+import { footerNavigation, site, socialLinks } from "../../data/site";
 import { getSettingsCopy, text } from "../../data/content";
 const copy = await getSettingsCopy("site");
 ---
@@ -23,7 +23,7 @@ const copy = await getSettingsCopy("site");
           <li>
             <a
               href={item.href}
-              class="inline-flex min-h-11 items-center px-1 text-paper underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+              class="inline-flex min-h-11 items-center px-1 text-[#f6f2ec] underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
             >
               {text(copy, item.labelKey)}
             </a>
@@ -34,7 +34,26 @@ const copy = await getSettingsCopy("site");
   </div>
   <div class="border-t border-white/10">
     <div class="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-5 text-sm text-[#ddd6cf] sm:px-6 sm:flex-row sm:items-center sm:justify-between">
-      <p>&copy; {new Date().getFullYear()} {text(copy, "brand.legalName")}</p>
+      <div class="flex flex-wrap items-center gap-x-3">
+        <p>&copy; {new Date().getFullYear()} {text(copy, "brand.legalName")}</p>
+        <nav aria-label={text(copy, "footer.socialNavigationAriaLabel")}>
+          <ul class="flex items-center gap-1">
+            {socialLinks.map((item) => (
+              <li>
+                <a
+                  href={item.href}
+                  class="inline-flex size-11 items-center justify-center rounded-full hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                  target="_blank"
+                  rel="me noopener noreferrer"
+                  aria-label={text(copy, item.labelKey)}
+                >
+                  <img src={item.icon} alt="" width="86" height="86" class="size-6" />
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </div>
       <p>{text(copy, "footer.closing")}</p>
     </div>
   </div>

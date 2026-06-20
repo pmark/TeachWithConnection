@@ -1,39 +1,76 @@
 @import "tailwindcss";
 @import "@fontsource-variable/source-serif-4/wght.css";
 
+/* Class-based dark mode: an explicit .dark on <html> wins; otherwise see the
+   theme-init script in BaseLayout, which seeds it from localStorage or
+   prefers-color-scheme before first paint. */
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --font-serif: "Source Serif 4 Variable", Georgia, "Times New Roman", serif;
   --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
-  /* Brand palette, exact values from the With Connection mark (public/images/wc-logo.jpg), dark to light. */
+  /* Brand fill colors — self-contained colored surfaces (buttons, CTA band, footer).
+     These stay the same in light and dark mode: they always carry white text on top,
+     so they don't need to adapt to the surrounding page background. */
   --color-brand: #196c94; /* dominant logo teal */
   --color-brand-dark: #135473; /* hover/active, darkened from dominant */
-  --color-brand-light: #489cc2; /* logo petal blue — decorative/large text only, not body text */
-  --color-brand-pale: #ebf8ff; /* logo center ice tint — decorative surface tint only */
+  --color-brand-light: #489cc2; /* logo petal blue — decorative, self-contained surfaces only */
+  --color-brand-pale: #ebf8ff; /* logo center ice tint — decorative, self-contained surfaces only */
 
-  /* Footer band: a deeper, more blue-green teal than the dominant brand color, for the global footer gradient. */
+  /* Brand text/outline colors — used where teal sits directly on the page background
+     (eyebrows, links, focus rings, left-accent rules). These DO need a lighter
+     dark-mode value, since a dark-bg-friendly teal would be too pale as a button fill,
+     and the button-fill teal above is too dark to read as text on a dark page background. */
+  --color-brand-text: #196c94;
+
+  /* Footer band: a deeper, more blue-green teal than the dominant brand color. The
+     footer is always a dark band regardless of site theme, so this never changes. */
   --color-footer: #103b41;
   --color-footer-dark: #0b292d;
 
-  /* Complementary warm accent: true HSL complement of the dominant teal, tuned to pop while staying earthy (terracotta/rust, not neon orange). */
+  /* Complementary warm accent (fill role — divider rule, KeynoteHeroVisual accent bar). */
   --color-clay: #b8501e;
+  /* Same accent, text role (TestimonialQuote's decorative quote mark, sits on --color-sand). */
+  --color-clay-text: #b8501e;
 
-  /* Neutrals, carried forward from the existing site. */
+  /* Neutrals. */
   --color-charcoal: #272727;
   --color-graphite: #3c3834;
   --color-slate: #4f4a45;
   --color-stone: #5d5751;
 
-  /* Warm surfaces. */
-  --color-paper: #f6f2ec;
-  --color-sand: #efe7da;
-  --color-line: #e8e2dc;
+  /* Surfaces. */
+  --color-surface: #ffffff; /* cards, header, page body — was raw bg-white */
+  --color-paper: #f6f2ec; /* section bands */
+  --color-sand: #efe7da; /* testimonial/callout cards */
+  --color-line: #e8e2dc; /* borders */
+}
+
+.dark {
+  --color-brand-text: #3ba9de;
+  --color-clay-text: #e08052;
+
+  --color-charcoal: #f1eee9;
+  --color-graphite: #d9d3cb;
+  --color-slate: #bdb6ac;
+  --color-stone: #9c948a;
+
+  --color-surface: #1f1c18;
+  --color-paper: #15130f;
+  --color-sand: #262019;
+  --color-line: #544a3f;
 }
 
 html {
   font-family: var(--font-sans);
   color: var(--color-charcoal);
-  background: #ffffff;
+  background: var(--color-surface);
+  color-scheme: light dark;
+}
+
+html.dark {
+  color-scheme: dark;
 }
 
 body {

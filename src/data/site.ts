@@ -20,6 +20,19 @@ export const footerNavigation = [
   { labelKey: "nav.privacy", href: "/privacy/" },
 ];
 
+export const socialLinks = [
+  {
+    labelKey: "footer.facebookLabel",
+    href: "https://www.facebook.com/ParentingwithconnectionPDX/",
+    icon: "/social/fb.png",
+  },
+  {
+    labelKey: "footer.instagramLabel",
+    href: "https://www.instagram.com/with_connection/",
+    icon: "/social/instagram.png",
+  },
+];
+
 export function createServiceStructuredData(name: string, description: string, path: string, audienceType: string) {
   return {
     "@type": "Service",

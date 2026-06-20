@@ -13,7 +13,7 @@ interface Props {
 const { title, description, href, tags = [], cta, topicsAriaLabel } = Astro.props;
 ---
 
-<article class="rounded-md border border-line bg-white p-6">
+<article class="rounded-md border border-line bg-surface p-6">
   <h3 class="font-serif text-2xl text-charcoal">{title}</h3>
   <p class="mt-3 leading-7 text-slate">{description}</p>
   {tags.length > 0 && (

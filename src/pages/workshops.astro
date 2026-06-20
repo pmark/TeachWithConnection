@@ -44,7 +44,7 @@ const description = text(copy, "seo.description");
   >
     <ul class="grid gap-4 md:grid-cols-2">
       {cards(copy, "topics.items").map((topic) => (
-        <li class="rounded-md border border-line bg-white p-5">
+        <li class="rounded-md border border-line bg-surface p-5">
           <h3 class="font-serif text-2xl leading-tight text-charcoal">
             {topic.title}
           </h3>
@@ -62,7 +62,7 @@ const description = text(copy, "seo.description");
   >
     <ul class="grid gap-4 md:grid-cols-2">
       {list(copy, "lens.items").map((item) => (
-        <li class="border-l-4 border-brand bg-white px-5 py-4 leading-7 text-graphite">
+        <li class="border-l-4 border-brand-text bg-surface px-5 py-4 leading-7 text-graphite">
           {item}
         </li>
       ))}

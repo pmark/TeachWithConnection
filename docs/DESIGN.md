@@ -255,6 +255,15 @@ No new dependencies, no layout restructuring. Pure token and styling refinement.
 
 Each phase requires explicit approval before work begins. Phase 3 items are individually optional — approve none, some, or all. All three were approved and completed in this round.
 
+### Supplemental — dark mode (added out of sequence, by request)
+
+- ✅ Class-based dark mode (`@custom-variant dark` in `global.css`), toggled by a header button and persisted to `localStorage`, with a blocking inline init script in `BaseLayout.astro` to avoid a flash of the wrong theme on load.
+- ✅ Every semantic color token audited and split into two roles — see `docs/CONVENTIONS.md`'s new "Dark mode" section for the full rule. In short: fill-role tokens (buttons, CTA band, footer) stay constant across themes; text/surface-role tokens (`-text` suffixed variants, neutrals, `surface`/`paper`/`sand`/`line`) invert.
+- ✅ All raw `bg-white` usage replaced with the new `--color-surface` token across every component and page.
+- ✅ `PartnerLogoBar` logos get a dark-mode-only light backdrop chip, since the underlying logo files weren't designed for dark backgrounds and some would be illegible otherwise.
+- ✅ Found and fixed a real contrast bug during implementation: the footer's nav links used the flipping `--color-paper` token for text color, which inverted to a *dark* value in dark mode against the (always-dark) footer — nearly illegible. Fixed to a literal, theme-stable hex value, matching the rule above.
+- Verified in both themes across the homepage, About, Contact/inquiry form, and the partner logo wall, at both mobile and desktop widths.
+
 ---
 
 ## 6. Acceptance criteria

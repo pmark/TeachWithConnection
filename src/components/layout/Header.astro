@@ -1,16 +1,17 @@
 ---
 import ButtonLink from "../common/ButtonLink.astro";
+import ThemeToggleButton from "../common/ThemeToggleButton.astro";
 import { primaryNavigation } from "../../data/site";
 import { getSettingsCopy, text } from "../../data/content";
 const copy = await getSettingsCopy("site");
 ---
 
-<header class="border-b border-line bg-white">
-  <div class="mx-auto max-w-6xl px-4 py-4 sm:px-6 lg:flex lg:items-center lg:justify-between lg:gap-8 lg:py-5">
+<header class="border-b border-line bg-surface">
+  <div class="mx-auto max-w-6xl px-4 py-4 sm:px-6 lg:flex lg:items-center lg:justify-between lg:gap-4 lg:py-5">
     <div class="flex items-center justify-between gap-4">
       <a
         href="/"
-        class="flex min-w-0 flex-col items-start gap-1 text-charcoal focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand"
+        class="flex min-w-0 flex-col items-start gap-1 text-charcoal focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-text"
       >
         <span class="flex items-center gap-2">
           <img
@@ -20,19 +21,20 @@ const copy = await getSettingsCopy("site");
             height="400"
             class="h-9 w-9 rounded-full object-cover sm:h-11 sm:w-11"
           />
-          <span class="font-serif text-2xl leading-none sm:text-3xl">{text(copy, "brand.wordmark")}</span>
+          <span class="whitespace-nowrap font-serif text-2xl leading-none sm:text-3xl lg:text-2xl 2xl:text-3xl">{text(copy, "brand.wordmark")}</span>
         </span>
         <span class="block truncate text-xs text-stone sm:text-sm">
           {text(copy, "brand.person")}, {text(copy, "brand.credentials")}
         </span>
       </a>
-      <div class="lg:hidden">
+      <div class="flex items-center gap-2 lg:hidden">
+        <ThemeToggleButton label={text(copy, "header.themeToggle")} />
         <ButtonLink href="/contact/">{text(copy, "header.inquire")}</ButtonLink>
       </div>
     </div>
 
     <details class="group mt-4 border-t border-line pt-3 lg:hidden">
-      <summary class="flex min-h-11 cursor-pointer list-none items-center justify-between rounded-md px-2 font-semibold text-charcoal focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand [&::-webkit-details-marker]:hidden">
+      <summary class="flex min-h-11 cursor-pointer list-none items-center justify-between rounded-md px-2 font-semibold text-charcoal focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-text [&::-webkit-details-marker]:hidden">
         {text(copy, "header.menu")}
         <span aria-hidden="true" class="text-xl group-open:rotate-45">+</span>
       </summary>
@@ -42,7 +44,7 @@ const copy = await getSettingsCopy("site");
             <li>
               <a
                 href={item.href}
-                class="flex min-h-11 items-center rounded-md px-2 underline-offset-4 hover:bg-paper hover:text-brand hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+                class="flex min-h-11 items-center rounded-md px-2 underline-offset-4 hover:bg-paper hover:text-brand-text hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-text"
               >
                 {text(copy, item.labelKey)}
               </a>
@@ -52,14 +54,14 @@ const copy = await getSettingsCopy("site");
       </nav>
     </details>
 
-    <div class="hidden items-center gap-5 lg:flex">
+    <div class="hidden items-center gap-4 lg:flex">
       <nav aria-label={text(copy, "header.primaryNavigationAriaLabel")}>
-        <ul class="flex items-center gap-5 text-sm font-semibold text-graphite">
+        <ul class="flex items-center gap-4 text-sm font-semibold text-graphite">
           {primaryNavigation.map((item) => (
             <li>
               <a
                 href={item.href}
-                class="inline-flex min-h-11 items-center px-1 underline-offset-4 hover:text-brand hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand"
+                class="inline-flex min-h-11 items-center px-1 underline-offset-4 hover:text-brand-text hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-text"
               >
                 {text(copy, item.labelKey)}
               </a>
@@ -67,7 +69,17 @@ const copy = await getSettingsCopy("site");
           ))}
         </ul>
       </nav>
+      <ThemeToggleButton label={text(copy, "header.themeToggle")} />
       <ButtonLink href="/contact/">{text(copy, "header.inquire")}</ButtonLink>
     </div>
   </div>
 </header>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>("[data-theme-toggle]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const isDark = document.documentElement.classList.toggle("dark");
+      localStorage.setItem("theme", isDark ? "dark" : "light");
+    });
+  });
+</script>

@@ -36,7 +36,7 @@ const copy = await getPageCopy("articles");
     description={text(copy, "library.description")}
   >
     {articles.length > 0 ? (
-      <div class="rounded-md border border-line bg-white p-6">
+      <div class="rounded-md border border-line bg-surface p-6">
         {articles.map(({ data, id }) => (
           <ArticleCard
             title={data.title}
@@ -47,7 +47,7 @@ const copy = await getPageCopy("articles");
         ))}
       </div>
     ) : (
-      <div class="rounded-md border border-line bg-white p-6">
+      <div class="rounded-md border border-line bg-surface p-6">
         <p class="leading-7 text-slate">
           {text(copy, "library.empty")}
         </p>

@@ -54,6 +54,17 @@ src/pages/professional-development.astro
 - Do not build desktop layouts and then repair them with mobile overrides.
 - Maintain at least 44px interactive targets and verify no horizontal overflow at 320px.
 
+### Dark mode
+
+The site supports dark mode via a class-based `dark:` variant (`@custom-variant dark (&:where(.dark, .dark *));` in `global.css`), toggled by a button in the header (`ThemeToggleButton.astro`) and persisted to `localStorage`. A blocking inline script in `BaseLayout.astro`'s `<head>` sets the class before first paint from `localStorage` or `prefers-color-scheme`.
+
+Every semantic color token in `global.css` falls into one of two roles, and this distinction matters when adding new ones:
+
+- **Fill/self-contained-surface tokens** (`--color-brand`, `--color-brand-dark`, `--color-brand-light`, `--color-brand-pale`, `--color-clay`, `--color-footer`, `--color-footer-dark`) stay the **same value in light and dark mode**. They're used on elements that carry their own contrasting text on top (buttons, the CTA band, the footer, `KeynoteHeroVisual`) — self-contained color blocks that don't need to react to the surrounding page background.
+- **Text/surface-on-page tokens** (`--color-brand-text`, `--color-clay-text`, `--color-charcoal`, `--color-graphite`, `--color-slate`, `--color-stone`, `--color-surface`, `--color-paper`, `--color-sand`, `--color-line`) **do change** under `.dark`, because they're rendered directly against the page background, which itself flips.
+
+Do not use a flipping token (`paper`, `sand`, `charcoal`, etc.) for text or backgrounds inside an always-dark self-contained surface (footer, buttons, CTA bands) — it will invert to the wrong value in dark mode. Use a literal hex value instead (see the footer's nav link color) if you need a fixed light/dark color regardless of theme. Conversely, use the flipping tokens for anything sitting on the general page background, including card surfaces (`bg-white` is banned — use `bg-surface`) and any teal/clay text, border, or focus-ring color that isn't inside a filled button (use `-text` suffixed tokens, not the base `brand`/`clay`).
+
 Avoid:
 
 - Purple/blue gradient-heavy styling.

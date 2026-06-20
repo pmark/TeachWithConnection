@@ -14,7 +14,7 @@ const hasImage = Astro.slots.has("image");
     <div class:list={["grid gap-8", hasImage && "lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-12"]}>
       <div class="max-w-3xl">
         {eyebrow && (
-          <p class="mb-3 text-sm font-semibold uppercase tracking-wide text-brand">
+          <p class="mb-3 text-sm font-semibold uppercase tracking-wide text-brand-text">
             {eyebrow}
           </p>
         )}

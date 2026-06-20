@@ -144,6 +144,9 @@ Suggested boundaries:
 - `ResourceCard.astro`: resource listing item.
 - `ArticleCard.astro`: article listing item.
 - `InquiryForm.astro`: form markup once form provider is chosen.
+- `ImagePlaceholder.astro`: honest, dashed-border placeholder for pages still missing real photography.
+- `ThemeToggleButton.astro`: dark-mode toggle button, rendered twice in `Header.astro` (once per responsive layout) sharing one `data-theme-toggle` click handler.
+- `PartnerLogoBar.astro`: the "Past Presentations and Partnerships" logo wall, renders real logos or a text-wordmark fallback.
 
 Do not put business logic into components when content collections or plain data files can provide the structure.
 
