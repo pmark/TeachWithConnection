@@ -3,6 +3,6 @@ title: "Discover"
 description: "Discover logo."
 type: "logo"
 image:
-  src: "/images/partners/discover.webp"
+  src: "/images/partners/clean/discover.png"
   alt: "Discover logo"
 ---

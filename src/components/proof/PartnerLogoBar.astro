@@ -14,14 +14,31 @@ interface Props {
 const { items } = Astro.props;
 ---
 
-<ul class="grid grid-cols-2 gap-px overflow-hidden border border-line bg-line sm:grid-cols-3 lg:grid-cols-4">
+<ul class="grid grid-cols-2 gap-x-4 gap-y-3 sm:grid-cols-3 lg:grid-cols-4">
   {items.map((item) => (
-    <li class="flex min-h-20 items-center justify-center bg-white p-4 text-center">
+    <li class="flex min-h-14 items-center justify-center px-2 py-1 text-center">
       {item.image ? (
-        <img src={item.image.src} alt={item.image.alt} class="max-h-9 w-auto" />
+        <img
+          src={item.image.src}
+          alt={item.image.alt}
+          class="partner-logo max-h-16 max-w-full object-contain"
+        />
       ) : (
         <span class="text-sm font-semibold text-graphite">{item.title}</span>
       )}
     </li>
   ))}
 </ul>
+
+<style>
+  .partner-logo {
+    filter: grayscale(100%);
+    opacity: 0.6;
+    transition: filter 0.3s ease, opacity 0.3s ease;
+  }
+
+  .partner-logo:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+  }
+</style>
