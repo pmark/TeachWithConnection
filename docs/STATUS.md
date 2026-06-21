@@ -34,13 +34,18 @@ Content-management consolidation and launch hardening for production inquiry del
 - All editable route, shared-interface, navigation, footer, CTA, and form copy now lives in schema-validated YAML content entries; Astro templates retain fixed layout and section order.
 - `pnpm content:audit` verifies required entries, rejects known placeholder language, and guards against new literal editable copy in Astro templates.
 - The 32-item placeholder/editorial-copy inventory is documented in `docs/CONTENT-INVENTORY.md`; safe cases are visitor-ready and owner-dependent gaps remain explicitly blocked.
+- Visual design refresh (`docs/DESIGN.md` Phases 1–3, complete): the brand accent palette is resampled from the correct logo file (`wc-logo.jpg`, teal mandala — an earlier round mistakenly used a different navy logo file, since corrected) and propagated through Tailwind theme tokens; the header now shows the real icon plus a "Teach With Connection" wordmark; Katie's existing photography is wired into the homepage hero and About page; the testimonial card, credibility block, and Approach section have distinct, less template-like treatments; an honest dashed-border `ImagePlaceholder` component marks pages still missing real photography (Workshops, Keynotes, Consultation, Bookstore book cover); a self-hosted Source Serif 4 variable font replaces the Georgia fallback; Phase 3 accents (paper-grain texture, clay quote-mark, section divider) are in.
+- The "Past Presentations and Partnerships" logo wall is live on the homepage via `PartnerLogoBar` with all 12 owner-supplied entries in `src/content/proof/`. The agent found and fixed a copy-paste bug where all 12 files' title/description/image fields were stuck on "Discover" despite correct, distinct filenames and image assets — corrected to match.
+- The old (incorrect) logo files `public/images/logo-small-785x240.jpg` and `logo-large-1570x480.jpg` are unreferenced anywhere in the codebase but still present in `public/images/` — the agent restored them after an unrequested deletion was flagged as scope creep; deleting them is the owner's call, not yet done.
+- Palette refined further with owner-exact logo hex values plus two new colors: a deep teal-green (`--color-footer`/`--color-footer-dark`) purpose-built for the global footer/CTA-band gradients, and a more vibrant "pop while staying earthy" clay/rust accent (`--color-clay`). Footer, inquiry CTA band, and primary buttons now use subtle two-stop gradients; header and hero deliberately do not (see `docs/DESIGN.md` "Gradients").
+- Dark mode is implemented: a header toggle button persists the choice to `localStorage`, defaulting to `prefers-color-scheme` on first visit. See `docs/CONVENTIONS.md`'s "Dark mode" section for the token-role rule that any new component must follow (fill-role tokens stay constant across themes; text/surface-role tokens invert).
 
 ## What is flaky
 
 - The inquiry form is disabled without `PUBLIC_TURNSTILE_SITE_KEY`; production delivery has not been tested because Cloudflare/Resend credentials are not present locally.
-- Articles, resources, and testimonials collections remain empty and emit expected build warnings.
-- Legal copy, testimonials, article selections, and resource files remain owner-blocked; visitor-safe noindex/empty states are centralized in YAML meanwhile.
-- Source assets, third-party logos, and testimonials still need reuse confirmation.
+- Articles and resources collections remain empty and emit expected build warnings.
+- Legal copy, article selections, and resource files remain owner-blocked; visitor-safe noindex/empty states are centralized in YAML meanwhile.
+- Testimonial reuse is approved; 10 quotes/reviews from the legacy site are migrated into `src/content/testimonials/` and rendered on home, workshops, keynotes, consultation, and bookstore.
 - The new rate-limit binding and Pages Function require deployment verification in the target Cloudflare account.
 - `pnpm audit --omit=dev` still reports newly disclosed Astro/esbuild build-tool advisories despite Astro 6.4.8 being the latest available release. The deployed marketing output is static and does not run the Astro server, but the advisories should be rechecked when patched versions publish.
 - The Cloudflare Pages project has not been created or connected to GitHub yet — `docs/DEPLOY.md` is a runbook, not a record of completed dashboard work.
@@ -51,7 +56,9 @@ Content-management consolidation and launch hardening for production inquiry del
 - Configure and verify the Resend sender domain, API key, sender address, and Katie's recipient address.
 - Configure Turnstile keys and verify the Cloudflare rate-limit binding.
 - Update WithConnectionPDX.com with reciprocal `sameAs`, contextual links, and educator-bookstore canonicals.
-- Supply or approve legal copy, reusable assets, testimonials, and resource files.
+- Supply or approve legal copy, remaining reusable assets, and resource files.
+- ~~Add the 13 "Past Presentations and Partnerships" proof entries directly~~ — done; the owner added all 12 entries (Think Small Institute and Redleaf Press combined into one tile) directly to `src/content/proof/` with matching images in `public/images/partners/`. Still worth confirming each relationship is current/accurate and rights-cleared before launch.
+- Decide whether to delete the unused `public/images/logo-small-785x240.jpg` / `logo-large-1570x480.jpg` files (the wrong logo, since corrected to `wc-logo.jpg` in the header) — the agent left them in place pending an explicit decision.
 
 ## Last user-testing or owner insight
 
@@ -61,7 +68,7 @@ The owner wants all English content editable independently of Astro markup throu
 
 1. Configure Cloudflare, Turnstile, and Resend production values; verify end-to-end delivery and failure behavior.
 2. Complete reciprocal WithConnectionPDX schema/link/canonical changes and validate both domains together.
-3. Supply or approve legal copy, testimonials, article selections, and resource files, then replace the centralized blocked-owner states.
+3. Supply or approve legal copy, article selections, and resource files, then replace the remaining centralized blocked-owner states.
 
 ## Active plan
 

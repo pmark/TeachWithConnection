@@ -14,6 +14,12 @@ export async function getSettingsCopy(id: string) {
   return entry.data.copy;
 }
 
+export async function getTestimonial(id: string) {
+  const entry = await getEntry("testimonials", id);
+  if (!entry) throw new Error(`Missing testimonial content entry: ${id}`);
+  return entry.data;
+}
+
 export function text(copy: Copy, key: string) {
   const value = copy.strings[key];
   if (value === undefined) throw new Error(`Missing content string: ${key}`);

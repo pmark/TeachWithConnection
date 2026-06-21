@@ -1,10 +1,11 @@
 ---
-import { footerNavigation, site } from "../../data/site";
+import ThemeToggleButton from "../common/ThemeToggleButton.astro";
+import { footerNavigation, site, socialLinks } from "../../data/site";
 import { getSettingsCopy, text } from "../../data/content";
 const copy = await getSettingsCopy("site");
 ---
 
-<footer class="border-t border-[#e8e2dc] bg-[#272727] text-white">
+<footer class="border-t border-line bg-gradient-to-b from-footer to-footer-dark text-white">
   <div class="mx-auto grid max-w-6xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-[1.2fr_2fr]">
     <div>
       <p class="font-serif text-3xl">{text(copy, "brand.name")}</p>
@@ -23,7 +24,7 @@ const copy = await getSettingsCopy("site");
           <li>
             <a
               href={item.href}
-              class="inline-flex min-h-11 items-center px-1 text-[#f7f7f7] underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+              class="inline-flex min-h-11 items-center px-1 text-[#f6f2ec] underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
             >
               {text(copy, item.labelKey)}
             </a>
@@ -34,8 +35,37 @@ const copy = await getSettingsCopy("site");
   </div>
   <div class="border-t border-white/10">
     <div class="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-5 text-sm text-[#ddd6cf] sm:px-6 sm:flex-row sm:items-center sm:justify-between">
-      <p>&copy; {new Date().getFullYear()} {text(copy, "brand.legalName")}</p>
+      <div class="flex flex-wrap items-center gap-x-3">
+        <p>&copy; {new Date().getFullYear()} {text(copy, "brand.legalName")}</p>
+        <nav aria-label={text(copy, "footer.socialNavigationAriaLabel")}>
+          <ul class="flex items-center gap-1">
+            {socialLinks.map((item) => (
+              <li>
+                <a
+                  href={item.href}
+                  class="inline-flex size-11 items-center justify-center rounded-full hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                  target="_blank"
+                  rel="me noopener noreferrer"
+                  aria-label={text(copy, item.labelKey)}
+                >
+                  <img src={item.icon} alt="" width="86" height="86" class="size-6" />
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+        <ThemeToggleButton label={text(copy, "header.themeToggle")} />
+      </div>
       <p>{text(copy, "footer.closing")}</p>
     </div>
   </div>
 </footer>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>("[data-theme-toggle]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const isDark = document.documentElement.classList.toggle("dark");
+      localStorage.setItem("theme", isDark ? "dark" : "light");
+    });
+  });
+</script>

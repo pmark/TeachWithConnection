@@ -10,7 +10,9 @@
 
 1. Confirm the production sender and Katie recipient email addresses for inquiry delivery.
 2. Confirm whether the existing With Connection logo, photography, testimonials, third-party logos, and organization/client proof may be reused on this static site.
+   - The "Past Presentations and Partnerships" logo wall (12 entries, Think Small Institute and Redleaf Press combined) is now live on the homepage via owner-supplied content and images. Still need: confirmation each relationship is current, accurate, and rights-cleared before launch.
 3. Provide or approve launch resource files and identify the existing With Connection articles to migrate.
+4. Decide whether to delete the unused `public/images/logo-small-785x240.jpg` and `logo-large-1570x480.jpg` files — these were the wrong logo (a navy wordmark), since corrected to `wc-logo.jpg` (teal mandala icon) in the header. They're unreferenced anywhere in the codebase now.
 
 ## Other requests
 

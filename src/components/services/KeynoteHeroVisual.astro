@@ -1,0 +1,27 @@
+---
+interface Props {
+  label: string;
+  items: string[];
+}
+
+const { label, items } = Astro.props;
+---
+
+<aside
+  class="relative aspect-[3/4] w-full max-w-sm overflow-hidden rounded-md border border-brand-dark bg-brand p-7 text-white sm:p-9"
+  aria-label={label}
+>
+  <div aria-hidden="true" class="absolute inset-x-0 top-0 h-2 bg-clay"></div>
+  <div aria-hidden="true" class="absolute -right-16 top-20 h-px w-64 -rotate-12 bg-brand-light"></div>
+  <div class="relative flex h-full flex-col">
+    <p class="text-xs font-semibold uppercase tracking-[0.18em] text-brand-pale">
+      {label}
+    </p>
+    <p aria-hidden="true" class="mt-6 font-serif text-7xl leading-none text-brand-light">“</p>
+    <ul class="mt-auto divide-y divide-white/25 border-y border-white/25">
+      {items.map((item) => (
+        <li class="py-4 font-serif text-2xl leading-tight sm:text-3xl">{item}</li>
+      ))}
+    </ul>
+  </div>
+</aside>

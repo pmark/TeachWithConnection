@@ -8,15 +8,23 @@ copy:
     hero.eyebrow: "Keynotes"
     hero.title: "Grounded speaking for early childhood audiences"
     hero.description: "Katie's keynotes speak to educators' lived classroom experience while opening up new possibilities for connection, regulation, and relationship-centered practice."
+    hero.photoAlt: "Katie Statman-Weil speaking at a podium with a microphone"
     hero.primaryCta: "Ask about a keynote"
     hero.secondaryCta: "Review publication proof"
+    hero.visualLabel: "What audiences can expect"
     audienceFit.eyebrow: "Audience Fit"
     audienceFit.title: "For conferences and organizations that want warmth, rigor, and classroom relevance"
     audienceExperience.eyebrow: "Audience Experience"
     audienceExperience.title: "Stories from the field, practical ideas, and a more compassionate lens"
     audienceExperience.description: "Planners and participants can expect a grounded voice, relevant early childhood stories, and ideas that connect directly to the work educators carry every day."
+    testimonial.eyebrow: "From Audiences"
+    testimonial.title: "What participants say"
     inquiry.title: "Ask about a keynote"
   lists:
+    hero.visualItems:
+      - "Stories from the field"
+      - "Practical ideas"
+      - "A more compassionate lens"
     audienceFit.items:
       - "Early childhood conferences that want educators to feel seen, challenged, and practically supported."
       - "Organizations looking for a speaker who connects stories from the field with trauma-responsive and neuroaffirming practice."

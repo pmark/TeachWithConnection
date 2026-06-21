@@ -3,12 +3,14 @@ import ButtonLink from "../components/common/ButtonLink.astro";
 import InquiryCta from "../components/common/InquiryCta.astro";
 import PageHero from "../components/common/PageHero.astro";
 import Section from "../components/common/Section.astro";
+import TestimonialQuote from "../components/proof/TestimonialQuote.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { createServiceStructuredData } from "../data/site";
-import { getPageCopy, getSettingsCopy, list, text } from "../data/content";
+import { getPageCopy, getSettingsCopy, getTestimonial, list, text } from "../data/content";
 
 const copy = await getPageCopy("consultation");
 const description = text(copy, "seo.description");
+const testimonial = await getTestimonial("consultation-teacher");
 ---
 
 <BaseLayout
@@ -27,6 +29,14 @@ const description = text(copy, "seo.description");
         {text(copy, "hero.secondaryCta")}
       </ButtonLink>
     </div>
+    <img
+      slot="image"
+      src="/images/photos/katie-consultation.jpg"
+      alt={text(copy, "hero.photoAlt")}
+      width="1066"
+      height="1600"
+      class="aspect-[3/4] w-full max-w-sm rounded-md object-cover"
+    />
   </PageHero>
 
   <Section
@@ -36,7 +46,7 @@ const description = text(copy, "seo.description");
   >
     <ul class="grid gap-4 md:grid-cols-2">
       {list(copy, "fit.items").map((item) => (
-        <li class="rounded-md border border-[#e8e2dc] bg-white p-5 leading-7 text-[#3c3834]">
+        <li class="rounded-md border border-line bg-surface p-5 leading-7 text-graphite">
           {item}
         </li>
       ))}
@@ -50,21 +60,29 @@ const description = text(copy, "seo.description");
   >
     <div class="grid gap-8 lg:grid-cols-[1fr_1fr]">
       <div>
-        <p class="leading-8 text-[#4f4a45]">
+        <p class="leading-8 text-slate">
           {text(copy, "lens.description")}
         </p>
-        <p class="mt-5 leading-8 text-[#4f4a45]">
+        <p class="mt-5 leading-8 text-slate">
           {text(copy, "lens.secondaryDescription")}
         </p>
       </div>
       <ul class="grid gap-4">
         {list(copy, "lens.items").map((item) => (
-          <li class="border-l-4 border-[#157c93] bg-white px-5 py-4 leading-7 text-[#3c3834]">
+          <li class="border-l-4 border-brand-text bg-surface px-5 py-4 leading-7 text-graphite">
             {item}
           </li>
         ))}
       </ul>
     </div>
+  </Section>
+
+  <Section
+    eyebrow={text(copy, "testimonial.eyebrow")}
+    title={text(copy, "testimonial.title")}
+    narrow
+  >
+    <TestimonialQuote quote={testimonial.quote} attribution={testimonial.attribution} />
   </Section>
 
   <InquiryCta title={text(copy, "inquiry.title")} />

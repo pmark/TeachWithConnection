@@ -20,6 +20,8 @@ copy:
     related.title: "Articles and publication recognition"
     related.description: "Katie's NAEYC writing and award recognition provide additional context for her educator-facing work."
     related.cta: "View publications"
+    testimonial.eyebrow: "Reader Feedback"
+    testimonial.title: "What readers are saying"
     inquiry.title: "Bring this work to your team"
   lists:
     book.topics:

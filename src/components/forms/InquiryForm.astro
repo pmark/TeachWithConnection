@@ -33,19 +33,19 @@ const clientMessages = JSON.stringify({
 
 const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
 const fieldClass =
-  "min-h-11 w-full rounded-md border border-[#9b928a] bg-white px-3 py-2 font-normal text-[#272727] focus:border-[#157c93] focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-[#157c93]";
+  "min-h-11 w-full rounded-md border border-[#9b928a] bg-surface px-3 py-2 font-normal text-charcoal focus:border-brand-text focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-brand-text dark:border-[#6b6258]";
 ---
 
 <form
   id="inquiry-form"
-  class="grid gap-5 rounded-md border border-[#e8e2dc] bg-white p-4 sm:p-6"
+  class="grid gap-5 rounded-md border border-line bg-paper p-4 shadow-sm sm:p-6"
   action="/api/inquiry"
   method="post"
   aria-describedby="form-note form-status"
   data-inquiry-form
   data-messages={clientMessages}
 >
-  <p id="form-note" class="text-sm leading-6 text-[#5d5751]">
+  <p id="form-note" class="text-sm leading-6 text-stone">
     {text(copy, "form.note")}
   </p>
 
@@ -58,70 +58,70 @@ const fieldClass =
   <input type="hidden" name="startedAt" value={Date.now()} />
 
   <div class="grid gap-5 sm:grid-cols-2">
-    <label class="grid gap-2 text-sm font-semibold text-[#272727]">
-      {text(copy, "form.name")} <span class="font-normal text-[#5d5751]">{text(copy, "form.required")}</span>
+    <label class="grid gap-2 text-sm font-semibold text-charcoal">
+      {text(copy, "form.name")} <span class="font-normal text-stone">{text(copy, "form.required")}</span>
       <input class={fieldClass} name="name" autocomplete="name" required maxlength="100" aria-describedby="name-error" />
-      <span id="name-error" class="hidden text-sm font-normal text-[#9f1d1d]" data-error-for="name"></span>
+      <span id="name-error" class="hidden text-sm font-normal text-[#9f1d1d] dark:text-[#f0a8a8]" data-error-for="name"></span>
     </label>
 
-    <label class="grid gap-2 text-sm font-semibold text-[#272727]">
-      {text(copy, "form.email")} <span class="font-normal text-[#5d5751]">{text(copy, "form.required")}</span>
+    <label class="grid gap-2 text-sm font-semibold text-charcoal">
+      {text(copy, "form.email")} <span class="font-normal text-stone">{text(copy, "form.required")}</span>
       <input class={fieldClass} name="email" type="email" autocomplete="email" required maxlength="254" aria-describedby="email-error" />
-      <span id="email-error" class="hidden text-sm font-normal text-[#9f1d1d]" data-error-for="email"></span>
+      <span id="email-error" class="hidden text-sm font-normal text-[#9f1d1d] dark:text-[#f0a8a8]" data-error-for="email"></span>
     </label>
   </div>
 
   <div class="grid gap-5 sm:grid-cols-2">
-    <label class="grid gap-2 text-sm font-semibold text-[#272727]">
-      {text(copy, "form.organization")} <span class="font-normal text-[#5d5751]">{text(copy, "form.required")}</span>
+    <label class="grid gap-2 text-sm font-semibold text-charcoal">
+      {text(copy, "form.organization")} <span class="font-normal text-stone">{text(copy, "form.required")}</span>
       <input class={fieldClass} name="organization" autocomplete="organization" required maxlength="150" aria-describedby="organization-error" />
-      <span id="organization-error" class="hidden text-sm font-normal text-[#9f1d1d]" data-error-for="organization"></span>
+      <span id="organization-error" class="hidden text-sm font-normal text-[#9f1d1d] dark:text-[#f0a8a8]" data-error-for="organization"></span>
     </label>
 
-    <label class="grid gap-2 text-sm font-semibold text-[#272727]">
+    <label class="grid gap-2 text-sm font-semibold text-charcoal">
       {text(copy, "form.role")}
       <input class={fieldClass} name="role" autocomplete="organization-title" maxlength="100" />
     </label>
   </div>
 
   <div class="grid gap-5 sm:grid-cols-2">
-    <label class="grid gap-2 text-sm font-semibold text-[#272727]">
+    <label class="grid gap-2 text-sm font-semibold text-charcoal">
       {text(copy, "form.location")}
       <input class={fieldClass} name="location" autocomplete="address-level2" maxlength="120" />
     </label>
 
-    <label class="grid gap-2 text-sm font-semibold text-[#272727]">
-      {text(copy, "form.inquiryType")} <span class="font-normal text-[#5d5751]">{text(copy, "form.required")}</span>
+    <label class="grid gap-2 text-sm font-semibold text-charcoal">
+      {text(copy, "form.inquiryType")} <span class="font-normal text-stone">{text(copy, "form.required")}</span>
       <select class={fieldClass} name="inquiryType" required aria-describedby="inquiryType-error">
         <option value="">{text(copy, "form.chooseOne")}</option>
         {inquiryTypes.map((type) => <option value={type}>{type}</option>)}
       </select>
-      <span id="inquiryType-error" class="hidden text-sm font-normal text-[#9f1d1d]" data-error-for="inquiryType"></span>
+      <span id="inquiryType-error" class="hidden text-sm font-normal text-[#9f1d1d] dark:text-[#f0a8a8]" data-error-for="inquiryType"></span>
     </label>
   </div>
 
   <div class="grid gap-5 sm:grid-cols-2">
-    <label class="grid gap-2 text-sm font-semibold text-[#272727]">
+    <label class="grid gap-2 text-sm font-semibold text-charcoal">
       {text(copy, "form.timeline")}
       <input class={fieldClass} name="timeline" maxlength="120" />
     </label>
 
-    <label class="grid gap-2 text-sm font-semibold text-[#272727]">
+    <label class="grid gap-2 text-sm font-semibold text-charcoal">
       {text(copy, "form.audienceSize")}
       <input class={fieldClass} name="audienceSize" inputmode="numeric" maxlength="60" />
     </label>
   </div>
 
-  <label class="grid gap-2 text-sm font-semibold text-[#272727]">
-    {text(copy, "form.message")} <span class="font-normal text-[#5d5751]">{text(copy, "form.required")}</span>
+  <label class="grid gap-2 text-sm font-semibold text-charcoal">
+    {text(copy, "form.message")} <span class="font-normal text-stone">{text(copy, "form.required")}</span>
     <textarea class={`${fieldClass} min-h-40`} name="message" required maxlength="5000" aria-describedby="message-error"></textarea>
-    <span id="message-error" class="hidden text-sm font-normal text-[#9f1d1d]" data-error-for="message"></span>
+    <span id="message-error" class="hidden text-sm font-normal text-[#9f1d1d] dark:text-[#f0a8a8]" data-error-for="message"></span>
   </label>
 
   {turnstileSiteKey ? (
-    <div class="cf-turnstile" data-sitekey={turnstileSiteKey} data-theme="light"></div>
+    <div class="cf-turnstile" data-sitekey={turnstileSiteKey} data-theme="auto"></div>
   ) : (
-    <p class="rounded-md border border-[#d7a700] bg-[#fff9df] p-4 text-sm leading-6 text-[#5f4c00]" role="status">
+    <p class="rounded-md border border-[#d7a700] bg-[#fff9df] p-4 text-sm leading-6 text-[#5f4c00] dark:border-[#a8820a] dark:bg-[#332b0c] dark:text-[#f0d878]" role="status">
       {text(copy, "form.turnstileUnavailable")}
     </p>
   )}
@@ -129,7 +129,7 @@ const fieldClass =
   <p id="form-status" class="hidden rounded-md p-4 text-sm leading-6" role="status" tabindex="-1" data-form-status></p>
 
   <button
-    class="min-h-11 rounded-md border border-[#157c93] bg-[#157c93] px-5 py-2.5 text-sm font-semibold text-white hover:border-[#0f6174] hover:bg-[#0f6174] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#157c93] disabled:cursor-not-allowed disabled:border-[#b9b0a8] disabled:bg-[#f7f7f7] disabled:text-[#5d5751]"
+    class="min-h-11 rounded-md border border-brand bg-gradient-to-b from-brand to-brand-dark px-5 py-2.5 text-sm font-semibold text-white hover:border-brand-dark hover:from-brand-dark hover:to-brand-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-text disabled:cursor-not-allowed disabled:border-[#b9b0a8] disabled:bg-paper disabled:from-paper disabled:to-paper disabled:text-stone dark:disabled:border-[#5a544c]"
     type="submit"
     disabled={!turnstileSiteKey}
     data-submit-button
@@ -137,9 +137,9 @@ const fieldClass =
     {text(copy, "form.submit")}
   </button>
 
-  <p class="text-sm leading-6 text-[#5d5751]">
+  <p class="text-sm leading-6 text-stone">
     {text(copy, "form.fallbackPrefix")}
-    <a class="inline-flex min-h-11 items-center font-semibold text-[#157c93] underline underline-offset-4" href={`${site.relatedPracticeUrl}/contact-us`}>
+    <a class="inline-flex min-h-11 items-center font-semibold text-brand-text underline underline-offset-4" href={`${site.relatedPracticeUrl}/contact-us`}>
       {text(copy, "form.fallbackLink")}
     </a>.
   </p>
@@ -182,8 +182,8 @@ const fieldClass =
     if (!status) return;
     status.textContent = message;
     status.className = success
-      ? "rounded-md border border-[#3c7a57] bg-[#edf8f1] p-4 text-sm leading-6 text-[#245137]"
-      : "rounded-md border border-[#b73a3a] bg-[#fff1f1] p-4 text-sm leading-6 text-[#7d1818]";
+      ? "rounded-md border border-[#3c7a57] bg-[#edf8f1] p-4 text-sm leading-6 text-[#245137] dark:border-[#3f9468] dark:bg-[#16261c] dark:text-[#8fd6ab]"
+      : "rounded-md border border-[#b73a3a] bg-[#fff1f1] p-4 text-sm leading-6 text-[#7d1818] dark:border-[#d96666] dark:bg-[#2a1414] dark:text-[#f0a8a8]";
     status.focus();
   };
 

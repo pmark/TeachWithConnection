@@ -8,6 +8,7 @@ copy:
     hero.eyebrow: "Workshops"
     hero.title: "Practical training topics for educators and leaders"
     hero.description: "Workshops help teaching teams understand what may be driving behavior, stress, resistance, and dysregulation so they can respond with more clarity and care."
+    hero.photoAlt: "Two young children smiling and holding hands outdoors"
     hero.primaryCta: "Bring a workshop to your team"
     hero.secondaryCta: "Professional development overview"
     topics.eyebrow: "Workshop Topics"
@@ -16,6 +17,8 @@ copy:
     lens.eyebrow: "Shared Lens"
     lens.title: "The goal is not another rigid system"
     lens.description: "Across topics, the work stays focused on understanding children and educators with equal care."
+    testimonial.eyebrow: "From Educators"
+    testimonial.title: "What participants say"
     inquiry.title: "Bring a workshop to your team"
   lists:
     lens.items:

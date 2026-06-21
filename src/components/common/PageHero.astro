@@ -6,25 +6,33 @@ interface Props {
 }
 
 const { eyebrow, title, description } = Astro.props;
+const hasImage = Astro.slots.has("image");
 ---
 
-<section class="bg-[#f7f7f7] py-14 sm:py-16">
+<section class="bg-paper py-14 sm:py-16">
   <div class="mx-auto max-w-6xl px-4 sm:px-6">
-    <div class="max-w-3xl">
-      {eyebrow && (
-        <p class="mb-3 text-sm font-semibold uppercase tracking-wide text-[#157c93]">
-          {eyebrow}
-        </p>
+    <div class:list={["grid gap-8", hasImage && "lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-12"]}>
+      <div class="max-w-3xl">
+        {eyebrow && (
+          <p class="mb-3 text-sm font-semibold uppercase tracking-wide text-brand-text">
+            {eyebrow}
+          </p>
+        )}
+        <h1 class="font-serif text-4xl leading-tight text-charcoal sm:text-5xl">
+          {title}
+        </h1>
+        {description && (
+          <p class="mt-5 text-lg leading-8 text-slate">
+            {description}
+          </p>
+        )}
+        <slot />
+      </div>
+      {hasImage && (
+        <div>
+          <slot name="image" />
+        </div>
       )}
-      <h1 class="font-serif text-4xl leading-tight text-[#272727] sm:text-5xl">
-        {title}
-      </h1>
-      {description && (
-        <p class="mt-5 text-lg leading-8 text-[#4f4a45]">
-          {description}
-        </p>
-      )}
-      <slot />
     </div>
   </div>
 </section>

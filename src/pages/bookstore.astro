@@ -3,13 +3,15 @@ import ButtonLink from "../components/common/ButtonLink.astro";
 import InquiryCta from "../components/common/InquiryCta.astro";
 import PageHero from "../components/common/PageHero.astro";
 import Section from "../components/common/Section.astro";
+import TestimonialQuote from "../components/proof/TestimonialQuote.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { site } from "../data/site";
-import { getPageCopy, list, text } from "../data/content";
+import { getPageCopy, getTestimonial, list, text } from "../data/content";
 
 const bookUrl = "https://www.redleafpress.org/Trauma-Responsive-Strategies-for-Early-Childhood-P2503.aspx";
 const copy = await getPageCopy("bookstore");
 const bookDescription = text(copy, "book.description");
+const testimonial = await getTestimonial("bookstore-review-amazon-1");
 
 const bookStructuredData = {
   "@type": ["Book", "Product"],
@@ -36,11 +38,18 @@ const bookStructuredData = {
   />
 
   <Section eyebrow={text(copy, "book.eyebrow")} title={text(copy, "book.title")}>
-    <article class="grid gap-8 rounded-md border border-[#e8e2dc] bg-white p-5 sm:p-7 lg:grid-cols-[1fr_0.75fr] lg:items-start">
+    <article class="grid gap-8 rounded-md border border-line bg-surface p-5 sm:p-7 lg:grid-cols-[1fr_0.75fr] lg:items-start">
       <div>
-        <p class="text-sm font-semibold uppercase tracking-wide text-[#157c93]">{text(copy, "book.meta")}</p>
-        <p class="mt-4 leading-8 text-[#4f4a45]">{bookDescription}</p>
-        <p class="mt-4 leading-8 text-[#4f4a45]">
+        <img
+          src="/images/book-cover-trauma-responsive-strategies-for-early-childhood.jpg"
+          alt="Book cover: Trauma-Responsive Strategies for Early Childhood by Katie Statman-Weil, EdD, LCSW"
+          width="361"
+          height="522"
+          class="aspect-[361/522] w-full max-w-40 rounded-md object-cover sm:max-w-48"
+        />
+        <p class="mt-5 text-sm font-semibold uppercase tracking-wide text-brand-text">{text(copy, "book.meta")}</p>
+        <p class="mt-4 leading-8 text-slate">{bookDescription}</p>
+        <p class="mt-4 leading-8 text-slate">
           {text(copy, "book.secondaryDescription")}
         </p>
         <div class="mt-6 flex flex-col gap-3 sm:flex-row">
@@ -48,9 +57,9 @@ const bookStructuredData = {
           <ButtonLink href="/#professional-development" variant="secondary">{text(copy, "book.secondaryCta")}</ButtonLink>
         </div>
       </div>
-      <aside class="rounded-md bg-[#f7f7f7] p-5" aria-label={text(copy, "book.topicsAriaLabel")}>
-        <h2 class="font-serif text-2xl leading-tight text-[#272727]">{text(copy, "book.topicsTitle")}</h2>
-        <ul class="mt-5 grid gap-3 leading-7 text-[#4f4a45]">
+      <aside class="rounded-md bg-paper p-5" aria-label={text(copy, "book.topicsAriaLabel")}>
+        <h2 class="font-serif text-2xl leading-tight text-charcoal">{text(copy, "book.topicsTitle")}</h2>
+        <ul class="mt-5 grid gap-3 leading-7 text-slate">
           {list(copy, "book.topics").map((topic) => <li>{topic}</li>)}
         </ul>
       </aside>
@@ -64,6 +73,14 @@ const bookStructuredData = {
     description={text(copy, "related.description")}
   >
     <ButtonLink href="/publications/" variant="secondary">{text(copy, "related.cta")}</ButtonLink>
+  </Section>
+
+  <Section
+    eyebrow={text(copy, "testimonial.eyebrow")}
+    title={text(copy, "testimonial.title")}
+    narrow
+  >
+    <TestimonialQuote quote={testimonial.quote} attribution={testimonial.attribution} />
   </Section>
 
   <InquiryCta title={text(copy, "inquiry.title")} />

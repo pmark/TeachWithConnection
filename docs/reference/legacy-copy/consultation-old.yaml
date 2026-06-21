@@ -1,0 +1,41 @@
+route: "/consultation/"
+status: review-needed
+copy:
+  strings:
+    source.url: "https://www.withconnectionpdx.com/consultation"
+    source.pageTitle: "Consultation — With Connection"
+    source.capturedAt: "2026-06-20"
+    source.scope: "Unique page body only; repeated site navigation and footer omitted."
+    hero.eyebrow: "Consultation for Preschools in Portland, Oregon"
+    hero.title: "Will anything help this student be less challenging?"
+    hero.paragraph1: "Dr. Katie Statman-Weil, LCSW offers consultation to teachers and schools in Portland, Oregon and online nationwide. Katie has direct experience working as a preschool teacher, center director, ece college professor, and ece mental health consultant. Katie understands what it feels like to work with kids with big, confusing, and challenging behaviors in the classroom."
+    hero.paragraph2: "Katie’s teacher consultations help shift perspectives on children exhibiting challenging behaviors to find lasting strategies that calm the chaos and brings more joy into the teaching experience."
+    hero.paragraph3: "Through relational, trauma-responsive, and neuroaffirming approaches Katie supports teachers in moving beyond crisis management and toward classrooms where both students and educators can feel more regulated, capable, and connected."
+    testimonial.quote: "Katie truly cared about us and our growth as an educator. She catered to our needs greatly."
+    testimonial.attribution: "Teacher"
+    fit.title: "Consultation May Be Helpful for Your Teaching Team If…"
+    inquiry.cta: "Schedule Consultation with Katie Today"
+    inquiry.href: "https://www.withconnectionpdx.com/contact-us"
+  lists:
+    informationArchitecture:
+      - "heading:h2:hero.eyebrow"
+      - "text-lead:hero.title"
+      - "paragraph:hero.paragraph1"
+      - "paragraph:hero.paragraph2"
+      - "paragraph:hero.paragraph3"
+      - "blockquote:testimonial.quote"
+      - "heading:h1:fit.title"
+      - "list:fit.items"
+      - "link:inquiry.cta"
+    fit.items:
+      - "A student’s behaviors have continued to escalate despite the many interventions, strategies, and supports your team has already tried."
+      - "Your staff feels emotionally exhausted, overwhelmed, or constantly “on edge” while trying to manage the intensity of the classroom environment."
+      - "The relationship between educators and the student feels increasingly strained, disconnected, or stuck in cycles of conflict and dysregulation."
+      - "Supporting one child’s needs has begun to impact the well-being of the larger classroom community, staff morale, or team cohesion."
+      - "Teaching teams feel discouraged, ineffective, or uncertain about how to move forward in a way that truly supports the child."
+      - "You find yourselves spending most of the day reacting to crises rather than teaching, connecting, and building a positive classroom culture."
+      - "Staff members are struggling to balance compassion for the child with the very real stress and demands of the situation."
+      - "You worry about whether your current approaches are helping, or unintentionally increasing stress, shame, or dysregulation for the child."
+      - "Your team is looking for a more relational, trauma-responsive, and neuroaffirming framework for understanding and responding to behavior."
+      - "You want practical, sustainable strategies that support both the child and the adults caring for them."
+  cards: {}

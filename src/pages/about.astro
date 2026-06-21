@@ -21,6 +21,14 @@ const copy = await getPageCopy("about");
       <ButtonLink href="/contact/">{text(copy, "hero.primaryCta")}</ButtonLink>
       <ButtonLink href="/publications/" variant="secondary">{text(copy, "hero.secondaryCta")}</ButtonLink>
     </div>
+    <img
+      slot="image"
+      src="/images/katie-statman-weil-photo-2.webp"
+      alt={text(copy, "hero.photoAlt")}
+      width="2500"
+      height="4022"
+      class="aspect-[3/4] w-full max-w-sm rounded-md object-cover"
+    />
   </PageHero>
 
   <Section
@@ -28,16 +36,16 @@ const copy = await getPageCopy("about");
     title={text(copy, "background.title")}
   >
     <div class="grid gap-8 lg:grid-cols-[1fr_1fr]">
-      <div class="space-y-5 leading-8 text-[#4f4a45]">
+      <div class="space-y-5 leading-8 text-slate">
         {list(copy, "background.paragraphs").map((paragraph) => <p>{paragraph}</p>)}
       </div>
-      <div class="rounded-md border border-[#e8e2dc] bg-white p-6">
-        <h3 class="font-serif text-2xl leading-tight text-[#272727]">
+      <div class="rounded-md border border-line bg-surface p-6">
+        <h3 class="font-serif text-2xl leading-tight text-charcoal">
           {text(copy, "philosophy.title")}
         </h3>
         <ul class="mt-6 grid gap-4">
           {list(copy, "philosophy.items").map((item) => (
-            <li class="border-l-4 border-[#157c93] pl-4 leading-7 text-[#4f4a45]">
+            <li class="border-l-4 border-brand-text pl-4 leading-7 text-slate">
               {item}
             </li>
           ))}

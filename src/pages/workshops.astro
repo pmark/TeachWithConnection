@@ -3,12 +3,14 @@ import ButtonLink from "../components/common/ButtonLink.astro";
 import InquiryCta from "../components/common/InquiryCta.astro";
 import PageHero from "../components/common/PageHero.astro";
 import Section from "../components/common/Section.astro";
+import TestimonialQuote from "../components/proof/TestimonialQuote.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { createServiceStructuredData } from "../data/site";
-import { cards, getPageCopy, getSettingsCopy, list, text } from "../data/content";
+import { cards, getPageCopy, getSettingsCopy, getTestimonial, list, text } from "../data/content";
 
 const copy = await getPageCopy("workshops");
 const description = text(copy, "seo.description");
+const testimonial = await getTestimonial("workshops-course-participant");
 ---
 
 <BaseLayout
@@ -27,6 +29,14 @@ const description = text(copy, "seo.description");
         {text(copy, "hero.secondaryCta")}
       </ButtonLink>
     </div>
+    <img
+      slot="image"
+      src="/images/photos/kids-holding-hands.jpg"
+      alt={text(copy, "hero.photoAlt")}
+      width="2048"
+      height="1365"
+      class="aspect-[3/4] w-full max-w-sm rounded-md object-cover"
+    />
   </PageHero>
 
   <Section
@@ -36,11 +46,11 @@ const description = text(copy, "seo.description");
   >
     <ul class="grid gap-4 md:grid-cols-2">
       {cards(copy, "topics.items").map((topic) => (
-        <li class="rounded-md border border-[#e8e2dc] bg-white p-5">
-          <h3 class="font-serif text-2xl leading-tight text-[#272727]">
+        <li class="rounded-md border border-line bg-surface p-5">
+          <h3 class="font-serif text-2xl leading-tight text-charcoal">
             {topic.title}
           </h3>
-          <p class="mt-3 leading-7 text-[#4f4a45]">{topic.description}</p>
+          <p class="mt-3 leading-7 text-slate">{topic.description}</p>
         </li>
       ))}
     </ul>
@@ -54,11 +64,19 @@ const description = text(copy, "seo.description");
   >
     <ul class="grid gap-4 md:grid-cols-2">
       {list(copy, "lens.items").map((item) => (
-        <li class="border-l-4 border-[#157c93] bg-white px-5 py-4 leading-7 text-[#3c3834]">
+        <li class="border-l-4 border-brand-text bg-surface px-5 py-4 leading-7 text-graphite">
           {item}
         </li>
       ))}
     </ul>
+  </Section>
+
+  <Section
+    eyebrow={text(copy, "testimonial.eyebrow")}
+    title={text(copy, "testimonial.title")}
+    narrow
+  >
+    <TestimonialQuote quote={testimonial.quote} attribution={testimonial.attribution} />
   </Section>
 
   <InquiryCta title={text(copy, "inquiry.title")} />

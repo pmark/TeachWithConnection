@@ -11,9 +11,9 @@ interface Props {
 const { title, description, href, cta } = Astro.props;
 ---
 
-<article class="border-b border-[#e8e2dc] py-6 first:pt-0 last:border-b-0 last:pb-0">
-  <h3 class="font-serif text-2xl text-[#272727]">{title}</h3>
-  <p class="mt-3 leading-7 text-[#4f4a45]">{description}</p>
+<article class="border-b border-line py-6 first:pt-0 last:border-b-0 last:pb-0">
+  <h3 class="font-serif text-2xl text-charcoal">{title}</h3>
+  <p class="mt-3 leading-7 text-slate">{description}</p>
   <div class="mt-4">
     <ButtonLink href={href} variant="text">{cta}</ButtonLink>
   </div>
