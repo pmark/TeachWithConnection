@@ -1,0 +1,42 @@
+route: "/keynotes/"
+status: review-needed
+copy:
+  strings:
+    source.url: "https://www.withconnectionpdx.com/keynotes"
+    source.pageTitle: "Keynotes — With Connection"
+    source.capturedAt: "2026-06-20"
+    source.scope: "Unique page body only; repeated site navigation and footer omitted."
+    hero.title: "Keynotes for Early Childhood Educators"
+    testimonial.quote: "Katie is able to challenge our thinking in a loving, supportive way."
+    testimonial.attribution: "Participant"
+    hero.description: "Katie’s engaging keynotes speak to the experiences of early childhood educators. With the lived experience to back up her claims, Katie uses stories from the field to ensure audiences feel seen in their current reality while also opening the door to new possibilities. Audiences leave feeling energized, challenged, and equipped with ideas they can carry into real moments with children and families long after the event ends."
+    topics.title: "Keynote Topics"
+    topics.item1: "Beyond Behavior: Creating Neuroaffirming Classrooms Where Every Child Can Thrive"
+    topics.item2: "Tiny Transformations: Building Nervous System Regulation One Moment at a Time"
+    topics.item3: "Hard Moments, Connected Classrooms: Trauma-Responsive Strategies for Early Childhood Educators"
+    inquiry.cta: "Inquire About Katie's Availability Here"
+    inquiry.href: ""
+  lists:
+    informationArchitecture:
+      - "heading:h2:hero.title"
+      - "blockquote:testimonial.quote"
+      - "paragraph:hero.description"
+      - "heading:h1:topics.title"
+      - "image:images.items[0]"
+      - "image:images.items[1]"
+      - "image:images.items[2]"
+      - "text-cta:inquiry.cta"
+  cards:
+    images.items:
+      - title: "IMG_1642.png"
+        description: "Embedded text: Beyond Behavior: Creating Neuroaffirming Classrooms Where Every Child Can Thrive. Original alt text is empty. Original dimensions: 1254x1254."
+        label: "Keynote Topics image 1"
+        href: "https://images.squarespace-cdn.com/content/v1/5d8448d1cdffb93f12492d63/2b287d77-40ed-4259-86af-70d85ea3600b/IMG_1642.png"
+      - title: "IMG_1643.png"
+        description: "Embedded text: Tiny Transformations: Building Nervous System Regulation One Moment at a Time. Original alt text is empty. Original dimensions: 1254x1254."
+        label: "Keynote Topics image 2"
+        href: "https://images.squarespace-cdn.com/content/v1/5d8448d1cdffb93f12492d63/bfa5239a-3be6-4514-936b-67c37b253b2b/IMG_1643.png"
+      - title: "IMG_1640.png"
+        description: "Embedded text: Hard Moments, Connected Classrooms: Trauma-Responsive Strategies for Early Childhood Educators. Original alt text is empty. Original dimensions: 1254x1254."
+        label: "Keynote Topics image 3"
+        href: "https://images.squarespace-cdn.com/content/v1/5d8448d1cdffb93f12492d63/933042b7-2f9f-4923-bec5-bc6361eb4a34/IMG_1640.png"
