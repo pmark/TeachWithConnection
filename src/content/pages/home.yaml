@@ -8,8 +8,7 @@ copy:
     structuredData.description: "Relationship-centered professional development, workshops, and staff training for early childhood organizations across the United States."
     hero.eyebrow: "Early childhood professional development"
     hero.title: "Professional Development for Educators"
-    # hero.description: "Katie Statman-Weil, EdD, LCSW helps early childhood organizations, schools, districts, and conferences support educators with practical, trauma-responsive, neuroaffirming, and attachment-informed learning."
-    hero.description: "Katie Statman-Weil, EdD, LCSW offers professional development for early childhood educators online and in-person. Through practical, relationship-centered trainings Katie supports educators wanting to learn more about child development, behavior, trauma, neurodivergence, emotional regulation, and play-based strategies. Katie’s goal is always to ensure teachers feel heard, children feel supported, and relationships can thrive."
+    hero.description: "Katie Statman-Weil, EdD, LCSW offers professional development for early childhood educators online and in-person. Through practical, relationship-centered trainings Katie supports educators wanting to learn more about child development, behavior, trauma, neurodivergence, emotional regulation, and play-based strategies. Katie's goal is always to ensure teachers feel heard, children feel supported, and relationships can thrive."
     hero.secondaryDescription: "Based in Portland, Oregon and available to teams nationwide, Katie brings classroom, clinical, leadership, and consulting experience to the questions educators face every day."
     hero.primaryCta: "Meet Katie"
     hero.secondaryCta: "View workshop topics"
@@ -48,6 +47,11 @@ copy:
     resources.empty: "The first educator resources are in preparation. When published, they will be available here without an email signup."
     resources.cta: "Visit resources"
   lists:
+    about.paragraphs:
+      - "Katie Statman-Weil is a clinician, educator, consultant, and trainer with extensive experience supporting children, families, and school systems navigating complex behavioral and neurodevelopmental differences. Katie specializes in trauma-responsive care, attachment, neurodivergence, and relational approaches to behavior support."
+      - "She believes that when we understand how a child's brain and nervous system work, we begin to understand the meaning behind behavior and can respond in ways that prioritize connection, safety, and regulation rather than compliance and control."
+      - "Katie's goal is to support educators and helping professionals feel more grounded, confident, and effective in their relationships with children, while also honoring the emotional weight and complexity of the work they are carrying. She recognizes that supporting children with significant behavioral needs impacts not only systems and classrooms, but also the well-being of the adults who care for them."
+      - "When both the child's experience and the educator's experience are held with equal care, there is more clarity, more compassion, and more possibility for meaningful change."
     professionalDevelopment.focus:
       - "Early childhood educators working with complex behavior, trauma histories, neurodivergence, and classroom dysregulation."
       - "Schools, districts, centers, and organizations that need a shared relationship-centered framework."
