@@ -9,7 +9,7 @@ The initial audit identified 32 public strings requiring replacement, centraliza
 | # | Route/surface | Content key | Disposition | Source or owner dependency |
 |---:|---|---|---|---|
 | 1 | `/` | `approach.testimonialTitle` | replaced | None |
-| 2 | `/` | `approach.testimonialEmpty` | blocked-owner | Testimonial reuse approval |
+| 2 | `/` | `approach.testimonialEmpty` | resolved | Owner approved testimonial reuse; key removed and replaced with a real quote from `src/content/testimonials/` |
 | 3 | `/` | `approach.secondaryDescription` | replaced | None |
 | 4 | `/` | `resources.description` | replaced | None |
 | 5 | `/` | `resources.empty` | blocked-owner | Approved resource files |

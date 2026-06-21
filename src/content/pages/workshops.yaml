@@ -17,6 +17,8 @@ copy:
     lens.eyebrow: "Shared Lens"
     lens.title: "The goal is not another rigid system"
     lens.description: "Across topics, the work stays focused on understanding children and educators with equal care."
+    testimonial.eyebrow: "From Educators"
+    testimonial.title: "What participants say"
     inquiry.title: "Bring a workshop to your team"
   lists:
     lens.items:

@@ -4,13 +4,15 @@ import InquiryCta from "../components/common/InquiryCta.astro";
 import Section from "../components/common/Section.astro";
 import PartnerLogoBar from "../components/proof/PartnerLogoBar.astro";
 import ProofList from "../components/proof/ProofList.astro";
+import TestimonialQuote from "../components/proof/TestimonialQuote.astro";
 import ServiceCard from "../components/services/ServiceCard.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 import { site } from "../data/site";
-import { getPageCopy, getSettingsCopy, list, text } from "../data/content";
+import { getPageCopy, getSettingsCopy, getTestimonial, list, text } from "../data/content";
 
 const copy = await getPageCopy("home");
+const testimonial = await getTestimonial("home-partnerships-participant");
 
 const services = (await getCollection("services")).sort(
   (first, second) => first.data.priority - second.data.priority,
@@ -210,14 +212,14 @@ const homepageStructuredData = {
           <h2 class="font-serif text-3xl leading-tight text-charcoal sm:text-4xl">
             {text(copy, "approach.title")}
           </h2>
-          <aside class="mt-8 bg-sand p-6">
+          <div class="mt-8">
             <h3 class="font-serif text-2xl leading-tight text-charcoal">
               {text(copy, "approach.testimonialTitle")}
             </h3>
-            <p class="mt-4 leading-7 text-slate">
-              {text(copy, "approach.testimonialEmpty")}
-            </p>
-          </aside>
+            <div class="mt-4">
+              <TestimonialQuote quote={testimonial.quote} attribution={testimonial.attribution} />
+            </div>
+          </div>
         </div>
         <div>
           <p class="leading-8 text-slate">

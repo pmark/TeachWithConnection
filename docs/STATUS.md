@@ -43,9 +43,9 @@ Content-management consolidation and launch hardening for production inquiry del
 ## What is flaky
 
 - The inquiry form is disabled without `PUBLIC_TURNSTILE_SITE_KEY`; production delivery has not been tested because Cloudflare/Resend credentials are not present locally.
-- Articles, resources, and testimonials collections remain empty and emit expected build warnings.
-- Legal copy, testimonials, article selections, and resource files remain owner-blocked; visitor-safe noindex/empty states are centralized in YAML meanwhile.
-- Source assets, third-party logos, and testimonials still need reuse confirmation.
+- Articles and resources collections remain empty and emit expected build warnings.
+- Legal copy, article selections, and resource files remain owner-blocked; visitor-safe noindex/empty states are centralized in YAML meanwhile.
+- Testimonial reuse is approved; 10 quotes/reviews from the legacy site are migrated into `src/content/testimonials/` and rendered on home, workshops, keynotes, consultation, and bookstore.
 - The new rate-limit binding and Pages Function require deployment verification in the target Cloudflare account.
 - `pnpm audit --omit=dev` still reports newly disclosed Astro/esbuild build-tool advisories despite Astro 6.4.8 being the latest available release. The deployed marketing output is static and does not run the Astro server, but the advisories should be rechecked when patched versions publish.
 - The Cloudflare Pages project has not been created or connected to GitHub yet — `docs/DEPLOY.md` is a runbook, not a record of completed dashboard work.
@@ -56,7 +56,7 @@ Content-management consolidation and launch hardening for production inquiry del
 - Configure and verify the Resend sender domain, API key, sender address, and Katie's recipient address.
 - Configure Turnstile keys and verify the Cloudflare rate-limit binding.
 - Update WithConnectionPDX.com with reciprocal `sameAs`, contextual links, and educator-bookstore canonicals.
-- Supply or approve legal copy, reusable assets, testimonials, and resource files.
+- Supply or approve legal copy, remaining reusable assets, and resource files.
 - ~~Add the 13 "Past Presentations and Partnerships" proof entries directly~~ — done; the owner added all 12 entries (Think Small Institute and Redleaf Press combined into one tile) directly to `src/content/proof/` with matching images in `public/images/partners/`. Still worth confirming each relationship is current/accurate and rights-cleared before launch.
 - Decide whether to delete the unused `public/images/logo-small-785x240.jpg` / `logo-large-1570x480.jpg` files (the wrong logo, since corrected to `wc-logo.jpg` in the header) — the agent left them in place pending an explicit decision.
 
@@ -68,7 +68,7 @@ The owner wants all English content editable independently of Astro markup throu
 
 1. Configure Cloudflare, Turnstile, and Resend production values; verify end-to-end delivery and failure behavior.
 2. Complete reciprocal WithConnectionPDX schema/link/canonical changes and validate both domains together.
-3. Supply or approve legal copy, testimonials, article selections, and resource files, then replace the centralized blocked-owner states.
+3. Supply or approve legal copy, article selections, and resource files, then replace the remaining centralized blocked-owner states.
 
 ## Active plan
 

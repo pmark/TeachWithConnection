@@ -17,6 +17,8 @@ copy:
     audienceExperience.eyebrow: "Audience Experience"
     audienceExperience.title: "Stories from the field, practical ideas, and a more compassionate lens"
     audienceExperience.description: "Planners and participants can expect a grounded voice, relevant early childhood stories, and ideas that connect directly to the work educators carry every day."
+    testimonial.eyebrow: "From Audiences"
+    testimonial.title: "What participants say"
     inquiry.title: "Ask about a keynote"
   lists:
     hero.visualItems:

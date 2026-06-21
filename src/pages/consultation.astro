@@ -3,12 +3,14 @@ import ButtonLink from "../components/common/ButtonLink.astro";
 import InquiryCta from "../components/common/InquiryCta.astro";
 import PageHero from "../components/common/PageHero.astro";
 import Section from "../components/common/Section.astro";
+import TestimonialQuote from "../components/proof/TestimonialQuote.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { createServiceStructuredData } from "../data/site";
-import { getPageCopy, getSettingsCopy, list, text } from "../data/content";
+import { getPageCopy, getSettingsCopy, getTestimonial, list, text } from "../data/content";
 
 const copy = await getPageCopy("consultation");
 const description = text(copy, "seo.description");
+const testimonial = await getTestimonial("consultation-teacher");
 ---
 
 <BaseLayout
@@ -73,6 +75,14 @@ const description = text(copy, "seo.description");
         ))}
       </ul>
     </div>
+  </Section>
+
+  <Section
+    eyebrow={text(copy, "testimonial.eyebrow")}
+    title={text(copy, "testimonial.title")}
+    narrow
+  >
+    <TestimonialQuote quote={testimonial.quote} attribution={testimonial.attribution} />
   </Section>
 
   <InquiryCta title={text(copy, "inquiry.title")} />
