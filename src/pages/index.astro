@@ -20,6 +20,7 @@ const servicePreviews = services.map(({ data }) => ({
   description: data.description,
   href: data.href,
   cta: data.cta.label,
+  image: data.image,
 }));
 
 const proofTypeOrder = {
@@ -68,19 +69,25 @@ const homepageStructuredData = {
   description={text(copy, "seo.description")}
   structuredData={homepageStructuredData}
 >
-  <section class="bg-grain bg-paper py-12 sm:py-16 lg:py-20">
-    <div class="mx-auto grid max-w-6xl gap-8 px-4 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-12">
-      <div>
-        <p class="mb-4 text-sm font-semibold uppercase tracking-wide text-brand-text">
+  <section class="relative isolate overflow-hidden">
+    <img
+      src="/images/katie-statman-weil-photo-1.jpg"
+      alt=""
+      class="absolute inset-0 -z-20 h-full w-full object-cover object-[70%_top]"
+    />
+    <div class="absolute inset-0 -z-10 bg-gradient-to-r from-footer-dark/95 via-footer-dark/75 to-footer-dark/20"></div>
+    <div class="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20 lg:py-28">
+      <div class="max-w-2xl">
+        <p class="mb-4 text-sm font-semibold uppercase tracking-wide text-brand-light">
           {text(copy, "hero.eyebrow")}
         </p>
-        <h1 class="font-serif text-4xl leading-tight text-charcoal sm:text-5xl lg:text-6xl">
+        <h1 class="font-serif text-4xl leading-tight text-white sm:text-5xl lg:text-6xl">
           {text(copy, "hero.title")}
         </h1>
-        <p class="mt-6 max-w-2xl text-lg leading-8 text-slate">
+        <p class="mt-6 text-lg leading-8 text-white/90">
           {text(copy, "hero.description")}
         </p>
-        <p class="mt-4 max-w-2xl leading-7 text-slate">
+        <p class="mt-4 leading-7 text-white/80">
           {text(copy, "hero.secondaryDescription")}
         </p>
         <div class="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -88,39 +95,34 @@ const homepageStructuredData = {
           <ButtonLink href="/workshops/" variant="secondary">{text(copy, "hero.secondaryCta")}</ButtonLink>
         </div>
       </div>
+    </div>
+  </section>
 
-      <div>
-        <img
-          src="/images/katie-statman-weil-photo-1.jpg"
-          alt={text(copy, "credibility.photoAlt")}
-          width="1067"
-          height="1067"
-          class="aspect-square w-full max-w-xs rounded-md object-cover sm:max-w-sm"
-        />
-        <aside class="mt-6 border-l-4 border-brand-text bg-surface p-6" aria-label={text(copy, "credibility.ariaLabel")}>
-          <p class="font-serif text-3xl leading-tight text-charcoal">
-            {text(copy, "credibility.title")}
-          </p>
-          <dl class="mt-8 grid gap-5">
-            <div>
-              <dt class="text-xs font-semibold uppercase tracking-wide text-stone">{text(copy, "credibility.credentialsLabel")}</dt>
-              <dd class="mt-1 text-slate">{text(copy, "credibility.credentials")}</dd>
-            </div>
-            <div>
-              <dt class="text-xs font-semibold uppercase tracking-wide text-stone">{text(copy, "credibility.publicationLabel")}</dt>
-              <dd class="mt-1 text-slate">
-                {text(copy, "credibility.publicationPrefix")} <cite>{text(copy, "credibility.publication")}</cite>
-              </dd>
-            </div>
-            <div>
-              <dt class="text-xs font-semibold uppercase tracking-wide text-stone">{text(copy, "credibility.approachLabel")}</dt>
-              <dd class="mt-1 text-slate">
-                {text(copy, "credibility.approach")}
-              </dd>
-            </div>
-          </dl>
-        </aside>
-      </div>
+  <section class="bg-grain bg-paper py-10 sm:py-12">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6">
+      <aside class="border-l-4 border-brand-text bg-surface p-6 sm:p-8" aria-label={text(copy, "credibility.ariaLabel")}>
+        <p class="font-serif text-3xl leading-tight text-charcoal">
+          {text(copy, "credibility.title")}
+        </p>
+        <dl class="mt-8 grid gap-5 sm:grid-cols-3">
+          <div>
+            <dt class="text-xs font-semibold uppercase tracking-wide text-stone">{text(copy, "credibility.credentialsLabel")}</dt>
+            <dd class="mt-1 text-slate">{text(copy, "credibility.credentials")}</dd>
+          </div>
+          <div>
+            <dt class="text-xs font-semibold uppercase tracking-wide text-stone">{text(copy, "credibility.publicationLabel")}</dt>
+            <dd class="mt-1 text-slate">
+              {text(copy, "credibility.publicationPrefix")} <cite>{text(copy, "credibility.publication")}</cite>
+            </dd>
+          </div>
+          <div>
+            <dt class="text-xs font-semibold uppercase tracking-wide text-stone">{text(copy, "credibility.approachLabel")}</dt>
+            <dd class="mt-1 text-slate">
+              {text(copy, "credibility.approach")}
+            </dd>
+          </div>
+        </dl>
+      </aside>
     </div>
   </section>
 

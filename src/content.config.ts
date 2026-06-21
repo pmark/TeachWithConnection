@@ -106,6 +106,10 @@ const services = defineCollection({
     href: z.string(),
     cta: ctaSchema,
     source: sourceSchema.optional(),
+    image: z.object({
+      src: z.string(),
+      alt: z.string(),
+    }),
   }),
 });
 

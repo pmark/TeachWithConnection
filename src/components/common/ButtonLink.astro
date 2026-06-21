@@ -1,24 +1,27 @@
 ---
 interface Props {
   href: string;
-  variant?: "primary" | "secondary" | "text";
+  variant?: "primary" | "secondary" | "text" | "inverse";
 }
 
 const { href, variant = "primary" } = Astro.props;
 
 const variants = {
   primary:
-    "border-brand bg-gradient-to-b from-brand to-brand-dark text-white hover:border-brand-dark hover:from-brand-dark hover:to-brand-dark",
+    "border-brand bg-gradient-to-b from-brand to-brand-dark text-white hover:border-brand-dark hover:from-brand-dark hover:to-brand-dark focus-visible:outline-brand-text",
   secondary:
-    "border-brand-text bg-surface text-brand-text hover:bg-paper",
-  text: "border-transparent text-brand-text underline-offset-4 hover:underline",
+    "border-brand-text bg-surface text-brand-text hover:bg-paper focus-visible:outline-brand-text",
+  text: "border-transparent text-brand-text underline-offset-4 hover:underline focus-visible:outline-brand-text",
+  // For self-contained colored surfaces (the header bar) that don't flip with theme —
+  // stays a light pill with brand-teal text regardless of light/dark mode.
+  inverse: "border-white bg-white text-brand hover:bg-brand-pale focus-visible:outline-white",
 };
 ---
 
 <a
   href={href}
   class:list={[
-    "inline-flex min-h-11 items-center justify-center rounded-md border px-5 py-2.5 text-sm font-semibold transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-text",
+    "inline-flex min-h-11 items-center justify-center rounded-md border px-5 py-2.5 text-sm font-semibold transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2",
     variants[variant],
   ]}
 >

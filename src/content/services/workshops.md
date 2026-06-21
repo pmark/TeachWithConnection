@@ -18,6 +18,9 @@ cta:
 source:
   label: "With Connection workshops page"
   url: "https://www.withconnectionpdx.com/workshops"
+image:
+  src: "/images/photos/kids-holding-hands.jpg"
+  alt: "Two young children smiling and holding hands outdoors"
 ---
 
 Workshop topics are grounded in real classroom complexity and help teams move from crisis response toward shared understanding, connection, regulation, and practical tools.
