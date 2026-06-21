@@ -12,6 +12,8 @@ copy:
     hero.secondaryDescription: "Based in Portland, Oregon and available to teams nationwide, Katie brings classroom, clinical, leadership, and consulting experience to the questions educators face every day."
     hero.primaryCta: "Meet Katie"
     hero.secondaryCta: "View workshop topics"
+    hero.legacyCta: "Learn how Katie can support your organization"
+    closing.cta: "Bring Katie To Your Organization"
     credibility.photoAlt: "Katie Statman-Weil, EdD, LCSW, smiling outdoors"
     credibility.ariaLabel: "Katie Statman-Weil credibility summary"
     credibility.title: "Meet Katie Statman-Weil, EdD, LCSW"

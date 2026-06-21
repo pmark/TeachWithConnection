@@ -12,11 +12,14 @@ copy:
     hero.primaryCta: "Ask about a keynote"
     hero.secondaryCta: "Review publication proof"
     hero.visualLabel: "What audiences can expect"
+    hero.extendedDescription: "Katie's engaging keynotes speak to the experiences of early childhood educators. With the lived experience to back up her claims, Katie uses stories from the field to ensure audiences feel seen in their current reality while also opening the door to new possibilities. Audiences leave feeling energized, challenged, and equipped with ideas they can carry into real moments with children and families long after the event ends."
     audienceFit.eyebrow: "Audience Fit"
     audienceFit.title: "For conferences and organizations that want warmth, rigor, and classroom relevance"
     audienceExperience.eyebrow: "Audience Experience"
     audienceExperience.title: "Stories from the field, practical ideas, and a more compassionate lens"
     audienceExperience.description: "Planners and participants can expect a grounded voice, relevant early childhood stories, and ideas that connect directly to the work educators carry every day."
+    topics.eyebrow: "Keynote Topics"
+    topics.title: "Topics Katie speaks on"
     testimonial.eyebrow: "From Audiences"
     testimonial.title: "What participants say"
     inquiry.title: "Ask about a keynote"
@@ -33,4 +36,8 @@ copy:
       - "A more compassionate lens for understanding children and educators under stress."
       - "Language leaders can carry back into professional development, coaching, and staff conversations."
       - "Practical ideas that remain useful after the event ends."
+    topics.items:
+      - "Beyond Behavior: Creating Neuroaffirming Classrooms Where Every Child Can Thrive"
+      - "Tiny Transformations: Building Nervous System Regulation One Moment at a Time"
+      - "Hard Moments, Connected Classrooms: Trauma-Responsive Strategies for Early Childhood Educators"
   cards: {}

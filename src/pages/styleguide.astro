@@ -1,0 +1,176 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Section from "../components/common/Section.astro";
+import ButtonLink from "../components/common/ButtonLink.astro";
+
+// Internal reference page only — not part of site content/copy, intentionally
+// not driven by src/content/pages/*.yaml. Keep in sync with
+// src/styles/global.css's @theme block when tokens change.
+
+interface Swatch {
+  token: string;
+  hex: string;
+  role: string;
+}
+
+const brandColors: Swatch[] = [
+  { token: "--color-brand", hex: "#196c94", role: "Primary action — buttons, links, focus rings" },
+  { token: "--color-brand-dark", hex: "#135473", role: "Hover/active state, gradient end-stop" },
+  { token: "--color-brand-light", hex: "#489cc2", role: "Decorative accent — large text/UI/tints only" },
+  { token: "--color-brand-pale", hex: "#ebf8ff", role: "Decorative surface tint only" },
+  { token: "--color-brand-text", hex: "#196c94", role: "Teal on page background (eyebrows, links, accent rules)" },
+];
+
+const footerColors: Swatch[] = [
+  { token: "--color-footer", hex: "#103b41", role: "Footer gradient start" },
+  { token: "--color-footer-dark", hex: "#0b292d", role: "Footer gradient end" },
+];
+
+const accentColors: Swatch[] = [
+  { token: "--color-clay", hex: "#b8501e", role: "Complementary warm accent — divider, accent bar" },
+  { token: "--color-clay-text", hex: "#b8501e", role: "Same accent, text role — testimonial quote mark" },
+];
+
+const neutralColors: Swatch[] = [
+  { token: "--color-charcoal", hex: "#272727", role: "Primary text" },
+  { token: "--color-graphite", hex: "#3c3834", role: "Secondary text" },
+  { token: "--color-slate", hex: "#4f4a45", role: "Body copy" },
+  { token: "--color-stone", hex: "#5d5751", role: "Tertiary text, captions" },
+];
+
+const surfaceColors: Swatch[] = [
+  { token: "--color-surface", hex: "#ffffff", role: "Cards, header, page body" },
+  { token: "--color-paper", hex: "#f6f2ec", role: "Section bands" },
+  { token: "--color-sand", hex: "#efe7da", role: "Testimonial/callout cards" },
+  { token: "--color-line", hex: "#e8e2dc", role: "Borders" },
+];
+
+---
+
+<BaseLayout
+  title="Styleguide"
+  description="Internal reference for site colors and typography."
+  noindex
+>
+  <Section
+    eyebrow="Internal reference"
+    title="Styleguide"
+    description="A working reference for site colors and typography — use this page to confirm values and review proposed changes before they're rolled out across components. Toggle light/dark mode with the header button to check both themes."
+  >
+    <p class="text-sm text-stone">
+      Swatches render the live CSS variable, so text/surface-role tokens (charcoal, slate, stone, surface,
+      paper, sand, line, brand-text, clay-text) will show their dark-mode value when toggled — the hex label
+      underneath is always the light-mode value documented in <code>global.css</code>.
+    </p>
+  </Section>
+
+  <Section background="surface" title="Color — brand / action">
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {brandColors.map((s) => (
+        <div class="rounded-md border border-line bg-surface p-4">
+          <div class="mb-3 h-16 rounded-md border border-line" style={`background-color: var(${s.token})`} />
+          <p class="font-mono text-xs text-stone">{s.token}</p>
+          <p class="font-mono text-sm text-charcoal">{s.hex}</p>
+          <p class="mt-1 text-sm text-slate">{s.role}</p>
+        </div>
+      ))}
+    </div>
+  </Section>
+
+  <Section title="Color — footer band">
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {footerColors.map((s) => (
+        <div class="rounded-md border border-line bg-surface p-4">
+          <div class="mb-3 h-16 rounded-md border border-line" style={`background-color: var(${s.token})`} />
+          <p class="font-mono text-xs text-stone">{s.token}</p>
+          <p class="font-mono text-sm text-charcoal">{s.hex}</p>
+          <p class="mt-1 text-sm text-slate">{s.role}</p>
+        </div>
+      ))}
+    </div>
+  </Section>
+
+  <Section background="surface" title="Color — warm accent (clay)">
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {accentColors.map((s) => (
+        <div class="rounded-md border border-line bg-surface p-4">
+          <div class="mb-3 h-16 rounded-md border border-line" style={`background-color: var(${s.token})`} />
+          <p class="font-mono text-xs text-stone">{s.token}</p>
+          <p class="font-mono text-sm text-charcoal">{s.hex}</p>
+          <p class="mt-1 text-sm text-slate">{s.role}</p>
+        </div>
+      ))}
+    </div>
+  </Section>
+
+  <Section title="Color — neutrals">
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      {neutralColors.map((s) => (
+        <div class="rounded-md border border-line bg-surface p-4">
+          <div class="mb-3 h-16 rounded-md border border-line" style={`background-color: var(${s.token})`} />
+          <p class="font-mono text-xs text-stone">{s.token}</p>
+          <p class="font-mono text-sm text-charcoal">{s.hex}</p>
+          <p class="mt-1 text-sm text-slate">{s.role}</p>
+        </div>
+      ))}
+    </div>
+  </Section>
+
+  <Section background="surface" title="Color — surfaces">
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      {surfaceColors.map((s) => (
+        <div class="rounded-md border border-line bg-surface p-4">
+          <div class="mb-3 h-16 rounded-md border border-line" style={`background-color: var(${s.token})`} />
+          <p class="font-mono text-xs text-stone">{s.token}</p>
+          <p class="font-mono text-sm text-charcoal">{s.hex}</p>
+          <p class="mt-1 text-sm text-slate">{s.role}</p>
+        </div>
+      ))}
+    </div>
+  </Section>
+
+  <Section title="Typography">
+    <div class="space-y-6">
+      <div>
+        <p class="mb-3 text-sm font-semibold uppercase tracking-wide text-brand-text">Eyebrow label</p>
+        <p class="text-xs text-stone">text-sm font-semibold uppercase tracking-wide text-brand-text</p>
+      </div>
+      <div>
+        <h1 class="font-serif text-5xl leading-tight text-charcoal sm:text-6xl">Heading 1</h1>
+        <p class="text-xs text-stone">font-serif text-5xl sm:text-6xl leading-tight text-charcoal</p>
+      </div>
+      <div>
+        <h2 class="font-serif text-3xl leading-tight text-charcoal sm:text-4xl">Heading 2</h2>
+        <p class="text-xs text-stone">font-serif text-3xl sm:text-4xl leading-tight text-charcoal</p>
+      </div>
+      <div>
+        <h3 class="font-serif text-2xl leading-tight text-charcoal">Heading 3</h3>
+        <p class="text-xs text-stone">font-serif text-2xl leading-tight text-charcoal</p>
+      </div>
+      <div>
+        <p class="text-lg leading-8 text-slate">
+          Body / intro text — the sans system-ui stack, used for section descriptions and lede paragraphs.
+        </p>
+        <p class="text-xs text-stone">text-lg leading-8 text-slate (font-sans)</p>
+      </div>
+      <div>
+        <p class="leading-7 text-slate">
+          Body copy — the default paragraph size used throughout content sections, lists, and cards.
+        </p>
+        <p class="text-xs text-stone">leading-7 text-slate (font-sans)</p>
+      </div>
+      <div>
+        <a href="#" class="text-brand-text underline-offset-4 hover:underline">Inline link example</a>
+        <p class="text-xs text-stone">text-brand-text underline-offset-4 hover:underline</p>
+      </div>
+    </div>
+  </Section>
+
+  <Section background="surface" title="Buttons">
+    <div class="flex flex-wrap gap-4">
+      <ButtonLink href="#">Primary</ButtonLink>
+      <ButtonLink href="#" variant="secondary">Secondary</ButtonLink>
+      <ButtonLink href="#" variant="text">Text</ButtonLink>
+    </div>
+  </Section>
+</BaseLayout>

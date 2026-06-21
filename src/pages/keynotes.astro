@@ -66,11 +66,27 @@ const testimonial = await getTestimonial("keynotes-participant");
   </Section>
 
   <Section
+    eyebrow={text(copy, "topics.eyebrow")}
+    title={text(copy, "topics.title")}
+  >
+    <ul class="grid gap-4 md:grid-cols-3">
+      {list(copy, "topics.items").map((item) => (
+        <li class="rounded-md border border-line bg-surface p-5 leading-7 text-graphite">
+          {item}
+        </li>
+      ))}
+    </ul>
+  </Section>
+
+  <Section
     eyebrow={text(copy, "testimonial.eyebrow")}
     title={text(copy, "testimonial.title")}
     narrow
   >
     <TestimonialQuote quote={testimonial.quote} attribution={testimonial.attribution} />
+    <p class="mt-8 leading-8 text-slate">
+      {text(copy, "hero.extendedDescription")}
+    </p>
   </Section>
 
   <InquiryCta title={text(copy, "inquiry.title")} />

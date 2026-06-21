@@ -9,9 +9,14 @@ import { site } from "../data/site";
 import { getPageCopy, getTestimonial, list, text } from "../data/content";
 
 const bookUrl = "https://www.redleafpress.org/Trauma-Responsive-Strategies-for-Early-Childhood-P2503.aspx";
+const amazonUrl = "https://www.amazon.com/Trauma-Responsive-Strategies-Early-Childhood-Statman-Weil/dp/1605546631";
 const copy = await getPageCopy("bookstore");
 const bookDescription = text(copy, "book.description");
-const testimonial = await getTestimonial("bookstore-review-amazon-1");
+const reviews = await Promise.all(
+  ["bookstore-review-goodreads-1", "bookstore-review-amazon-1", "bookstore-review-goodreads-2", "bookstore-review-amazon-2"].map(
+    (id) => getTestimonial(id),
+  ),
+);
 
 const bookStructuredData = {
   "@type": ["Book", "Product"],
@@ -54,6 +59,7 @@ const bookStructuredData = {
         </p>
         <div class="mt-6 flex flex-col gap-3 sm:flex-row">
           <ButtonLink href={bookUrl}>{text(copy, "book.primaryCta")}</ButtonLink>
+          <ButtonLink href={amazonUrl} variant="secondary">{text(copy, "book.amazonCta")}</ButtonLink>
           <ButtonLink href="/#professional-development" variant="secondary">{text(copy, "book.secondaryCta")}</ButtonLink>
         </div>
       </div>
@@ -72,7 +78,11 @@ const bookStructuredData = {
     title={text(copy, "related.title")}
     description={text(copy, "related.description")}
   >
-    <ButtonLink href="/publications/" variant="secondary">{text(copy, "related.cta")}</ButtonLink>
+    <p class="leading-8 text-slate">{text(copy, "related.paragraph1")}</p>
+    <p class="mt-4 leading-8 text-slate">{text(copy, "related.paragraph2")}</p>
+    <div class="mt-6">
+      <ButtonLink href="/publications/" variant="secondary">{text(copy, "related.cta")}</ButtonLink>
+    </div>
   </Section>
 
   <Section
@@ -80,7 +90,11 @@ const bookStructuredData = {
     title={text(copy, "testimonial.title")}
     narrow
   >
-    <TestimonialQuote quote={testimonial.quote} attribution={testimonial.attribution} />
+    <div class="grid gap-4">
+      {reviews.map((review) => (
+        <TestimonialQuote quote={review.quote} attribution={review.attribution} />
+      ))}
+    </div>
   </Section>
 
   <InquiryCta title={text(copy, "inquiry.title")} />

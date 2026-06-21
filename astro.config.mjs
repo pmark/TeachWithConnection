@@ -15,7 +15,7 @@ export default defineConfig({
   integrations: [
     sitemap({
       filter: (page) =>
-        !['/privacy/', '/disclaimer/', '/terms/', '/resources/', '/articles/'].some(
+        !['/privacy/', '/disclaimer/', '/terms/', '/resources/', '/articles/', '/styleguide/'].some(
           (path) => page === `https://teachwithconnection.com${path}`
         )
     })

@@ -39,6 +39,15 @@ const testimonial = await getTestimonial("consultation-teacher");
     />
   </PageHero>
 
+  <Section>
+    <p class="font-serif text-2xl leading-tight text-charcoal">{text(copy, "background.lead")}</p>
+    <div class="mt-6 grid gap-4">
+      <p class="leading-8 text-slate">{text(copy, "background.paragraph1")}</p>
+      <p class="leading-8 text-slate">{text(copy, "background.paragraph2")}</p>
+      <p class="leading-8 text-slate">{text(copy, "background.paragraph3")}</p>
+    </div>
+  </Section>
+
   <Section
     eyebrow={text(copy, "fit.eyebrow")}
     title={text(copy, "fit.title")}

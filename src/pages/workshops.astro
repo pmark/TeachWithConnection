@@ -39,6 +39,22 @@ const testimonial = await getTestimonial("workshops-course-participant");
     />
   </PageHero>
 
+  <Section title={text(copy, "problem.title")}>
+    <div class="grid gap-4">
+      <p class="leading-8 text-slate">{text(copy, "problem.paragraph1")}</p>
+      <p class="leading-8 text-slate">{text(copy, "problem.paragraph2")}</p>
+      <p class="leading-8 text-slate">{text(copy, "problem.paragraph3")}</p>
+    </div>
+  </Section>
+
+  <Section background="surface" title={text(copy, "need.title")} description={text(copy, "need.lead")}>
+    <div class="grid gap-4">
+      <p class="leading-8 text-slate">{text(copy, "need.paragraph1")}</p>
+      <p class="leading-8 text-slate">{text(copy, "need.paragraph2")}</p>
+      <p class="leading-8 text-slate">{text(copy, "need.paragraph3")}</p>
+    </div>
+  </Section>
+
   <Section
     eyebrow={text(copy, "topics.eyebrow")}
     title={text(copy, "topics.title")}
@@ -51,6 +67,11 @@ const testimonial = await getTestimonial("workshops-course-participant");
             {topic.title}
           </h3>
           <p class="mt-3 leading-7 text-slate">{topic.description}</p>
+          {topic.href && (
+            <a href={topic.href} class="mt-3 inline-block text-sm font-semibold text-brand-text underline-offset-4 hover:underline">
+              {topic.label}
+            </a>
+          )}
         </li>
       ))}
     </ul>
