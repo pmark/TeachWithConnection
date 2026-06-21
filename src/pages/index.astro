@@ -13,7 +13,8 @@ import { getPageCopy, getSettingsCopy, getTestimonial, list, text } from "../dat
 
 const copy = await getPageCopy("home");
 const testimonial1 = await getTestimonial("home-workshop-participant");
-const testimonial = await getTestimonial("home-partnerships-participant");
+const testimonial2 = await getTestimonial("home-partnerships-participant");
+const testimonial3 = await getTestimonial("home-course-participant");
 
 const services = (await getCollection("services")).sort(
   (first, second) => first.data.priority - second.data.priority,
@@ -95,17 +96,55 @@ const homepageStructuredData = {
     <div>
       <TestimonialQuote quote={testimonial1.quote} attribution={testimonial1.attribution} />
     </div>
+    <div class="mx-auto max-w-6xl px-4 sm:px-6">
+      <p class="mt-8 leading-8 text-slate">
+        {text(copy, "hero.description")}
+      </p>
+    </div>
   </section>
 
-  <section class="bg-grain bg-paper pb-10 sm:pb-12">
+  
+  <section class="pb-8 bg-grain bg-paper">
+    <!-- <ProofList items={proofItems} /> -->
+    {partnerLogos.length > 0 && (
+      <div class="mt-0 pt-0">
+        <h3 class="font-serif text-center text-2xl leading-tight text-charcoal pb-8">
+          {text(copy, "proof.partnersTitle")}
+        </h3>
+        <div class="mt-5">
+          <PartnerLogoBar items={partnerLogos} />
+        </div>
+      </div>
+    )}
+  </section>
+
+  <section class="bg-grain bg-paper py-10 sm:py-12">
+    <div>
+      <TestimonialQuote quote={testimonial2.quote} attribution={testimonial2.attribution} />
+    </div>
+  </section>
+
+
+  <Section
+    background="surface"
+    eyebrow={text(copy, "services.eyebrow")}
+    title={text(copy, "services.title")}
+    description={text(copy, "services.description")}
+  >
+    <div class="grid gap-5 md:grid-cols-2">
+      {servicePreviews.map((service) => <ServiceCard {...service} />)}
+    </div>
+  </Section>
+
+<section class="bg-grain bg-paper pb-10 sm:pb-12">
     <div class="mx-auto max-w-6xl px-4 sm:px-6">
       <aside class="border-l-4 border-brand-text bg-surface p-6 sm:p-8" aria-label={text(copy, "credibility.ariaLabel")}>
         <p class="font-serif text-3xl leading-tight text-charcoal">
           {text(copy, "credibility.title")}
         </p>
-        <p class="mt-4 leading-7 text-slate">
-          {text(copy, "hero.description")}
-        </p>
+        {list(copy, "about.paragraphs").map((paragraph) => (
+          <p class="mt-4 leading-7 text-slate">{paragraph}</p>
+        ))}
         <!-- <dl class="mt-8 grid gap-5 sm:grid-cols-3">
           <div>
             <dt class="text-xs font-semibold uppercase tracking-wide text-stone">{text(copy, "credibility.credentialsLabel")}</dt>
@@ -127,112 +166,13 @@ const homepageStructuredData = {
       </aside>
     </div>
   </section>
-
-  <section class="pb-8 bg-grain bg-paper">
-    <!-- <ProofList items={proofItems} /> -->
-    {partnerLogos.length > 0 && (
-      <div class="mt-0 pt-0">
-        <h3 class="font-serif text-center text-2xl leading-tight text-charcoal pb-8">
-          {text(copy, "proof.partnersTitle")}
-        </h3>
-        <div class="mt-5">
-          <PartnerLogoBar items={partnerLogos} />
-        </div>
-      </div>
-    )}
-  </Section>
-
+ 
   <section class="bg-grain bg-paper py-10 sm:py-12">
     <div>
-      <TestimonialQuote quote={testimonial.quote} attribution={testimonial.attribution} />
+      <TestimonialQuote quote={testimonial3.quote} attribution={testimonial3.attribution} />
     </div>
   </section>
 
-
-  <Section
-    background="surface"
-    eyebrow={text(copy, "services.eyebrow")}
-    title={text(copy, "services.title")}
-    description={text(copy, "services.description")}
-  >
-    <div class="grid gap-5 md:grid-cols-2">
-      {servicePreviews.map((service) => <ServiceCard {...service} />)}
-    </div>
-  </Section>
-
-  <div id="professional-development" class="scroll-mt-6">
-    <Section
-      eyebrow={text(copy, "professionalDevelopment.eyebrow")}
-      title={text(copy, "professionalDevelopment.title")}
-      description={text(copy, "professionalDevelopment.description")}
-    >
-      <div class="grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
-        <div>
-          <h3 class="font-serif text-2xl leading-tight text-charcoal">{text(copy, "professionalDevelopment.fitTitle")}</h3>
-          <ul class="mt-5 grid gap-3">
-            {list(copy, "professionalDevelopment.focus").map((item) => (
-              <li class="border-l-4 border-brand-text bg-paper px-4 py-3 leading-7 text-graphite">
-                {item}
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div class="rounded-md border border-line bg-surface p-5 sm:p-6">
-          <h3 class="font-serif text-2xl leading-tight text-charcoal">{text(copy, "professionalDevelopment.outcomesTitle")}</h3>
-          <ul class="mt-5 grid gap-4">
-            {list(copy, "professionalDevelopment.outcomes").map((item) => (
-              <li class="leading-7 text-slate">{item}</li>
-            ))}
-          </ul>
-        </div>
-      </div>
-      <!-- <div class="mt-10">
-        <h3 class="font-serif text-2xl leading-tight text-charcoal">{text(copy, "professionalDevelopment.formatsTitle")}</h3>
-        <ul class="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {list(copy, "professionalDevelopment.formats").map((item) => (
-            <li class="rounded-md border border-line bg-surface p-5 leading-7 text-graphite">{item}</li>
-          ))}
-        </ul>
-      </div> -->
-      <div class="mt-8 flex flex-col gap-3 sm:flex-row">
-        <ButtonLink href="/workshops/">{text(copy, "professionalDevelopment.primaryCta")}</ButtonLink>
-        <ButtonLink href="/contact/" variant="secondary">{text(copy, "professionalDevelopment.secondaryCta")}</ButtonLink>
-      </div>
-    </Section>
-  </div>
-
-  <!-- <div class="flex justify-center py-2" aria-hidden="true">
-    <span class="h-1 w-14 rounded-full bg-clay"></span>
-  </div> -->
-
-  <section class="py-16 sm:py-20">
-    <div class="mx-auto max-w-6xl px-4 sm:px-6">
-      <div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-        <div>
-          <p class="mb-3 text-sm font-semibold uppercase tracking-wide text-brand-text">
-            {text(copy, "approach.eyebrow")}
-          </p>
-          <h2 class="font-serif text-3xl leading-tight text-charcoal sm:text-4xl">
-            {text(copy, "approach.title")}
-          </h2>
-          <div class="mt-8">
-            <h3 class="font-serif text-2xl leading-tight text-charcoal">
-              {text(copy, "approach.testimonialTitle")}
-            </h3>
-           
-          </div>
-        </div>
-        <!-- <div>
-          <p class="leading-8 text-slate">
-            {text(copy, "approach.description")}
-          </p>
-          <p class="mt-5 leading-8 text-slate">
-            {text(copy, "approach.secondaryDescription")}
-          </p>
-        </div> -->
-      </div>
-    </div>
-  </section>
 
   <Section
     background="surface"
@@ -243,14 +183,6 @@ const homepageStructuredData = {
     <div class="mt-6">
       <ButtonLink href="/resources/" variant="secondary">{text(copy, "resources.cta")}</ButtonLink>
     </div>
-    <!-- <div class="rounded-md border border-line bg-surface p-6">
-      <p class="leading-7 text-slate">
-        {text(copy, "resources.empty")}
-      </p>
-      <div class="mt-6">
-        <ButtonLink href="/resources/" variant="secondary">{text(copy, "resources.cta")}</ButtonLink>
-      </div>
-    </div> -->
   </Section>
 
   <InquiryCta />
