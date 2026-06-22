@@ -4,6 +4,7 @@ import InquiryCta from "../components/common/InquiryCta.astro";
 import PageHero from "../components/common/PageHero.astro";
 import Section from "../components/common/Section.astro";
 import TestimonialQuote from "../components/proof/TestimonialQuote.astro";
+import KeynoteHeroVisual from "../components/services/KeynoteHeroVisual.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { createServiceStructuredData } from "../data/site";
 import { getPageCopy, getSettingsCopy, getTestimonial, list, text } from "../data/content";
@@ -40,14 +41,18 @@ const testimonial = await getTestimonial("keynotes-participant");
   <Section
     eyebrow={text(copy, "topics.eyebrow")}
     title={text(copy, "topics.title")}
+    description={text(copy, "hero.extendedDescription")}
   >
-    <ul class="grid gap-4 md:grid-cols-3">
-      {list(copy, "topics.items").map((item) => (
-        <li class="rounded-md border border-line bg-surface p-5 leading-7 text-graphite">
-          {item}
-        </li>
-      ))}
-    </ul>
+    <div class="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
+      <ul class="grid gap-4">
+        {list(copy, "topics.items").map((item) => (
+          <li class="rounded-md border border-line bg-surface p-5">
+            <p class="font-serif text-xl leading-tight text-charcoal sm:text-2xl">{item}</p>
+          </li>
+        ))}
+      </ul>
+      <KeynoteHeroVisual label={text(copy, "hero.visualLabel")} items={list(copy, "hero.visualItems")} />
+    </div>
   </Section>
 
   <Section
@@ -55,11 +60,24 @@ const testimonial = await getTestimonial("keynotes-participant");
     title={text(copy, "testimonial.title")}
     narrow
   >
-    <p class="mt-8 leading-8 text-slate">
-      {text(copy, "hero.extendedDescription")}
-    </p>
     <TestimonialQuote quote={testimonial.quote} attribution={testimonial.attribution} />
   </Section>
+
+  <section class="bg-paper py-10 sm:py-12">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6">
+      <div aria-hidden="true" class="mb-8 h-1 w-14 rounded-full bg-clay"></div>
+      <figure class="text-center">
+        <img
+          src="/images/photos/katie-speaking.png"
+          alt="Katie Statman-Weil smiling while speaking at a podium with a microphone"
+          width="1086"
+          height="1448"
+          class="mx-auto aspect-[3/4] w-full max-w-sm rounded-md object-cover"
+        />
+        <figcaption class="mt-4 text-sm text-stone">Katie speaking to an early childhood audience.</figcaption>
+      </figure>
+    </div>
+  </section>
 
   <Section
     eyebrow={text(copy, "audienceFit.eyebrow")}

@@ -2,7 +2,7 @@
   "name": "teachwithconnection",
   "type": "module",
   "version": "0.0.1",
-  "packageManager": "pnpm@11.5.1",
+  "packageManager": "pnpm@11.8.0",
   "engines": {
     "node": ">=22.14.0"
   },
@@ -22,6 +22,7 @@
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",
     "@fontsource-variable/source-serif-4": "^5.2.9",
+    "@lucide/astro": "^1.21.0",
     "@tailwindcss/vite": "^4.3.0",
     "astro": "^6.4.8",
     "tailwindcss": "^4.3.0"

@@ -48,22 +48,46 @@ const testimonial = await getTestimonial("workshops-course-participant");
   </Section>
 
   <Section background="surface" title={text(copy, "need.title")} description={text(copy, "need.lead")}>
-    <div class="grid gap-4">
-      <p class="leading-8 text-slate">{text(copy, "need.paragraph1")}</p>
-      <p class="leading-8 text-slate">{text(copy, "need.paragraph2")}</p>
-      <p class="leading-8 text-slate">{text(copy, "need.paragraph3")}</p>
+    <div class="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+      <div class="grid gap-4">
+        <p class="leading-8 text-slate">{text(copy, "need.paragraph1")}</p>
+        <p class="leading-8 text-slate">{text(copy, "need.paragraph2")}</p>
+        <p class="leading-8 text-slate">{text(copy, "need.paragraph3")}</p>
+      </div>
+      <img
+        src="/images/photos/kid-mom.jpg"
+        alt="An educator kneeling down to connect with a young child outdoors"
+        width="749"
+        height="498"
+        class="aspect-[3/2] w-full rounded-md object-cover"
+      />
     </div>
   </Section>
 
+
+  <section class="bg-sand bg-paper pt-4">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6">
+      <TestimonialQuote quote={testimonial.quote} attribution={testimonial.attribution} />
+    </div>
+  </section>
+
   <Section
-    eyebrow={text(copy, "topics.eyebrow")}
-    title={text(copy, "topics.title")}
+    title={text(copy, "trainings.title")}
     description={text(copy, "topics.description")}
   >
     <ul class="grid gap-4 md:grid-cols-2">
-      {cards(copy, "topics.items").map((topic) => (
-        <li class="rounded-md border border-line bg-surface p-5">
-          <h3 class="font-serif text-2xl leading-tight text-charcoal">
+      {cards(copy, "trainings.items").map((topic) => (
+        <li
+          class:list={[
+            "relative overflow-hidden rounded-md border bg-surface p-5",
+            topic.href ? "border-clay" : "border-line",
+          ]}
+        >
+          {topic.href && <span aria-hidden="true" class="absolute inset-x-0 top-0 h-1 bg-clay"></span>}
+          {topic.href && (
+            <p class="text-xs font-semibold uppercase tracking-wide text-clay-text">From Katie's Book</p>
+          )}
+          <h3 class:list={["font-serif text-2xl leading-tight text-charcoal", topic.href && "mt-2"]}>
             {topic.title}
           </h3>
           <p class="mt-3 leading-7 text-slate">{topic.description}</p>
@@ -77,28 +101,21 @@ const testimonial = await getTestimonial("workshops-course-participant");
     </ul>
   </Section>
 
-  <Section
-    background="surface"
-    eyebrow={text(copy, "lens.eyebrow")}
-    title={text(copy, "lens.title")}
-    description={text(copy, "lens.description")}
-  >
-    <ul class="grid gap-4 md:grid-cols-2">
-      {list(copy, "lens.items").map((item) => (
-        <li class="border-l-4 border-brand-text bg-surface px-5 py-4 leading-7 text-graphite">
-          {item}
-        </li>
-      ))}
-    </ul>
+  <Section background="surface" eyebrow={text(copy, "lens.eyebrow")} title={text(copy, "lens.title")}>
+    <div class="grid gap-8 lg:grid-cols-[1fr_1fr] lg:items-start">
+      <p class="font-serif text-2xl leading-snug text-charcoal">
+        {text(copy, "lens.description")}
+      </p>
+      <ul class="grid gap-4">
+        {list(copy, "lens.items").map((item) => (
+          <li class="border-l-4 border-brand-text bg-surface px-5 py-4 leading-7 text-graphite">
+            {item}
+          </li>
+        ))}
+      </ul>
+    </div>
   </Section>
 
-  <Section
-    eyebrow={text(copy, "testimonial.eyebrow")}
-    title={text(copy, "testimonial.title")}
-    narrow
-  >
-    <TestimonialQuote quote={testimonial.quote} attribution={testimonial.attribution} />
-  </Section>
 
   <InquiryCta title={text(copy, "inquiry.title")} />
 </BaseLayout>
