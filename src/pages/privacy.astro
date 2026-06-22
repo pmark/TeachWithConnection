@@ -4,17 +4,208 @@ import Section from "../components/common/Section.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getPageCopy, text } from "../data/content";
 const copy = await getPageCopy("privacy");
+const lastUpdated = 'June 22, 2026';
 ---
 
 <BaseLayout title={text(copy, "seo.title")} description={text(copy, "seo.description")} noindex>
-  <PageHero
-    eyebrow={text(copy, "hero.eyebrow")}
-    title={text(copy, "hero.title")}
-    description={text(copy, "hero.description")}
-  />
-  <Section eyebrow={text(copy, "status.eyebrow")} title={text(copy, "status.title")}>
-    <p class="max-w-3xl leading-8 text-slate">
-      {text(copy, "status.description")}
+  <p class="text-sm font-semibold uppercase tracking-wide text-slate-500">Legal</p>
+  <h1>Privacy Policy</h1>
+  <p><strong>Last updated:</strong> {lastUpdated}</p>
+
+  <p>
+    Teach With Connection is operated by With Connection, LLC (“Teach With Connection,” “we,” “us,” or “our”).
+    This Privacy Policy explains how we collect, use, and protect information when you visit this website or contact us through it.
+  </p>
+
+  <aside aria-labelledby="privacy-toc-heading">
+    <h2 id="privacy-toc-heading">Contents</h2>
+    <ol>
+      <li><a href="#scope">Scope of this policy</a></li>
+      <li><a href="#information-we-collect">Information we collect</a></li>
+      <li><a href="#how-we-use-information">How we use information</a></li>
+      <li><a href="#contact-form-notice">Contact form and email notice</a></li>
+      <li><a href="#cookies-and-analytics">Cookies, analytics, and automatic data</a></li>
+      <li><a href="#service-providers">Service providers</a></li>
+      <li><a href="#sharing-information">How we share information</a></li>
+      <li><a href="#data-retention">Data retention</a></li>
+      <li><a href="#security">Security</a></li>
+      <li><a href="#children">Children's privacy</a></li>
+      <li><a href="#your-choices">Your choices</a></li>
+      <li><a href="#external-links">External links</a></li>
+      <li><a href="#changes">Changes to this policy</a></li>
+      <li><a href="#contact">Contact us</a></li>
+    </ol>
+  </aside>
+
+  <section id="scope">
+    <h2>Scope of this policy</h2>
+    <p>
+      This policy applies to information collected through this website, including inquiry forms, email links,
+      downloads, and ordinary website usage. It does not replace any separate agreements, consent forms,
+      professional-services paperwork, or privacy notices that may apply if you become a client, consulting customer,
+      workshop participant, or contracting organization.
     </p>
-  </Section>
+    <p>
+      This website is intended for users located in the United States. By using the website, you acknowledge that
+      information submitted through the website may be processed in the United States.
+    </p>
+  </section>
+
+  <section id="information-we-collect">
+    <h2>Information we collect</h2>
+    <p>We collect information you voluntarily provide, such as:</p>
+    <ul>
+      <li>your name;</li>
+      <li>your email address;</li>
+      <li>your phone number, if provided;</li>
+      <li>your organization, role, or location, if provided;</li>
+      <li>details about your inquiry, event, training needs, timeline, or requested services; and</li>
+      <li>any other information you choose to include in a message to us.</li>
+    </ul>
+    <p>
+      We may also receive limited technical information automatically when you use the website, such as IP address,
+      browser type, device information, referring pages, pages visited, and timestamps. This information helps the
+      website function, stay secure, and improve over time.
+    </p>
+  </section>
+
+  <section id="how-we-use-information">
+    <h2>How we use information</h2>
+    <p>We use information collected through the website to:</p>
+    <ul>
+      <li>respond to inquiries and scheduling requests;</li>
+      <li>communicate about workshops, keynotes, consultation, resources, or related professional-development services;</li>
+      <li>provide requested downloads or resources;</li>
+      <li>maintain internal records related to inquiries and communications;</li>
+      <li>operate, protect, troubleshoot, and improve the website;</li>
+      <li>reduce spam, abuse, or unauthorized activity; and</li>
+      <li>comply with legal, ethical, or professional obligations when applicable.</li>
+    </ul>
+    <p>
+      We do not sell your personal information. We do not use information submitted through the website for unrelated
+      advertising or behavioral tracking.
+    </p>
+  </section>
+
+  <section id="contact-form-notice">
+    <h2>Contact form and email notice</h2>
+    <p>
+      Please do not submit confidential medical information, protected health information, Social Security numbers,
+      payment card numbers, passwords, or other highly sensitive information through this website's contact forms or
+      ordinary email. The website inquiry form is intended for general questions, scheduling, organizational inquiries,
+      and professional-development requests.
+    </p>
+    <p>
+      Submitting a contact form, sending an email, downloading a resource, or using this website does not create a
+      therapist-client relationship, consultant-client relationship, or other professional relationship. A professional
+      relationship begins only after appropriate intake, agreement, consent, and acceptance by With Connection, LLC.
+    </p>
+  </section>
+
+  <section id="cookies-and-analytics">
+    <h2>Cookies, analytics, and automatic data</h2>
+    <p>
+      The website may use essential cookies, security tools, and similar technologies needed to operate the site,
+      prevent spam, remember basic preferences, or understand aggregate website performance. You can configure your
+      browser to block or delete cookies, but some website features may not work as intended.
+    </p>
+    <p>
+      If analytics are enabled, they should be used to understand aggregate website usage, not to identify individual
+      visitors or track people across unrelated websites. This website is not intended to use advertising pixels or
+      behavioral advertising profiles unless this policy is updated to say so.
+    </p>
+  </section>
+
+  <section id="service-providers">
+    <h2>Service providers</h2>
+    <p>
+      We use trusted service providers to operate the website and respond to inquiries. These may include:
+    </p>
+    <ul>
+      <li>Cloudflare, for website hosting, security, content delivery, and spam-prevention tools such as Turnstile;</li>
+      <li>Resend, for email delivery from website inquiry forms; and</li>
+      <li>other providers that help operate, secure, maintain, or improve the website.</li>
+    </ul>
+    <p>
+      These providers may process limited personal or technical information only as needed to provide their services to us.
+    </p>
+  </section>
+
+  <section id="sharing-information">
+    <h2>How we share information</h2>
+    <p>We may share information only in limited circumstances, including:</p>
+    <ul>
+      <li>with service providers who help us operate the website or communicate with you;</li>
+      <li>within With Connection, LLC as needed to respond to your inquiry or provide requested services;</li>
+      <li>when required by law, legal process, professional obligations, or a good-faith safety concern;</li>
+      <li>to protect the rights, safety, or property of With Connection, LLC, website visitors, or others; or</li>
+      <li>in connection with a business transfer, merger, reorganization, or similar event involving With Connection, LLC.</li>
+    </ul>
+  </section>
+
+  <section id="data-retention">
+    <h2>Data retention</h2>
+    <p>
+      We keep website inquiries and related communications for as long as reasonably necessary to respond, maintain
+      appropriate records, comply with legal or professional obligations, resolve disputes, and operate the business.
+      We may delete or de-identify information when it is no longer needed.
+    </p>
+  </section>
+
+  <section id="security">
+    <h2>Security</h2>
+    <p>
+      We take reasonable steps to protect information submitted through the website, including use of HTTPS and reputable
+      hosting and email-delivery providers. However, no internet transmission, website, or email system can be guaranteed
+      to be completely secure. Please use care when deciding what to share online.
+    </p>
+  </section>
+
+  <section id="children">
+    <h2>Children's privacy</h2>
+    <p>
+      This website is intended for adults, organizations, educators, and helping professionals. We do not knowingly collect
+      personal information directly from children through this website. If you believe a child has submitted personal
+      information through the website, please contact us so we can review and delete it if appropriate.
+    </p>
+  </section>
+
+  <section id="your-choices">
+    <h2>Your choices</h2>
+    <p>
+      You may contact us to ask to access, correct, update, or delete personal information you have provided through the
+      website, subject to any legal, professional, contractual, or recordkeeping obligations that may require us to retain it.
+      You may also ask us not to send non-essential communications.
+    </p>
+  </section>
+
+  <section id="external-links">
+    <h2>External links</h2>
+    <p>
+      This website may link to third-party websites, resources, social media platforms, bookstores, publications, or partner
+      organizations. We are not responsible for the content, security, or privacy practices of websites we do not operate.
+      Please review the privacy policy of any third-party website before submitting information there.
+    </p>
+  </section>
+
+  <section id="changes">
+    <h2>Changes to this policy</h2>
+    <p>
+      We may update this Privacy Policy from time to time. The updated version will be posted on this page with a new
+      “Last updated” date. Your continued use of the website after changes are posted means the revised policy applies
+      going forward.
+    </p>
+  </section>
+
+  <section id="contact">
+    <h2>Contact us</h2>
+    <p>If you have questions about this Privacy Policy or our privacy practices, please contact:</p>
+    <address>
+      With Connection, LLC<br />
+      2154 NE Broadway Suite 110<br />
+      Portland, OR 97232<br />
+      Phone: <a href="tel:+15034732081">503-473-2081</a><br />
+      Email: <a href="mailto:Katie@WithConnectionPDX.com">Katie@WithConnectionPDX.com</a>
+    </address>
+  </section>
 </BaseLayout>

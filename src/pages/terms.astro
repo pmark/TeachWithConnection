@@ -1,20 +1,205 @@
 ---
-import PageHero from "../components/common/PageHero.astro";
-import Section from "../components/common/Section.astro";
-import BaseLayout from "../layouts/BaseLayout.astro";
-import { getPageCopy, text } from "../data/content";
-const copy = await getPageCopy("terms");
+const lastUpdated = 'June 22, 2026';
 ---
 
-<BaseLayout title={text(copy, "seo.title")} description={text(copy, "seo.description")} noindex>
-  <PageHero
-    eyebrow={text(copy, "hero.eyebrow")}
-    title={text(copy, "hero.title")}
-    description={text(copy, "hero.description")}
-  />
-  <Section eyebrow={text(copy, "status.eyebrow")} title={text(copy, "status.title")}>
-    <p class="max-w-3xl leading-8 text-slate">
-      {text(copy, "status.description")}
+<main class="mx-auto max-w-3xl px-6 py-16">
+  <p class="text-sm font-semibold uppercase tracking-wide text-slate-500">Legal</p>
+  <h1>Terms of Service</h1>
+  <p><strong>Last updated:</strong> {lastUpdated}</p>
+
+  <p>
+    These Terms of Service (“Terms”) govern your use of the Teach With Connection website operated by With Connection,
+    LLC (“Teach With Connection,” “we,” “us,” or “our”). By using this website, you agree to these Terms.
+  </p>
+
+  <aside aria-labelledby="terms-toc-heading">
+    <h2 id="terms-toc-heading">Contents</h2>
+    <ol>
+      <li><a href="#website-purpose">Website purpose</a></li>
+      <li><a href="#no-professional-relationship">No professional relationship</a></li>
+      <li><a href="#not-medical-advice">Not medical or mental health advice</a></li>
+      <li><a href="#emergencies">Emergencies</a></li>
+      <li><a href="#acceptable-use">Acceptable use</a></li>
+      <li><a href="#inquiries-and-communications">Inquiries and communications</a></li>
+      <li><a href="#intellectual-property">Intellectual property</a></li>
+      <li><a href="#downloads-and-resources">Downloads and resources</a></li>
+      <li><a href="#third-party-links">Third-party links</a></li>
+      <li><a href="#disclaimers">Disclaimers</a></li>
+      <li><a href="#limitation-of-liability">Limitation of liability</a></li>
+      <li><a href="#indemnification">Indemnification</a></li>
+      <li><a href="#governing-law">Governing law</a></li>
+      <li><a href="#changes">Changes to these Terms</a></li>
+      <li><a href="#contact">Contact us</a></li>
+    </ol>
+  </aside>
+
+  <section id="website-purpose">
+    <h2>Website purpose</h2>
+    <p>
+      This website provides information about Teach With Connection's professional-development services, including
+      workshops, keynotes, consultation, writing, and resources for educators, schools, early childhood organizations,
+      and helping professionals.
     </p>
-  </Section>
-</BaseLayout>
+    <p>
+      Website content is provided for general informational and educational purposes only. It may change at any time.
+    </p>
+  </section>
+
+  <section id="no-professional-relationship">
+    <h2>No professional relationship</h2>
+    <p>
+      Using this website, submitting an inquiry form, sending an email, downloading a resource, or receiving a response
+      does not create a therapist-client relationship, consultant-client relationship, educator-student relationship,
+      fiduciary relationship, or any other professional relationship with With Connection, LLC or Katie Statman-Weil.
+    </p>
+    <p>
+      Any professional relationship begins only after appropriate review, mutual agreement, required paperwork, consent,
+      and acceptance by With Connection, LLC.
+    </p>
+  </section>
+
+  <section id="not-medical-advice">
+    <h2>Not medical or mental health advice</h2>
+    <p>
+      The information on this website is not medical advice, mental health treatment, diagnosis, therapy, legal advice,
+      or a substitute for professional support from a qualified provider who understands your specific situation.
+    </p>
+    <p>
+      You should not rely on website content as a replacement for individualized professional advice, supervision,
+      consultation, or care.
+    </p>
+  </section>
+
+  <section id="emergencies">
+    <h2>Emergencies</h2>
+    <p>
+      This website is not monitored for emergencies and should not be used for crisis communication. If you or someone
+      else may be in immediate danger, call 911 or go to the nearest emergency room. If you are in emotional distress or
+      experiencing a suicidal, mental health, or substance-use crisis in the United States, call or text 988 to reach the
+      Suicide & Crisis Lifeline.
+    </p>
+  </section>
+
+  <section id="acceptable-use">
+    <h2>Acceptable use</h2>
+    <p>You agree not to misuse this website. You may not:</p>
+    <ul>
+      <li>use the website for unlawful, fraudulent, threatening, abusive, or harmful purposes;</li>
+      <li>attempt to gain unauthorized access to the website, server, forms, email systems, or related services;</li>
+      <li>interfere with website security, spam-prevention tools, or normal operation;</li>
+      <li>submit false, misleading, or impersonated information;</li>
+      <li>upload or transmit malware, scripts, or harmful code; or</li>
+      <li>copy, scrape, reproduce, or redistribute website content in a way that violates these Terms or applicable law.</li>
+    </ul>
+  </section>
+
+  <section id="inquiries-and-communications">
+    <h2>Inquiries and communications</h2>
+    <p>
+      The website may allow you to submit an inquiry or contact request. You are responsible for ensuring that the
+      information you submit is accurate and that you have permission to share it.
+    </p>
+    <p>
+      Please do not submit confidential medical information, protected health information, Social Security numbers,
+      payment card numbers, passwords, or other highly sensitive information through website forms or ordinary email.
+    </p>
+    <p>
+      We may respond to inquiries at our discretion. Submitting an inquiry does not guarantee availability, acceptance,
+      scheduling, a proposal, or any specific service.
+    </p>
+  </section>
+
+  <section id="intellectual-property">
+    <h2>Intellectual property</h2>
+    <p>
+      Unless otherwise noted, the text, design, structure, graphics, resources, downloads, and other content on this
+      website are owned by With Connection, LLC or used with permission. All rights are reserved.
+    </p>
+    <p>
+      You may view, download, or print materials made available for that purpose for your personal, internal, classroom,
+      or organizational reference, provided that you do not remove attribution, alter the material in a misleading way,
+      sell it, or redistribute it as your own work.
+    </p>
+  </section>
+
+  <section id="downloads-and-resources">
+    <h2>Downloads and resources</h2>
+    <p>
+      Free articles, downloads, handouts, and resources are provided as educational materials. They may not fit every
+      classroom, child, family, organization, or situation. You are responsible for using professional judgment and
+      adapting materials appropriately for your context.
+    </p>
+  </section>
+
+  <section id="third-party-links">
+    <h2>Third-party links</h2>
+    <p>
+      This website may link to third-party websites, bookstores, publications, organizations, social media platforms,
+      or resources. We do not control and are not responsible for third-party content, policies, security, availability,
+      or practices. Visiting third-party websites is at your own risk.
+    </p>
+  </section>
+
+  <section id="disclaimers">
+    <h2>Disclaimers</h2>
+    <p>
+      This website and its content are provided “as is” and “as available.” We make reasonable efforts to keep information
+      accurate and useful, but we do not guarantee that the website will be error-free, uninterrupted, secure, complete,
+      current, or suitable for your particular needs.
+    </p>
+    <p>
+      To the fullest extent permitted by law, we disclaim all warranties, whether express, implied, statutory, or otherwise,
+      including warranties of merchantability, fitness for a particular purpose, title, and non-infringement.
+    </p>
+  </section>
+
+  <section id="limitation-of-liability">
+    <h2>Limitation of liability</h2>
+    <p>
+      To the fullest extent permitted by law, With Connection, LLC and its owners, employees, contractors, representatives,
+      and service providers will not be liable for any indirect, incidental, consequential, special, exemplary, or punitive
+      damages arising from or related to your use of, or inability to use, this website or its content.
+    </p>
+    <p>
+      Some jurisdictions do not allow certain limitations of liability, so some of the above limitations may not apply to you.
+    </p>
+  </section>
+
+  <section id="indemnification">
+    <h2>Indemnification</h2>
+    <p>
+      You agree to defend, indemnify, and hold harmless With Connection, LLC from claims, damages, liabilities, costs,
+      and expenses arising from your misuse of the website, your violation of these Terms, or your violation of another
+      person's rights.
+    </p>
+  </section>
+
+  <section id="governing-law">
+    <h2>Governing law</h2>
+    <p>
+      These Terms are governed by the laws of the State of Oregon, without regard to conflict-of-law principles. Any
+      dispute related to these Terms or this website will be handled in the state or federal courts located in Oregon,
+      unless applicable law requires otherwise.
+    </p>
+  </section>
+
+  <section id="changes">
+    <h2>Changes to these Terms</h2>
+    <p>
+      We may update these Terms from time to time. The updated version will be posted on this page with a new “Last updated”
+      date. Continued use of the website after changes are posted means you accept the revised Terms going forward.
+    </p>
+  </section>
+
+  <section id="contact">
+    <h2>Contact us</h2>
+    <p>If you have questions about these Terms, please contact:</p>
+    <address>
+      With Connection, LLC<br />
+      2154 NE Broadway Suite 110<br />
+      Portland, OR 97232<br />
+      Phone: <a href="tel:+15034732081">503-473-2081</a><br />
+      Email: <a href="mailto:Katie@WithConnectionPDX.com">Katie@WithConnectionPDX.com</a>
+    </address>
+  </section>
+</main>

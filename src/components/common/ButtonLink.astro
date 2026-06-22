@@ -1,27 +1,31 @@
 ---
 interface Props {
   href: string;
-  variant?: "primary" | "secondary" | "text" | "inverse";
+  variant?: "primary" | "secondary" | "text" | "inverse" | "ghost";
 }
 
 const { href, variant = "primary" } = Astro.props;
 
 const variants = {
   primary:
-    "border-brand bg-gradient-to-b from-brand to-brand-dark text-white hover:border-brand-dark hover:from-brand-dark hover:to-brand-dark focus-visible:outline-brand-text",
+    "rounded-lg border px-5 py-2.5 border-brand bg-gradient-to-b from-brand to-brand-dark text-white hover:border-brand-dark hover:from-brand-dark hover:to-brand-dark focus-visible:outline-brand-text",
   secondary:
-    "border-brand-text bg-surface text-brand-text hover:bg-paper focus-visible:outline-brand-text",
-  text: "border-transparent text-brand-text underline-offset-4 hover:underline focus-visible:outline-brand-text",
+    "rounded-lg border px-5 py-2.5 border-brand-text bg-surface text-brand-text hover:bg-paper focus-visible:outline-brand-text",
+  text: "rounded-md border px-5 py-2.5 border-transparent text-brand-text underline-offset-4 hover:underline focus-visible:outline-brand-text",
   // For self-contained colored surfaces (the header bar) that don't flip with theme —
   // stays a light pill with brand-teal text regardless of light/dark mode.
-  inverse: "border-white bg-white text-brand hover:bg-brand-pale focus-visible:outline-white",
+  inverse: "rounded-md border px-5 py-2.5 border-white bg-white text-brand hover:bg-brand-pale focus-visible:outline-white",
+  // Large transparent lozenge for self-contained dark surfaces (the footer band) —
+  // stays a white-bordered pill regardless of light/dark mode, never gets a fill.
+  ghost:
+    "rounded-full border-2 px-7 py-3 border-white/80 bg-transparent text-white hover:border-white hover:bg-white/10 focus-visible:outline-white",
 };
 ---
 
 <a
   href={href}
   class:list={[
-    "inline-flex min-h-11 items-center justify-center rounded-md border px-5 py-2.5 text-sm font-semibold transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2",
+    "inline-flex min-h-11 items-center justify-center text-sm font-semibold transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2",
     variants[variant],
   ]}
 >

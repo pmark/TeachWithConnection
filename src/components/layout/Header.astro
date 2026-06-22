@@ -1,4 +1,5 @@
 ---
+import ButtonLink from "../common/ButtonLink.astro";
 import { primaryNavigation } from "../../data/site";
 import { getSettingsCopy, text } from "../../data/content";
 const copy = await getSettingsCopy("site");
@@ -87,6 +88,8 @@ const copy = await getSettingsCopy("site");
           ))}
         </ul>
       </nav>
+
+      <ButtonLink href="/contact/" variant="ghost">{text(copy, "nav.contact")}</ButtonLink>
     </div>
   </div>
 </header>

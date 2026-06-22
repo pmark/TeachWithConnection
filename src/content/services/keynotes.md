@@ -19,8 +19,8 @@ source:
   label: "With Connection keynotes page"
   url: "https://www.withconnectionpdx.com/keynotes"
 image:
-  src: "/images/photos/katie-speaking.png"
-  alt: "Katie Statman-Weil speaking at a podium with a microphone"
+  src: "/images/katie-statman-weil-photo-1.jpg"
+  alt: "Katie Statman-Weil smiling outdoors"
 ---
 
 Katie's keynotes connect early childhood educators' lived experience with relationship-centered, trauma-responsive, and neuroaffirming practice.

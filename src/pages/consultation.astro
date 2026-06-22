@@ -47,6 +47,14 @@ const testimonial = await getTestimonial("consultation-teacher");
       <p class="leading-8 text-slate">{text(copy, "background.paragraph3")}</p>
     </div>
   </Section>
+  <Section
+    eyebrow={text(copy, "testimonial.eyebrow")}
+    title={text(copy, "testimonial.title")}
+    narrow
+  >
+    <TestimonialQuote quote={testimonial.quote} attribution={testimonial.attribution} />
+  </Section>
+
 
   <Section
     eyebrow={text(copy, "fit.eyebrow")}
@@ -86,13 +94,6 @@ const testimonial = await getTestimonial("consultation-teacher");
     </div>
   </Section>
 
-  <Section
-    eyebrow={text(copy, "testimonial.eyebrow")}
-    title={text(copy, "testimonial.title")}
-    narrow
-  >
-    <TestimonialQuote quote={testimonial.quote} attribution={testimonial.attribution} />
-  </Section>
-
+  
   <InquiryCta title={text(copy, "inquiry.title")} />
 </BaseLayout>
