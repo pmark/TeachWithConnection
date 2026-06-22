@@ -6,7 +6,7 @@ import Section from "../components/common/Section.astro";
 import TestimonialQuote from "../components/proof/TestimonialQuote.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { createServiceStructuredData } from "../data/site";
-import { getPageCopy, getSettingsCopy, getTestimonial, list, text } from "../data/content";
+import { getPageCopy, getSettingsCopy, getTestimonial, list, richList, text } from "../data/content";
 
 const copy = await getPageCopy("consultation");
 const description = text(copy, "seo.description");
@@ -44,7 +44,7 @@ const testimonial = await getTestimonial("consultation-teacher");
     <div class="mt-6 grid gap-4">
       <p class="leading-8 text-slate">{text(copy, "background.paragraph1")}</p>
       <p class="leading-8 text-slate">{text(copy, "background.paragraph2")}</p>
-      <p class="leading-8 text-slate">{text(copy, "background.paragraph3")}</p>
+      <p class="leading-8 text-slate font-bold italic">{text(copy, "background.paragraph3")}</p>
     </div>
   </Section>
   <Section
@@ -62,9 +62,9 @@ const testimonial = await getTestimonial("consultation-teacher");
     description={text(copy, "fit.description")}
   >
     <ul class="grid gap-4 md:grid-cols-2">
-      {list(copy, "fit.items").map((item) => (
+      {richList(copy, "fit.items").map((item) => (
         <li class="rounded-md border border-line bg-surface p-5 leading-7 text-graphite">
-          {item}
+          <p set:html={item} />
         </li>
       ))}
     </ul>

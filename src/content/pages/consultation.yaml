@@ -27,7 +27,7 @@ copy:
     inquiry.title: "Inquire about consultation"
   lists:
     fit.items:
-      - "A student's behaviors have continued to escalate despite the many interventions, strategies, and supports your team has already tried."
+      - "A student's behaviors have **continued to escalate** despite the many interventions, strategies, and supports your team has already tried."
       - "Your staff feels emotionally exhausted, overwhelmed, or constantly \"on edge\" while trying to manage the intensity of the classroom environment."
       - "The relationship between educators and the student feels increasingly strained, disconnected, or stuck in cycles of conflict and dysregulation."
       - "Supporting one child's needs has begun to impact the well-being of the larger classroom community, staff morale, or team cohesion."

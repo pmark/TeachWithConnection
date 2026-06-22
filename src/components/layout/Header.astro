@@ -1,9 +1,11 @@
 ---
 import { Mail } from '@lucide/astro';
-import ButtonLink from "../common/ButtonLink.astro";
 import { primaryNavigation } from "../../data/site";
 import { getSettingsCopy, text } from "../../data/content";
 const copy = await getSettingsCopy("site");
+const currentPath = Astro.url.pathname;
+const isActive = (href: string) =>
+  href === "/" ? currentPath === "/" : currentPath.startsWith(href);
 ---
 
 <header class="relative bg-brand">
@@ -64,7 +66,11 @@ const copy = await getSettingsCopy("site");
             <li>
               <a
                 href={item.href}
-                class="flex min-h-11 items-center rounded-md px-2 underline-offset-4 hover:bg-white/10 hover:text-white hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                aria-current={isActive(item.href) ? "page" : undefined}
+                class:list={[
+                  "flex min-h-11 items-center rounded-md px-2 underline-offset-4 hover:bg-white/10 hover:text-white hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white",
+                  { "underline text-white": isActive(item.href) },
+                ]}
               >
                 {text(copy, item.labelKey)}
               </a>
@@ -81,7 +87,11 @@ const copy = await getSettingsCopy("site");
             <li>
               <a
                 href={item.href}
-                class="inline-flex min-h-11 items-center px-1 underline-offset-4 hover:text-white hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+                aria-current={isActive(item.href) ? "page" : undefined}
+                class:list={[
+                  "inline-flex min-h-11 items-center px-1 underline-offset-4 hover:text-white hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white",
+                  { "underline text-white": isActive(item.href) },
+                ]}
               >
                 {text(copy, item.labelKey)}
               </a>

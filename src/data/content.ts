@@ -37,3 +37,34 @@ export function cards(copy: Copy, key: string) {
   if (value === undefined) throw new Error(`Missing content cards: ${key}`);
   return value;
 }
+
+function escapeHtml(value: string) {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+/**
+ * Renders a tiny Markdown subset to HTML: **bold**, *italic*, [text](url).
+ * All other characters are escaped, so the result is safe to use with set:html.
+ */
+function markdownToHtml(raw: string) {
+  const escaped = escapeHtml(raw);
+  return escaped
+    .replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (_, label, url) => {
+      const safeUrl = /^(https?:|mailto:|tel:|\/|#)/i.test(url) ? url : "#";
+      return `<a href="${safeUrl}">${label}</a>`;
+    })
+    .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
+    .replace(/\*([^*]+)\*/g, "<em>$1</em>");
+}
+
+export function richText(copy: Copy, key: string) {
+  return markdownToHtml(text(copy, key));
+}
+
+export function richList(copy: Copy, key: string) {
+  return list(copy, key).map(markdownToHtml);
+}
