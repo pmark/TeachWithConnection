@@ -14,21 +14,21 @@ interface Swatch {
 }
 
 const brandColors: Swatch[] = [
-  { token: "--color-brand", hex: "#196c94", role: "Primary action — buttons, links, focus rings" },
-  { token: "--color-brand-dark", hex: "#135473", role: "Hover/active state, gradient end-stop" },
-  { token: "--color-brand-light", hex: "#489cc2", role: "Decorative accent — large text/UI/tints only" },
-  { token: "--color-brand-pale", hex: "#ebf8ff", role: "Decorative surface tint only" },
-  { token: "--color-brand-text", hex: "#196c94", role: "Teal on page background (eyebrows, links, accent rules)" },
+  { token: "--color-brand", hex: "#157c93", role: "Primary action — buttons, links, focus rings (owner-specified, H190 S75 L33)" },
+  { token: "--color-brand-dark", hex: "#106070", role: "Hover/active state, gradient end-stop (same H/S, L33→25)" },
+  { token: "--color-brand-light", hex: "#40aec4", role: "Decorative accent — large text/UI/tints only (same hue, S75→53, L33→51)" },
+  { token: "--color-brand-pale", hex: "#eff9fb", role: "Decorative surface tint only (same hue, S→low, L96)" },
+  { token: "--color-brand-text", hex: "#157c93", role: "Teal on page background (eyebrows, links, accent rules)" },
 ];
 
 const footerColors: Swatch[] = [
-  { token: "--color-footer", hex: "#103b41", role: "Footer gradient start" },
-  { token: "--color-footer-dark", hex: "#0b292d", role: "Footer gradient end" },
+  { token: "--color-footer", hex: "#0b414c", role: "Footer gradient start (same H/S as brand, two steps darker than brand-dark, L17)" },
+  { token: "--color-footer-dark", hex: "#062228", role: "Footer gradient end (same H/S as brand, L9)" },
 ];
 
 const accentColors: Swatch[] = [
-  { token: "--color-clay", hex: "#b8501e", role: "Complementary warm accent — divider, accent bar" },
-  { token: "--color-clay-text", hex: "#b8501e", role: "Same accent, text role — testimonial quote mark" },
+  { token: "--color-clay", hex: "#b7341a", role: "Complementary warm accent — divider, accent bar (true complement, hue 190°→10°)" },
+  { token: "--color-clay-text", hex: "#b7341a", role: "Same accent, text role — testimonial quote mark" },
 ];
 
 const neutralColors: Swatch[] = [
@@ -61,6 +61,12 @@ const surfaceColors: Swatch[] = [
       Swatches render the live CSS variable, so text/surface-role tokens (charcoal, slate, stone, surface,
       paper, sand, line, brand-text, clay-text) will show their dark-mode value when toggled — the hex label
       underneath is always the light-mode value documented in <code>global.css</code>.
+    </p>
+    <p class="mt-3 text-sm text-stone">
+      <strong>Brand/footer/clay are now one cohesive HSL system</strong>, derived from a single owner-specified
+      primary (<code>--color-brand</code>) rather than independently chosen: every other brand-family token
+      keeps the same hue and saturation and only moves lightness, footer applies a fixed hue shift toward green,
+      and clay sits at the brand's true hue complement. See <code>docs/DESIGN.md</code> for the exact math.
     </p>
   </Section>
 

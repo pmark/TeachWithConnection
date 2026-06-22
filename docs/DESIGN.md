@@ -74,25 +74,28 @@ the same three or four moves with no variation, which is the strongest
 
 ### Color palette with semantic roles
 
-**Corrected 2026-06-20, then finalized with owner-supplied exact values.** The palette was originally sampled from `public/images/logo-small-785x240.jpg` / `logo-large-1570x480.jpg` (a navy/steel-blue wordmark) — the owner identified that as the wrong logo. `public/images/wc-logo.jpg` (a teal mandala icon) is correct; the header now shows it alongside a "Teach With Connection" text wordmark. The owner then supplied exact hex values picked from the logo (superseding the agent's own pixel sampling, which landed within 1–2 hex steps of the same colors):
+**Superseded 2026-06-21 — primary accent changed and every dependent token re-derived from it.** Katie rejected the logo-sampled `#196c94` ("hideous blue") and specified `rgb(21, 124, 147)` / `#157c93` / HSL `190° 75% 33%` as the new primary. Notably, this is the exact **legacy accent** already named in this doc's own Appendix (the original site's teal, before the logo-driven resample) — so this change is a reversion to the pre-existing brand color, not a novel pick.
 
-- Dominant teal: `#196c94` (owner-specified; agent's independent sampling: `#196b93`).
-- Mid steel-blue (petals): `#489cc2` (owner-specified; agent's sampling: `#479bc0`).
-- Pale ice tint (center star): `#ebf8ff` (owner-specified; agent's sampling: `#eaf8fe`).
-- Footer deep teal-green: not in the logo — computed by shifting the dominant teal's hue ~12° toward green and dropping lightness to ~16%, giving a distinct, richer-than-charcoal dark band purpose-built for the global footer.
-- Complementary clay/rust: not in the logo — computed as the true HSL complement of the dominant teal (hue 199.5° → complement 19.5°), then tuned for "pops while staying earthy" (higher saturation/lightness than the first muted pass) rather than a muted terracotta or a neon orange.
+Rather than re-sampling or re-picking every other brand-family token independently (the approach that produced the previous, less-cohesive set), every other token is now **computed relative to this one owner-specified primary** in HSL space, using the same kind of relative-derivation math this doc already used for footer/clay — just applied consistently to the whole brand family this time:
 
-The small palette anchored on the teal Katie favors, plus the supporting neutrals:
+- `--color-brand-dark`: same hue/saturation as `brand`, lightness dropped 33%→25% (hover/active should get darker, not re-hued).
+- `--color-brand-light`: same hue as `brand`, saturation eased 75%→53% and lightness raised 33%→51% (a paler, less-saturated sibling for decorative-only use, not a different color family).
+- `--color-brand-pale`: same hue, saturation dropped further, lightness raised to 96% — a near-white "ghost" of the brand hue for tint surfaces only.
+- `--color-footer` / `--color-footer-dark`: **revised 2026-06-21** — the owner found the previous hue-shifted-toward-green footer ("`#0f4341`, H178") didn't fit once the primary changed. Footer is now kept in the *same* hue/saturation as `brand` (no hue shift at all) and is just two more lightness steps darker than `--color-brand-dark`, continuing the same 8pt step pattern (`brand` L33 → `brand-dark` L25 → `footer` L17 → `footer-dark` L9).
+- `--color-clay` / `--color-clay-text`: hue rotated to `brand`'s true HSL complement (190°→10°), saturation matched to `brand` (75%), lightness raised ~8pts (33%→41%) so it pops rather than reading muted — same "tuned complement" rule as before, just recomputed off the new hue.
+- Dark-mode `--color-brand-text` / `--color-clay-text`: same hue/saturation as their light-mode value, lightness raised (33%→54% and 41%→59% respectively) for legibility against a dark page background — mirrors the exact ratio the previous dark-mode values used relative to their light-mode counterparts.
+
+The result is one HSL-derived family instead of independently-chosen colors — change the primary again in the future and the same relative math reproduces a cohesive set automatically.
 
 | Token | Hex | Role |
 |---|---|---|
-| `--color-brand` | `#196c94` — owner-specified dominant logo teal | Primary action, links, focus rings, identity accent. Contrast vs. white: ~5.9:1 (passes AA normal text). |
-| `--color-brand-dark` | `#135473` — darkened for hover/active | Hover/active state for accent elements; gradient end-stop on primary buttons/CTA band. |
-| `--color-brand-light` | `#489cc2` — owner-specified petal blue | Secondary/decorative accent — large text, non-text UI, or background tints only (fails AA normal text; fine for large text/UI per WCAG 1.4.11). |
-| `--color-brand-pale` | `#ebf8ff` — owner-specified center ice tint | Decorative surface tint only (very low contrast) — never text. |
-| `--color-footer` | `#103b41` — computed, hue-shifted darker/greener than `brand` | Global footer gradient start (top). Contrast vs. white: ~12:1. |
-| `--color-footer-dark` | `#0b292d` — darkened from `--color-footer` | Global footer gradient end (bottom). |
-| `--color-clay` | `#b8501e` — computed true complement of the dominant teal, tuned to pop | Complementary warm accent for hand-crafted details (quote mark, divider). Contrast vs. white: ~5:1 (passes AA, usable for small accent text, not just decoration). |
+| `--color-brand` | `#157c93` — owner-specified (H190 S75 L33); also the site's pre-existing legacy accent | Primary action, links, focus rings, identity accent. Contrast vs. white: ~4.8:1 (passes AA normal text, tighter margin than the previous teal's ~5.9:1). |
+| `--color-brand-dark` | `#106070` — same H/S as `brand`, L33→25 | Hover/active state for accent elements; gradient end-stop on primary buttons/CTA band. |
+| `--color-brand-light` | `#40aec4` — same hue, S75→53, L33→51 | Secondary/decorative accent — large text, non-text UI, or background tints only (fails AA normal text; fine for large text/UI per WCAG 1.4.11). |
+| `--color-brand-pale` | `#eff9fb` — same hue, S low, L96 | Decorative surface tint only (very low contrast) — never text. |
+| `--color-footer` | `#0b414c` — same H/S as `brand` (no hue shift), two 8pt steps darker than `brand-dark` (L25→17) | Global footer gradient start (top). Contrast vs. white: ~11:1. |
+| `--color-footer-dark` | `#062228` — same H/S as `brand`, one more 8pt step (L17→9) | Global footer gradient end (bottom). |
+| `--color-clay` | `#b7341a` — H10 (true complement of `brand`'s 190°), S75, L41 | Complementary warm accent for hand-crafted details (quote mark, divider). Contrast vs. white: ~6:1 (passes AA, usable for small accent text, not just decoration). |
 | `--color-charcoal` | `#272727` (existing) | Primary text |
 | `--color-graphite` | `#3c3834` (existing) | Secondary text on light surfaces |
 | `--color-slate` | `#4f4a45` (existing) | Body copy on light surfaces |
