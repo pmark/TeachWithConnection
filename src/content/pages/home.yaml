@@ -48,6 +48,11 @@ copy:
     resources.description: "Free resources stay open-access so educators can use Katie's approach directly and leaders can explore the work before inquiring."
     resources.empty: "The first educator resources are in preparation. When published, they will be available here without an email signup."
     resources.cta: "Visit resources"
+    freeResource.eyebrow: "Free Resource"
+    freeResource.title: "Creating Trauma Sensitive Classrooms"
+    freeResource.description: "Grab Katie's free article packed with practical, brain-first strategies for building classrooms where every child feels safe, seen, and ready to learn. No strings attached—just click and download."
+    freeResource.cta: "Get the Free Article"
+    freeResource.imageAlt: "Cover of \"Social & Emotional Development,\" a NAEYC Spotlight on Young Children publication"
   lists:
     about.paragraphs:
       - "Katie Statman-Weil is a clinician, educator, consultant, and trainer with extensive experience supporting children, families, and school systems navigating complex behavioral and neurodevelopmental differences. Katie specializes in trauma-responsive care, attachment, neurodivergence, and relational approaches to behavior support."
