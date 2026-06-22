@@ -1,5 +1,4 @@
 ---
-import { site } from "../../data/site";
 import { getSettingsCopy, list, text } from "../../data/content";
 
 const copy = await getSettingsCopy("interface");
@@ -33,12 +32,15 @@ const clientMessages = JSON.stringify({
 
 const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
 const fieldClass =
-  "min-h-11 w-full rounded-md border border-[#9b928a] bg-surface px-3 py-2 font-normal text-charcoal focus:border-brand-text focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-brand-text dark:border-[#6b6258]";
+  "min-h-11 h-[2.75rem] w-full rounded-md border border-[#9b928a] bg-surface px-3 py-2 font-normal text-charcoal focus:border-brand-text focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-brand-text dark:border-[#6b6258]";
+const labelRowClass = "flex items-baseline justify-between gap-2 text-sm font-semibold text-charcoal";
+const tagClass = "shrink-0 text-xs font-normal text-stone";
+const errorClass = "hidden text-sm font-normal text-[#9f1d1d] dark:text-[#f0a8a8]";
 ---
 
 <form
   id="inquiry-form"
-  class="grid gap-5 rounded-md border border-line bg-paper p-4 shadow-sm sm:p-6"
+  class="grid gap-8 rounded-md border border-line bg-paper p-6 shadow-sm sm:p-8"
   action="/api/inquiry"
   method="post"
   aria-describedby="form-note form-status"
@@ -57,66 +59,105 @@ const fieldClass =
   </div>
   <input type="hidden" name="startedAt" value={Date.now()} />
 
-  <div class="grid gap-5 sm:grid-cols-2">
-    <label class="grid gap-2 text-sm font-semibold text-charcoal">
-      {text(copy, "form.name")} <span class="font-normal text-stone">{text(copy, "form.required")}</span>
-      <input class={fieldClass} name="name" autocomplete="name" required maxlength="100" aria-describedby="name-error" />
-      <span id="name-error" class="hidden text-sm font-normal text-[#9f1d1d] dark:text-[#f0a8a8]" data-error-for="name"></span>
-    </label>
+  <fieldset class="m-0 grid gap-4 border-0 p-0">
+    <legend class="mb-1 w-full border-b border-line pb-2 text-sm font-semibold uppercase tracking-wide text-brand-text">
+      {text(copy, "form.detailsLegend")}
+    </legend>
 
-    <label class="grid gap-2 text-sm font-semibold text-charcoal">
-      {text(copy, "form.email")} <span class="font-normal text-stone">{text(copy, "form.required")}</span>
-      <input class={fieldClass} name="email" type="email" autocomplete="email" required maxlength="254" aria-describedby="email-error" />
-      <span id="email-error" class="hidden text-sm font-normal text-[#9f1d1d] dark:text-[#f0a8a8]" data-error-for="email"></span>
-    </label>
-  </div>
+    <div class="grid gap-4 sm:grid-cols-2">
+      <label class="grid gap-2">
+        <span class={labelRowClass}>
+          {text(copy, "form.name")} <span class={tagClass}>{text(copy, "form.required")}</span>
+        </span>
+        <input class={fieldClass} name="name" autocomplete="name" required maxlength="100" aria-describedby="name-error" />
+        <span id="name-error" class={errorClass} data-error-for="name"></span>
+      </label>
 
-  <div class="grid gap-5 sm:grid-cols-2">
-    <label class="grid gap-2 text-sm font-semibold text-charcoal">
-      {text(copy, "form.organization")} <span class="font-normal text-stone">{text(copy, "form.required")}</span>
-      <input class={fieldClass} name="organization" autocomplete="organization" required maxlength="150" aria-describedby="organization-error" />
-      <span id="organization-error" class="hidden text-sm font-normal text-[#9f1d1d] dark:text-[#f0a8a8]" data-error-for="organization"></span>
-    </label>
+      <label class="grid gap-2">
+        <span class={labelRowClass}>
+          {text(copy, "form.email")} <span class={tagClass}>{text(copy, "form.required")}</span>
+        </span>
+        <input class={fieldClass} name="email" type="email" autocomplete="email" required maxlength="254" aria-describedby="email-error" />
+        <span id="email-error" class={errorClass} data-error-for="email"></span>
+      </label>
+    </div>
 
-    <label class="grid gap-2 text-sm font-semibold text-charcoal">
-      {text(copy, "form.role")}
-      <input class={fieldClass} name="role" autocomplete="organization-title" maxlength="100" />
-    </label>
-  </div>
+    <div class="grid gap-4 sm:grid-cols-2">
+      <label class="grid gap-2">
+        <span class={labelRowClass}>
+          {text(copy, "form.organization")} <span class={tagClass}>{text(copy, "form.required")}</span>
+        </span>
+        <input class={fieldClass} name="organization" autocomplete="organization" required maxlength="150" aria-describedby="organization-error" />
+        <span id="organization-error" class={errorClass} data-error-for="organization"></span>
+      </label>
 
-  <div class="grid gap-5 sm:grid-cols-2">
-    <label class="grid gap-2 text-sm font-semibold text-charcoal">
-      {text(copy, "form.location")}
-      <input class={fieldClass} name="location" autocomplete="address-level2" maxlength="120" />
-    </label>
+      <label class="grid gap-2">
+        <span class={labelRowClass}>
+          {text(copy, "form.location")} <span class={tagClass}></span>
+        </span>
+        <input class={fieldClass} name="location" autocomplete="address-level2" maxlength="120" />
+      </label>
 
-    <label class="grid gap-2 text-sm font-semibold text-charcoal">
-      {text(copy, "form.inquiryType")} <span class="font-normal text-stone">{text(copy, "form.required")}</span>
-      <select class={fieldClass} name="inquiryType" required aria-describedby="inquiryType-error">
-        <option value="">{text(copy, "form.chooseOne")}</option>
-        {inquiryTypes.map((type) => <option value={type}>{type}</option>)}
-      </select>
-      <span id="inquiryType-error" class="hidden text-sm font-normal text-[#9f1d1d] dark:text-[#f0a8a8]" data-error-for="inquiryType"></span>
-    </label>
-  </div>
+      <!-- <label class="grid gap-2">
+        <span class={labelRowClass}>
+          {text(copy, "form.role")} <span class={tagClass}></span>
+        </span>
+        <input class={fieldClass} name="role" autocomplete="organization-title" maxlength="100" />
+      </label> -->
+    <!-- </div> -->
 
-  <div class="grid gap-5 sm:grid-cols-2">
-    <label class="grid gap-2 text-sm font-semibold text-charcoal">
-      {text(copy, "form.timeline")}
-      <input class={fieldClass} name="timeline" maxlength="120" />
-    </label>
+    <!-- <div class="grid gap-4 sm:grid-cols-2">
+      <label class="grid gap-2">
+        <span class={labelRowClass}>
+          {text(copy, "form.location")} <span class={tagClass}></span>
+        </span>
+        <input class={fieldClass} name="location" autocomplete="address-level2" maxlength="120" />
+      </label>
+    </div> -->
+  </fieldset>
 
-    <label class="grid gap-2 text-sm font-semibold text-charcoal">
-      {text(copy, "form.audienceSize")}
-      <input class={fieldClass} name="audienceSize" inputmode="numeric" maxlength="60" />
-    </label>
-  </div>
+  <fieldset class="m-0 grid gap-4 border-0 p-0">
+    <legend class="mb-1 w-full border-b border-line pb-2 text-sm font-semibold uppercase tracking-wide text-brand-text">
+      {text(copy, "form.inquiryLegend")}
+    </legend>
 
-  <label class="grid gap-2 text-sm font-semibold text-charcoal">
-    {text(copy, "form.message")} <span class="font-normal text-stone">{text(copy, "form.required")}</span>
-    <textarea class={`${fieldClass} min-h-40`} name="message" required maxlength="5000" aria-describedby="message-error"></textarea>
-    <span id="message-error" class="hidden text-sm font-normal text-[#9f1d1d] dark:text-[#f0a8a8]" data-error-for="message"></span>
-  </label>
+    <div class="grid gap-4 sm:grid-cols-2">
+      <label class="grid gap-2">
+        <span class={labelRowClass}>
+          {text(copy, "form.inquiryType")} <span class={tagClass}>{text(copy, "form.required")}</span>
+        </span>
+        <select class={fieldClass} name="inquiryType" required aria-describedby="inquiryType-error">
+          <option value="">{text(copy, "form.chooseOne")}</option>
+          {inquiryTypes.map((type) => <option value={type}>{type}</option>)}
+        </select>
+        <span id="inquiryType-error" class={errorClass} data-error-for="inquiryType"></span>
+      </label>
+
+      <label class="grid gap-2">
+        <span class={labelRowClass}>
+          {text(copy, "form.timeline")} <span class={tagClass}></span>
+        </span>
+        <input class={fieldClass} name="timeline" maxlength="120" />
+      </label>
+    </div>
+
+    <div class="grid gap-4 sm:grid-cols-2">
+      <label class="grid gap-2">
+        <span class={labelRowClass}>
+          {text(copy, "form.audienceSize")} <span class={tagClass}></span>
+        </span>
+        <input class={fieldClass} name="audienceSize" inputmode="numeric" maxlength="60" />
+      </label>
+    </div>
+
+    <label class="grid gap-2">
+      <span class={labelRowClass}>
+        {text(copy, "form.message")} <span class={tagClass}>{text(copy, "form.required")}</span>
+      </span>
+      <textarea class={`${fieldClass} min-h-40`} name="message" required maxlength="5000" aria-describedby="message-error"></textarea>
+      <span id="message-error" class={errorClass} data-error-for="message"></span>
+    </label>
+  </fieldset>
 
   {turnstileSiteKey ? (
     <div class="cf-turnstile" data-sitekey={turnstileSiteKey} data-theme="auto"></div>
@@ -136,13 +177,6 @@ const fieldClass =
   >
     {text(copy, "form.submit")}
   </button>
-
-  <p class="text-sm leading-6 text-stone">
-    {text(copy, "form.fallbackPrefix")}
-    <a class="inline-flex min-h-11 items-center font-semibold text-brand-text underline underline-offset-4" href={`${site.relatedPracticeUrl}/contact-us`}>
-      {text(copy, "form.fallbackLink")}
-    </a>.
-  </p>
 </form>
 
 {turnstileSiteKey && (

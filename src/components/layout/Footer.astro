@@ -13,9 +13,18 @@ const copy = await getSettingsCopy("site");
         {text(copy, "footer.description")}
       </p>
       <p class="mt-4 max-w-md text-sm leading-6 text-[#ddd6cf]">
+        {text(copy, "footer.address")}
+      </p>
+      <p class="mt-4 max-w-md text-sm leading-6 text-[#ddd6cf]">
         {text(copy, "footer.relatedPracticePrefix")}
         <a class="inline-flex min-h-11 items-center underline underline-offset-4 hover:text-white" href={site.relatedPracticeUrl}>{text(copy, "footer.relatedPracticeLabel")}</a>.
       </p>
+      <a
+        class="mt-6 inline-flex min-h-11 items-center justify-center rounded-full border-2 border-white/80 bg-transparent px-7 py-3 text-sm font-semibold text-white transition hover:border-white hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+        href="/contact/"
+      >
+        {text(copy, "footer.consultCta")}
+      </a>
     </div>
 
     <nav aria-label={text(copy, "footer.navigationAriaLabel")}>
@@ -34,8 +43,8 @@ const copy = await getSettingsCopy("site");
     </nav>
   </div>
   <div class="border-t border-white/10">
-    <div class="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-5 text-sm text-[#ddd6cf] sm:px-6 sm:flex-row sm:items-center sm:justify-between">
-      <div class="flex flex-wrap items-center gap-x-3">
+    <div class="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-5 text-sm text-[#ddd6cf] sm:flex-row sm:items-center sm:justify-between sm:px-6">
+      <div class="flex flex-wrap items-center gap-x-3 gap-y-1">
         <p>&copy; {new Date().getFullYear()} {text(copy, "brand.legalName")}</p>
         <nav aria-label={text(copy, "footer.socialNavigationAriaLabel")}>
           <ul class="flex items-center gap-1">
@@ -56,7 +65,10 @@ const copy = await getSettingsCopy("site");
         </nav>
         <ThemeToggleButton label={text(copy, "header.themeToggle")} />
       </div>
-      <p>{text(copy, "footer.closing")}</p>
+      <div class="flex flex-col gap-1 text-[#ddd6cf]/80 sm:items-end">
+        <p>{text(copy, "footer.closing")}</p>
+        <p>Photo Copyright &copy; {new Date().getFullYear()} {text(copy, "footer.photoCredit")}</p>
+      </div>
     </div>
   </div>
 </footer>

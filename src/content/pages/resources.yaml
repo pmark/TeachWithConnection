@@ -8,6 +8,7 @@ copy:
     hero.title: "Tools for educators"
     hero.description: "Explore practical, relationship-centered tools for educators and teams. Every resource is available without an email signup."
     hero.cta: "Ask about professional development"
+    hero.bookCta: "Explore the book"
     library.eyebrow: "Library"
     library.availableTitle: "Available resources"
     library.emptyTitle: "Resources are coming soon"

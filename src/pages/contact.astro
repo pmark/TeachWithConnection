@@ -23,7 +23,34 @@ const copy = await getPageCopy("contact");
     title={text(copy, "form.title")}
     description={text(copy, "form.description")}
   >
-    <div class="max-w-3xl">
+    <div class="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
+      <address class="rounded-md border border-line bg-paper p-6 not-italic shadow-sm lg:sticky lg:top-24">
+        <p class="font-serif text-xl leading-snug text-charcoal">
+          {text(copy, "info.name")}
+        </p>
+
+        <div class="mt-6 grid gap-5 text-sm leading-6 text-slate">
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-wide text-stone">
+              {text(copy, "info.phoneLabel")}
+            </p>
+            <a class="mt-1 inline-block font-semibold text-brand-text underline-offset-4 hover:underline" href={`tel:${text(copy, "info.phone").replace(/[^0-9+]/g, "")}`}>
+              {text(copy, "info.phone")}
+            </a>
+          </div>
+
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-wide text-stone">
+              {text(copy, "info.addressLabel")}
+            </p>
+            <p class="mt-1">
+              {text(copy, "info.addressLine1")}<br />
+              {text(copy, "info.addressLine2")}
+            </p>
+          </div>
+        </div>
+      </address>
+
       <InquiryForm />
     </div>
   </Section>

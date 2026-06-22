@@ -21,8 +21,9 @@ const copy = await getPageCopy("resources");
     title={text(copy, "hero.title")}
     description={text(copy, "hero.description")}
   >
-    <div class="mt-8">
+    <div class="mt-8 flex flex-col gap-3 sm:flex-row">
       <ButtonLink href="/contact/" variant="secondary">{text(copy, "hero.cta")}</ButtonLink>
+      <ButtonLink href="/bookstore/" variant="secondary">{text(copy, "hero.bookCta")}</ButtonLink>
     </div>
   </PageHero>
 

@@ -15,6 +15,7 @@ copy:
     book.primaryCta: "View at Redleaf Press"
     book.amazonCta: "View on Amazon"
     book.secondaryCta: "Connect the book to team learning"
+    book.resourcesCta: "Browse free resources"
     book.topicsAriaLabel: "Book topics"
     book.topicsTitle: "Themes for educators"
     related.eyebrow: "Related Writing"
