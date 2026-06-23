@@ -2,11 +2,11 @@ route: "/keynotes/"
 status: approved
 copy:
   strings:
-    seo.title: "Keynotes"
-    seo.description: "Early childhood keynote speaking rooted in classroom stories, relational practice, trauma-responsive care, and practical ideas."
+    seo.title: "Early Childhood Keynote Speaker"
+    seo.description: "Invite Katie Statman-Weil, EdD, LCSW as an early childhood keynote speaker for grounded stories, trauma-responsive practice, and practical ideas."
     structuredData.name: "Early Childhood Keynote Speaking"
     hero.eyebrow: "Keynotes"
-    hero.title: "Grounded speaking for early childhood audiences"
+    hero.title: "Keynotes for Early Childhood Educators"
     hero.description: "Katie's keynotes speak to educators' lived classroom experience while opening up new possibilities for connection, regulation, and relationship-centered practice."
     hero.photoAlt: "Katie Statman-Weil smiling outdoors"
     hero.primaryCta: "Ask about a keynote"
@@ -14,7 +14,7 @@ copy:
     hero.visualLabel: "What audiences can expect"
     hero.extendedDescription: "Katie's engaging keynotes speak to the experiences of early childhood educators. With the lived experience to back up her claims, Katie uses stories from the field to ensure audiences feel seen in their current reality while also opening the door to new possibilities. Audiences leave feeling energized, challenged, and equipped with ideas they can carry into real moments with children and families long after the event ends."
     audienceFit.eyebrow: "Audience Fit"
-    audienceFit.title: "For conferences and organizations that want warmth, rigor, and classroom relevance"
+    audienceFit.title: "For early childhood conferences and organizations that want warmth, rigor, and classroom relevance"
     audienceExperience.eyebrow: "Audience Experience"
     audienceExperience.title: "Stories from the field, practical ideas, and a more compassionate lens"
     audienceExperience.description: "Planners and participants can expect a grounded voice, relevant early childhood stories, and ideas that connect directly to the work educators carry every day."

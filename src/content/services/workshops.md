@@ -1,6 +1,6 @@
 ---
 title: "Workshops"
-description: "Focused training topics for teams working with trauma, behavior, neurodivergence, regulation, PDA, foster care, adoption, and NOWS/NAS."
+description: "Workshops for teaching teams feeling stuck with escalating behavior, dysregulation, trauma histories, neurodivergence, PDA, foster care, adoption, or NOWS/NAS."
 priority: 2
 audience:
   - "Teaching teams"
@@ -23,4 +23,4 @@ image:
   alt: "Two young children smiling and holding hands outdoors"
 ---
 
-Workshop topics are grounded in real classroom complexity and help teams move from crisis response toward shared understanding, connection, regulation, and practical tools.
+Workshop topics are grounded in real classroom complexity and help teams move from behavior whack-a-mole toward shared understanding, connection, regulation, and practical tools.

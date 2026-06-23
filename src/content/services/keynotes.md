@@ -1,6 +1,6 @@
 ---
 title: "Keynotes"
-description: "Grounded keynote speaking for early childhood conferences and organizations that need stories from the field and practical ideas."
+description: "Keynotes for early childhood conferences and organizations, with stories from the field, practical ideas, and a voice that helps educators feel seen."
 priority: 3
 audience:
   - "Conference planners"
@@ -23,4 +23,4 @@ image:
   alt: "Katie Statman-Weil smiling outdoors"
 ---
 
-Katie's keynotes connect early childhood educators' lived experience with relationship-centered, trauma-responsive, and neuroaffirming practice.
+Katie's keynotes connect early childhood educators' lived experience with relationship-centered, trauma-responsive, and neuroaffirming practice, so audiences leave with language and ideas they can carry back to real moments with children and families.

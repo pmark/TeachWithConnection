@@ -2,11 +2,11 @@ route: "/about/"
 status: approved
 copy:
   strings:
-    seo.title: "About Katie"
-    seo.description: "About Katie Statman-Weil, EdD, LCSW, early childhood educator, clinician, author, consultant, trainer, and speaker."
+    seo.title: "About Katie Statman-Weil, EdD, LCSW"
+    seo.description: "Meet Katie Statman-Weil, EdD, LCSW, With Connection founder, author, clinician, consultant, and early childhood professional development trainer."
     hero.eyebrow: "About"
     hero.title: "Katie Statman-Weil, EdD, LCSW"
-    hero.description: "Katie is an educator, clinician, author, consultant, trainer, and speaker whose work helps adults understand children's behavior through connection, safety, regulation, and development."
+    hero.description: "Katie is the founder of With Connection and an educator, clinician, author, consultant, trainer, and speaker whose work helps adults understand children's behavior through connection, safety, regulation, and development."
     hero.primaryCta: "Bring Katie to your organization"
     hero.secondaryCta: "View publications"
     hero.photoAlt: "Katie Statman-Weil, EdD, LCSW"
@@ -23,8 +23,8 @@ copy:
       - "She is the founder of With Connection and co-founded Wild Lilac Child Development Community, a Portland nonprofit early childhood education and parent support organization."
       - "Her professional development work stays educator-facing while drawing from attachment, trauma-responsive care, neurodivergence, regulation, child development, and relationship-centered behavior support."
     philosophy.items:
-      - "Connection and safety before compliance."
-      - "Behavior as communication, not defiance in isolation."
-      - "Regulation as shared adult-child work shaped by relationships and environments."
-      - "Neuroaffirming support that honors different nervous systems and communication needs."
+      - "Connection and safety are the foundation for meaningful change."
+      - "Behavior is communication shaped by development, relationships, stress, and context."
+      - "Regulation grows through shared adult-child work, not isolated child compliance."
+      - "Neuroaffirming support honors different nervous systems, communication needs, and ways of moving through the world."
   cards: {}

@@ -1,6 +1,6 @@
 ---
 title: "Creating Trauma Sensitive Classrooms"
-description: "Katie wrote the NAEYC Young Children article Creating Trauma Sensitive Classrooms."
+description: "Katie wrote Creating Trauma Sensitive Classrooms for NAEYC's Young Children, connecting trauma-responsive practice to early childhood classroom relationships, behavior, and safety."
 type: "publication"
 href: "https://www.naeyc.org/resources/pubs/yc/may2015/trauma-sensitive-classrooms"
 source:

@@ -1,6 +1,6 @@
 ---
 title: "Resources"
-description: "Explore practical, relationship-centered tools for educators and teams."
+description: "Open-access resources for educators, including Katie's NAEYC article on trauma-sensitive classrooms and a classroom PACE guide."
 priority: 4
 audience:
   - "Teaching teams"
@@ -19,4 +19,4 @@ image:
   alt: "Child holding basket of toys"
 ---
 
-Free resources remain open-access and link directly to approved files when available. Includes a practical guide to leading with Playfulness, Acceptance, Curiosity, and Empathy in the classroom, and an article about creating trauma-sensitive classrooms.
+Resources remain open-access and link directly to approved files when available. Start with Katie's NAEYC Young Children article, Creating Trauma Sensitive Classrooms, and a practical guide to leading with Playfulness, Acceptance, Curiosity, and Empathy in the classroom.

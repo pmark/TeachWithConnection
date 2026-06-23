@@ -2,15 +2,15 @@ route: "/"
 status: review-needed
 copy:
   strings:
-    seo.title: "Early Childhood Professional Development | Katie Statman-Weil"
-    seo.description: "Bring relationship-centered early childhood professional development, workshops, keynotes, and consultation with Katie Statman-Weil to your team."
+    seo.title: "Early Childhood Professional Development Rooted in Connection"
+    seo.description: "Bring Katie Statman-Weil, EdD, LCSW to your early childhood team for relationship-centered professional development, workshops, keynotes, or consultation."
     structuredData.name: "Early Childhood Professional Development"
-    structuredData.description: "Relationship-centered professional development, workshops, and staff training for early childhood organizations across the United States."
+    structuredData.description: "Relationship-centered early childhood professional development, workshops, and staff training for organizations across the United States."
     hero.eyebrow: "Early childhood professional development"
-    hero.title: "Trauma-Responsive Professional Development For Early Childhood Educators"
-    hero.description: "Expert workshops, keynotes, and consultation on challenging behavior, neurodiversity, inclusion, and emotional regulation—helping educators build classrooms where every child can thrive."
-    hero.secondaryDescription: "Katie Statman-Weil, EdD, LCSW is an author, educator, and consultant known for translating research into practical strategies that educators can use immediately."
-    hero.primaryCta: "Meet Katie"
+    hero.title: "Early Childhood Professional Development Rooted in Connection"
+    hero.description: "Katie Statman-Weil, EdD, LCSW offers professional development for early childhood educators online and in person, with practical, relationship-centered trainings on child development, behavior, trauma, neurodivergence, emotional regulation, and play-based strategies."
+    hero.secondaryDescription: "Her goal is always to support classrooms where teachers feel heard, children feel supported, and relationships can thrive."
+    hero.primaryCta: "Inquire about professional development"
     hero.secondaryCta: "View workshop topics"
     hero.legacyCta: "Learn how Katie can support your organization"
     closing.cta: "Bring Katie To Your Organization"
@@ -50,8 +50,8 @@ copy:
     resources.cta: "Visit resources"
     freeResource.eyebrow: "Free Resource"
     freeResource.title: "Creating Trauma Sensitive Classrooms"
-    freeResource.description: "Grab Katie's free article packed with practical, brain-first strategies for building classrooms where every child feels safe, seen, and ready to learn. No strings attached—just click and download."
-    freeResource.cta: "Get the Free Article"
+    freeResource.description: "Read Katie's NAEYC Young Children article, Creating Trauma Sensitive Classrooms, with practical guidance for understanding how trauma can shape learning, behavior, safety, and connection in early childhood classrooms."
+    freeResource.cta: "Read the article"
     freeResource.imageAlt: "Cover of \"Social & Emotional Development,\" a NAEYC Spotlight on Young Children publication"
   lists:
     about.paragraphs:

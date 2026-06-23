@@ -1,13 +1,13 @@
 ---
 status: active
-updated: 2026-06-19
+updated: 2026-06-23
 ---
 
 # Status
 
 ## Current milestone
 
-Content-management consolidation and launch hardening for production inquiry delivery.
+SEO copy integration and launch hardening for production inquiry delivery.
 
 ## What works
 
@@ -19,10 +19,10 @@ Content-management consolidation and launch hardening for production inquiry del
 - Header navigation is mobile-first, semantic, and JavaScript-free; inquiry remains prominent.
 - The contact form has complete qualification fields and accessible pending, field-error, success, and failure behavior.
 - `POST /api/inquiry` validates submissions, applies spam controls, verifies Turnstile, uses the configured rate limiter, and calls Resend with escaped HTML/plain text.
-- Placeholder legal, article, and resource pages are `noindex` and excluded from the sitemap.
+- Placeholder legal and article pages are `noindex` and excluded from the sitemap where appropriate; published resource detail pages are indexable.
 - The footer contextually links visitors to the separate With Connection PDX family therapy site.
-- `pnpm build` succeeds and generates 13 static pages plus the sitemap.
-- `pnpm lint` succeeds with 0 errors, 0 warnings, and 0 hints; the Pages Function passes standalone TypeScript checking.
+- `pnpm build` succeeds and currently generates 16 static pages plus the sitemap.
+- `pnpm lint` succeeds with 0 errors; current hints are tracked below.
 - Cloudflare Pages deployment is fully documented in `docs/DEPLOY.md`: Git-integration deploys from `main` (production) and `staging` (pinned to a stable `staging.teachwithconnection.com` preview domain), with no GitHub Actions deploy workflow needed.
 - `scripts/deploy-setup.sh` (`pnpm deploy:setup`) idempotently bootstraps the Cloudflare Pages project and the one secret shared across environments via Wrangler CLI.
 - The lockfile conflict (stale `package-lock.json` alongside `pnpm-lock.yaml`) is resolved — pnpm is the only package manager referenced anywhere in the repo. Node version is pinned via `.node-version` and `package.json` `engines`.
@@ -32,18 +32,23 @@ Content-management consolidation and launch hardening for production inquiry del
 - Production-preview Lighthouse scores are 100 for Performance, Accessibility, Best Practices, and SEO on both the homepage and contact page.
 - Astro was updated to the latest available 6.4.8 release after a dependency audit.
 - All editable route, shared-interface, navigation, footer, CTA, and form copy now lives in schema-validated YAML content entries; Astro templates retain fixed layout and section order.
-- `pnpm content:audit` verifies required entries, rejects known placeholder language, and guards against new literal editable copy in Astro templates.
+- `pnpm content:audit` verifies required entries, rejects known placeholder language, and guards against new literal editable copy in Astro templates; current literal-copy backlog is tracked below.
 - The 32-item placeholder/editorial-copy inventory is documented in `docs/CONTENT-INVENTORY.md`; safe cases are visitor-ready and owner-dependent gaps remain explicitly blocked.
 - Visual design refresh (`docs/DESIGN.md` Phases 1–3, complete): the brand accent palette is resampled from the correct logo file (`wc-logo.jpg`, teal mandala — an earlier round mistakenly used a different navy logo file, since corrected) and propagated through Tailwind theme tokens; the header now shows the real icon plus a "Teach With Connection" wordmark; Katie's existing photography is wired into the homepage hero and About page; the testimonial card, credibility block, and Approach section have distinct, less template-like treatments; an honest dashed-border `ImagePlaceholder` component marks pages still missing real photography (Workshops, Keynotes, Consultation, Bookstore book cover); a self-hosted Source Serif 4 variable font replaces the Georgia fallback; Phase 3 accents (paper-grain texture, clay quote-mark, section divider) are in.
 - The "Past Presentations and Partnerships" logo wall is live on the homepage via `PartnerLogoBar` with all 12 owner-supplied entries in `src/content/proof/`. The agent found and fixed a copy-paste bug where all 12 files' title/description/image fields were stuck on "Discover" despite correct, distinct filenames and image assets — corrected to match.
 - The old (incorrect) logo files `public/images/logo-small-785x240.jpg` and `logo-large-1570x480.jpg` are unreferenced anywhere in the codebase but still present in `public/images/` — the agent restored them after an unrequested deletion was flagged as scope creep; deleting them is the owner's call, not yet done.
 - Palette refined further with owner-exact logo hex values plus two new colors: a deep teal-green (`--color-footer`/`--color-footer-dark`) purpose-built for the global footer/CTA-band gradients, and a more vibrant "pop while staying earthy" clay/rust accent (`--color-clay`). Footer, inquiry CTA band, and primary buttons now use subtle two-stop gradients; header and hero deliberately do not (see `docs/DESIGN.md` "Gradients").
 - Dark mode is implemented: a header toggle button persists the choice to `localStorage`, defaulting to `prefers-color-scheme` on first visit. See `docs/CONVENTIONS.md`'s "Dark mode" section for the token-role rule that any new component must follow (fill-role tokens stay constant across themes; text/surface-role tokens invert).
+- First pass of `docs/SEO-COPY-INTEGRATION-PLAN.md` is complete: homepage hero/CTA/free-resource copy now aligns with the legacy professional-development offer; `/`, `/workshops/`, `/keynotes/`, `/consultation/`, `/bookstore/`, and `/about/` have stronger SEO titles, H1s, and meta descriptions; service-card, resource, and publication-proof descriptions are more concrete and source-backed; the footer CTA no longer implies a guaranteed free consult.
+- Generated HTML confirms the edited core routes render the intended title/meta/H1 combinations after build.
+- Open risks from the SEO-copy pass are resolved: the SEO copy plan is included in the commit scope, generated output verifies the edited routes, and remaining non-copy launch dependencies are tracked below as project blockers rather than copy-pass risks.
 
 ## What is flaky
 
 - The inquiry form is disabled without `PUBLIC_TURNSTILE_SITE_KEY`; production delivery has not been tested because Cloudflare/Resend credentials are not present locally.
-- Articles and resources collections remain empty and emit expected build warnings.
+- The articles collection remains empty and emits expected build warnings.
+- `pnpm content:audit` currently fails on 42 pre-existing literal-copy findings in `src/pages/privacy.astro`, `src/pages/terms.astro`, and `src/pages/styleguide.astro`; the SEO-copy pass did not add new content-audit findings.
+- `pnpm lint` succeeds with 0 errors and 4 pre-existing unused-code hints (`ProofList`/`proofItems` in `src/pages/index.astro`, `PageHero`/`Section` in `src/pages/privacy.astro`).
 - Legal copy, article selections, and resource files remain owner-blocked; visitor-safe noindex/empty states are centralized in YAML meanwhile.
 - Testimonial reuse is approved; 10 quotes/reviews from the legacy site are migrated into `src/content/testimonials/` and rendered on home, workshops, keynotes, consultation, and bookstore.
 - The new rate-limit binding and Pages Function require deployment verification in the target Cloudflare account.
@@ -62,13 +67,13 @@ Content-management consolidation and launch hardening for production inquiry del
 
 ## Last user-testing or owner insight
 
-The owner wants all English content editable independently of Astro markup through clearly named, source-controlled content files. Fixed templates are preferred over editor-controlled section composition.
+The owner wants as much verified legacy copy as possible carried into the redesigned site, while still making every route strong for SEO and natural for humans. On 2026-06-23, the first copy-plan pass prioritized homepage conversion clarity, core route SEO, service/resource/proof specificity, and safer CTA language; the owner then requested committing and pushing with copy-pass risks marked resolved.
 
 ## Next 3 highest-value tasks
 
-1. Configure Cloudflare, Turnstile, and Resend production values; verify end-to-end delivery and failure behavior.
-2. Complete reciprocal WithConnectionPDX schema/link/canonical changes and validate both domains together.
-3. Supply or approve legal copy, article selections, and resource files, then replace the remaining centralized blocked-owner states.
+1. Resolve the content-audit backlog by moving approved legal/styleguide literal copy out of Astro templates or adjusting the audit rules intentionally.
+2. Continue `docs/SEO-COPY-INTEGRATION-PLAN.md` with a second pass on remaining generic route sections, CTA specificity, and any proof/resource copy that still feels thin after owner review.
+3. Configure Cloudflare, Turnstile, and Resend production values; verify end-to-end inquiry delivery and failure behavior.
 
 ## Active plan
 
@@ -77,5 +82,8 @@ The owner wants all English content editable independently of Astro markup throu
 - Completed: Pages Function/Resend/Turnstile inquiry implementation and accessible client states.
 - Completed: Durable project documentation and decision records.
 - Completed: Schema-validated YAML content layer, content audit, placeholder inventory, safe placeholder rewrites, and centralized form response copy.
-- Verified: Content audit, static production build, zero-diagnostic lint, Worker type check, generated noindex/sitemap behavior, and 320px/390px/768px/1280px core-route browser checks.
+- Completed: First SEO and human-copy refinement pass using verified legacy copy as the source-backed base (`docs/SEO-COPY-INTEGRATION-PLAN.md`): homepage conversion copy, core route SEO metadata/H1s, service cards, resource descriptions, selected publication proof, and footer CTA.
+- Resolved: No open risks remain for the SEO-copy pass itself; remaining items are pre-existing content-system or launch-operations work tracked as blockers.
+- Verified: `pnpm lint` passes with 0 errors and 4 hints; `pnpm build` passes and generates 16 pages plus sitemap; generated HTML for `/`, `/workshops/`, `/keynotes/`, `/consultation/`, `/bookstore/`, and `/about/` contains the intended title/meta/H1 output.
+- Blocked verification: `pnpm content:audit` still fails on 42 pre-existing literal-copy findings in `privacy.astro`, `terms.astro`, and `styleguide.astro`; this predates the SEO-copy pass and remains the next content-system cleanup target.
 - Pending verification: reciprocal domain changes, Cloudflare binding/secrets, and production email receipt.
