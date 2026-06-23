@@ -11,7 +11,7 @@ copy:
     header.primaryNavigationAriaLabel: "Primary navigation"
     header.themeToggle: "Toggle dark mode"
     footer.description: "Relationship-centered professional development, keynotes, and consultation for early childhood organizations."
-    footer.relatedPractice: "Looking for family therapy services? Visit [withconnectionpdx.com](https://withconnectionpdx.com/)."
+    footer.relatedPractice: "Looking for family therapy services? Visit [WithConnectionPDX.com](https://withconnectionpdx.com/)"
     footer.relatedPracticePrefix: "Looking for family therapy services? Visit"
     footer.relatedPracticeLabel: "With Connection PDX"
     footer.navigationAriaLabel: "Footer navigation"

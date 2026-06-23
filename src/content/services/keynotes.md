@@ -19,7 +19,7 @@ source:
   label: "With Connection keynotes page"
   url: "https://www.withconnectionpdx.com/keynotes"
 image:
-  src: "/images/katie-statman-weil-photo-1.jpg"
+  src: "/images/photos/katie-speaking.png"
   alt: "Katie Statman-Weil smiling outdoors"
 ---
 
