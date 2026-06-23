@@ -3,6 +3,7 @@ import { getSettingsCopy, list, text } from "../../data/content";
 
 const copy = await getSettingsCopy("interface");
 const inquiryTypes = list(copy, "form.inquiryTypes");
+const howHeardOptions = list(copy, "form.howHeardOptions");
 const clientMessages = JSON.stringify({
   submitting: text(copy, "form.submitting"),
   submit: text(copy, "form.submit"),
@@ -47,10 +48,6 @@ const errorClass = "hidden text-sm font-normal text-[#9f1d1d] dark:text-[#f0a8a8
   data-inquiry-form
   data-messages={clientMessages}
 >
-  <p id="form-note" class="text-sm leading-6 text-stone">
-    {text(copy, "form.note")}
-  </p>
-
   <div class="hidden" aria-hidden="true">
     <label>
       {text(copy, "form.honeypotLabel")}
@@ -60,9 +57,9 @@ const errorClass = "hidden text-sm font-normal text-[#9f1d1d] dark:text-[#f0a8a8
   <input type="hidden" name="startedAt" value={Date.now()} />
 
   <fieldset class="m-0 grid gap-4 border-0 p-0">
-    <legend class="mb-1 w-full border-b border-line pb-2 text-sm font-semibold uppercase tracking-wide text-brand-text">
+    <!-- <legend class="mb-1 w-full pb-2 text-sm font-semibold uppercase tracking-wide text-brand-text">
       {text(copy, "form.detailsLegend")}
-    </legend>
+    </legend> -->
 
     <div class="grid gap-4 sm:grid-cols-2">
       <label class="grid gap-2">
@@ -117,9 +114,9 @@ const errorClass = "hidden text-sm font-normal text-[#9f1d1d] dark:text-[#f0a8a8
   </fieldset>
 
   <fieldset class="m-0 grid gap-4 border-0 p-0">
-    <legend class="mb-1 w-full border-b border-line pb-2 text-sm font-semibold uppercase tracking-wide text-brand-text">
+    <!-- <legend class="mb-1 w-full pb-2 text-sm font-semibold uppercase tracking-wide text-brand-text">
       {text(copy, "form.inquiryLegend")}
-    </legend>
+    </legend> -->
 
     <div class="grid gap-4 sm:grid-cols-2">
       <label class="grid gap-2">
@@ -132,21 +129,15 @@ const errorClass = "hidden text-sm font-normal text-[#9f1d1d] dark:text-[#f0a8a8
         </select>
         <span id="inquiryType-error" class={errorClass} data-error-for="inquiryType"></span>
       </label>
-
+      
       <label class="grid gap-2">
         <span class={labelRowClass}>
-          {text(copy, "form.timeline")} <span class={tagClass}></span>
+          {text(copy, "form.howHeard")} <span class={tagClass}></span>
         </span>
-        <input class={fieldClass} name="timeline" maxlength="120" />
-      </label>
-    </div>
-
-    <div class="grid gap-4 sm:grid-cols-2">
-      <label class="grid gap-2">
-        <span class={labelRowClass}>
-          {text(copy, "form.audienceSize")} <span class={tagClass}></span>
-        </span>
-        <input class={fieldClass} name="audienceSize" inputmode="numeric" maxlength="60" />
+        <select class={fieldClass} name="howHeard">
+          <option value="">{text(copy, "form.chooseOne")}</option>
+          {howHeardOptions.map((option) => <option value={option}>{option}</option>)}
+        </select>
       </label>
     </div>
 

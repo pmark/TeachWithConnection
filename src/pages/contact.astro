@@ -18,11 +18,7 @@ const copy = await getPageCopy("contact");
     description={text(copy, "hero.description")}
   />
 
-  <Section
-    eyebrow={text(copy, "form.eyebrow")}
-    title={text(copy, "form.title")}
-    description={text(copy, "form.description")}
-  >
+  <section class="bg-white mx-auto bg-paper py-10 sm:py-12 max-w-6xl px-4 sm:px-6">
     <div class="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
       <address class="rounded-md border border-line bg-paper p-6 not-italic shadow-sm lg:sticky lg:top-24">
         <p class="font-serif text-xl leading-snug text-charcoal">
@@ -53,5 +49,5 @@ const copy = await getPageCopy("contact");
 
       <InquiryForm />
     </div>
-  </Section>
+  </section>
 </BaseLayout>

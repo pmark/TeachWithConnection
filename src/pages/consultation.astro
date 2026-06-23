@@ -47,14 +47,12 @@ const testimonial = await getTestimonial("consultation-teacher");
       <p class="leading-8 text-slate font-bold italic">{text(copy, "background.paragraph3")}</p>
     </div>
   </Section>
-  <Section
-    eyebrow={text(copy, "testimonial.eyebrow")}
-    title={text(copy, "testimonial.title")}
-    narrow
-  >
-    <TestimonialQuote quote={testimonial.quote} attribution={testimonial.attribution} />
-  </Section>
 
+  <section class="bg-sand mx-auto bg-paper py-10 sm:py-12">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6">
+      <TestimonialQuote quote={testimonial.quote} attribution={testimonial.attribution} />
+    </div>
+  </section>
 
   <Section
     eyebrow={text(copy, "fit.eyebrow")}

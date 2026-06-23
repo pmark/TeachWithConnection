@@ -10,7 +10,7 @@ copy:
     form.eyebrow: "Form"
     form.title: "Inquiry form"
     form.description: "Share the essentials below. The secure inquiry service validates your submission and sends it directly to Katie."
-    info.name: "Katie Statman-Weil, EdD, LCSW (L-6410)"
+    info.name: "Katie Statman-Weil, EdD, LCSW"
     info.phoneLabel: "Phone"
     info.phone: "(503) 473-2081"
     info.addressLabel: "Office"

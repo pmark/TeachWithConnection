@@ -74,6 +74,17 @@ const bookStructuredData = {
   </Section>
 
   <Section
+    eyebrow={text(copy, "testimonial.eyebrow")}
+    title={text(copy, "testimonial.title")}
+  >
+    <div class="grid gap-4">
+      {reviews.map((review) => (
+        <TestimonialQuote quote={review.quote} attribution={review.attribution} />
+      ))}
+    </div>
+  </Section>
+
+  <Section
     background="surface"
     eyebrow={text(copy, "related.eyebrow")}
     title={text(copy, "related.title")}
@@ -86,17 +97,6 @@ const bookStructuredData = {
     </div>
   </Section>
 
-  <Section
-    eyebrow={text(copy, "testimonial.eyebrow")}
-    title={text(copy, "testimonial.title")}
-    narrow
-  >
-    <div class="grid gap-4">
-      {reviews.map((review) => (
-        <TestimonialQuote quote={review.quote} attribution={review.attribution} />
-      ))}
-    </div>
-  </Section>
 
   <InquiryCta title={text(copy, "inquiry.title")} />
 </BaseLayout>

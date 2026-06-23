@@ -15,6 +15,7 @@ copy:
     form.chooseOne: "Choose one"
     form.timeline: "Estimated date or timeline"
     form.audienceSize: "Estimated audience size"
+    form.howHeard: "How did you hear about us?"
     form.message: "What would you like Katie to know?"
     form.turnstileUnavailable: "Inquiry sending is unavailable until the production Turnstile key is configured."
     form.submit: "Send message to Katie"
@@ -43,5 +44,13 @@ copy:
       - "Workshop"
       - "Keynote"
       - "Consultation"
+      - "Other"
+    form.howHeardOptions:
+      - "Google or another search engine"
+      - "Referral from a colleague"
+      - "Conference or event"
+      - "Social media"
+      - "Katie's book or article"
+      - "With Connection PDX"
       - "Other"
   cards: {}

@@ -25,6 +25,7 @@ type FieldName =
   | "inquiryType"
   | "timeline"
   | "audienceSize"
+  | "howHeard"
   | "message";
 
 const FIELD_LIMITS: Record<FieldName, number> = {
@@ -36,6 +37,7 @@ const FIELD_LIMITS: Record<FieldName, number> = {
   inquiryType: 40,
   timeline: 120,
   audienceSize: 60,
+  howHeard: 150,
   message: 5000,
 };
 
@@ -113,6 +115,7 @@ function buildEmail(fields: Record<FieldName, string>): { text: string; html: st
     ["inquiryType", "Inquiry type"],
     ["timeline", "Timeline"],
     ["audienceSize", "Audience size"],
+    ["howHeard", "How did you hear about us?"],
     ["message", "Message"],
   ];
   const populated = labels.filter(([field]) => fields[field]);

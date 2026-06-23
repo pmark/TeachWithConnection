@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "@fontsource-variable/source-serif-4/wght.css";
+@import "@fontsource-variable/fraunces/standard.css";
 
 /* Class-based dark mode: an explicit .dark on <html> wins; otherwise see the
    theme-init script in BaseLayout, which seeds it from localStorage or
@@ -9,6 +10,7 @@
 @theme {
   --font-serif: "Source Serif 4 Variable", Georgia, "Times New Roman", serif;
   --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-wordmark: "Fraunces Variable", "Source Serif 4 Variable", Georgia, serif;
 
   /* Brand fill colors — self-contained colored surfaces (buttons, CTA band, footer).
      These stay the same in light and dark mode: they always carry white text on top,
@@ -86,6 +88,10 @@ html.dark {
 
 body {
   margin: 0;
+}
+
+p.inline-links a {
+  text-decoration: underline;
 }
 
 ::selection {

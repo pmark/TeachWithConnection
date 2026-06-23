@@ -2,7 +2,7 @@
 import ButtonLink from "../common/ButtonLink.astro";
 import ThemeToggleButton from "../common/ThemeToggleButton.astro";
 import { footerNavigation, site, socialLinks } from "../../data/site";
-import { getSettingsCopy, text } from "../../data/content";
+import { getSettingsCopy, richText, text } from "../../data/content";
 const copy = await getSettingsCopy("site");
 ---
 
@@ -16,9 +16,9 @@ const copy = await getSettingsCopy("site");
       <p class="mt-4 max-w-md text-sm leading-6 text-[#ddd6cf]">
         {text(copy, "footer.address")}
       </p>
-      <p class="mt-4 max-w-md text-sm leading-6 text-[#ddd6cf]">
-        {text(copy, "footer.relatedPracticePrefix")}
-        <a class="inline-flex min-h-11 items-center underline underline-offset-4 hover:text-white" href={site.relatedPracticeUrl}>{text(copy, "footer.relatedPracticeLabel")}</a>.
+      <p set:html={richText(copy, "footer.relatedPractice")} class="mt-4 max-w-md text-sm leading-6 text-[#ddd6cf] inline-links" />
+        
+        <!-- <a class="inline-flex min-h-11 items-center underline underline-offset-4 hover:text-white" href={site.relatedPracticeUrl}>{text(copy, "footer.relatedPracticeLabel")}</a>. -->
       </p>
       <div class="mt-6">
         <ButtonLink href="/contact/" variant="ghost">{text(copy, "footer.consultCta")}</ButtonLink>
