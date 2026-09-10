@@ -2,15 +2,45 @@ import { glob } from "astro/loaders";
 import { defineCollection } from "astro:content";
 import { z } from "astro/zod";
 
-const sourceSchema = z.object({
-  label: z.string(),
-  url: z.url().optional(),
-});
+const optionalString = () =>
+  z
+    .string()
+    .optional()
+    .transform((v) => (v ? v : undefined));
+
+// Optional nested objects (source/cta/image) are always presented as filled-in
+// fields in the Keystatic admin UI, so a left-blank field round-trips as an
+// empty string rather than a missing key. These transforms normalize an
+// all-blank object back to `undefined` so app code sees the same shape as
+// before Keystatic (present only when actually filled in).
+const sourceSchema = z
+  .object({
+    label: z.string().default(""),
+    url: z.string().default(""),
+  })
+  .optional()
+  .transform((v) => (v && v.label ? { label: v.label, url: v.url || undefined } : undefined));
 
 const ctaSchema = z.object({
   label: z.string(),
   href: z.string(),
 });
+
+const optionalCtaSchema = z
+  .object({
+    label: z.string().default(""),
+    href: z.string().default(""),
+  })
+  .optional()
+  .transform((v) => (v && v.label && v.href ? { label: v.label, href: v.href } : undefined));
+
+const optionalImageSchema = z
+  .object({
+    src: z.string().default(""),
+    alt: z.string().default(""),
+  })
+  .optional()
+  .transform((v) => (v && v.src ? { src: v.src, alt: v.alt } : undefined));
 
 const copyCardSchema = z.object({
   title: z.string(),
@@ -48,9 +78,9 @@ const resources = defineCollection({
     description: z.string(),
     audience: z.array(z.string()).default([]),
     tags: z.array(z.string()).default([]),
-    file: z.string().optional(),
-    source: sourceSchema.optional(),
-    cta: ctaSchema.optional(),
+    file: optionalString(),
+    source: sourceSchema,
+    cta: optionalCtaSchema,
   }),
 });
 
@@ -59,11 +89,16 @@ const articles = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
-    publishDate: z.date().optional(),
+    publishDate: z
+      .coerce
+      .date()
+      .nullable()
+      .optional()
+      .transform((v) => v ?? undefined),
     audience: z.array(z.string()).default([]),
     tags: z.array(z.string()).default([]),
-    source: sourceSchema.optional(),
-    cta: ctaSchema.optional(),
+    source: sourceSchema,
+    cta: optionalCtaSchema,
   }),
 });
 
@@ -72,9 +107,9 @@ const testimonials = defineCollection({
   schema: z.object({
     quote: z.string(),
     attribution: z.string(),
-    context: z.string().optional(),
-    service: z.string().optional(),
-    source: sourceSchema.optional(),
+    context: optionalString(),
+    service: optionalString(),
+    source: sourceSchema,
   }),
 });
 
@@ -84,14 +119,9 @@ const proof = defineCollection({
     title: z.string(),
     description: z.string(),
     type: z.enum(["credential", "publication", "award", "logo", "appearance"]),
-    source: sourceSchema.optional(),
-    href: z.string().optional(),
-    image: z
-      .object({
-        src: z.string(),
-        alt: z.string(),
-      })
-      .optional(),
+    source: sourceSchema,
+    href: optionalString(),
+    image: optionalImageSchema,
   }),
 });
 
@@ -105,7 +135,7 @@ const services = defineCollection({
     tags: z.array(z.string()).default([]),
     href: z.string(),
     cta: ctaSchema,
-    source: sourceSchema.optional(),
+    source: sourceSchema,
     image: z.object({
       src: z.string(),
       alt: z.string(),

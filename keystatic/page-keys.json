@@ -1,0 +1,459 @@
+{
+  "pages": {
+    "about": {
+      "strings": [
+        "seo.title",
+        "seo.description",
+        "hero.eyebrow",
+        "hero.title",
+        "hero.description",
+        "hero.primaryCta",
+        "hero.secondaryCta",
+        "hero.photoAlt",
+        "background.eyebrow",
+        "background.title",
+        "philosophy.title",
+        "credibility.eyebrow",
+        "credibility.title",
+        "credibility.description",
+        "credibility.cta"
+      ],
+      "lists": [
+        "background.paragraphs",
+        "philosophy.items"
+      ],
+      "cards": []
+    },
+    "article-detail": {
+      "strings": [
+        "hero.eyebrow",
+        "hero.cta",
+        "topics.ariaLabel"
+      ],
+      "lists": [],
+      "cards": []
+    },
+    "articles": {
+      "strings": [
+        "seo.title",
+        "seo.description",
+        "hero.eyebrow",
+        "hero.title",
+        "hero.description",
+        "hero.cta",
+        "library.eyebrow",
+        "library.availableTitle",
+        "library.emptyTitle",
+        "library.description",
+        "library.empty",
+        "library.emptyCta",
+        "card.cta"
+      ],
+      "lists": [],
+      "cards": []
+    },
+    "bookstore": {
+      "strings": [
+        "seo.title",
+        "seo.description",
+        "hero.eyebrow",
+        "hero.title",
+        "hero.description",
+        "book.eyebrow",
+        "book.title",
+        "book.meta",
+        "book.description",
+        "book.secondaryDescription",
+        "book.primaryCta",
+        "book.amazonCta",
+        "book.secondaryCta",
+        "book.resourcesCta",
+        "book.topicsAriaLabel",
+        "book.topicsTitle",
+        "related.eyebrow",
+        "related.title",
+        "related.description",
+        "related.cta",
+        "related.paragraph1",
+        "related.paragraph2",
+        "testimonial.eyebrow",
+        "testimonial.title",
+        "inquiry.title"
+      ],
+      "lists": [
+        "book.topics"
+      ],
+      "cards": []
+    },
+    "consultation": {
+      "strings": [
+        "seo.title",
+        "seo.description",
+        "structuredData.name",
+        "hero.eyebrow",
+        "hero.title",
+        "hero.description",
+        "hero.photoAlt",
+        "hero.primaryCta",
+        "hero.secondaryCta",
+        "background.lead",
+        "background.paragraph1",
+        "background.paragraph2",
+        "background.paragraph3",
+        "fit.eyebrow",
+        "fit.title",
+        "fit.description",
+        "lens.eyebrow",
+        "lens.title",
+        "lens.description",
+        "lens.secondaryDescription",
+        "testimonial.eyebrow",
+        "testimonial.title",
+        "inquiry.title"
+      ],
+      "lists": [
+        "fit.items",
+        "lens.items"
+      ],
+      "cards": []
+    },
+    "contact": {
+      "strings": [
+        "seo.title",
+        "seo.description",
+        "hero.eyebrow",
+        "hero.title",
+        "hero.description",
+        "form.eyebrow",
+        "form.title",
+        "form.description",
+        "info.name",
+        "info.phoneLabel",
+        "info.phone",
+        "info.addressLabel",
+        "info.addressLine1",
+        "info.addressLine2"
+      ],
+      "lists": [],
+      "cards": []
+    },
+    "disclaimer": {
+      "strings": [
+        "seo.title",
+        "seo.description",
+        "hero.eyebrow",
+        "hero.title",
+        "hero.description",
+        "status.eyebrow",
+        "status.title",
+        "status.description"
+      ],
+      "lists": [],
+      "cards": []
+    },
+    "home": {
+      "strings": [
+        "seo.title",
+        "seo.description",
+        "structuredData.name",
+        "structuredData.description",
+        "hero.eyebrow",
+        "hero.title",
+        "hero.description",
+        "hero.secondaryDescription",
+        "hero.primaryCta",
+        "hero.secondaryCta",
+        "hero.legacyCta",
+        "closing.cta",
+        "credibility.photoAlt",
+        "credibility.ariaLabel",
+        "credibility.title",
+        "credibility.credentialsLabel",
+        "credibility.credentials",
+        "credibility.publicationLabel",
+        "credibility.publicationPrefix",
+        "credibility.publication",
+        "credibility.approachLabel",
+        "credibility.approach",
+        "professionalDevelopment.eyebrow",
+        "professionalDevelopment.title",
+        "professionalDevelopment.description",
+        "professionalDevelopment.fitTitle",
+        "professionalDevelopment.outcomesTitle",
+        "professionalDevelopment.formatsTitle",
+        "professionalDevelopment.primaryCta",
+        "professionalDevelopment.secondaryCta",
+        "services.eyebrow",
+        "services.title",
+        "services.description",
+        "proof.eyebrow",
+        "proof.title",
+        "proof.partnersTitle",
+        "approach.eyebrow",
+        "approach.title",
+        "approach.testimonialTitle",
+        "approach.description",
+        "approach.secondaryDescription",
+        "resources.eyebrow",
+        "resources.title",
+        "resources.description",
+        "resources.empty",
+        "resources.cta",
+        "freeResource.eyebrow",
+        "freeResource.title",
+        "freeResource.description",
+        "freeResource.cta",
+        "freeResource.imageAlt"
+      ],
+      "lists": [
+        "about.paragraphs",
+        "professionalDevelopment.focus",
+        "professionalDevelopment.outcomes",
+        "professionalDevelopment.formats"
+      ],
+      "cards": []
+    },
+    "keynotes": {
+      "strings": [
+        "seo.title",
+        "seo.description",
+        "structuredData.name",
+        "hero.eyebrow",
+        "hero.title",
+        "hero.description",
+        "hero.photoAlt",
+        "hero.primaryCta",
+        "hero.secondaryCta",
+        "hero.visualLabel",
+        "hero.extendedDescription",
+        "audienceFit.eyebrow",
+        "audienceFit.title",
+        "audienceExperience.eyebrow",
+        "audienceExperience.title",
+        "audienceExperience.description",
+        "topics.eyebrow",
+        "topics.title",
+        "testimonial.eyebrow",
+        "testimonial.title",
+        "inquiry.title"
+      ],
+      "lists": [
+        "hero.visualItems",
+        "audienceFit.items",
+        "audienceExperience.items",
+        "topics.items"
+      ],
+      "cards": []
+    },
+    "privacy": {
+      "strings": [
+        "seo.title",
+        "seo.description",
+        "hero.eyebrow",
+        "hero.title",
+        "hero.description",
+        "status.eyebrow",
+        "status.title",
+        "status.description"
+      ],
+      "lists": [],
+      "cards": []
+    },
+    "publications": {
+      "strings": [
+        "seo.title",
+        "seo.description",
+        "hero.eyebrow",
+        "hero.title",
+        "hero.description",
+        "hero.primaryCta",
+        "hero.secondaryCta",
+        "proof.eyebrow",
+        "proof.title",
+        "proof.description",
+        "proof.linkCta"
+      ],
+      "lists": [],
+      "cards": []
+    },
+    "resource-detail": {
+      "strings": [
+        "hero.eyebrow",
+        "hero.openCta",
+        "topics.ariaLabel",
+        "missingFile"
+      ],
+      "lists": [],
+      "cards": []
+    },
+    "resources": {
+      "strings": [
+        "seo.title",
+        "seo.description",
+        "hero.eyebrow",
+        "hero.title",
+        "hero.description",
+        "hero.cta",
+        "hero.bookCta",
+        "library.eyebrow",
+        "library.availableTitle",
+        "library.emptyTitle",
+        "library.description",
+        "library.empty",
+        "library.emptyCta",
+        "card.cta",
+        "card.topicsAriaLabel"
+      ],
+      "lists": [],
+      "cards": []
+    },
+    "terms": {
+      "strings": [
+        "seo.title",
+        "seo.description",
+        "hero.eyebrow",
+        "hero.title",
+        "hero.description",
+        "status.eyebrow",
+        "status.title",
+        "status.description"
+      ],
+      "lists": [],
+      "cards": []
+    },
+    "workshops": {
+      "strings": [
+        "seo.title",
+        "seo.description",
+        "structuredData.name",
+        "hero.eyebrow",
+        "hero.title",
+        "hero.description",
+        "hero.photoAlt",
+        "hero.primaryCta",
+        "hero.secondaryCta",
+        "problem.title",
+        "problem.paragraph1",
+        "problem.paragraph2",
+        "problem.paragraph3",
+        "need.title",
+        "need.lead",
+        "need.paragraph1",
+        "need.paragraph2",
+        "need.paragraph3",
+        "topics.eyebrow",
+        "topics.title",
+        "topics.description",
+        "trainings.title",
+        "lens.eyebrow",
+        "lens.title",
+        "lens.description",
+        "testimonial.eyebrow",
+        "testimonial.title",
+        "inquiry.title"
+      ],
+      "lists": [
+        "lens.items"
+      ],
+      "cards": [
+        "trainings.items",
+        "topics.items"
+      ]
+    }
+  },
+  "settings": {
+    "interface": {
+      "strings": [
+        "form.note",
+        "form.honeypotLabel",
+        "form.required",
+        "form.optional",
+        "form.detailsLegend",
+        "form.inquiryLegend",
+        "form.name",
+        "form.email",
+        "form.organization",
+        "form.role",
+        "form.location",
+        "form.inquiryType",
+        "form.chooseOne",
+        "form.timeline",
+        "form.audienceSize",
+        "form.howHeard",
+        "form.message",
+        "form.turnstileUnavailable",
+        "form.submit",
+        "form.submitting",
+        "form.defaultError",
+        "form.success",
+        "form.networkError",
+        "error.unsupported",
+        "error.tooLarge",
+        "error.origin",
+        "error.rateLimited",
+        "error.rejected",
+        "error.validation",
+        "error.configuration",
+        "error.verification",
+        "error.delivery",
+        "error.method",
+        "field.required",
+        "field.tooLongPrefix",
+        "field.tooLongSuffix",
+        "field.email",
+        "field.inquiryType"
+      ],
+      "lists": [
+        "form.inquiryTypes",
+        "form.howHeardOptions"
+      ],
+      "cards": []
+    },
+    "site": {
+      "strings": [
+        "brand.name",
+        "brand.wordmark",
+        "brand.legalName",
+        "brand.person",
+        "brand.credentials",
+        "brand.description",
+        "header.inquire",
+        "header.menu",
+        "header.primaryNavigationAriaLabel",
+        "header.themeToggle",
+        "footer.description",
+        "footer.relatedPractice",
+        "footer.relatedPracticePrefix",
+        "footer.relatedPracticeLabel",
+        "footer.navigationAriaLabel",
+        "footer.socialNavigationAriaLabel",
+        "footer.facebookLabel",
+        "footer.instagramLabel",
+        "footer.closing",
+        "footer.address",
+        "footer.photoCredit",
+        "footer.consultCta",
+        "nav.workshops",
+        "nav.keynotes",
+        "nav.consultation",
+        "nav.bookstore",
+        "nav.about",
+        "nav.resources",
+        "nav.articles",
+        "nav.publications",
+        "nav.contact",
+        "nav.privacy",
+        "inquiry.title",
+        "inquiry.description",
+        "inquiry.cta",
+        "breadcrumb.home",
+        "schema.websiteName",
+        "schema.serviceAudience"
+      ],
+      "lists": [
+        "schema.jobTitles"
+      ],
+      "cards": []
+    }
+  }
+}
