@@ -1,13 +1,13 @@
 ---
 status: active
-updated: 2026-06-23
+updated: 2026-09-09
 ---
 
 # Status
 
 ## Current milestone
 
-SEO copy integration and launch hardening for production inquiry delivery.
+Keystatic content-editing integration (local mode, replacing the retired TinaCloud POC) plus launch hardening for production inquiry delivery.
 
 ## What works
 
@@ -32,6 +32,7 @@ SEO copy integration and launch hardening for production inquiry delivery.
 - Production-preview Lighthouse scores are 100 for Performance, Accessibility, Best Practices, and SEO on both the homepage and contact page.
 - Astro was updated to the latest available 6.4.8 release after a dependency audit.
 - All editable route, shared-interface, navigation, footer, CTA, and form copy now lives in schema-validated YAML content entries; Astro templates retain fixed layout and section order.
+- Keystatic is wired up in local mode for all 7 content collections (`pages`, `settings`, `resources`, `articles`, `testimonials`, `proof`, `services`): `keystatic.config.ts` plus `keystatic/copy-fields.ts` (which builds `pages`/`settings` fields from the checked-in `keystatic/page-keys.json` manifest — regenerate via `pnpm keystatic:sync-fields` after adding a new copy key to a template). `pnpm dev:admin` starts the admin UI at `/keystatic`; it is dev-only and does not affect `pnpm build`/`pnpm dev`.
 - `pnpm content:audit` verifies required entries, rejects known placeholder language, and guards against new literal editable copy in Astro templates; current literal-copy backlog is tracked below.
 - The 32-item placeholder/editorial-copy inventory is documented in `docs/CONTENT-INVENTORY.md`; safe cases are visitor-ready and owner-dependent gaps remain explicitly blocked.
 - Visual design refresh (`docs/DESIGN.md` Phases 1–3, complete): the header now uses the owner-supplied `wc-logo.jpg` interlocking-rings mark plus a "Teach With Connection" wordmark; Katie's existing photography is wired into the homepage hero and About page; the testimonial card, credibility block, and Approach section have distinct, less template-like treatments; an honest dashed-border `ImagePlaceholder` component marks pages still missing real photography (Workshops, Keynotes, Consultation, Bookstore book cover); a self-hosted Source Serif 4 variable font replaces the Georgia fallback; Phase 3 accents (paper-grain texture, clay quote-mark, section divider) are in.
@@ -48,7 +49,8 @@ SEO copy integration and launch hardening for production inquiry delivery.
 - The inquiry form is disabled without `PUBLIC_TURNSTILE_SITE_KEY`; production delivery has not been tested because Cloudflare/Resend credentials are not present locally.
 - The articles collection remains empty and emits expected build warnings.
 - `pnpm content:audit` currently fails on 42 pre-existing literal-copy findings in `src/pages/privacy.astro`, `src/pages/terms.astro`, and `src/pages/styleguide.astro`; the SEO-copy pass did not add new content-audit findings.
-- `pnpm lint` succeeds with 0 errors and 4 pre-existing unused-code hints (`ProofList`/`proofItems` in `src/pages/index.astro`, `PageHero`/`Section` in `src/pages/privacy.astro`).
+- `pnpm lint` succeeds with 0 errors and 7 unused-code hints (`site` in `Footer.astro`, `Section` in `contact.astro`, `ProofList`/`proofItems` in `index.astro`, `KeynoteHeroVisual` in `keynotes.astro`, `PageHero`/`Section` in `privacy.astro`).
+- Keystatic editing only works via `pnpm dev:admin` (local mode) — there is no deployed/production admin UI, and none is planned unless a future decision moves to GitHub-mode storage (which would need a GitHub OAuth App and server routes).
 - Legal copy, article selections, and resource files remain owner-blocked; visitor-safe noindex/empty states are centralized in YAML meanwhile.
 - Testimonial reuse is approved; 10 quotes/reviews from the legacy site are migrated into `src/content/testimonials/` and rendered on home, workshops, keynotes, consultation, and bookstore.
 - The new rate-limit binding and Pages Function require deployment verification in the target Cloudflare account.
@@ -66,13 +68,13 @@ SEO copy integration and launch hardening for production inquiry delivery.
 
 ## Last user-testing or owner insight
 
-The owner wants as much verified legacy copy as possible carried into the redesigned site, while still making every route strong for SEO and natural for humans. On 2026-06-23, the first copy-plan pass prioritized homepage conversion clarity, core route SEO, service/resource/proof specificity, and safer CTA language; the owner then requested committing and pushing with copy-pass risks marked resolved. On 2026-06-23, the owner supplied the interlocking-rings logo image as the new logo.
+The owner wants as much verified legacy copy as possible carried into the redesigned site, while still making every route strong for SEO and natural for humans. On 2026-06-23, the first copy-plan pass prioritized homepage conversion clarity, core route SEO, service/resource/proof specificity, and safer CTA language; the owner then requested committing and pushing with copy-pass risks marked resolved. On 2026-06-23, the owner supplied the interlocking-rings logo image as the new logo. On 2026-07-06, the owner selected TinaCloud for content editing; on 2026-09-09, TinaCloud was retired (blocked on external account setup and a static-hosting conflict) in favor of Keystatic in local mode, per `docs/DECISIONS.md`.
 
 ## Next 3 highest-value tasks
 
 1. Resolve the content-audit backlog by moving approved legal/styleguide literal copy out of Astro templates or adjusting the audit rules intentionally.
-2. Continue `docs/SEO-COPY-INTEGRATION-PLAN.md` with a second pass on remaining generic route sections, CTA specificity, and any proof/resource copy that still feels thin after owner review.
-3. Configure Cloudflare, Turnstile, and Resend production values; verify end-to-end inquiry delivery and failure behavior.
+2. Configure Cloudflare, Turnstile, and Resend production values; verify end-to-end inquiry delivery and failure behavior.
+3. Try Keystatic (`pnpm dev:admin`) for real editorial work and decide whether GitHub-mode storage is worth the added OAuth/server-route complexity for editing from the deployed site.
 
 ## Active plan
 
@@ -84,6 +86,7 @@ The owner wants as much verified legacy copy as possible carried into the redesi
 - Completed: First SEO and human-copy refinement pass using verified legacy copy as the source-backed base (`docs/SEO-COPY-INTEGRATION-PLAN.md`): homepage conversion copy, core route SEO metadata/H1s, service cards, resource descriptions, selected publication proof, and footer CTA.
 - Resolved: No open risks remain for the SEO-copy pass itself; remaining items are pre-existing content-system or launch-operations work tracked as blockers.
 - Completed: Replaced `public/images/wc-logo.jpg` with the owner-supplied interlocking-rings logo and resolved the stale wrong-logo deletion blocker.
-- Verified: `pnpm lint` passes with 0 errors and 4 hints; `pnpm build` passes and generates 16 pages plus sitemap; generated HTML for `/`, `/workshops/`, `/keynotes/`, `/consultation/`, `/bookstore/`, and `/about/` contains the intended title/meta/H1 output.
+- Completed: Retired the TinaCloud proof of concept (uncommitted, never merged) and replaced it with Keystatic in local mode across all 7 content collections; see `docs/DECISIONS.md`.
+- Verified: `pnpm lint` passes with 0 errors and 7 hints; `pnpm build` passes and generates 16 pages plus sitemap; `pnpm content:audit` still reports only the known 42 pre-existing findings; Keystatic admin UI verified end-to-end at `/keystatic` (all collections/singletons load with correct existing data, and a real save round-trips to disk with no data loss, confirmed by semantic diff).
 - Blocked verification: `pnpm content:audit` still fails on 42 pre-existing literal-copy findings in `privacy.astro`, `terms.astro`, and `styleguide.astro`; this predates the SEO-copy pass and remains the next content-system cleanup target.
 - Pending verification: reciprocal domain changes, Cloudflare binding/secrets, and production email receipt.
